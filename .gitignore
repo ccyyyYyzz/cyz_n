@@ -1,0 +1,11 @@
+# OS and editor files
+.DS_Store
+Thumbs.db
+*.swp
+*.tmp
+
+# Generated local artifacts
+__pycache__/
+.pytest_cache/
+*.pyc
+
