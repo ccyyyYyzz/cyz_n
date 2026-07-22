@@ -187,6 +187,8 @@ No current microscopic route passes. BV is the leading conditional
 three-versus-more spatial-rate laboratory; published graph models fail the
 dimension-blind release test; Lorentzian IKKT is the leading pre-geometric
 reserve but its 2026 phase is seeded, deformed and of unresolved saddle weight.
+CDT/EDT and fixed-rank tensor/GFT results remain fixed-dimension flow controls;
+the canonical tensor model is retained only for a template-release experiment.
 The active problem is to originate the smallest dimension-variable dynamics
 that also supplies an anonymous multi-probe response interface and a
 loss-of-plateau prediction.

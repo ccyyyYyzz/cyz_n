@@ -58,6 +58,20 @@ use \(d\). Neither supplies a one-time multi-probe common cone or an open
 dimension-blind basin. Treat the published forms as negative controls. Only a
 new dimension-blind graph dynamics may re-enter.
 
+### CDT, tensor/GFT and nearby random geometry
+
+The completed primary-source audit found no published cross-dimensional
+\(3+1\) selector. Four-dimensional CDT/EDT and restricted spin foams use
+four-dimensional building blocks; fixed-rank tensor/GFT models use rank or
+valence as a dimension label. Their spectral/Hausdorff flow is useful but
+occurs inside the chosen dimension sector. The canonical tensor model is the
+only retained test platform because one tensor framework can represent several
+fuzzy \(S^n\) geometries, but the published calculations start near
+dimension-specific \(SO(n+1)\)/harmonic templates and do not compare their
+weights or produce a local common Lorentz cone. If you choose a random-
+geometry route, it must be a new template-release mechanism, not a citation to
+fixed-\(D\) dimensional flow.
+
 ### Lorentzian IKKT
 
 The April 2026 result is a seed-accessible phase at
