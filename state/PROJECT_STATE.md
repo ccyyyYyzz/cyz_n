@@ -153,20 +153,32 @@ The positive theorem needs three independent completeness certificates:
 context closure, relation/target-carrier completeness and physical branch
 coverage. None may substitute for another.
 
-## Active bottleneck: cross-candidate end-to-end Paper-I certificate
+## Repaired uniform reconstruction theorem
 
-The exact branch and comparison theorem is now available. The unresolved
-problem is a uniform finite-noise statement over every interval-consistent
-candidate. Equal ranks, dimensions and Hilbert functions do not prove that two
-candidate presentations are equivalent. A valid robust theorem must include a
-cross-candidate presentation-separation witness and use selected singular
-subspaces with genuine spectral gaps.
+The raw interval fiber now contains only response consistency and predeclared
+complexity bounds. Candidate target truth, route success and the three scoped
+completeness artifacts are separate. The Green relation reaches the actual
+principal co-metric through the regular multiplication dual
+\(\mu_2^\vee\), and the strong multi-field theorem quantifies over every
+feasible factor. Complete tangent and time cocycles are part of the target.
 
-The next theorem must compose the branch comparison with the jet-null rank-nine
-principal line, Lorentz inertia, strong multi-field factorization, tangent-
-overlap conformal gluing and directed time orientation. Its inference API may
-contain only response-derived objects and declared class/coverage certificates,
-never latent coordinates.
+The theorem is adopted subject to decision 0005's local corrections. Practical
+raw-fiber construction, global semialgebraic witness emptiness and joint
+interval propagation remain implementation architecture.
+
+## Active bottleneck: selection bridge for the closed-loop result
+
+The former Paper I/II/III division is no longer a publication plan. The final
+object must compose anonymous reconstruction with a scale-functorial dimension
+witness, a genuinely dimension-variable dynamics selecting a stable visible
+\(3+1\) basin, and a falsifiable loss-of-plateau prediction.
+
+The next theorem must define a common scale-indexed operational package and
+distinguish hiding extra directions from stability and genuine selection. Four-
+dimensional building blocks, a target cubic lattice, a preferred time foliation
+or a scalar spectral dimension are not acceptable substitutes. Compactification
+is the negative control; winding-string and dimension-variable graph dynamics
+are the first live mechanism candidates.
 
 The wavefront-kernel construction remains an independent physical validation
 route, not the primary definition. Numerical gaps are meaningful only relative
