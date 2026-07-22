@@ -56,31 +56,59 @@ that it is the complete response algebra; adjoining unobserved generators adds
 arbitrarily many invisible cotangent directions while preserving all observed
 algebraic data.
 
-## Active bottleneck: the algebraic Lorentzian bridge
+At the pointwise two-jet level, the finite Green-to-principal bridge is now
+exact. For a measured response-jet map \(U_x:W\to J_x^2\), source fiber
+\(B_x\), lower-jet quotient \(\pi_x:J_x^2\to J_x^1\), and
+
+\[
+Z_x=\ker(\pi_xU_x),\qquad
+H_x=U_x|_{Z_x},\qquad
+\beta_x=B_x|_{Z_x},
+\]
+
+the unrestricted compatible principal fiber is
+
+\[
+\mathcal Q_x(D)=\{q\in K_x^*:qH_x=\beta_x\},
+\qquad
+K_x=\mathfrak m_x^2/\mathfrak m_x^3.
+\]
+
+For a regular four-dimensional germ, \(\dim K_x=10\). A nonempty homogeneous
+fiber with rank nine identifies one nonzero projective conformal class; rank
+ten identifies scale. This is a pointwise inverse-functional statement.
+Global generator existence, the retarded convention and membership in the
+bounded dynamics class remain separate.
+
+For two fields, a strong common cone requires every feasible principal symbol
+to factor as \(q\otimes K\) with \(K\) invertible. Knowing only that the
+determinant is proportional to \(q^2\) is insufficient.
+
+## Active bottleneck: raw contextual responses to two-jets
 
 The first paper must make propagation covectors live on the same event germ
-produced by \(\mathcal A\). The primary candidate mechanism is now:
+produced by \(\mathcal A\). The remaining bridge must:
 
 1. keep a protected smooth/Nash differential response core rather than
    completing immediately to \(C(X)\);
 2. make source/readout field channels modules over that same algebra and give
    response-function gating an operational meaning;
-3. quantify over all bounded local inverse generators \(L\) consistent with
-   finite Green-response data;
-4. define second-order locality by vanishing triple commutators with
-   multiplication operators;
-5. obtain the principal biform from the double commutator/carré-du-champ
-   \(\Gamma_L\) on Kähler differentials;
-6. certify visible spacetime only when event dimension equals propagation rank
-   and all declared field probes share one nondegenerate cone;
-7. use quadratic hyperbolicity to force one-time Lorentz inertia, and directed
-   response separately for time orientation.
+3. construct a physical character and a faithful quotient through
+   \(\mathfrak m_x^3\) from opaque contextual records;
+4. synthesize the source-fiber functional without assuming a hidden
+   target-space point localizer;
+5. certify the gating congruence and two-jet completeness inside
+   \(\mathcal C_R(n_J)\) and \(\mathcal C_X(B_X)\);
+6. feed the resulting \(U_x,B_x\) into the adopted jet-null theorem;
+7. certify visible spacetime only when event dimension equals propagation rank
+   and all declared field probes share one nondegenerate cone.
 
 The wavefront-kernel construction remains an independent physical validation
-route, not the primary definition. What remains unproved is whether finite
-Green/gating responses identify the conformal class of \(Q_L\) uniformly over
-all consistent bounded generators, without smuggling target-space localization
-or adjacency into the input.
+route, not the primary definition. What remains unproved is whether finite raw
+contextual records can self-certify the required two-jet quotient and source
+fiber, or whether an additional independent completeness promise/localizer is
+unavoidable. Numerical gaps are meaningful only relative to fixed calibrated
+coefficient and observation norms.
 
 ## Independent class bounds
 

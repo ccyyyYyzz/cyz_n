@@ -1,6 +1,6 @@
 # Brief 0001 — Finite Green response to a unique principal biform
 
-Status: active
+Status: answered; core theorem adopted with scope corrections in decision 0002
 
 ## Role
 
@@ -73,4 +73,3 @@ procedure correctly returns inconclusive.
 If conformal \(Q_L\) is not identifiable even in the clean bounded toy, provide
 the strongest exact impossibility theorem and identify the smallest additional
 registered operation that repairs it.
-
