@@ -30,23 +30,24 @@ Use the papers themselves, not press summaries.
 The following are not reviewer conjectures; they are stated in
 arXiv:2604.19836v1 and must constrain the verdict.
 
-- The microscopic action has (A_\mu), \(\mu=0,\ldots,9\), and explicitly
+- The microscopic action has \(A_\mu\), \(\mu=0,\ldots,9\), and explicitly
   raises indices with \(\eta=\mathrm{diag}(-1,1,\ldots,1)\).  A 9+1
   Lorentz representation is therefore input even if matrix eigenvalues and
   their locality are emergent.
 - The authors show a contour-deformation equivalence of the undeformed
   \(\gamma=0\) Lorentzian and Euclidean models and state that this prevents a
   Lorentzian emergent spacetime in that definition.  They introduce
-  \(\gamma>0\) and propose the ordered limit (N\to\infty) followed by
+  \(\gamma>0\) and propose the ordered limit \(N\to\infty\) followed by
   \(\gamma\to0\); persistence of the reported phase along that limit is not
   demonstrated.
-- The displayed 3+1 run is at (N=128,\gamma=4,m_f=6,\tilde d=5,\xi=12\).
+- The displayed 3+1 run is at
+  \(N=128,\gamma=4,m_f=6,\widetilde d=5,\xi=12\).
   The anisotropic bosonic mass term explicitly breaks SO(9,1) to SO(5,1),
   although the further SO(5) to SO(3) breaking is dynamical.
 - Its initial configuration is thermalized first in a bosonic
-  \(\tilde d=3,\xi=10\) model.  The paper says that a random initial
+  \(\widetilde d=3,\xi=10\) model.  The paper says that a random initial
   configuration instead gives behavior similar to the nonbreaking
-  (m_f=10\) case, and that complex Langevin cannot determine the dominant
+  \(m_f=10\) case, and that complex Langevin cannot determine the dominant
   saddle point.  This fails the present open-basin/attraction criterion.
 - The Lorentz-boost removal used in the analysis is acknowledged not to be
   fully justified because it breaks the holomorphicity needed by complex
