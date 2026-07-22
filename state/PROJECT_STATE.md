@@ -114,32 +114,59 @@ event algebra. For the homogeneous conformal branch, centered source-module
 gates put all prepared sources in \(\mathfrak m_xS\), so \(B_x=\beta_x=0\)
 without a point-amplitude calibration. Absolute scale remains unidentifiable.
 
-## Active bottleneck: Artin jet to regular event branch
+## Adopted event-branch lift
 
-A finite represented commutative gate algebra is Artinian and cannot itself be
-a regular positive-dimensional event germ. A free quadratic layer identifies
-a second-order event object, not a manifold neighborhood. A relation beginning
-in degree three can leave the entire two-jet unchanged while making the germ
-singular.
+Inside a separately bounded real-radical presentation class, relation-
+unisolvent physical handles reconstruct a branch-relative ideal
 
-The next theorem must therefore do one of two things:
+\[
+I=I(\overline{B_{\rm phys}}^{\,\rm Zar})
+\]
 
-1. reconstruct a bounded finite presentation
+when registered generators are complete and the relation degree is bounded.
+A relatively open physical region \(B_0\) becomes a genuine regular branch
+only after a branch-wide Krull/Jacobian certificate, refined local chart cover
+and independent state/continuation coverage.
 
-   \[
-   \mathcal A=\mathbb R[z_1,\ldots,z_g]/I
-   \]
+If the saturated contextual algebra has kernel \(N_D\), consistency gives
+\(I\subseteq N_D\) and the canonical quotient
 
-   from anonymous response generators and a relation-separating physical
-   character panel, then certify its real regular branch and compare its local
-   two-jet with the contextual Loewy quotient; or
-2. isolate the minimal independently audited regular-germ lift, coverage and
-   overlap promises under which the same comparison is forced.
+\[
+\Theta_{x,2}:
+P/(I+\mathfrak q_x^3)
+\twoheadrightarrow
+P/(N_D+\mathfrak q_x^3).
+\]
 
-Pointwise principal rays already glue under constant-rank bundle hypotheses,
-and an ordered component-pure response germ supplies the exact time-orientation
-test. Those statements become spacetime claims only after the event branch and
-its overlap maps have been operationally justified.
+Its kernel is
+
+\[
+(N_D+\mathfrak q_x^3)/(I+\mathfrak q_x^3).
+\]
+
+For a regular \(d\)-branch, equality of local relation ranks, equality of jet
+dimensions and isomorphism of \(\Theta_{x,2}\) are equivalent after
+surjectivity has been proved. The contextual Loewy object is thereby certified
+as the measured branch two-jet rather than called one by definition.
+
+The positive theorem needs three independent completeness certificates:
+context closure, relation/target-carrier completeness and physical branch
+coverage. None may substitute for another.
+
+## Active bottleneck: cross-candidate end-to-end Paper-I certificate
+
+The exact branch and comparison theorem is now available. The unresolved
+problem is a uniform finite-noise statement over every interval-consistent
+candidate. Equal ranks, dimensions and Hilbert functions do not prove that two
+candidate presentations are equivalent. A valid robust theorem must include a
+cross-candidate presentation-separation witness and use selected singular
+subspaces with genuine spectral gaps.
+
+The next theorem must compose the branch comparison with the jet-null rank-nine
+principal line, Lorentz inertia, strong multi-field factorization, tangent-
+overlap conformal gluing and directed time orientation. Its inference API may
+contain only response-derived objects and declared class/coverage certificates,
+never latent coordinates.
 
 The wavefront-kernel construction remains an independent physical validation
 route, not the primary definition. Numerical gaps are meaningful only relative

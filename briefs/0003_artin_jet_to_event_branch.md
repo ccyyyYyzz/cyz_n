@@ -1,6 +1,6 @@
 # Brief 0003 — Lift the contextual Artin jet to a regular event branch
 
-Status: active
+Status: answered by response 0003; adopted with corrections in decision 0004
 
 ## Role
 
