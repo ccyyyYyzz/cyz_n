@@ -2,6 +2,11 @@
 
 Status: active
 
+Critical addendum: before making the mechanism decision, read
+`briefs/0006a_ikkt_matrix_candidate.md`.  Its fourth candidate supersedes the
+earlier instruction to compare "exactly" three routes; the three original
+controls remain mandatory.
+
 ## Role
 
 Act as the originating mathematical physicist. Do not review response 0005 and
@@ -83,7 +88,8 @@ putting completeness or target truth inside the raw fiber.
 
 ### 3. Mechanism decision
 
-Compare exactly these three routes through that theorem:
+Compare the three mandatory routes below, and then the IKKT candidate in the
+critical addendum, through that theorem:
 
 - compact-radius/Kaluza--Klein flow as a mandatory negative control;
 - Brandenberger--Vafa winding-string decompactification, especially
