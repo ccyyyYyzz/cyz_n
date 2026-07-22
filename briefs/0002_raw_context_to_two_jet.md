@@ -1,6 +1,6 @@
 # Brief 0002 — Raw contextual responses to a faithful two-jet quotient
 
-Status: active
+Status: answered
 
 ## Role
 

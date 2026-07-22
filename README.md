@@ -24,11 +24,13 @@ private chat transcript.
 1. A brief is committed before a new hard problem is sent.
 2. GPT is asked to originate the strongest solution it can, not to review a
    manuscript.
-3. The returned argument is distilled into a matching response file.
+3. GPT writes the returned argument directly into the matching response file
+   through the connected GitHub capability. If direct main writes are not
+   available, it opens a narrowly scoped pull request; downloadable attachments
+   are fallback only.
 4. Every adopted statement is independently proved locally or linked to a
    primary source; model output is never itself treated as evidence.
 5. `state/PROJECT_STATE.md` is updated only when the evidence status changes.
 
 The complete local project may contain simulations, manuscripts and private
 working material that are intentionally absent here.
-

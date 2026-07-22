@@ -84,31 +84,66 @@ For two fields, a strong common cone requires every feasible principal symbol
 to factor as \(q\otimes K\) with \(K\) invertible. Knowing only that the
 determinant is proportional to \(q^2\) is insufficient.
 
-## Active bottleneck: raw contextual responses to two-jets
+## Adopted raw-context boundary
 
-The first paper must make propagation covectors live on the same event germ
-produced by \(\mathcal A\). The remaining bridge must:
+A saturated typed substitution congruence, a commutative scalar gate quotient
+and a multiplicative physical-handle row canonically determine the contextual
+Loewy object
 
-1. keep a protected smooth/Nash differential response core rather than
-   completing immediately to \(C(X)\);
-2. make source/readout field channels modules over that same algebra and give
-   response-function gating an operational meaning;
-3. construct a physical character and a faithful quotient through
-   \(\mathfrak m_x^3\) from opaque contextual records;
-4. synthesize the source-fiber functional without assuming a hidden
-   target-space point localizer;
-5. certify the gating congruence and two-jet completeness inside
-   \(\mathcal C_R(n_J)\) and \(\mathcal C_X(B_X)\);
-6. feed the resulting \(U_x,B_x\) into the adopted jet-null theorem;
-7. certify visible spacetime only when event dimension equals propagation rank
-   and all declared field probes share one nondegenerate cone.
+\[
+\widehat J^2
+=\widehat{\mathcal A}_D/
+\widehat{\mathfrak m}_{\widehat x}^{\,3}.
+\]
+
+Every consistent event model has a canonical filtered surjection
+
+\[
+J_{M,x}^2\longrightarrow\widehat J^2.
+\]
+
+The raw quotient is faithful exactly when this map is an isomorphism. A
+matching class-relative upper bound on \(\dim J_{M,x}^2\) gives the sharp
+dimension squeeze; otherwise the exact criterion is absence of a bounded
+two-jet alias witness. The response-realization order \(n_J\) closes the
+contextual congruence but cannot supply this event-jet bound.
+
+Scalar response recycling or an equivalent registered
+\(\mathcal A\)-linear anchoring operation places Green outputs in this same
+event algebra. For the homogeneous conformal branch, centered source-module
+gates put all prepared sources in \(\mathfrak m_xS\), so \(B_x=\beta_x=0\)
+without a point-amplitude calibration. Absolute scale remains unidentifiable.
+
+## Active bottleneck: Artin jet to regular event branch
+
+A finite represented commutative gate algebra is Artinian and cannot itself be
+a regular positive-dimensional event germ. A free quadratic layer identifies
+a second-order event object, not a manifold neighborhood. A relation beginning
+in degree three can leave the entire two-jet unchanged while making the germ
+singular.
+
+The next theorem must therefore do one of two things:
+
+1. reconstruct a bounded finite presentation
+
+   \[
+   \mathcal A=\mathbb R[z_1,\ldots,z_g]/I
+   \]
+
+   from anonymous response generators and a relation-separating physical
+   character panel, then certify its real regular branch and compare its local
+   two-jet with the contextual Loewy quotient; or
+2. isolate the minimal independently audited regular-germ lift, coverage and
+   overlap promises under which the same comparison is forced.
+
+Pointwise principal rays already glue under constant-rank bundle hypotheses,
+and an ordered component-pure response germ supplies the exact time-orientation
+test. Those statements become spacetime claims only after the event branch and
+its overlap maps have been operationally justified.
 
 The wavefront-kernel construction remains an independent physical validation
-route, not the primary definition. What remains unproved is whether finite raw
-contextual records can self-certify the required two-jet quotient and source
-fiber, or whether an additional independent completeness promise/localizer is
-unavoidable. Numerical gaps are meaningful only relative to fixed calibrated
-coefficient and observation norms.
+route, not the primary definition. Numerical gaps are meaningful only relative
+to fixed calibrated coefficient and observation norms.
 
 ## Independent class bounds
 
