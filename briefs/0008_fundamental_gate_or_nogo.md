@@ -2,8 +2,7 @@
 
 Status: active
 
-Baseline commit: to be filled by the submitting agent after this brief and
-decision 0007 are committed.
+Baseline commit: `fa89e864cb194e6517d299ac6874694637e4baf2`.
 
 ## Role
 
@@ -141,4 +140,3 @@ and commit and push it directly to `main`. Do not create a PR, do not ask for
 a download and do not return only a chat summary. In chat, report only the
 path, commit hash, the strongest derived mechanism/no-go and the remaining
 hard gate.
-
