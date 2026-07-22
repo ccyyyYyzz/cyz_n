@@ -164,7 +164,10 @@ feasible factor. Complete tangent and time cocycles are part of the target.
 
 The theorem is adopted subject to decision 0005's local corrections. Practical
 raw-fiber construction, global semialgebraic witness emptiness and joint
-interval propagation remain implementation architecture.
+interval propagation remain implementation architecture in general. The
+smallest nontrivial upstream class is now closed: one bounded rational affine
+nuisance is inverted from raw intervals, partitioned exactly and emitted as a
+finite correlated family with replayable outward-rounding proofs.
 
 ## Active bottleneck: selection bridge for the closed-loop result
 
@@ -173,12 +176,20 @@ object must compose anonymous reconstruction with a scale-functorial dimension
 witness, a genuinely dimension-variable dynamics selecting a stable visible
 \(3+1\) basin, and a falsifiable loss-of-plateau prediction.
 
-The next theorem must define a common scale-indexed operational package and
-distinguish hiding extra directions from stability and genuine selection. Four-
-dimensional building blocks, a target cubic lattice, a preferred time foliation
-or a scalar spectral dimension are not acceptable substitutes. Compactification
-is the negative control; winding-string and dimension-variable graph dynamics
-are the first live mechanism candidates.
+The scale classifier now distinguishes stability, noninjective hiding and
+genuine selection. Genuine selection requires a gap-free plateau, a resolved
+non-\(3+1\) predecessor, same-family open-basin and non-encoding artifacts, a
+Lyapunov arrival budget or concentration theorem, and a positive
+injective/non-hiding visibility proof. Missing evidence cannot be promoted by
+tolerance or truthy flags.
+
+No current microscopic route passes. BV is the leading conditional
+three-versus-more spatial-rate laboratory; published graph models fail the
+dimension-blind release test; Lorentzian IKKT is the leading pre-geometric
+reserve but its 2026 phase is seeded, deformed and of unresolved saddle weight.
+The active problem is to originate the smallest dimension-variable dynamics
+that also supplies an anonymous multi-probe response interface and a
+loss-of-plateau prediction.
 
 The wavefront-kernel construction remains an independent physical validation
 route, not the primary definition. Numerical gaps are meaningful only relative

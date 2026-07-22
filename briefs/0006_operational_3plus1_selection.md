@@ -3,9 +3,10 @@
 Status: active
 
 Critical addendum: before making the mechanism decision, read
-`briefs/0006a_ikkt_matrix_candidate.md`.  Its fourth candidate supersedes the
-earlier instruction to compare "exactly" three routes; the three original
-controls remain mandatory.
+`briefs/0006a_ikkt_matrix_candidate.md` and then
+`briefs/0006b_local_audit_constraints.md`. The former adds the IKKT
+candidate; the latter supplies mandatory local audit constraints and a stricter
+selection certificate.
 
 ## Role
 
