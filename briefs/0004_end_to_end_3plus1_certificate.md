@@ -1,6 +1,6 @@
 # Brief 0004 — Build the cross-candidate end-to-end visible 3+1 certificate
 
-Status: active
+Status: answered; independent audit found blocking repairs, continued in Brief 0005
 
 ## Role
 
@@ -170,4 +170,3 @@ edit state, briefs or decisions.
 The result succeeds only if its quantifiers range over all interval-consistent
 candidates and it proves the entire composition. A nominal positive toy plus
 independent pointwise rank checks is not an end-to-end certificate.
-
