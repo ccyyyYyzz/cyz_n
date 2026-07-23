@@ -4,10 +4,13 @@
     "all_energy_constraints": true,
     "all_level_matching_constraints": true,
     "all_samples_retained": true,
+    "all_serialized_energy_residuals_exactly_below_tolerance": true,
+    "all_serialized_level_matching_residuals_exactly_below_tolerance": true,
+    "all_serialized_target_momentum_residuals_exactly_below_tolerance": true,
     "all_target_momentum_constraints": true,
+    "controlled_float_flow_energy_conservation": true,
+    "controlled_float_flow_level_matching_conservation": true,
     "downstream_and_validity_mutations_leave_draws_unchanged": true,
-    "exact_flow_energy_conservation": true,
-    "exact_flow_level_matching_conservation": true,
     "gamma_means_in_familywise_intervals": true,
     "hierarchical_beta_means_in_familywise_intervals": true,
     "no_validity_redraw": true,
@@ -15,18 +18,34 @@
   },
   "constraint_audit": {
     "absolute_tolerance": "4.9999999999999997e-12",
+    "exact_maximum_energy_residual": {
+      "decimal": "4.2341080404367679e-15",
+      "denominator": "26328072917139296674479506920917608079723773850137277813577744384",
+      "numerator": "111475905227664997635481024522742383416850296923483"
+    },
+    "exact_maximum_target_momentum_residual": {
+      "decimal": "4.9960036108132044e-16",
+      "denominator": "18014398509481984",
+      "numerator": "9"
+    },
+    "exact_maximum_worldsheet_momentum_residual": {
+      "decimal": "1.8646592971955332e-15",
+      "denominator": "46768052394588893382517914646921056628989841375232",
+      "numerator": "87206483709297989476338097730213375"
+    },
     "maximum_energy_residual": "5.3290705182007514e-15",
     "maximum_flow_energy_drift": "3.5527136788005009e-15",
     "maximum_flow_worldsheet_momentum_drift": "7.2164496600635175e-16",
     "maximum_target_momentum_residual": "8.8817841970012523e-16",
-    "maximum_worldsheet_momentum_residual": "1.9984014443252818e-15"
+    "maximum_worldsheet_momentum_residual": "1.9984014443252818e-15",
+    "serialized_residual_certificate": "exact rational evaluation of every stored IEEE-754 binary64 value; no floating summation in the certificate"
   },
   "implementation": {
     "code_inventory_normalized_lf_sha256": {
       "README.md": "97c8a26aa138b353996f3bf194f99acfb19d3496ca758950397165e715e6af72",
-      "microcanonical_source.py": "6efce3b4c696309ca3deb8fcc4b9bc0127e7f455c7abc2fdcf90d2eee80fbe04",
+      "microcanonical_source.py": "8b50788ebb483b5d8103c8b863b614ff6933b2b281da5691f1d149829dea7c4b",
       "source_registry.json": "217d677612cb1366be6817b67b760230fc536b3c9d6020f4566d11988766d43a",
-      "test_microcanonical_source.py": "6c409ca2feed66b52d112895569c56fa9d5bfc4d46be97209dcb79ddc0e74b9e"
+      "test_microcanonical_source.py": "9362025b1c5321c6e8ed920c2f371ff322f70301cfd37123bf75469264a71dcc"
     },
     "coefficient_stream_reads_only": [
       "schema_version",

@@ -8,6 +8,7 @@ import json
 import math
 import tempfile
 import unittest
+from fractions import Fraction
 from pathlib import Path
 from unittest import mock
 
@@ -273,6 +274,40 @@ class SamplerAndConservationTests(unittest.TestCase):
                 ),
                 tolerance,
             )
+
+    def test_serialized_constraint_residuals_have_exact_dyadic_certificates(
+        self,
+    ) -> None:
+        registry = registry_copy()
+        exact_tolerance = Fraction.from_float(
+            registry["audit"]["constraint_absolute_tolerance"]
+        )
+        for index in range(32):
+            state = source.sample_source(registry, index)
+            row = source.exact_dyadic_constraint_residuals(
+                state, registry
+            )
+            residuals = [
+                row["energy_residual"],
+                *row["target_momentum_residual"],
+                *row["worldsheet_momentum_residual"],
+            ]
+            self.assertTrue(
+                all(type(value) is Fraction for value in residuals)
+            )
+            self.assertTrue(
+                all(abs(value) <= exact_tolerance for value in residuals)
+            )
+
+        hostile = source.sample_source(registry, 0)
+        hostile["strings"][0]["transverse_velocity"][0] += 1.0e-3
+        hostile_row = source.exact_dyadic_constraint_residuals(
+            hostile, registry
+        )
+        self.assertGreater(
+            abs(hostile_row["target_momentum_residual"][0]),
+            exact_tolerance,
+        )
 
     def test_gamma_and_hierarchical_beta_shares_are_on_exact_shell(self) -> None:
         registry = registry_copy()

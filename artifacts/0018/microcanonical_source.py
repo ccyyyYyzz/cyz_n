@@ -14,6 +14,7 @@ import hashlib
 import json
 import math
 import platform
+from fractions import Fraction
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
@@ -940,6 +941,96 @@ def constraint_diagnostics(
     }
 
 
+def _binary64_fraction(value: Any, name: str) -> Fraction:
+    """Interpret a serialized finite binary64 value as an exact dyadic."""
+
+    if type(value) is int:
+        return Fraction(value)
+    if type(value) is not float or not math.isfinite(value):
+        raise TypeError(f"{name} must be a finite binary64 number")
+    return Fraction.from_float(value)
+
+
+def exact_dyadic_constraint_residuals(
+    state: Mapping[str, Any], registry: Mapping[str, Any]
+) -> dict[str, Any]:
+    """Re-evaluate the serialized state's polynomial constraints exactly.
+
+    The sampler itself uses binary64 transcendental and square-root
+    operations.  Once a state has been serialized, however, all initial-shell
+    constraints are polynomial in finite binary64 values.  Treating each such
+    value as its exact dyadic rational gives a rigorous residual certificate
+    for the stored state, independent of floating summation order.
+    """
+
+    parameters = source_parameters(registry)
+    mass = _binary64_fraction(parameters["M"], "M")
+    target_energy = _binary64_fraction(parameters["E"], "E")
+    target_momentum = tuple(
+        _binary64_fraction(value, f"P_total[{axis}]")
+        for axis, value in enumerate(parameters["P_total"])
+    )
+
+    energy = Fraction()
+    total_momentum = [Fraction() for _ in range(TRANSVERSE_DIMENSION)]
+    worldsheet_momenta: list[Fraction] = []
+    for string_index, string in enumerate(state["strings"]):
+        velocity = tuple(
+            _binary64_fraction(
+                value,
+                f"strings[{string_index}].transverse_velocity[{axis}]",
+            )
+            for axis, value in enumerate(string["transverse_velocity"])
+        )
+        energy += mass * sum((value * value for value in velocity), Fraction()) / 2
+        for axis in range(TRANSVERSE_DIMENSION):
+            total_momentum[axis] += mass * velocity[axis]
+
+        worldsheet = Fraction()
+        for mode_index, mode in enumerate(string["modes"]):
+            wave_number = _binary64_fraction(
+                mode["wave_number"],
+                f"strings[{string_index}].modes[{mode_index}].wave_number",
+            )
+            oscillator_sum = Fraction()
+            worldsheet_sum = Fraction()
+            for axis in range(TRANSVERSE_DIMENSION):
+                x = _binary64_fraction(
+                    mode["x"][axis],
+                    f"strings[{string_index}].modes[{mode_index}].x[{axis}]",
+                )
+                y = _binary64_fraction(
+                    mode["y"][axis],
+                    f"strings[{string_index}].modes[{mode_index}].y[{axis}]",
+                )
+                p = _binary64_fraction(
+                    mode["p"][axis],
+                    f"strings[{string_index}].modes[{mode_index}].p[{axis}]",
+                )
+                q = _binary64_fraction(
+                    mode["q"][axis],
+                    f"strings[{string_index}].modes[{mode_index}].q[{axis}]",
+                )
+                oscillator_sum += (
+                    p * p
+                    + q * q
+                    + wave_number * wave_number * (x * x + y * y)
+                )
+                worldsheet_sum += p * y - q * x
+            energy += mass * oscillator_sum / 4
+            worldsheet += mass * wave_number * worldsheet_sum / 2
+        worldsheet_momenta.append(worldsheet)
+
+    return {
+        "energy_residual": energy - target_energy,
+        "target_momentum_residual": tuple(
+            total_momentum[axis] - target_momentum[axis]
+            for axis in range(TRANSVERSE_DIMENSION)
+        ),
+        "worldsheet_momentum_residual": tuple(worldsheet_momenta),
+    }
+
+
 def graph_upper_bound(
     state: Mapping[str, Any], registry: Mapping[str, Any]
 ) -> tuple[float, tuple[float, float]]:
@@ -1197,6 +1288,24 @@ def build_report(
             "worldsheet_momentum_residual"
         ]
     )
+    exact_residual_rows = [
+        exact_dyadic_constraint_residuals(state, registry)
+        for state in states
+    ]
+    exact_max_energy_residual = max(
+        abs(row["energy_residual"]) for row in exact_residual_rows
+    )
+    exact_max_target_residual = max(
+        abs(value)
+        for row in exact_residual_rows
+        for value in row["target_momentum_residual"]
+    )
+    exact_max_worldsheet_residual = max(
+        abs(value)
+        for row in exact_residual_rows
+        for value in row["worldsheet_momentum_residual"]
+    )
+    exact_tolerance = Fraction.from_float(tolerance)
 
     flow_energy_residual = 0.0
     flow_worldsheet_residual = 0.0
@@ -1256,6 +1365,15 @@ def build_report(
         "all_energy_constraints": max_energy_residual <= tolerance,
         "all_target_momentum_constraints": max_target_residual <= tolerance,
         "all_level_matching_constraints": max_worldsheet_residual <= tolerance,
+        "all_serialized_energy_residuals_exactly_below_tolerance": (
+            exact_max_energy_residual <= exact_tolerance
+        ),
+        "all_serialized_target_momentum_residuals_exactly_below_tolerance": (
+            exact_max_target_residual <= exact_tolerance
+        ),
+        "all_serialized_level_matching_residuals_exactly_below_tolerance": (
+            exact_max_worldsheet_residual <= exact_tolerance
+        ),
         "gamma_means_in_familywise_intervals": all(
             abs(observed - expected) <= mean_half_width
             for observed, expected in zip(gamma_means, exact_means)
@@ -1269,8 +1387,10 @@ def build_report(
             for row in character_rows
             for component in ("real", "imaginary")
         ),
-        "exact_flow_energy_conservation": flow_energy_residual <= tolerance,
-        "exact_flow_level_matching_conservation": (
+        "controlled_float_flow_energy_conservation": (
+            flow_energy_residual <= tolerance
+        ),
+        "controlled_float_flow_level_matching_conservation": (
             flow_worldsheet_residual <= tolerance
         ),
         "downstream_and_validity_mutations_leave_draws_unchanged": (
@@ -1368,6 +1488,29 @@ def build_report(
         },
         "constraint_audit": {
             "absolute_tolerance": format_float(tolerance),
+            "serialized_residual_certificate": (
+                "exact rational evaluation of every stored IEEE-754 "
+                "binary64 value; no floating summation in the certificate"
+            ),
+            "exact_maximum_energy_residual": {
+                "numerator": str(exact_max_energy_residual.numerator),
+                "denominator": str(exact_max_energy_residual.denominator),
+                "decimal": format_float(float(exact_max_energy_residual)),
+            },
+            "exact_maximum_target_momentum_residual": {
+                "numerator": str(exact_max_target_residual.numerator),
+                "denominator": str(exact_max_target_residual.denominator),
+                "decimal": format_float(float(exact_max_target_residual)),
+            },
+            "exact_maximum_worldsheet_momentum_residual": {
+                "numerator": str(exact_max_worldsheet_residual.numerator),
+                "denominator": str(
+                    exact_max_worldsheet_residual.denominator
+                ),
+                "decimal": format_float(
+                    float(exact_max_worldsheet_residual)
+                ),
+            },
             "maximum_energy_residual": format_float(max_energy_residual),
             "maximum_target_momentum_residual": format_float(
                 max_target_residual
