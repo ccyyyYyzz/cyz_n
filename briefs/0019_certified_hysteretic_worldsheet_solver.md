@@ -66,6 +66,9 @@ continuum random variables.
 The solver registry must bind:
 
 - source-state and source-registry semantic hashes;
+- the complete serialized source state and its exact-dyadic coefficient
+  projection, with both projections recomputed from the pinned source
+  registry rather than accepted from the certificate;
 - \(G,\Lambda,H,r_{\rm in},r_{\rm out},[t_0,t_1)\);
 - initial history and continuation convention;
 - precision ladder, subdivision rule, operation/memory budgets;
@@ -73,6 +76,14 @@ The solver registry must bind:
 - candidate backend version and proof backend version;
 - every tolerance used only for candidate generation;
 - the exact event-record schema and certificate-bundle hashes.
+
+Bundle-internal hashes prove consistency only; they are not a trust anchor.
+The accepted solver-registry hash and equation-family version must be pinned by
+the replayer code or supplied as an independently authenticated run input.
+The replayer reconstructs \(d,F,g,Dg\) from that pinned registry and source
+state.  A certificate-supplied polynomial, root location, function registry or
+backend name is never allowed to replace the reconstructed physical problem,
+even when every ordinary JSON hash and cross-reference is recomputed.
 
 Rank, normal dimension, response rank, requested winner and reaction data are
 forbidden solver inputs.
@@ -91,6 +102,13 @@ an optimizer success flag are never proof witnesses.
 Implement a second source-separated certificate replayer.  It may share the
 typed certificate format and Arb dependency, but it must not import the
 solver/generator module, candidate code or cached runtime objects.
+
+The replayer must also close provenance transitively.  Every range,
+monotonicity, Krawczyk, singular-set, global-minimum, no-earlier, tie,
+outer-exit, closest-point, recurrence and global-lower-bound witness must be
+recomputed by the registered proof backend (or by an explicitly registered
+exact-algebra primitive).  An outer solver-backend label cannot authorize a
+subcertificate carrying another opaque backend label.
 
 ## 3. Exact dyadic box tree
 
@@ -340,7 +358,12 @@ The generator and independent replayer must cover:
 14. a tolerance-only rank label retained as unresolved;
 15. hostile deletion of a tree leaf after all ordinary hashes are recomputed;
 16. hostile empty coverage, wrong image bound, false Krawczyk inclusion,
-    false recurrence, false tie and false outer overshoot.
+    false recurrence, false tie and false outer overshoot;
+17. coordinated replacement of a root model, root time and all dependent
+    ordinary hashes while leaving the pinned source/problem commitment
+    unchanged;
+18. a globally self-consistent no-entry or lower-bound certificate produced
+    by a backend that differs from the registered proof-backend closure.
 
 Every hostile fixture must fail at its intended semantic gate, not merely
 raise an unrelated exception.
