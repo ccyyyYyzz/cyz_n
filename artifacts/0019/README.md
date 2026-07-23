@@ -157,6 +157,52 @@ committed files are `source_state_bridge.py`,
 `test_source_state_bridge.py`, `source_state_bridge_fixture.json` and
 `source_state_bridge_report.json`.
 
+## Independent source-state binding replay
+
+[`source_binding_replayer.py`](source_binding_replayer.py) is the
+source-separated trust boundary for that fixture.  It reads only the strict
+Brief 0018 `source_registry.json` and the float-free
+`source_state_bridge_fixture.json`.  It does not import or dynamically load
+the source generator, the bridge, the certified solver, an Arb jet, a
+candidate backend, or any cached runtime object, and it contains no
+`exec`/`eval` path.
+
+The replayer independently implements the registered SHA-256 counter stream,
+open-52 midpoint mapping, Decimal90 logarithm and square root, fixed
+sine/cosine polynomial, integer-Gamma radial draw, sphere directions, and
+the \(K=1\) real/chiral coefficient map.  It therefore regenerates all three
+pre-selection states, including the index 1 state that is not stored in full
+in the bridge fixture:
+
+```text
+index 0  source_invalid  bafc85014205bbdbb8156e059606a73a0c899911745f189a4ac4e0c90742670b
+index 1  source_invalid  5ffab438ce4cefe8ce278aecee6cab6e5939def96469f6327b7509113c0d6c3c
+index 2  valid           1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c
+```
+
+For every regenerated state it recomputes the source-core and coefficient
+hashes, Q gauge and open torus cell, orientations, wave number, graph bound,
+\(k_{\max}\ell_s\), energy, target momentum, and both world-sheet momentum
+residuals.  The polynomial residuals are also recomputed as exact dyadics.
+The two complete fixture records are checked leaf-by-leaf for the canonical
+binary64-hex/exact-dyadic bijection.
+
+The physical problem is then rebuilt solely from the index 2 exact state and
+the source registry.  Every primitive field must match the fixture and the
+code-pinned problem hash
+`1560b7df34dcec7dfa46a744d6bbb26424b6a1bf2ce3d2b94b80d308363660ca`.
+Rank, normal, response, and reaction inputs are rejected.  The index 0 route
+must contain no solver payload and must show that no event solver or Arb
+evaluator executed.  Hostile tests reseal ordinary state, projection, route,
+and problem hashes after coefficient changes; the code-pinned registry,
+source-draw, state, coefficient, and problem commitments still reject them.
+
+[`source_binding_replayer_report.json`](source_binding_replayer_report.json)
+records this replay and a normalized-LF inventory of the two semantic inputs,
+the independent replayer and tests, and this README.  The report scope
+explicitly leaves the 9D exhaustive solver, unconditioned population
+pushforward, and \(3+1\) selection unimplemented.
+
 ## Exact grammar
 
 A dyadic is serialized as
@@ -259,8 +305,10 @@ python artifacts/0019/arb_krawczyk_control.py --write
 python artifacts/0019/arb_krawczyk_control.py --check
 python artifacts/0019/source_state_bridge.py --write
 python artifacts/0019/source_state_bridge.py --check
+python artifacts/0019/source_binding_replayer.py --write
+python artifacts/0019/source_binding_replayer.py --check
 python -m unittest discover -s artifacts/0019 -p "test_*.py" -v
-python -m py_compile artifacts/0019/certified_solver_core.py artifacts/0019/certificate_replayer.py artifacts/0019/arb_interval_jets.py artifacts/0019/arb_krawczyk_control.py artifacts/0019/source_state_bridge.py artifacts/0019/test_certified_solver_core.py artifacts/0019/test_certificate_replayer.py artifacts/0019/test_arb_interval_jets.py artifacts/0019/test_arb_krawczyk_control.py artifacts/0019/test_source_state_bridge.py
+python -m py_compile artifacts/0019/certified_solver_core.py artifacts/0019/certificate_replayer.py artifacts/0019/arb_interval_jets.py artifacts/0019/arb_krawczyk_control.py artifacts/0019/source_state_bridge.py artifacts/0019/source_binding_replayer.py artifacts/0019/test_certified_solver_core.py artifacts/0019/test_certificate_replayer.py artifacts/0019/test_arb_interval_jets.py artifacts/0019/test_arb_krawczyk_control.py artifacts/0019/test_source_state_bridge.py artifacts/0019/test_source_binding_replayer.py
 ```
 
 The Arb commands require python-flint 0.9.0 on `PYTHONPATH` or in the active
@@ -279,6 +327,10 @@ This bridge imports the canonical Brief 0018 source only to regenerate the
 pinned draw and to validate the regenerated sample.  It is not a
 source-separated independent source audit, and it does not import or execute
 an event solver.
+The separate `source_binding_replayer.py` supplies that independent audit:
+it reconstructs the registered source algorithm locally, validates index 1
+as well as the two stored controls, and uses only the registry and bridge
+fixture as semantic inputs.
 The report records `status: passed`, an empty `failed_gates` list, the
 complete fixture semantic hash and its own semantic hash (computed with only
 that self-hash field omitted); `--check` recomputes both hashes, all
@@ -297,8 +349,6 @@ substitution for an integer.
 The next implementation layers remain:
 
 - the nine-dimensional production image cover and rigorous metric pruning;
-- a source-separated binding replayer that independently checks the exact
-  projection without importing `microcanonical_source`;
 - exhaustive subdivision around the now source-bound physical equations and
   the demonstrated three-equation Arb Krawczyk primitive;
 - singular-cluster and exact seam-equivalence certificates;
@@ -306,7 +356,6 @@ The next implementation layers remain:
   tie closure;
 - hysteretic outer exit, re-arm and episode closest-point certificates;
 - exact recurrence-based `no_entry_proved`;
-- clean independent Linux replay; and
 - execution on the unconditioned Brief 0018 population.
 
 Accordingly, the permitted statement for this layer is only:
@@ -316,4 +365,5 @@ Accordingly, the permitted statement for this layer is only:
 > leaf.
 
 It is not a claim that the physical event solver or the \(3+1\) selection law
-is complete.
+is complete.  In particular, this directory still does not implement the 9D
+exhaustive solver, the population pushforward, or \(3+1\) selection.

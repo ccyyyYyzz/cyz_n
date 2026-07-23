@@ -1,0 +1,297 @@
+{
+  "checks": {
+    "binary64_exact_dyadic_bijection_replayed": true,
+    "graph_uv_energy_momentum_level_matching_replayed": true,
+    "index_0_has_no_solver_payload": true,
+    "index_2_exact_physical_projection_code_pinned": true,
+    "least_source_invalid_0_and_first_valid_2_proved": true,
+    "rank_normal_response_reaction_inputs_rejected": true,
+    "registry_and_source_draw_code_pinned": true,
+    "source_indices_0_1_2_independently_regenerated": true,
+    "source_v2_q_orientation_wave_and_torus_replayed": true,
+    "strict_registry_and_fixture_json": true
+  },
+  "commitments": {
+    "binary64_exact_dyadic_bijection": true,
+    "first_source_invalid_index": 0,
+    "first_valid_index": 2,
+    "fixture_semantic_sha256": "5af600527155e1c1dbd68b8e531aa1a640e4ee2edb8317f46334ac6b219dee60",
+    "invalid_route_has_no_solver_payload": true,
+    "physical_problem_semantic_sha256": "1560b7df34dcec7dfa46a744d6bbb26424b6a1bf2ce3d2b94b80d308363660ca",
+    "rank_normal_response_reaction_absent": true,
+    "registry_canonical_sha256": "35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb",
+    "selected_record_constraint_replay": {
+      "index_0": "5a19d022b64e3006618e7e0d81afb8a8b59ab87b42b4e07ff84b64e5c0e90652",
+      "index_2": "61d6e10180e370de35c41fb6cd271fb52a8320b1956878268078e479abc0522e"
+    },
+    "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+    "source_rows": [
+      {
+        "constraint_diagnostics_binary64_sha256": "0cd88040207154f8d5698726d9d257ad9da87bcb5b28f07e53d6394e7579a358",
+        "exact_dyadic_constraint_residuals": {
+          "energy_residual": {
+            "exponent": 117,
+            "numerator": 29488197222747767973
+          },
+          "target_momentum_residual": [
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            }
+          ],
+          "worldsheet_momentum_residual": [
+            {
+              "exponent": 109,
+              "numerator": 92421073588504297
+            },
+            {
+              "exponent": 113,
+              "numerator": 326380760001680053
+            }
+          ]
+        },
+        "k_max_times_ell_s": {
+          "exponent": 3,
+          "numerator": 1
+        },
+        "per_string_graph_upper_bounds": [
+          {
+            "exponent": 51,
+            "numerator": 2167704148783753
+          },
+          {
+            "exponent": 51,
+            "numerator": 2487111958861037
+          }
+        ],
+        "registered_time_uniform_graph_upper_bound": {
+          "exponent": 51,
+          "numerator": 2487111958861037
+        },
+        "sample_index": 0,
+        "source_coefficient_payload_sha256": "490500d615188ed95587d7a5ef4cb4762ebbd6c92d140840ed44c7ea849ce5f6",
+        "source_state_sha256": "bafc85014205bbdbb8156e059606a73a0c899911745f189a4ac4e0c90742670b",
+        "validity_reasons": [
+          "graph_upper_bound_exceeded"
+        ],
+        "validity_status": "source_invalid"
+      },
+      {
+        "constraint_diagnostics_binary64_sha256": "2b46850f57741f6532387cda2391b31495a9ee85200a63c68fb1a45827ae60cd",
+        "exact_dyadic_constraint_residuals": {
+          "energy_residual": {
+            "exponent": 115,
+            "numerator": 2693939901875724149
+          },
+          "target_momentum_residual": [
+            {
+              "exponent": 52,
+              "numerator": -1
+            },
+            {
+              "exponent": 52,
+              "numerator": 1
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            }
+          ],
+          "worldsheet_momentum_residual": [
+            {
+              "exponent": 111,
+              "numerator": 144522582503374305
+            },
+            {
+              "exponent": 114,
+              "numerator": -457920912564068019
+            }
+          ]
+        },
+        "k_max_times_ell_s": {
+          "exponent": 3,
+          "numerator": 1
+        },
+        "per_string_graph_upper_bounds": [
+          {
+            "exponent": 51,
+            "numerator": 2625643997120743
+          },
+          {
+            "exponent": 51,
+            "numerator": 1991469144887839
+          }
+        ],
+        "registered_time_uniform_graph_upper_bound": {
+          "exponent": 51,
+          "numerator": 2625643997120743
+        },
+        "sample_index": 1,
+        "source_coefficient_payload_sha256": "b88b1299b2aeb03064b3423a7d1f26fbf06f4cb9991fd743193d7b939cb915fa",
+        "source_state_sha256": "5ffab438ce4cefe8ce278aecee6cab6e5939def96469f6327b7509113c0d6c3c",
+        "validity_reasons": [
+          "graph_upper_bound_exceeded"
+        ],
+        "validity_status": "source_invalid"
+      },
+      {
+        "constraint_diagnostics_binary64_sha256": "66bbd287030b2ee738b9208158532177d1bcd0d231aa5bb23fb6f8bfd0baa092",
+        "exact_dyadic_constraint_residuals": {
+          "energy_residual": {
+            "exponent": 121,
+            "numerator": -313020030084526867407
+          },
+          "target_momentum_residual": [
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            }
+          ],
+          "worldsheet_momentum_residual": [
+            {
+              "exponent": 114,
+              "numerator": -1232687045728329215
+            },
+            {
+              "exponent": 119,
+              "numerator": 19613963054199092531
+            }
+          ]
+        },
+        "k_max_times_ell_s": {
+          "exponent": 3,
+          "numerator": 1
+        },
+        "per_string_graph_upper_bounds": [
+          {
+            "exponent": 52,
+            "numerator": 4565445767023547
+          },
+          {
+            "exponent": 50,
+            "numerator": 1127030360390487
+          }
+        ],
+        "registered_time_uniform_graph_upper_bound": {
+          "exponent": 52,
+          "numerator": 4565445767023547
+        },
+        "sample_index": 2,
+        "source_coefficient_payload_sha256": "e6e0a59bcadb38855c1d54a928a642cbe592d2348742cc68387569d3c6a97f04",
+        "source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c",
+        "validity_reasons": [],
+        "validity_status": "valid"
+      }
+    ]
+  },
+  "failed_gates": [],
+  "normalized_lf_inventory": [
+    {
+      "normalized_lf_sha256": "2944edc5668ad778c9d2158ad99bbd6133603873b93167cc8b90bf5f216f5742",
+      "path": "artifacts/0018/source_registry.json"
+    },
+    {
+      "normalized_lf_sha256": "3eadcc79d1e44990906da9ab0fcd3785f7153cde081aa48482b1b2a708649555",
+      "path": "artifacts/0019/source_state_bridge_fixture.json"
+    },
+    {
+      "normalized_lf_sha256": "86e4f959a2f1b2db063172baf342d1854bac143711177e2344656756233803d4",
+      "path": "artifacts/0019/source_binding_replayer.py"
+    },
+    {
+      "normalized_lf_sha256": "ed53741861922f9ba8ba73e710ca2d8a36dff8ebfe1e7ff949ff2fc66c484dc0",
+      "path": "artifacts/0019/test_source_binding_replayer.py"
+    },
+    {
+      "normalized_lf_sha256": "c95ace636f241cdd57abf68bb346fd5826bc0c48506e1b29724527161c66b185",
+      "path": "artifacts/0019/README.md"
+    }
+  ],
+  "report_semantic_sha256": "57cdadc337d177c8db902e81b633d3a96dca2965b3606dc408eb79213aa037cc",
+  "schema_version": "cyz-brief-0019-independent-source-binding-report-v1",
+  "scope": {
+    "claim": "independent source-state binding replay for the fixed Brief 0018 indices 0, 1, and 2",
+    "does_not_claim": [
+      "9D exhaustive worldsheet solver",
+      "unconditioned source population pushforward",
+      "3+1 selection"
+    ]
+  },
+  "status": "passed"
+}
