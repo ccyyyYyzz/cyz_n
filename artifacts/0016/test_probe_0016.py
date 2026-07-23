@@ -131,6 +131,10 @@ class SuppressionAndOnsetTests(unittest.TestCase):
         self.assertEqual(first, second)
         decoded = json.loads(first)
         self.assertEqual(decoded["status"], "PASS")
+        self.assertEqual(
+            probe_0016.canonical_report_sha256(decoded),
+            "08cc622e415d0594b85fa04230f0e87d68184402e9ec1500e1923f42f20e274b",
+        )
 
         with tempfile.TemporaryDirectory() as temporary_directory:
             output = (

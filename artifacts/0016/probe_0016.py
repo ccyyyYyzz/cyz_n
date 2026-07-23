@@ -15,6 +15,7 @@ the incoming encounter Jacobian.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import math
 from decimal import Decimal, localcontext
@@ -838,6 +839,13 @@ def serialize_report(report: dict[str, Any]) -> str:
     ) + "\n"
 
 
+def canonical_report_sha256(report: dict[str, Any]) -> str:
+    """Hash the declared LF UTF-8 serialization, independent of checkout EOL."""
+
+    payload = serialize_report(report).encode("utf-8")
+    return hashlib.sha256(payload).hexdigest()
+
+
 def read_semantic_json(path: Path) -> Any:
     """Read JSON with universal-newline handling for cross-platform checks."""
 
@@ -893,7 +901,10 @@ def main() -> int:
         )
         action = "wrote"
 
-    print(f"{report['status']}: {action}: {arguments.output}")
+    print(
+        f"{report['status']}: {action}: {arguments.output}; "
+        f"canonical_sha256={canonical_report_sha256(report)}"
+    )
     return 0
 
 

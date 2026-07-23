@@ -74,7 +74,7 @@ not yet a visible-rank ceiling and not a visible-\(3+1\) result.
    suppression tables and six Gram controls, including domain-metric
    rescaling and the fixed scattering-axis falsifier.  Its 8/8 tests pass and
    its final report
-   SHA-256 is
+   canonical UTF-8/LF SHA-256 is
    `08cc622e415d0594b85fa04230f0e87d68184402e9ec1500e1923f42f20e274b`.
 
 ## Claims not adopted

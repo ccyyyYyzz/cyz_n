@@ -680,7 +680,7 @@ It writes the deterministic
 `artifacts/0016/source_to_return_kinematic_probe.json`.  The artifact has no
 input or branch for response rank, visible count or target stratum.  It is a
 theorem/control probe, not a physical return-law implementation.  The final
-local replay passes 8/8 unit tests; the report SHA-256 is
+local replay passes 8/8 unit tests; the canonical UTF-8/LF report SHA-256 is
 `08cc622e415d0594b85fa04230f0e87d68184402e9ec1500e1923f42f20e274b`.
 **[probe]**
 
