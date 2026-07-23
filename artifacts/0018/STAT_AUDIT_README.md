@@ -1,8 +1,8 @@
 # Brief 0018 independent source statistical audit
 
-This directory contains `audit-k1-v1`, a deterministic controlled audit of
-one finite-\(K\) source sampler implementation.  It uses Python and NumPy only;
-SciPy is neither imported nor required.
+This directory contains `audit-canonical-k1-v2`, a deterministic controlled
+audit of the one canonical finite-\(K\) source cell.  It uses Python and NumPy
+only; SciPy is neither imported nor required.
 
 The artifact checks that two independently implemented radial samplers and
 the rejection-free direction/torus construction behave consistently with
@@ -20,22 +20,33 @@ or any \(3+1\) conclusion.
 
 ## Frozen audit cell
 
-The strict registry is
-[`stat_audit_registry.json`](stat_audit_registry.json).  It fixes
+[`source_registry.json`](source_registry.json) is the sole physical/source
+cell.  It fixes
 
 \[
 K=1,\quad d=16,\quad M=8,\quad k_1=\frac18,\quad
 E_\perp=2,\quad E_*=1,
 \]
 
-with eight transverse torus periods equal to \(8\).  The winding period is
-\(L_w=16\pi\), represented by the registered binary64 value.  Nonzero total
-momentum \(P_{\rm tot}=(4,4,0,\ldots,0)\) makes omission of the centre-energy
-term detectable.
+with \(\ell_s=1\), \(T_F=1/(2\pi)\), eight transverse periods equal to \(8\),
+winding axis \(8\), \(|w|=1\), orientations \(+1,-1\), and winding period
+\(L_w=L_8=16\pi\).  The registered values enforce
+\(T_F=1/(2\pi\ell_s^2)\) and \(L_w=|w|L_8\).  Nonzero total momentum
+\(P_{\rm tot}=(4,4,0,\ldots,0)\) makes omission of the centre-energy term
+detectable.
 
-All values that determine the source draw live under
-`source_draw_registry`.  Event thresholds, validity thresholds and initial
-history are stored separately and cannot enter the source substream hash.
+[`stat_audit_registry.json`](stat_audit_registry.json) contains only the
+pre-registered statistical contract and a hash binding to that source cell;
+it does not duplicate or redefine the cell.  The NumPy construction remains
+an independent oracle.  Every audit profile additionally draws actual
+production samples, validates their strict support and exact dyadic
+constraints, and binds their output identity to the same source registry.
+
+All values that determine the coefficient stream live under
+`source_draw_registry`, together with the source schema, seed and registered
+sampler/math versions in the identity domain.  Event thresholds, validity
+thresholds and initial history are stored separately and cannot enter the
+source identity.
 
 ## Random construction
 
@@ -76,6 +87,7 @@ The full profile uses:
 - \(2^{20}\) hierarchical-Beta radial samples;
 - \(2^{18}\) complete source samples;
 - \(2^{20}\) samples for each hostile radial-shape marginal.
+- 256 production samples in the independent-oracle/production-output bridge.
 
 Its 514 scalar acceptance tests are
 
@@ -123,8 +135,9 @@ python -m unittest discover -s artifacts/0018 -p "test_*.py" -v
 
 The committed report is always checked for its semantic SHA-256, complete
 514-item ledger, hostile-mutation rejection, hard constraints and normalized
-code inventory.  The environment variable adds a new \(2^{20}/2^{18}\)
-replay; it does not select a new seed or threshold.
+code inventory.  It also checks the production-output bridge and the binding
+to the sole source registry.  The environment variable adds a new
+\(2^{20}/2^{18}\) replay; it does not select a new seed or threshold.
 
 ## JSON and report semantics
 
@@ -135,8 +148,16 @@ independent of indentation and LF/CRLF line endings.  Source-code inventory
 hashes normalize line endings before hashing.
 
 The report contains no timestamp, hostname, absolute checkout path, Python
-`hash()` value or wall-clock-dependent field.  Its `semantic_sha256` covers
-the parsed report payload except for the hash field itself.
+`hash()` value, runtime-version field or wall-clock-dependent field.  Raw
+PCG64DXSM golden words and continuation endpoints remain exact controls.
+Acceptance decisions are made from unrounded values; only after those
+decisions, report floats are canonicalized to the pre-registered precision,
+tiny residuals are reported by conservative upper bounds, and coefficient
+fingerprints use the pre-registered significant-digit encoding.  This makes
+the committed semantic JSON replayable across the tested Windows and Linux
+NumPy runtimes without weakening any of the 514 gates.  Its
+`semantic_sha256` covers the parsed report payload except for the hash field
+itself.
 
 ## Known limitations
 
@@ -144,8 +165,10 @@ the parsed report payload except for the hash field itself.
   analytic Dirichlet law or pseudorandom independence.
 - The audit cell is \(K=1\); larger \(K\), nonzero level matching and other
   source families require separately registered controls.
-- NumPy's PCG64DXSM raw stream is frozen by golden words, but transcendental
-  functions still depend on the declared Python/NumPy numerical runtime.
+- The independent NumPy oracle can have sub-reporting-precision
+  transcendental differences across libm implementations.  Raw acceptance
+  decisions are retained, while the committed report uses the registered
+  post-decision canonicalization above.
 - The package audits a source draw only.  It does not implement certified
   torus-image root coverage, hysteresis, tie clustering, closest approach or
   event-conditioned marks.

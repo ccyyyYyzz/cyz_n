@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic statistical and hostile controls for audit-k1-v1."""
+"""Deterministic statistical and hostile controls for canonical K=1 v2."""
 
 from __future__ import annotations
 
@@ -13,6 +13,7 @@ from typing import Any, Iterable, Mapping
 
 import numpy as np
 
+import microcanonical_source as production
 import stat_audit_core as core
 
 
@@ -86,7 +87,29 @@ class ConstraintTracker:
         row["registered_upper"] = upper
 
     def rows(self) -> dict[str, dict[str, Any]]:
-        return copy.deepcopy(dict(sorted(self._rows.items())))
+        rows = copy.deepcopy(dict(sorted(self._rows.items())))
+        for row in rows.values():
+            raw_ratio = float(row["max_normalized_residual"])
+            upper_bin = (
+                0.0
+                if raw_ratio == 0.0
+                else math.ceil(
+                    raw_ratio / core.CONSTRAINT_NORMALIZED_UPPER_BIN
+                )
+                * core.CONSTRAINT_NORMALIZED_UPPER_BIN
+            )
+            raw_absolute = float(row["max_absolute_residual"])
+            row["max_normalized_residual"] = upper_bin
+            row["normalized_residual_reporting"] = (
+                "conservative upper bin of width "
+                f"{core.CONSTRAINT_NORMALIZED_UPPER_BIN}"
+            )
+            if raw_absolute < 1.0e-12:
+                row["max_absolute_residual"] = 1.0e-12
+                row["absolute_residual_reporting"] = (
+                    "conservative upper floor for values below 1e-12"
+                )
+        return rows
 
     def passed(self) -> bool:
         return bool(self._rows and all(row["passed"] for row in self._rows.values()))
@@ -506,9 +529,14 @@ def _decimal_prefix_checks(
                 )
     return {
         "arithmetic": "Decimal.from_float with precision 80",
-        "max_energy_residual": str(maximum_energy),
-        "max_level_matching_residual": str(maximum_level),
-        "max_target_momentum_residual": str(maximum_momentum),
+        "canonical_decimal_significant_digits": (
+            core.CANONICAL_FLOAT_SIGNIFICANT_DIGITS
+        ),
+        "canonical_residual_upper_bound": "1E-12",
+        "residual_reporting": (
+            "raw Decimal decisions retained; platform-sensitive magnitudes "
+            "are reported by one conservative canonical upper bound"
+        ),
         "samples": count,
         "status": "PASS"
         if max(maximum_energy, maximum_level, maximum_momentum)
@@ -807,7 +835,14 @@ def source_fingerprint(
             ",".join(str(value) for value in normalized.shape).encode("ascii")
             + b"\0"
         )
-        digest.update(normalized.tobytes(order="C"))
+        for value in normalized.ravel(order="C"):
+            digest.update(
+                format(
+                    float(value),
+                    f".{core.QUANTIZED_FINGERPRINT_SIGNIFICANT_DIGITS}g",
+                ).encode("ascii")
+                + b","
+            )
 
     update_array("radial", source["radial"])
     update_array("u0", source["u0"])
@@ -831,6 +866,9 @@ def source_fingerprint(
     ]
     return {
         "coefficient_sha256": digest.hexdigest(),
+        "coefficient_quantization_significant_digits": (
+            core.QUANTIZED_FINGERPRINT_SIGNIFICANT_DIGITS
+        ),
         "continuation_raw_hex": continuation,
         "samples": count,
     }
@@ -897,6 +935,107 @@ def chiral_jacobian_control(cell: core.AuditCell) -> dict[str, Any]:
         "inverse_volume_factor": inverse_volume_factor,
         "registered_inverse_volume_factor": 4.0 / (cell.k1 * cell.k1),
         "status": "PASS" if passed else "FAIL",
+    }
+
+
+def production_output_bridge(
+    cell: core.AuditCell, *, count: int
+) -> dict[str, Any]:
+    """Run the production sampler and check it against the independent cell."""
+
+    registry = production.read_strict_json(core.source_registry_path())
+    production.validate_registry(registry)
+    parameters = production.source_parameters(registry)
+    parameter_checks = {
+        "K": parameters["K"] == 1,
+        "d": parameters["d"] == cell.d,
+        "M": parameters["M"].hex() == cell.mass.hex(),
+        "E_perp": parameters["E"].hex() == cell.e_perp.hex(),
+        "E_star": parameters["E_star"].hex() == cell.e_star.hex(),
+        "k1": parameters["k_values"] == (cell.k1,),
+        "P_total": np.array_equal(parameters["P_total"], cell.p_total),
+        "transverse_period": parameters["transverse_periods"]
+        == (cell.transverse_period,) * 8,
+        "Dirichlet_shape": production.derived_dirichlet_shape(
+            parameters["K"]
+        )
+        == core.ALPHA,
+    }
+    states = [production.sample_source(registry, index) for index in range(count)]
+    support_passed = True
+    try:
+        for state in states:
+            production.validate_source_sample(state, registry)
+    except production.SampleError:
+        support_passed = False
+
+    exact_tolerance = Fraction.from_float(
+        float(registry["audit"]["constraint_absolute_tolerance"])
+    )
+    exact_max = Fraction()
+    for state in states:
+        residuals = production.exact_dyadic_constraint_residuals(state, registry)
+        values = (
+            residuals["energy_residual"],
+            *residuals["target_momentum_residual"],
+            *residuals["worldsheet_momentum_residual"],
+        )
+        exact_max = max(exact_max, *(abs(value) for value in values))
+
+    shares = np.asarray(
+        [state["energy_shares_s0_s1_s2"] for state in states],
+        dtype=np.float64,
+    )
+    observed_means = shares.mean(axis=0)
+    expected_means = np.asarray(core.ALPHA, dtype=np.float64) / core.ALPHA_SUM
+    mean_thresholds = np.asarray(
+        [
+            core.bernstein_threshold(
+                core.dirichlet_variance(index),
+                count,
+            )
+            for index in ((1, 0, 0), (0, 1, 0), (0, 0, 1))
+        ],
+        dtype=np.float64,
+    )
+    means_passed = bool(
+        np.all(np.abs(observed_means - expected_means) <= mean_thresholds)
+    )
+    state_digest = hashlib.sha256()
+    coefficient_digest = hashlib.sha256()
+    for state in states:
+        state_digest.update(state["source_state_sha256"].encode("ascii"))
+        coefficient_digest.update(
+            production.source_coefficient_payload_sha256(state).encode("ascii")
+        )
+
+    source_identity = production.source_draw_sha256(registry)
+    identity_passed = bool(
+        source_identity == core.source_draw_registry_sha256(registry)
+    )
+    passed = bool(
+        all(parameter_checks.values())
+        and support_passed
+        and exact_max <= exact_tolerance
+        and means_passed
+        and identity_passed
+        and len(states) == count
+    )
+    return {
+        "coefficient_payload_population_sha256": coefficient_digest.hexdigest(),
+        "exact_maximum_constraint_residual": {
+            "numerator": str(exact_max.numerator),
+            "denominator": str(exact_max.denominator),
+        },
+        "identity_bound_to_canonical_registry": identity_passed,
+        "mean_thresholds": mean_thresholds.tolist(),
+        "observed_radial_means": observed_means.tolist(),
+        "parameter_checks": parameter_checks,
+        "production_source_draw_sha256": source_identity,
+        "samples": count,
+        "source_state_population_sha256": state_digest.hexdigest(),
+        "status": "PASS" if passed else "FAIL",
+        "support_schema_passed": support_passed,
     }
 
 
@@ -985,22 +1124,35 @@ def hostile_mutations(
         }
     )
 
-    fingerprint = source_fingerprint(cell)
-    event_mutation = copy.deepcopy(registry)
-    event_mutation["non_source_registry"]["event"]["r_in_hex"] = (
-        "0x1.0000000000000p-3"
-    )
-    validity_mutation = copy.deepcopy(registry)
-    validity_mutation["non_source_registry"]["validity"]["kappa_uv_hex"] = (
-        "0x1.0000000000000p-4"
-    )
-    event_fingerprint = source_fingerprint(cell)
-    invalid_fingerprint = source_fingerprint(cell)
-    baseline_source_hash = core.source_draw_registry_sha256(registry)
+    source_registry = core.load_canonical_source_registry()
+
+    def production_population(candidate: Mapping[str, Any]) -> dict[str, Any]:
+        states = [production.sample_source(candidate, index) for index in range(8)]
+        state_digest = hashlib.sha256()
+        coefficient_digest = hashlib.sha256()
+        for state in states:
+            state_digest.update(state["source_state_sha256"].encode("ascii"))
+            coefficient_digest.update(
+                production.source_coefficient_payload_sha256(state).encode("ascii")
+            )
+        return {
+            "coefficient_sha256": coefficient_digest.hexdigest(),
+            "source_state_sha256": state_digest.hexdigest(),
+            "statuses": [state["validity"]["status"] for state in states],
+        }
+
+    fingerprint = production_population(source_registry)
+    event_mutation = copy.deepcopy(source_registry)
+    event_mutation["downstream_context"]["r_in"] = 0.125
+    validity_mutation = copy.deepcopy(source_registry)
+    validity_mutation["validity"]["uv_product_max"] = 1.0 / 16.0
+    production.validate_registry(event_mutation)
+    production.validate_registry(validity_mutation)
+    event_fingerprint = production_population(event_mutation)
+    invalid_fingerprint = production_population(validity_mutation)
+    baseline_source_hash = core.source_draw_registry_sha256(source_registry)
     event_source_hash = core.source_draw_registry_sha256(event_mutation)
-    validity_source_hash = core.source_draw_registry_sha256(
-        validity_mutation
-    )
+    validity_source_hash = core.source_draw_registry_sha256(validity_mutation)
     rows.append(
         {
             "baseline": fingerprint,
@@ -1017,7 +1169,10 @@ def hostile_mutations(
     )
     rows.append(
         {
-            "all_labels_source_invalid": True,
+            "all_labels_source_invalid": all(
+                value == "source_invalid"
+                for value in invalid_fingerprint["statuses"]
+            ),
             "baseline": fingerprint,
             "baseline_source_registry_sha256": baseline_source_hash,
             "gate": "source_invalid_without_redraw",
@@ -1026,33 +1181,44 @@ def hostile_mutations(
             "mutated_source_registry_sha256": validity_source_hash,
             "passed": bool(
                 cell.k1 * cell.ell_s > 1.0 / 16.0
-                and invalid_fingerprint == fingerprint
+                and invalid_fingerprint["coefficient_sha256"]
+                == fingerprint["coefficient_sha256"]
+                and invalid_fingerprint["source_state_sha256"]
+                == fingerprint["source_state_sha256"]
+                and all(
+                    value == "source_invalid"
+                    for value in invalid_fingerprint["statuses"]
+                )
                 and validity_source_hash == baseline_source_hash
             ),
             "sample_count_unchanged": True,
         }
     )
-    source_mutation = copy.deepcopy(registry)
-    source_mutation["source_draw_registry"]["P_total_hex"][0] = (
-        "0x1.0000000000000p+1"
-    )
+    source_mutation = copy.deepcopy(source_registry)
+    source_mutation["source_draw_registry"]["total_transverse_momentum"][0] = 2.0
+    production.validate_registry(source_mutation)
     mutated_source_hash = core.source_draw_registry_sha256(source_mutation)
+    mutated_population = production_population(source_mutation)
     rows.append(
         {
             "baseline_source_registry_sha256": baseline_source_hash,
             "gate": "source_subregistry_domain_separation",
             "mutation": "change_true_source_field",
             "mutated_source_registry_sha256": mutated_source_hash,
-            "passed": bool(mutated_source_hash != baseline_source_hash),
+            "passed": bool(
+                mutated_source_hash != baseline_source_hash
+                and mutated_population["coefficient_sha256"]
+                != fingerprint["coefficient_sha256"]
+            ),
         }
     )
 
-    forbidden = copy.deepcopy(registry)
+    forbidden = copy.deepcopy(source_registry)
     forbidden["source_draw_registry"]["level_match_tolerance"] = "1e-6"
     forbidden_rejected = False
     try:
-        core.validate_registry(forbidden)
-    except core.AuditError:
+        production.validate_registry(forbidden)
+    except production.RegistryError:
         forbidden_rejected = True
     rows.append(
         {
@@ -1082,12 +1248,12 @@ def hostile_mutations(
         }
     )
 
-    bool_mutation = copy.deepcopy(registry)
-    bool_mutation["source_draw_registry"]["K"] = True
+    bool_mutation = copy.deepcopy(source_registry)
+    bool_mutation["source_draw_registry"]["fourier_cutoff_K"] = True
     bool_rejected = False
     try:
-        core.validate_registry(bool_mutation)
-    except core.AuditError:
+        production.validate_registry(bool_mutation)
+    except production.RegistryError:
         bool_rejected = True
     rows.append(
         {
@@ -1177,6 +1343,9 @@ def run_fast_profile(
     coefficients = core.source_chunk_coefficients(source, cell)
     tracker = ConstraintTracker()
     _constraint_checks_for_chunk(tracker, source, coefficients, cell)
+    bridge = production_output_bridge(
+        cell, count=core.PRODUCTION_BRIDGE_FAST_SAMPLES
+    )
     mutations = hostile_mutations(
         registry, cell, run_statistical_shapes=False
     )
@@ -1190,6 +1359,8 @@ def run_fast_profile(
     )
     if jacobian["status"] != "PASS":
         failed.append("chiral_jacobian")
+    if bridge["status"] != "PASS":
+        failed.append("production_output_bridge")
     return {
         "authoritative_preregistered_profile": False,
         "claim": (
@@ -1208,6 +1379,7 @@ def run_fast_profile(
         "ledger_manifest_sha256": core.semantic_manifest_sha256(),
         "ledger_size_executed": 0,
         "ledger_size_registered": core.LEDGER_SIZE,
+        "production_output_bridge": bridge,
         "status": "PASS_FAST_NONAUTHORITATIVE" if not failed else "FAIL",
     }
 
@@ -1217,6 +1389,9 @@ def run_full_profile(
 ) -> dict[str, Any]:
     golden = core.verify_golden_raw_streams()
     jacobian = chiral_jacobian_control(cell)
+    bridge = production_output_bridge(
+        cell, count=core.PRODUCTION_BRIDGE_FULL_SAMPLES
+    )
     gamma, gamma_endpoint = radial_moment_observations(
         "gamma", count=core.FULL_RADIAL_SAMPLES, cell=cell
     )
@@ -1247,6 +1422,8 @@ def run_full_profile(
         failed.append("constraints")
     if jacobian["status"] != "PASS":
         failed.append("chiral_jacobian")
+    if bridge["status"] != "PASS":
+        failed.append("production_output_bridge")
     failed.extend(
         f"mutation:{row['mutation']}" for row in mutations if not row["passed"]
     )
@@ -1273,7 +1450,9 @@ def run_full_profile(
             "gamma_radial": core.FULL_RADIAL_SAMPLES,
             "hierarchical_beta": core.FULL_RADIAL_SAMPLES,
             "shape_mutation_each": core.FULL_MUTATION_SAMPLES,
+            "production_bridge": core.PRODUCTION_BRIDGE_FULL_SAMPLES,
         },
+        "production_output_bridge": bridge,
         "status": "PASS" if not failed else "FAIL",
     }
 
@@ -1293,17 +1472,23 @@ def build_report(profile: str = "full") -> dict[str, Any]:
         "code_inventory": core.source_inventory(),
         "profile": profile,
         "registry_canonical_sha256": core.REGISTRY_CANONICAL_SHA256,
+        "source_registry_canonical_sha256": core.canonical_sha256(
+            core.load_canonical_source_registry()
+        ),
         "source_draw_registry_sha256": core.source_draw_registry_sha256(
             registry
         ),
         "source_golden_fingerprint": source_fingerprint(cell),
         "rng_version": core.RNG_VERSION,
-        "runtime": core.runtime_inventory(),
         "schema_version": core.SCHEMA_VERSION,
         "seed_hex": core.SEED_HEX,
         "statistical_contract": core.fixed_threshold_manifest(),
+        "canonical_float_significant_digits": (
+            core.CANONICAL_FLOAT_SIGNIFICANT_DIGITS
+        ),
         **body,
     }
     native_report = core.to_json_native(report)
-    core.ensure_all_finite(native_report)
-    return core.attach_semantic_hash(native_report)
+    canonical_report = core.canonicalize_numeric_payload(native_report)
+    core.ensure_all_finite(canonical_report)
+    return core.attach_semantic_hash(canonical_report)

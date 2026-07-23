@@ -15,6 +15,7 @@ from unittest import mock
 
 import numpy as np
 
+import microcanonical_source as production
 import stat_audit_core as core
 import statistical_audit as audit
 
@@ -46,18 +47,18 @@ class StrictJsonTests(unittest.TestCase):
                     core.loads_strict_json(f'{{"x":{token}}}')
 
     def test_boolean_numeric_substitution_is_rejected(self) -> None:
-        registry, _ = core.load_registered_cell()
+        registry = core.load_canonical_source_registry()
         mutated = copy.deepcopy(registry)
-        mutated["source_draw_registry"]["K"] = True
-        with self.assertRaises(core.AuditError):
-            core.validate_registry(mutated)
+        mutated["source_draw_registry"]["fourier_cutoff_K"] = True
+        with self.assertRaises(production.RegistryError):
+            production.validate_registry(mutated)
 
     def test_unknown_level_matching_tolerance_is_rejected(self) -> None:
-        registry, _ = core.load_registered_cell()
+        registry = core.load_canonical_source_registry()
         mutated = copy.deepcopy(registry)
         mutated["source_draw_registry"]["level_match_tolerance"] = "1e-6"
-        with self.assertRaises(core.AuditError):
-            core.validate_registry(mutated)
+        with self.assertRaises(production.RegistryError):
+            production.validate_registry(mutated)
 
     def test_lf_crlf_semantic_equality_is_type_strict(self) -> None:
         registry_text = core.registry_path().read_text(encoding="utf-8")
@@ -115,20 +116,28 @@ class RegisteredRandomStreamTests(unittest.TestCase):
                     core.validate_positive_e_star(value)
 
     def test_source_subregistry_hash_has_domain_separation(self) -> None:
-        baseline = core.source_draw_registry_sha256(self.registry)
-        event = copy.deepcopy(self.registry)
-        event["non_source_registry"]["event"]["r_in_hex"] = (
-            "0x1.0000000000000p-3"
-        )
+        registry = core.load_canonical_source_registry()
+        baseline = core.source_draw_registry_sha256(registry)
+        event = copy.deepcopy(registry)
+        event["downstream_context"]["r_in"] = 0.125
         self.assertEqual(
             baseline, core.source_draw_registry_sha256(event)
         )
-        source = copy.deepcopy(self.registry)
-        source["source_draw_registry"]["P_total_hex"][0] = (
-            "0x1.0000000000000p+1"
-        )
+        source = copy.deepcopy(registry)
+        source["source_draw_registry"]["total_transverse_momentum"][0] = 2.0
         self.assertNotEqual(
             baseline, core.source_draw_registry_sha256(source)
+        )
+
+    def test_stat_registry_binds_without_duplicating_source_cell(self) -> None:
+        self.assertNotIn("source_draw_registry", self.registry)
+        self.assertNotIn("non_source_registry", self.registry)
+        binding = self.registry["canonical_source_binding"]
+        self.assertEqual(binding["registry_file"], "source_registry.json")
+        source_registry = core.load_canonical_source_registry()
+        self.assertEqual(
+            binding["expected_source_draw_sha256"],
+            core.source_draw_registry_sha256(source_registry),
         )
 
 
@@ -261,11 +270,19 @@ class CommittedReportTests(unittest.TestCase):
         self.assertEqual(self.report["constraint_checks"]["status"], "PASS")
         self.assertEqual(
             self.report["source_draw_registry_sha256"],
-            core.source_draw_registry_sha256(core.load_registered_cell()[0]),
+            core.source_draw_registry_sha256(
+                core.load_canonical_source_registry()
+            ),
         )
         self.assertEqual(
             self.report["source_golden_fingerprint"],
             audit.source_fingerprint(core.load_registered_cell()[1]),
+        )
+        bridge = self.report["production_output_bridge"]
+        self.assertEqual(bridge["status"], "PASS")
+        self.assertEqual(
+            bridge["production_source_draw_sha256"],
+            self.report["source_draw_registry_sha256"],
         )
 
     def test_normalized_code_inventory_matches_checkout(self) -> None:

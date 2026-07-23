@@ -1,5 +1,44 @@
 {
-  "audit_cell_id": "brief-0018-low-K-measure-audit-v1",
+  "audit_cell_id": "brief-0018-canonical-f1-k1-v2",
+  "canonical_cell": {
+    "E_perp": "2",
+    "E_star": "1",
+    "K": 1,
+    "L_w": "50.26548245743669",
+    "M": "8",
+    "P_total": [
+      "4",
+      "4",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "T_F": "0.15915494309189535",
+    "ell_s": "1",
+    "tension_convention": "T_F=1/(2*pi*ell_s^2)",
+    "torus_periods_L_A": [
+      "8",
+      "8",
+      "8",
+      "8",
+      "8",
+      "8",
+      "8",
+      "8",
+      "50.26548245743669"
+    ],
+    "unit_convention": "ell_s-natural-length-hbar-c-1",
+    "winding_axis": 8,
+    "winding_number_abs": 1,
+    "winding_orientations": [
+      1,
+      -1
+    ],
+    "winding_relation": "L_w=abs(w)*L_A[winding_axis]"
+  },
   "checks": {
     "all_energy_constraints": true,
     "all_level_matching_constraints": true,
@@ -7,172 +46,182 @@
     "all_serialized_energy_residuals_exactly_below_tolerance": true,
     "all_serialized_level_matching_residuals_exactly_below_tolerance": true,
     "all_serialized_target_momentum_residuals_exactly_below_tolerance": true,
+    "all_source_samples_match_support_schema": true,
     "all_target_momentum_constraints": true,
     "controlled_float_flow_energy_conservation": true,
     "controlled_float_flow_level_matching_conservation": true,
     "downstream_and_validity_mutations_leave_draws_unchanged": true,
+    "f1_tension_relation_is_exact_binary64": true,
     "gamma_means_in_familywise_intervals": true,
     "hierarchical_beta_means_in_familywise_intervals": true,
     "no_validity_redraw": true,
-    "torus_characters_in_familywise_intervals": true
+    "open52_midpoint_endpoints_are_strict": true,
+    "opposite_winding_orientations_are_registered": true,
+    "registered_chiral_directions_are_not_copied": true,
+    "registered_stream_labels_are_unique": true,
+    "source_seed_changes_numerical_coefficients": true,
+    "torus_characters_in_familywise_intervals": true,
+    "winding_length_relation_is_exact": true
   },
   "constraint_audit": {
     "absolute_tolerance": "4.9999999999999997e-12",
     "exact_maximum_energy_residual": {
-      "decimal": "4.2341080404367679e-15",
-      "denominator": "26328072917139296674479506920917608079723773850137277813577744384",
-      "numerator": "111475905227664997635481024522742383416850296923483"
+      "decimal": "4.2145154397834766e-16",
+      "denominator": "664613997892457936451903530140172288",
+      "numerator": "280102595561398710319"
     },
     "exact_maximum_target_momentum_residual": {
-      "decimal": "4.9960036108132044e-16",
-      "denominator": "18014398509481984",
-      "numerator": "9"
+      "decimal": "2.2204460492503131e-16",
+      "denominator": "4503599627370496",
+      "numerator": "1"
     },
     "exact_maximum_worldsheet_momentum_residual": {
-      "decimal": "1.8646592971955332e-15",
-      "denominator": "46768052394588893382517914646921056628989841375232",
-      "numerator": "87206483709297989476338097730213375"
+      "decimal": "2.0683623662067458e-16",
+      "denominator": "20769187434139310514121985316880384",
+      "numerator": "4295820566546779617"
     },
-    "maximum_energy_residual": "5.3290705182007514e-15",
-    "maximum_flow_energy_drift": "3.5527136788005009e-15",
-    "maximum_flow_worldsheet_momentum_drift": "7.2164496600635175e-16",
-    "maximum_target_momentum_residual": "8.8817841970012523e-16",
-    "maximum_worldsheet_momentum_residual": "1.9984014443252818e-15",
+    "maximum_energy_residual": "6.6613381477509392e-16",
+    "maximum_flow_energy_drift": "0",
+    "maximum_flow_worldsheet_momentum_drift": "3.9898639947466563e-17",
+    "maximum_target_momentum_residual": "0",
+    "maximum_worldsheet_momentum_residual": "2.0903417885520525e-16",
     "serialized_residual_certificate": "exact rational evaluation of every stored IEEE-754 binary64 value; no floating summation in the certificate"
   },
   "implementation": {
+    "baseline_coefficient_payload_sha256": "490500d615188ed95587d7a5ef4cb4762ebbd6c92d140840ed44c7ea849ce5f6",
     "code_inventory_normalized_lf_sha256": {
-      "README.md": "518f7163d210d5a162c6d401f720402e1bed6caa51ea295e01c487b933cde545",
-      "microcanonical_source.py": "8b50788ebb483b5d8103c8b863b614ff6933b2b281da5691f1d149829dea7c4b",
-      "source_registry.json": "217d677612cb1366be6817b67b760230fc536b3c9d6020f4566d11988766d43a",
-      "test_microcanonical_source.py": "9362025b1c5321c6e8ed920c2f371ff322f70301cfd37123bf75469264a71dcc"
+      "README.md": "e47d7058f19ac6dde573748825ab502f22e2ade13a27560a071e8f923c036731",
+      "microcanonical_source.py": "12bb5ea71cebac869cbb519d46dd3c531e74b982203270e349a807b32853719e",
+      "source_registry.json": "2944edc5668ad778c9d2158ad99bbd6133603873b93167cc8b90bf5f216f5742",
+      "test_microcanonical_source.py": "e06ce135125991b977e2affb53930ace816b8b8500f33ba72316c47017e52489"
     },
     "coefficient_stream_reads_only": [
       "schema_version",
       "source_seed",
-      "source_draw",
+      "source_draw_registry",
       "sample_index",
       "named substream label"
     ],
     "familywise_alpha": "9.9999999999999995e-07",
-    "prng_algorithm": "sha256-counter-open53-box-muller-integer-gamma-v1",
-    "python_implementation": "CPython",
-    "python_version": "3.11.5",
+    "portable_math_version": "decimal90-ln-sqrt-float64-fixed-taylor-sincos-v2",
+    "prng_algorithm": "sha256-counter-open52mid-decimal90-box-muller-integer-gamma-v2",
     "sample_count": 512,
-    "third_party_dependencies": []
+    "seed_mutated_coefficient_payload_sha256": "332f5c173b4b982248a97876b41baed40750ca958b414f7c99be01364a150ef6",
+    "third_party_dependencies": [],
+    "uniform_map": "u52-midpoint-open"
   },
   "radial_audit": {
     "exact_means": [
-      "0.060606060606060608",
-      "0.46969696969696972",
-      "0.46969696969696972"
+      "0.11764705882352941",
+      "0.44117647058823528",
+      "0.44117647058823528"
     ],
     "exact_moment_examples": {
-      "E_x0_squared": "0.0045228403437358664",
-      "E_x1_squared": "0.22433288104929897",
-      "E_x1_x2": "0.21732247851650838"
+      "E_x0_squared": "0.01680672268907563",
+      "E_x1_squared": "0.20168067226890757",
+      "E_x1_x2": "0.18907563025210083"
     },
     "familywise_hoeffding_half_width": "0.12616804737906337",
     "gamma_empirical_means": [
-      "0.063619449841704215",
-      "0.46993465431274084",
-      "0.46644589584555496"
+      "0.11514621416679599",
+      "0.44182735356258424",
+      "0.44302643227061977"
     ],
     "hierarchical_beta_empirical_means": [
-      "0.061817901011994351",
-      "0.46840533956811198",
-      "0.46977675941989366"
+      "0.11610150984484383",
+      "0.43921992443856944",
+      "0.44467856571658676"
     ],
     "hostile_shapes_rejected_by_contract": [
       [
         4,
-        32,
-        32
+        16,
+        16
       ],
       [
         4,
-        16.0,
-        16.0
+        8.0,
+        8.0
       ],
       [
         4,
-        31.5,
-        31.5
+        15.5,
+        15.5
       ]
     ]
   },
   "registered_theorem": {
-    "E_star": "11.98453125",
+    "E_star": "1",
     "density": "Gamma(sum alpha)/prod Gamma(alpha) * x0^(alpha0-1) x1^(alpha1-1) x2^(alpha2-1)",
-    "density_normalizer": "1.9537043961852304e+25",
+    "density_normalizer": "190422267552000.38",
     "dirichlet_shape": [
       4,
-      31,
-      31
+      15,
+      15
     ],
-    "full_canonical_shell_log_normalizer": "133.83734291004654",
-    "linear_jacobian_log_normalizer": "109.15894633464836",
+    "full_canonical_shell_log_normalizer": "48.68379565580657",
+    "linear_jacobian_log_normalizer": "97.040605278392334",
     "normalization_scope": "full value uses dP1 dP2 prod(dx dy dPi_x dPi_y), normalized Haar Q_relative, and the declared delta arguments",
-    "real_chiral_dimension_d": 32,
-    "reduced_shell_log_normalizer": "24.678396575398182"
+    "real_chiral_dimension_d": 16,
+    "reduced_shell_log_normalizer": "-48.356809622585764"
   },
-  "registry_canonical_sha256": "808124afe25cb2143ea30b0e7a69511543ae804e5cb9ca30831a98b094071a43",
+  "registry_canonical_sha256": "35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb",
   "relative_centre_audit": {
     "familywise_real_imaginary_half_width": "0.25981699133690117",
     "first_character_rows": [
       {
         "axis": 0,
-        "imaginary": "-0.0045876896161408101",
-        "magnitude": "0.019356904253257114",
-        "real": "0.018805394073395994"
+        "imaginary": "-0.013844068931793917",
+        "magnitude": "0.013868504663447002",
+        "real": "-0.00082290765690305149"
       },
       {
         "axis": 1,
-        "imaginary": "0.010493325112253741",
-        "magnitude": "0.026045233057940619",
-        "real": "-0.023837875180707443"
+        "imaginary": "-0.0012787879942661785",
+        "magnitude": "0.015367657324455285",
+        "real": "-0.015314359043316336"
       },
       {
         "axis": 2,
-        "imaginary": "-0.0066479622780351898",
-        "magnitude": "0.060950980363409506",
-        "real": "-0.060587346903545398"
+        "imaginary": "-0.064998391208085066",
+        "magnitude": "0.066701401825999151",
+        "real": "0.014976185960188008"
       },
       {
         "axis": 3,
-        "imaginary": "0.0033107521940249963",
-        "magnitude": "0.058484608432385211",
-        "real": "0.058390824137009592"
+        "imaginary": "0.00118894533858473",
+        "magnitude": "0.070485489969386153",
+        "real": "-0.070475461723966695"
       },
       {
         "axis": 4,
-        "imaginary": "0.037470567281165282",
-        "magnitude": "0.052537694900426431",
-        "real": "-0.036826158815140619"
+        "imaginary": "-0.0115115075271716",
+        "magnitude": "0.022587589592145126",
+        "real": "-0.0194341039936256"
       },
       {
         "axis": 5,
-        "imaginary": "-0.0088981306379386348",
-        "magnitude": "0.012847760708688013",
-        "real": "0.0092675901062727883"
+        "imaginary": "0.062789573807191384",
+        "magnitude": "0.063070986527449732",
+        "real": "0.0059513664529259333"
       },
       {
         "axis": 6,
-        "imaginary": "0.026968750196271141",
-        "magnitude": "0.029379753520996574",
-        "real": "-0.011655746642992713"
+        "imaginary": "-0.00068691105813388996",
+        "magnitude": "0.0083485844587055554",
+        "real": "0.0083202773789311443"
       },
       {
         "axis": 7,
-        "imaginary": "-0.017241736872905197",
-        "magnitude": "0.01810757369572575",
-        "real": "0.0055323353795337059"
+        "imaginary": "-0.061179511818323477",
+        "magnitude": "0.06483607760182751",
+        "real": "-0.021465886715014069"
       }
     ],
     "gauge_representative": "Q2=0,Q1=Q_relative",
     "prior": "normalized Haar on the physical transverse torus"
   },
-  "schema_version": "cyz-brief-0018-source-report-v1",
+  "schema_version": "cyz-brief-0018-source-report-v2",
   "scope": {
     "claim": "exact direct sampler for the registered zero-level-matched quadratic finite-K ambient delta-Liouville source",
     "does_not_implement": [
@@ -185,28 +234,28 @@
       "3+1 selection, cone, signature, or time direction"
     ]
   },
-  "source_draw_sha256": "8b1ae10644d43bbab43a3197fc7cdba85571ded98dc7f98b672a7aca149e1417",
+  "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
   "source_state_fingerprints": [
-    "e3d63ff15e81a85b224485f96812dafb2e0a0d55510fb6765d81b4e103722c06",
-    "4ec03c526c0ab6bee8ebb20871f7d01ed26c6bd9767c3ff62664674dc59024dc",
-    "4de05afa75e64839375c762897bac6f9364df65de60c5f77aa1a0a3c3b48a918",
-    "7477ac311d4e5bc356a7dd2eca7db2923e22e0d84267e532725621c5eb40ba0e",
-    "745d735b2c4b366f70bf9a7b55991a2b963dbff3958a8d95a9e59b4cae54a944",
-    "5597e057f830f0bdca283527375622b94ec5778f9d2ff26fdd3670481bc69956",
-    "2c94f3f26d33b0fc5f5f230100e0dc1a0e082497be9202b79d24769ecd979616",
-    "044ff74b0ffbc220e20c3182f9121be0bb78515e190259b9bc459fb2872a47af",
-    "e3ce90e7f8018a2e518b7fb476adc2e944527fab4662fae6316423a0a019b9b7",
-    "41b240e3fa4ab70e6515820da5900276c707e3505b8a2c7f2e2f2c739892adfd",
-    "1c82ebf9f02c68ab9f0d6a6bd1c8c71d2dd67bba67ff32952342f3f34f3b2ed5",
-    "40b8ee906bb906bbedec6b6727fb18d78e4fec0a663c34d78c200afc29d31bad"
+    "bafc85014205bbdbb8156e059606a73a0c899911745f189a4ac4e0c90742670b",
+    "5ffab438ce4cefe8ce278aecee6cab6e5939def96469f6327b7509113c0d6c3c",
+    "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c",
+    "887439c7a10d7c7e2a8ad81febefe0c21c2cd127ebf46a4fc30559e741ef5f92",
+    "867b4bec2c0a87e29a9f8bc5594ada0d70c6a7983def05affb7bb7393bc3811c",
+    "79bf01d36378f7ded2502aaf35c3d1bac898966a11d98b55c05b1fd28a828c99",
+    "e5010764e8aa363d9ce1139628af6ca0b86694b23953e2581c4f3c8e796ef8b0",
+    "3ce72d586851664dd40b10bd61499734e3e8460b2a63dc588529188dd9ec2017",
+    "107ce10f3d1d56cb4ad83327fe656280217cec0f8713eb1369640d92c5981fd5",
+    "d9781f50ed63c3024f31591d4f7c1e4484d1bced57c3d39d0b1a8664c74abe46",
+    "c7a6d34e6828e00b046ff2a6ece6e283dd69a98558f14cbac4f934231cee02b3",
+    "ab24a01060a61652c47d637f04c914afdee3a6b42bf69dd6b712644c94c18c4d"
   ],
   "status": "PASS",
   "validity_ledger": {
     "conditioned_or_redrawn": false,
     "invalid_samples_retained": true,
     "predicate": "registered time-uniform analytic graph upper bound and k_max*ell_s threshold",
-    "source_invalid_count": 281,
+    "source_invalid_count": 229,
     "total_count": 512,
-    "valid_count": 231
+    "valid_count": 283
   }
 }

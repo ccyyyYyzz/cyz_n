@@ -28,7 +28,26 @@ checkout conversion does not change semantic comparison.
 
 ## Exact source control
 
-The frozen source registry samples the single ambient delta--Liouville
+`source_registry.json` is the only registered source cell used by both the
+production sampler and the independent statistical audit.  It fixes
+
+\[
+\ell_s=1,\quad T_F=\frac1{2\pi},\quad L_w=16\pi,\quad M=T_FL_w=8,
+\quad K=1,\quad E_\perp=2,
+\]
+
+\[
+P_{\rm tot}=(4,4,0,\ldots,0),\qquad
+L_0=\cdots=L_7=8,\quad L_8=L_w,\quad |w|=1,
+\]
+
+with winding axis \(8\) and orientations \(+1,-1\).  Validation enforces both
+\(T_F=1/(2\pi\ell_s^2)\) and \(L_w=|w|L_8\), using the registered binary64
+values.  This makes the audit cell internally consistent with the stated F1
+convention; it is still a software-and-measure audit cell, not a cosmological
+preparation or selection result.
+
+The source registry samples the single ambient delta--Liouville
 measure, not an arbitrary mixture and not a source conditioned on encounter
 rank or validity.  With
 
@@ -58,11 +77,19 @@ five independent sphere directions, and normalized Haar
 \(Q_2=0,\ Q_1=Q_{\rm rel}\).  An algorithmically independent hierarchical
 Beta control uses integer order statistics rather than the Gamma primitive.
 
-The source-draw identity excludes event thresholds, rank tolerance, reaction
-data and source-validity thresholds.  Every failed validity predicate is
-retained as `source_invalid`; no replacement is drawn.  Polynomial
-constraints of every serialized sample are also re-evaluated exactly by
-interpreting each IEEE-754 binary64 value as its dyadic rational.
+The coefficient generator uses a registered 52-bit midpoint map strictly
+inside \((0,1)\), named source substreams and a deterministic
+90-digit-decimal/fixed-Taylor math layer.  The resulting source samples and
+report are bitwise replayable on the tested Windows and Linux Python
+runtimes, while retaining algorithm and coefficient fingerprints.
+
+The source-draw identity covers the source schema, seed, sampler/math versions
+and `source_draw_registry`; it excludes event thresholds, rank tolerance,
+reaction data and source-validity thresholds.  Every failed validity
+predicate is retained as `source_invalid`; no replacement is drawn.
+Serialized samples are checked against a strict support schema, and their
+polynomial constraints are re-evaluated exactly by interpreting each
+IEEE-754 binary64 value as its dyadic rational.
 
 The nonzero-world-sheet-momentum density is recorded only as a later scope:
 

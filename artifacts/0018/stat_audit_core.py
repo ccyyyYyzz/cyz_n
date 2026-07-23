@@ -2,9 +2,10 @@
 """Core primitives for the independent Brief 0018 source audit.
 
 The exact Dirichlet theorem is not inferred from these routines.  This module
-implements one deterministic numerical audit of a frozen finite-K source
-implementation.  Statistical bounds refer to the ideal iid-uniform model
-underlying the fixed pseudorandom construction.
+implements an independent deterministic numerical oracle for the one
+canonical finite-K source cell, plus a direct bridge to the production
+sampler.  Statistical bounds refer to the ideal iid-uniform model underlying
+the fixed pseudorandom construction.
 """
 
 from __future__ import annotations
@@ -22,13 +23,24 @@ from typing import Any, Iterable, Mapping, Sequence
 import numpy as np
 
 
-SCHEMA_VERSION = "cyz-0018-stat-audit-report-v1"
-AUDIT_ID = "audit-k1-v1"
-BASELINE_COMMIT = "90a8b09bea9fd0881e95a9064179423e51af9dd2"
+SCHEMA_VERSION = "cyz-0018-stat-audit-report-v2"
+AUDIT_ID = "audit-canonical-k1-v2"
+BASELINE_COMMIT = "5ad0d02f51268b5dd5736c6936c388c15f782399"
 MASTER_SEED_TEXT = "brief0018-source-audit-v1"
 RNG_VERSION = "pcg64dxsm-u52mid-exp-boxmuller-v1"
 REGISTRY_CANONICAL_SHA256 = (
-    "8532146765b17ea0b23b38e3f47052a68b0d315c7411535cbffcbacdee78f0f8"
+    "0640835a6938a5329871a73c2c3ef0f677939511f6113f0e58f5d99e59ad18fc"
+)
+CANONICAL_FLOAT_SIGNIFICANT_DIGITS = 10
+QUANTIZED_FINGERPRINT_SIGNIFICANT_DIGITS = 12
+CONSTRAINT_NORMALIZED_UPPER_BIN = 0.01
+PRODUCTION_BRIDGE_FULL_SAMPLES = 256
+PRODUCTION_BRIDGE_FAST_SAMPLES = 32
+PRODUCTION_PRNG_VERSION = (
+    "sha256-counter-open52mid-decimal90-box-muller-integer-gamma-v2"
+)
+PRODUCTION_MATH_VERSION = (
+    "decimal90-ln-sqrt-float64-fixed-taylor-sincos-v2"
 )
 
 LEDGER_SIZE = 514
@@ -241,78 +253,101 @@ def registry_path() -> Path:
     return Path(__file__).resolve().parent / "stat_audit_registry.json"
 
 
+def source_registry_path() -> Path:
+    return Path(__file__).resolve().parent / "source_registry.json"
+
+
+def load_canonical_source_registry() -> dict[str, Any]:
+    registry = load_strict_json(source_registry_path())
+    _require_exact_type(registry, dict, "source_registry")
+    return registry
+
+
 def validate_registry(registry: Any) -> AuditCell:
-    """Validate the one fixed audit registry, not a general-purpose DSL."""
+    """Validate the audit contract against the one canonical source registry."""
 
     _require_exact_type(registry, dict, "registry")
     if canonical_sha256(registry) != REGISTRY_CANONICAL_SHA256:
-        raise AuditError("registry canonical SHA-256 differs from audit-k1-v1")
+        raise AuditError("statistical registry canonical SHA-256 differs")
 
     _require_keys(
         registry,
         {
             "audit_id",
+            "canonical_source_binding",
             "claim_class",
-            "derived_exact",
-            "non_source_registry",
             "profiles",
             "schema_version",
-            "source_draw_registry",
             "statistical_contract",
         },
         "registry",
     )
     if registry["audit_id"] != AUDIT_ID:
         raise AuditError("unexpected audit_id")
-    if registry["schema_version"] != "cyz-0018-stat-audit-registry-v1":
+    if registry["schema_version"] != "cyz-0018-stat-audit-registry-v2":
         raise AuditError("unexpected registry schema_version")
 
-    source = registry["source_draw_registry"]
-    non_source = registry["non_source_registry"]
+    binding = registry["canonical_source_binding"]
+    _require_exact_type(binding, dict, "canonical_source_binding")
+    _require_keys(
+        binding,
+        {
+            "derived_exact",
+            "expected_audit_cell_id",
+            "expected_registry_canonical_sha256",
+            "expected_source_draw_sha256",
+            "registry_file",
+        },
+        "canonical_source_binding",
+    )
+    if binding["registry_file"] != "source_registry.json":
+        raise AuditError("statistical audit is not bound to source_registry.json")
+    source_registry = load_canonical_source_registry()
+    if canonical_sha256(source_registry) != binding[
+        "expected_registry_canonical_sha256"
+    ]:
+        raise AuditError("canonical source registry hash mismatch")
+    if source_registry.get("audit_cell_id") != binding["expected_audit_cell_id"]:
+        raise AuditError("canonical source audit_cell_id mismatch")
+    source = source_registry.get("source_draw_registry")
     _require_exact_type(source, dict, "source_draw_registry")
-    _require_exact_type(non_source, dict, "non_source_registry")
+    if source_draw_registry_sha256(source_registry) != binding[
+        "expected_source_draw_sha256"
+    ]:
+        raise AuditError("canonical source identity hash mismatch")
 
-    forbidden_source_fields = {
-        "r_in",
-        "r_out",
-        "rank_tolerance",
-        "response_data",
-        "reaction_data",
-        "epsilon_graph",
-        "kappa_uv",
-        "initial_history",
-    }
-    overlap = forbidden_source_fields.intersection(source)
-    if overlap:
-        raise AuditError(f"event/validity fields entered source registry: {overlap}")
-
-    for name in ("K", "winding_axis_zero_based"):
+    for name in ("fourier_cutoff_K", "winding_axis", "winding_number_abs"):
         _require_exact_type(source[name], int, f"source_draw_registry.{name}")
-    for i, value in enumerate(source["level_matching"]):
-        _require_exact_type(value, int, f"source_draw_registry.level_matching[{i}]")
+    for i, value in enumerate(source["worldsheet_momenta"]):
+        _require_exact_type(
+            value, float, f"source_draw_registry.worldsheet_momenta[{i}]"
+        )
     for i, value in enumerate(source["winding_orientations"]):
         _require_exact_type(
             value, int, f"source_draw_registry.winding_orientations[{i}]"
         )
+    if source["winding_orientations"] != [1, -1]:
+        raise AuditError("canonical source requires opposite winding orientations")
 
-    tension = float.fromhex(source["T_F_hex"])
-    winding_length = float.fromhex(source["L_w_hex"])
+    tension = float(source["string_tension"])
+    winding_length = float(source["winding_length"])
     mass = tension * winding_length
     k1 = 2.0 * math.pi / winding_length
-    d = 16 * source["K"]
+    d = 16 * source["fourier_cutoff_K"]
     p_total = np.array(
-        [float.fromhex(value) for value in source["P_total_hex"]],
+        [float(value) for value in source["total_transverse_momentum"]],
         dtype=np.float64,
     )
-    e_perp = float.fromhex(source["E_perp_hex"])
+    e_perp = float(source["transverse_energy"])
     e_star = e_perp - float(np.dot(p_total, p_total)) / (4.0 * mass)
+    torus_periods = [float(value) for value in source["torus_periods_L_A"]]
     transverse_periods = [
-        float.fromhex(value) for value in source["torus_circumference_hex"][:8]
+        torus_periods[index] for index in source["transverse_axis_order"]
     ]
     if len(set(transverse_periods)) != 1:
         raise AuditError("audit cell requires eight equal transverse periods")
-    event = non_source["event"]
-    validity = non_source["validity"]
+    event = source_registry["downstream_context"]
+    validity = source_registry["validity"]
     cell = AuditCell(
         tension=tension,
         winding_length=winding_length,
@@ -323,13 +358,13 @@ def validate_registry(registry: Any) -> AuditCell:
         e_star=e_star,
         p_total=p_total,
         transverse_period=transverse_periods[0],
-        r_in=float.fromhex(event["r_in_hex"]),
-        r_out=float.fromhex(event["r_out_hex"]),
-        ell_s=float.fromhex(validity["ell_s_hex"]),
-        epsilon_graph=float.fromhex(validity["epsilon_graph_hex"]),
-        kappa_uv=float.fromhex(validity["kappa_uv_hex"]),
+        r_in=float(event["r_in"]),
+        r_out=float(event["r_out"]),
+        ell_s=float(source["string_length_ell_s"]),
+        epsilon_graph=float(validity["graph_upper_bound_max"]),
+        kappa_uv=float(validity["uv_product_max"]),
     )
-    exact = registry["derived_exact"]
+    exact = binding["derived_exact"]
     checks = {
         "M": cell.mass.hex() == exact["M_hex"],
         "k1": cell.k1.hex() == exact["k_1_hex"],
@@ -346,14 +381,38 @@ def validate_registry(registry: Any) -> AuditCell:
         raise AuditError("registered radii violate injectivity-radius ordering")
     if cell.e_star <= 0.0:
         raise AuditError("registered source requires E_star > 0")
-    if source["level_matching"] != [0, 0]:
-        raise AuditError("audit-k1-v1 supports only zero level matching")
+    if source["worldsheet_momenta"] != [0.0, 0.0]:
+        raise AuditError("canonical K=1 audit supports only zero level matching")
+    if winding_length != (
+        source["winding_number_abs"] * torus_periods[source["winding_axis"]]
+    ):
+        raise AuditError("canonical source violates L_w=|w|L_A")
+    if (2.0 * math.pi * tension * cell.ell_s * cell.ell_s).hex() != (
+        1.0
+    ).hex():
+        raise AuditError("canonical source violates T_F=1/(2*pi*ell_s^2)")
 
     registered_seed_hex = registry["statistical_contract"]["seeds_hex"]
     if registered_seed_hex != SEED_HEX:
         raise AuditError("registered seed table differs from implementation")
     if registry["statistical_contract"]["ledger_size"] != LEDGER_SIZE:
         raise AuditError("registered ledger size differs from implementation")
+    if registry["statistical_contract"][
+        "canonical_float_significant_digits"
+    ] != CANONICAL_FLOAT_SIGNIFICANT_DIGITS:
+        raise AuditError("canonical float precision differs from implementation")
+    if registry["statistical_contract"][
+        "constraint_normalized_upper_bin"
+    ] != CONSTRAINT_NORMALIZED_UPPER_BIN:
+        raise AuditError("constraint reporting bin differs from implementation")
+    if registry["profiles"]["full"]["production_bridge_samples"] != (
+        PRODUCTION_BRIDGE_FULL_SAMPLES
+    ):
+        raise AuditError("full production bridge sample count differs")
+    if registry["profiles"]["fast"]["production_bridge_samples"] != (
+        PRODUCTION_BRIDGE_FAST_SAMPLES
+    ):
+        raise AuditError("fast production bridge sample count differs")
     return cell
 
 
@@ -476,7 +535,7 @@ def full_source_chunk(
     """One rejection-free full source chunk with fixed raw-word consumption."""
 
     if cell.d != 16 or cell.e_star != 1.0:
-        raise AuditError("full_source_chunk is frozen to audit-k1-v1")
+        raise AuditError("full_source_chunk is frozen to canonical K=1 v2")
     uniforms = uniform_open(rng, (count, 114))
     index = 0
     gamma = np.empty((count, 3), dtype=np.float64)
@@ -639,6 +698,8 @@ def flow_tolerance(scale: float | np.ndarray) -> float | np.ndarray:
 def source_inventory() -> dict[str, str]:
     directory = Path(__file__).resolve().parent
     names = [
+        "microcanonical_source.py",
+        "source_registry.json",
         "stat_audit_core.py",
         "statistical_audit.py",
         "run_stat_audit.py",
@@ -660,6 +721,31 @@ def runtime_inventory() -> dict[str, Any]:
     }
 
 
+def canonicalize_numeric_payload(
+    value: Any, digits: int = CANONICAL_FLOAT_SIGNIFICANT_DIGITS
+) -> Any:
+    """Quantize platform-sensitive floats after raw acceptance decisions."""
+
+    if type(value) is float:
+        if not math.isfinite(value):
+            raise AuditError("cannot canonicalize a non-finite float")
+        if value == 0.0:
+            return 0.0
+        return float(format(value, f".{digits}g"))
+    if type(value) in (str, int, bool) or value is None:
+        return value
+    if type(value) is list:
+        return [canonicalize_numeric_payload(item, digits) for item in value]
+    if type(value) is tuple:
+        return [canonicalize_numeric_payload(item, digits) for item in value]
+    if type(value) is dict:
+        return {
+            key: canonicalize_numeric_payload(item, digits)
+            for key, item in value.items()
+        }
+    raise AuditError(f"unsupported canonical payload type: {type(value).__name__}")
+
+
 def report_claim_boundary() -> dict[str, Any]:
     return {
         "claim_class": "controlled numerical verification",
@@ -668,8 +754,9 @@ def report_claim_boundary() -> dict[str, Any]:
         "physical_first_entry_mass_computed": False,
         "prng_is_physical_randomness_claim": False,
         "scope": (
-            "one frozen finite-K source implementation audit; statistical "
-            "checks supplement but do not prove the analytic Dirichlet law"
+            "an independent numerical oracle and a production-output bridge "
+            "for the one canonical finite-K source cell; statistical checks "
+            "supplement but do not prove the analytic Dirichlet law"
         ),
     }
 
@@ -738,23 +825,30 @@ def fixed_threshold_manifest() -> dict[str, Any]:
 
 def semantic_manifest_sha256() -> str:
     return canonical_sha256(
-        {
-            "audit_id": AUDIT_ID,
-            "registry_sha256": REGISTRY_CANONICAL_SHA256,
-            "rng_version": RNG_VERSION,
-            "seed_hex": SEED_HEX,
-            "thresholds": fixed_threshold_manifest(),
-        }
+        canonicalize_numeric_payload(
+            {
+                "audit_id": AUDIT_ID,
+                "registry_sha256": REGISTRY_CANONICAL_SHA256,
+                "rng_version": RNG_VERSION,
+                "seed_hex": SEED_HEX,
+                "thresholds": fixed_threshold_manifest(),
+            }
+        )
     )
 
 
 def source_draw_registry_sha256(registry: Mapping[str, Any]) -> str:
+    if "source_draw_registry" not in registry:
+        registry = load_canonical_source_registry()
     source = registry.get("source_draw_registry")
     if type(source) is not dict:
         raise AuditError("source_draw_registry must be one JSON object")
     return canonical_sha256(
         {
-            "domain": "cyz-0018-source-draw-registry-v1",
+            "registry_schema": registry["schema_version"],
+            "prng_algorithm": PRODUCTION_PRNG_VERSION,
+            "portable_math_version": PRODUCTION_MATH_VERSION,
+            "source_seed": registry["source_seed"],
             "source_draw_registry": source,
         }
     )

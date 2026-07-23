@@ -1,38 +1,31 @@
 {
-  "audit_id": "audit-k1-v1",
-  "claim_class": "controlled numerical verification of one finite-K source implementation",
-  "derived_exact": {
-    "M_hex": "0x1.0000000000000p+3",
-    "alpha": [
-      4,
-      15,
-      15
-    ],
-    "alpha_sum": 34,
-    "d": 16,
-    "e_star_hex": "0x1.0000000000000p+0",
-    "injectivity_radius_hex": "0x1.0000000000000p+2",
-    "k_1_hex": "0x1.0000000000000p-3",
-    "k_max_ell_s_hex": "0x1.0000000000000p-3"
-  },
-  "non_source_registry": {
-    "event": {
-      "initial_history": "armed",
-      "r_in_hex": "0x1.0000000000000p-2",
-      "r_out_hex": "0x1.0000000000000p-1",
-      "t_0_hex": "0x0.0p+0",
-      "t_1_hex": "0x1.921fb54442d18p+5"
+  "audit_id": "audit-canonical-k1-v2",
+  "canonical_source_binding": {
+    "derived_exact": {
+      "M_hex": "0x1.0000000000000p+3",
+      "alpha": [
+        4,
+        15,
+        15
+      ],
+      "alpha_sum": 34,
+      "d": 16,
+      "e_star_hex": "0x1.0000000000000p+0",
+      "injectivity_radius_hex": "0x1.0000000000000p+2",
+      "k_1_hex": "0x1.0000000000000p-3",
+      "k_max_ell_s_hex": "0x1.0000000000000p-3"
     },
-    "validity": {
-      "ell_s_hex": "0x1.0000000000000p+0",
-      "epsilon_graph_hex": "0x1.8000000000000p-1",
-      "kappa_uv_hex": "0x1.0000000000000p-2"
-    }
+    "expected_audit_cell_id": "brief-0018-canonical-f1-k1-v2",
+    "expected_registry_canonical_sha256": "35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb",
+    "expected_source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+    "registry_file": "source_registry.json"
   },
+  "claim_class": "controlled numerical verification of the canonical finite-K source implementation",
   "profiles": {
     "fast": {
       "authoritative": false,
-      "description": "deterministic structural/unit profile; it does not execute or claim the 514 statistical acceptances"
+      "description": "deterministic structural/unit profile; it does not execute or claim the 514 statistical acceptances",
+      "production_bridge_samples": 32
     },
     "full": {
       "authoritative": true,
@@ -40,58 +33,20 @@
       "flow_prefix_samples": 4096,
       "full_source_samples": 262144,
       "golden_replay_samples": 1024,
+      "production_bridge_samples": 256,
       "radial_samples_each": 1048576,
       "shape_mutation_samples_each": 1048576
     }
   },
-  "schema_version": "cyz-0018-stat-audit-registry-v1",
-  "source_draw_registry": {
-    "E_perp_hex": "0x1.0000000000000p+1",
-    "K": 1,
-    "L_w_hex": "0x1.921fb54442d18p+5",
-    "P_total_hex": [
-      "0x1.0000000000000p+2",
-      "0x1.0000000000000p+2",
-      "0x0.0p+0",
-      "0x0.0p+0",
-      "0x0.0p+0",
-      "0x0.0p+0",
-      "0x0.0p+0",
-      "0x0.0p+0"
-    ],
-    "T_F_hex": "0x1.45f306dc9c883p-3",
-    "level_matching": [
-      0,
-      0
-    ],
-    "prng": {
-      "algorithm": "numpy.random.PCG64DXSM",
-      "master_seed_text": "brief0018-source-audit-v1",
-      "uniform_map": "u52-midpoint-open",
-      "version": "pcg64dxsm-u52mid-exp-boxmuller-v1"
-    },
-    "torus_circumference_hex": [
-      "0x1.0000000000000p+3",
-      "0x1.0000000000000p+3",
-      "0x1.0000000000000p+3",
-      "0x1.0000000000000p+3",
-      "0x1.0000000000000p+3",
-      "0x1.0000000000000p+3",
-      "0x1.0000000000000p+3",
-      "0x1.0000000000000p+3",
-      "0x1.921fb54442d18p+5"
-    ],
-    "winding_axis_zero_based": 8,
-    "winding_orientations": [
-      1,
-      -1
-    ]
-  },
+  "schema_version": "cyz-0018-stat-audit-registry-v2",
   "statistical_contract": {
+    "canonical_float_significant_digits": 10,
+    "constraint_normalized_upper_bin": 0.01,
     "familywise_alpha": "1e-8",
     "ledger_size": 514,
     "moment_max_total_degree": 4,
     "multiple_testing": "Bonferroni with exact-null-variance two-sided Bernstein bounds",
+    "quantized_fingerprint_significant_digits": 12,
     "seeds_hex": {
       "beta_radial": "f9d684d2cbc683d187447f0001ba16f6",
       "full_source": "beae04640776578fb2ce0e0ebe967c3a",

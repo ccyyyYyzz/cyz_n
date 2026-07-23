@@ -29,21 +29,23 @@ class RegistryAndMeasureTests(unittest.TestCase):
         registry = registry_copy()
         source.validate_registry(registry)
         parameters = source.source_parameters(registry)
-        self.assertEqual(parameters["K"], 2)
-        self.assertEqual(parameters["d"], 32)
-        self.assertGreater(parameters["E_star"], 0.0)
+        self.assertEqual(parameters["K"], 1)
+        self.assertEqual(parameters["d"], 16)
+        self.assertEqual(parameters["M"], 8.0)
+        self.assertEqual(parameters["E_star"], 1.0)
+        self.assertEqual(parameters["k_values"], (0.125,))
         self.assertEqual(
             source.derived_dirichlet_shape(parameters["K"]),
-            (4, 31, 31),
+            (4, 15, 15),
         )
         self.assertEqual(
-            registry["source_draw"]["transverse_axis_order"],
+            registry["source_draw_registry"]["transverse_axis_order"],
             list(range(8)),
         )
 
     def test_winding_label_and_transverse_axis_order_move_together(self) -> None:
         registry = registry_copy()
-        registry["source_draw"]["winding_cycle"] = 0
+        registry["source_draw_registry"]["winding_axis"] = 0
         with self.assertRaisesRegex(
             source.RegistryError, "ordered complement"
         ):
@@ -51,30 +53,30 @@ class RegistryAndMeasureTests(unittest.TestCase):
 
     def test_empty_and_singular_shells_are_registry_failures(self) -> None:
         registry = registry_copy()
-        draw = registry["source_draw"]
+        draw = registry["source_draw_registry"]
         mass = draw["string_tension"] * draw["winding_length"]
         minimum = math.fsum(
             value * value for value in draw["total_transverse_momentum"]
         ) / (4.0 * mass)
 
         singular = copy.deepcopy(registry)
-        singular["source_draw"]["transverse_energy"] = minimum
+        singular["source_draw_registry"]["transverse_energy"] = minimum
         with self.assertRaisesRegex(source.RegistryError, "strictly positive"):
             source.validate_registry(singular)
 
         empty = copy.deepcopy(registry)
-        empty["source_draw"]["transverse_energy"] = minimum - 0.01
+        empty["source_draw_registry"]["transverse_energy"] = minimum - 0.01
         with self.assertRaisesRegex(source.RegistryError, "strictly positive"):
             source.validate_registry(empty)
 
     def test_nonzero_pi_and_tolerance_conditioning_are_rejected(self) -> None:
         nonzero = registry_copy()
-        nonzero["source_draw"]["worldsheet_momenta"] = [0.25, 0.0]
+        nonzero["source_draw_registry"]["worldsheet_momenta"] = [0.25, 0.0]
         with self.assertRaisesRegex(source.RegistryError, "pi_1=pi_2=0"):
             source.validate_registry(nonzero)
 
         tolerance_band = registry_copy()
-        tolerance_band["source_draw"]["constraint_method"] = (
+        tolerance_band["source_draw_registry"]["constraint_method"] = (
             "absolute-worldsheet-momentum-tolerance"
         )
         with self.assertRaisesRegex(source.RegistryError, "ambient-delta"):
@@ -102,7 +104,7 @@ class RegistryAndMeasureTests(unittest.TestCase):
 
     def test_integer_and_boolean_types_are_not_conflated(self) -> None:
         registry = registry_copy()
-        registry["source_draw"]["fourier_cutoff_K"] = True
+        registry["source_draw_registry"]["fourier_cutoff_K"] = True
         with self.assertRaisesRegex(source.RegistryError, "integer"):
             source.validate_registry(registry)
 
@@ -114,8 +116,9 @@ class RegistryAndMeasureTests(unittest.TestCase):
             {
                 "registry_schema",
                 "prng_algorithm",
+                "portable_math_version",
                 "source_seed",
-                "source_draw",
+                "source_draw_registry",
             },
         )
         serialized = source.canonical_bytes(identity).decode("utf-8")
@@ -131,16 +134,72 @@ class RegistryAndMeasureTests(unittest.TestCase):
         ):
             self.assertNotIn(forbidden, serialized)
 
+        hostile = copy.deepcopy(registry)
+        hostile["downstream_context"]["r_out"] = 1000.0
+        hostile["validity"] = {"unexpected": True}
+        self.assertEqual(
+            source.source_draw_identity(hostile),
+            identity,
+        )
+        baseline = source.sample_source(registry, 3)
+        mutated = source.sample_source(hostile, 3)
+        self.assertEqual(
+            baseline["source_state_sha256"],
+            mutated["source_state_sha256"],
+        )
+        self.assertEqual(mutated["validity"]["status"], "source_invalid")
+
+    def test_f1_tension_winding_and_orientation_relations_are_enforced(self) -> None:
+        registry = registry_copy()
+        draw = registry["source_draw_registry"]
+        self.assertEqual(
+            draw["winding_length"],
+            draw["winding_number_abs"]
+            * draw["torus_periods_L_A"][draw["winding_axis"]],
+        )
+        self.assertEqual(
+            draw["string_tension"].hex(),
+            (
+                1.0
+                / (
+                    2.0
+                    * source.PORTABLE_PI
+                    * draw["string_length_ell_s"] ** 2
+                )
+            ).hex(),
+        )
+        for mutation, message in (
+            (("string_tension", math.nextafter(draw["string_tension"], math.inf)), "T_F"),
+            (("winding_length", 8.0), "L_w"),
+            (("winding_orientations", [1, 1]), "orientations"),
+        ):
+            hostile = registry_copy()
+            hostile["source_draw_registry"][mutation[0]] = mutation[1]
+            with self.assertRaisesRegex(source.RegistryError, message):
+                source.validate_source_draw_registry(hostile)
+
+    def test_open52_midpoint_map_is_total_at_both_raw_word_endpoints(self) -> None:
+        stream = source.DeterministicStream(b"endpoint-control")
+        with mock.patch.object(stream, "uint64", return_value=0):
+            lower = stream.uniform_open()
+        with mock.patch.object(stream, "uint64", return_value=(1 << 64) - 1):
+            upper = stream.uniform_open()
+        self.assertEqual(lower, 2.0**-53)
+        self.assertEqual(upper, 1.0 - 2.0**-53)
+        self.assertTrue(0.0 < lower < upper < 1.0)
+        with self.assertRaisesRegex(ValueError, "not registered"):
+            source.stream_for(registry_copy(), 0, "radial-gamma-collision")
+
     def test_shape_mutations_are_rejected_analytically(self) -> None:
         dimension = source.source_parameters(registry_copy())["d"]
-        source.require_derived_dirichlet_shape(2, (4, 31, 31))
+        source.require_derived_dirichlet_shape(1, (4, 15, 15))
         for mutation in (
             (4, dimension, dimension),
             (4, dimension // 2, dimension // 2),
             (4, dimension - 0.5, dimension - 0.5),
         ):
             with self.assertRaisesRegex(ValueError, "shape mutation"):
-                source.require_derived_dirichlet_shape(2, mutation)
+                source.require_derived_dirichlet_shape(1, mutation)
 
     def test_reduced_normalizer_has_the_derived_energy_power(self) -> None:
         cutoff = 2
@@ -309,6 +368,39 @@ class SamplerAndConservationTests(unittest.TestCase):
             exact_tolerance,
         )
 
+    def test_support_schema_rejects_non_constraint_metadata_mutants(self) -> None:
+        registry = registry_copy()
+        baseline = source.sample_source(registry, 0)
+        source.validate_source_sample(baseline, registry)
+        mutations = []
+        q_outside = copy.deepcopy(baseline)
+        q_outside["Q_relative"][0] = 8.0
+        mutations.append(q_outside)
+        q_copy = copy.deepcopy(baseline)
+        q_copy["Q1"][0] += 0.125
+        mutations.append(q_copy)
+        shares = copy.deepcopy(baseline)
+        shares["energy_shares_s0_s1_s2"] = [0.2, 0.2, 0.2]
+        mutations.append(shares)
+        orientation = copy.deepcopy(baseline)
+        orientation["strings"][0]["orientation"] = -1
+        mutations.append(orientation)
+        mode = copy.deepcopy(baseline)
+        mode["strings"][0]["modes"][0]["mode_number"] = 999
+        mutations.append(mode)
+        integer_coefficient = copy.deepcopy(baseline)
+        integer_coefficient["Q2"][0] = 0
+        mutations.append(integer_coefficient)
+        validity = copy.deepcopy(baseline)
+        validity["validity"]["status"] = "valid"
+        mutations.append(validity)
+        diagnostics = copy.deepcopy(baseline)
+        diagnostics["constraint_diagnostics"]["energy_residual"] = 1.0e-3
+        mutations.append(diagnostics)
+        for hostile in mutations:
+            with self.assertRaises(source.SampleError):
+                source.validate_source_sample(hostile, registry)
+
     def test_gamma_and_hierarchical_beta_shares_are_on_exact_shell(self) -> None:
         registry = registry_copy()
         residual_energy = source.source_parameters(registry)["E_star"]
@@ -368,7 +460,7 @@ class SamplerAndConservationTests(unittest.TestCase):
         state = source.sample_source(registry, 3)
         cutoff = source.source_parameters(registry)["K"]
         grid_size = 2 * cutoff + 3
-        winding_length = registry["source_draw"]["winding_length"]
+        winding_length = registry["source_draw_registry"]["winding_length"]
         for string_index, string in enumerate(state["strings"]):
             y_average = [0.0] * 8
             for grid_index in range(grid_size):

@@ -120,7 +120,7 @@ Y_i(0,\sigma)=
 The implementation must reject any convention in which \(Q_i\) is also
 inserted into \(Y_i\).
 
-The frozen audit registry must include at least:
+The sole frozen source registry must include at least:
 
 \[
 \left(
@@ -139,12 +139,29 @@ It must satisfy
 \pi_1=\pi_2=0.
 \]
 
-Choose one low-\(K\), exactly serialized audit cell whose units and numerical
-values make all transformations reproducible.  State next to it that the
-choice is a software-and-measure audit cell, not a physical selection result.
+Use the canonical \(K=1\) cell
 
-Inside the audit registry, define a separate `source_draw_registry` containing
-only
+\[
+\ell_s=1,\quad T_F=\frac1{2\pi},\quad L_w=16\pi,\quad M=8,\quad
+E_\perp=2,\quad P_{\rm tot}=(4,4,0,\ldots,0),
+\]
+
+with eight transverse periods \(L_0=\cdots=L_7=8\), winding axis \(8\),
+\(L_8=L_w\), \(|w|=1\), and orientations \(+1,-1\).  The loader must enforce
+
+\[
+T_F=\frac{1}{2\pi\ell_s^2},
+\qquad
+L_w=|w|L_8.
+\]
+
+These exactly serialized values make all transformations reproducible.  The
+choice is a software-and-measure audit cell, not a physical selection result.
+There is exactly one source cell: any statistical-audit registry must bind to
+it by canonical hashes and must not carry a second copy described as another
+frozen cell.
+
+Inside the source registry, define `source_draw_registry` containing only
 
 \[
 \left(
@@ -156,7 +173,9 @@ L_A,T_F,L_w,K,E_\perp,P_{\rm tot},\pi_1,\pi_2,
 Only this subregistry may enter source-substream seed derivation.  Event
 thresholds, validity thresholds, initial history, solver budgets, rank
 tolerances and reaction data belong to other subregistries and must not change
-the coefficient stream.
+the coefficient stream.  The complete source identity also domain-separates
+the source schema, seed, registered PRNG map and deterministic math-layer
+version.
 
 Freeze the ambient Liouville reference measure before changing coordinates:
 
@@ -888,15 +907,24 @@ Commit:
 5. `artifacts/0018/source_report.json`;
 6. `artifacts/0018/event_record.schema.json`;
 7. `artifacts/0018/event_schema_controls.json`;
-8. `artifacts/0018/README.md`.
+8. `artifacts/0018/README.md`;
+9. `artifacts/0018/stat_audit_registry.json`;
+10. `artifacts/0018/statistical_audit.py`;
+11. `artifacts/0018/stat_audit_core.py`;
+12. `artifacts/0018/stat_audit_report.json`;
+13. `artifacts/0018/test_stat_audit.py`;
+14. `artifacts/0018/STAT_AUDIT_README.md`.
 
 All JSON readers must reject duplicate keys, non-finite numbers and
 type-changing substitutions such as `true -> 1`.  Semantic replay must be
 independent of LF/CRLF line endings.  Every vector and matrix has a strict
 declared shape.
 
-The source report must print its canonical SHA-256, code inventory, Python and
-dependency versions, seed policy, sample count and every failed gate.
+The source report must print its canonical SHA-256, code inventory, registered
+PRNG and deterministic-math versions, seed policy, sample count and every
+failed gate.  Host/runtime versions may be recorded out of band but must not
+enter a report whose strict semantic JSON is claimed to replay across the
+tested Windows and Linux runtimes.
 
 ## 10. Mandatory tests
 
@@ -971,7 +999,18 @@ At minimum:
     simultaneous roots remain a complete cluster;
 32. deleting a coverage-tree leaf fails replay even if ordinary JSON hashes
     are recomputed;
-33. full-directory test discovery exits zero from a clean checkout.
+33. full-directory test discovery exits zero from a clean checkout;
+34. the open-uniform map rejects both raw-word endpoint attacks and always
+    returns a 52-bit midpoint strictly inside \((0,1)\);
+35. every production source sample passes the strict support schema, and
+    malformed orientations, modes, wave numbers, shares, gauges, hashes or
+    coefficient arrays are rejected;
+36. the independent statistical oracle is hash-bound to the sole main source
+    registry and a production-output bridge actually samples and checks the
+    production implementation;
+37. the production and committed full statistical reports compare as strict
+    semantic JSON on the tested Windows and Linux runtimes, while raw stream
+    golden words and all 514 unrounded acceptance decisions remain controlled.
 
 Statistical tests must use preregistered seeds and finite-sample acceptance
 intervals with controlled familywise error.  They supplement the analytic
