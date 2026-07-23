@@ -15,11 +15,11 @@ project's strong all-field common cone.
    rank subset is forward invariant.  Rank three can then be a concentration
    mode, but not an exact invariant phase.
 2. The stationary ratio
-   
+
    \[
    \frac{\pi_{s+1}}{\pi_s}=\frac{B_s}{D_{s+1}}
    \]
-   
+
    and its strict crossing criterion are the correct finite-chain mode test;
    zero mean drift is insufficient.
 3. A positive finite-width average of the GKM fixed-impact kernel cannot turn
@@ -51,7 +51,7 @@ project's strong all-field common cone.
 2. The core/outer error formula needs volume weights.  If
    \(f=(b_*/r)^m\) and \(\Gamma_{\rm ann}\) is the normalized annulus average,
    a consistent form is
-   
+
    \[
    \left|\Gamma_{\rm full}^{\rm exact}
    -(1-f)\Gamma_{\rm ann}\right|
