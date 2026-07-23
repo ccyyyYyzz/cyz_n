@@ -115,8 +115,9 @@ def rank_record(i,p1,p2,u):
  if r==3:ev[2]=float(_fdet(fg))/(ev[0]*ev[1])
  else:
   for j in range(r,3):ev[j]=0.
- sv=[math.sqrt(max(0.,x)) for x in ev];tol=RANK_REL_TOL*sv[0] if sv[0] else 0.;q=tuple(a+b for a,b in zip(f1,f2));rhs=(_fdot(q,q)*_fdot(fu,fu)-_fdot(q,fu)**2)+_fdet(_fg([f1,q,fu]));lhs=_fdet(fg);fl,fr=det3(g),float(rhs);den=max(abs(float(lhs)),abs(fr),1e-300)
- return {"id":i,"exact_rank":r,"rank":r,"numerical_rank":sum(s>tol for s in sv),"rank_relative_tolerance":RANK_REL_TOL,"rank_absolute_tolerance":tol,"singular_values_raw":sv,"sigma_3_raw":sv[2],"p1":list(p1),"p2":list(p2),"q":[float(x) for x in q],"u":list(u),"gram_determinant_exact":str(lhs),"exterior_identity_rhs_exact":str(rhs),"identity_certified_exact":lhs==rhs,"identity_relative_float_error":abs(fl-fr)/den}
+ sv=[math.sqrt(max(0.,x)) for x in ev];tol=RANK_REL_TOL*sv[0] if sv[0] else 0.;q=tuple(a+b for a,b in zip(f1,f2));rhs=(_fdot(q,q)*_fdot(fu,fu)-_fdot(q,fu)**2)+_fdet(_fg([f1,q,fu]));lhs=_fdet(fg);fl,fr=det3(g),float(rhs);den=max(abs(float(lhs)),abs(fr))
+ err=0. if den==0 else abs(fl-fr)/den
+ return {"id":i,"exact_rank":r,"rank":r,"numerical_rank":sum(s>tol for s in sv),"rank_relative_tolerance":RANK_REL_TOL,"rank_absolute_tolerance":tol,"singular_values_raw":sv,"sigma_3_raw":sv[2],"gram_determinant_exact":str(lhs),"exterior_identity_rhs_exact":str(rhs),"identity_certified_exact":lhs==rhs,"identity_relative_float_error":err}
 
 def rank_controls():
  z=[0.]*8;e1,e2,e3=basis(8,0),basis(8,1),basis(8,2)
@@ -141,7 +142,7 @@ def _span(cs):
   v=list(c)
   for q in out:v=sub(v,scale(dot(q,v),q))
   n=norm(v)
-  if n>1e-14*out[0][0] if out else n>0:out.append(scale(1/n,v))
+  if n>1e-14:out.append(scale(1/n,v))
  return out
 
 def pnormal(cs,v):
@@ -233,7 +234,7 @@ def _quad(e):
 def hard_edge_controls():
  rows=[_quad(e) for e in ("0.2","0.1","0.05")];assert abs(rows[-1]["fixed_point_ratio_to_C0_eps7"]-.9987507809245811)<2e-15
  affine=[{"delta":d,"hessian_determinant":d*d,"zero_gradient_density":1/d,"product":d,"delta2_ratio":1.,"delta_minus1_ratio":1.,"delta_ratio":1.} for d in (1e-1,1e-3,1e-6)]
- return {"scope":"analytic surrogates and conditional propositions only; not the physical finite-K first-entry law","fixed_point_iid_R8x2":{"singular_value_exponent":7,"C0_exact":"sqrt(pi/2)/48","C0_numeric":math.sqrt(math.pi/2)/48,"gram_eigenvalue_exponent":"7/2","lower_rank_atom":0,"essential_infimum":0},"pure_volume_palm_surrogate":{"E_s1_s2":7,"exponent":8,"constant_exact":"1/105","constant_numeric":1/105,"survival_tilt":"none"},"relative_error_controlled_high_precision_quadrature":rows,"deterministic_quadrature":rows,"affine_closest_scaling_control":affine,"curvature_lifted_conditional_counterexample":{"conditional_local_tail_exponent":6,"scope":"local closest-stationary intensity only"},"general_palm_power_rule":{"status":"conditional proposition","event_exponent":"7+alpha","survival_factor_must_be_included":True},"prohibited_transfer":"no physical exponent before the constrained density, Jacobian, section, history and no-earlier-entry audit"}
+ return {"scope":"analytic surrogates and conditional propositions only; not the physical finite-K first-entry law","fixed_point_iid_R8x2":{"singular_value_exponent":7,"C0_exact":"sqrt(pi/2)/48","C0_numeric":math.sqrt(math.pi/2)/48,"gram_eigenvalue_exponent":"7/2","lower_rank_atom":0,"essential_infimum":0},"pure_volume_palm_surrogate":{"E_s1_s2":7,"exponent":8,"constant_exact":"1/105","constant_numeric":1/105,"survival_tilt":"none"},"relative_error_controlled_high_precision_quadrature":rows,"affine_closest_scaling_control":affine,"curvature_lifted_conditional_counterexample":{"conditional_local_tail_exponent":6,"scope":"local closest-stationary intensity only"},"general_palm_power_rule":{"status":"conditional proposition","event_exponent":"7+alpha","survival_factor_must_be_included":True},"prohibited_transfer":"no physical exponent before the constrained density, Jacobian, section, history and no-earlier-entry audit"}
 hard_edge=hard_edge_controls
 
 def finite_mode_flow_control():
