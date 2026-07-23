@@ -86,6 +86,30 @@ tie-breaking rule.  On the rectangular torus the local separation map is
 =\operatorname{Log}_{X_2(\sigma',t)}X_1(\sigma,t).
 \]
 
+The global coordinate-free object is
+
+\[
+\Psi_e=(X_1,X_2):
+\Sigma_1\times\Sigma_2\times I\longrightarrow M\times M.
+\]
+
+The exact collision locus is \(\Psi_e^{-1}(\Delta_M)\); transversality to
+\(\Delta_M\) is the additional regular-collision condition, not the
+definition of collision.  At \((x,x)\in\Delta_M\),
+
+\[
+N_{(x,x)}\Delta_M
+\simeq
+(T_xM\oplus T_xM)/T_{(x,x)}\Delta_M
+\simeq T_xM.
+\]
+
+The normal component of \(D\Psi_e\) under this identification is the same
+encounter differential represented locally by \(D\Phi_e\).  Thus the rank
+definition does not depend on choosing a logarithm branch; the logarithmic
+map is the convenient finite-impact representative inside an injectivity
+tube. **[theorem]**
+
 At the selected event jet, parallel transport the columns to one target
 tangent space and write
 
@@ -155,6 +179,30 @@ This is a conditional general-position theorem.  Nambu--Goto, winding,
 energy-shell or preparation constraints may instead place the entire law on a
 lower-rank stratum. **[theorem]**
 
+For a finite or countable branch decomposition, the honest preparation law
+can be recorded as
+
+\[
+\nu_X(dj)
+=\sum_C\pi_C(X)\nu_{X,C}(dj),
+\qquad
+\nu_{X,C}\{a(j)=r_C\}=1
+\]
+
+under the branchwise hypotheses above.  Only afterwards may one aggregate
+branches of equal generic rank into
+
+\[
+\nu_X(dj)=\sum_k\pi_k(X)\nu_{X,k}(dj),
+\qquad
+\nu_{X,k}\{a(j)=k\}=1.
+\]
+
+For a non-countable branch space the same statement is a disintegration
+rather than a sum.  This notation records physical branch weights; it does
+not authorize drawing from a rank-conditioned law or resampling until a
+desired rank appears. **[theorem, closure]**
+
 For F1, set \(J=[\tau_1,-\tau_2,u]\).  With nonzero tangents:
 
 - \(a=3\) exactly when
@@ -201,6 +249,38 @@ Weyl's inequality gives the useful robustness certificate
 \sigma_3(\widehat J_e+\delta\widehat J_e)
 \ge\eta_{\rm kin}-\epsilon>0.
 \]
+
+For independently audited perturbations
+\((\widetilde G,\widetilde J,\widetilde H)\), the combined error
+
+\[
+\delta_e
+=
+\left\|
+\widetilde G^{1/2}\widetilde J\widetilde H^{-1/2}
+-G^{1/2}JH^{-1/2}
+\right\|_2
+\]
+
+has the directly checkable telescoping bound
+
+\[
+\begin{aligned}
+\delta_e\le{}&
+\|\widetilde G^{1/2}-G^{1/2}\|_2
+\|J\|_2\|H^{-1/2}\|_2\\
+&+\|\widetilde G^{1/2}\|_2
+\|\widetilde J-J\|_2
+\|H^{-1/2}\|_2\\
+&+\|\widetilde G^{1/2}\|_2
+\|\widetilde J\|_2
+\|\widetilde H^{-1/2}-H^{-1/2}\|_2 .
+\end{aligned}
+\]
+
+Consequently \(\delta_e<\eta_{\rm kin}\) is a metric-, jet- and
+domain-metric-resolved sufficient certificate, rather than an opaque
+single numerical tolerance. **[theorem]**
 
 Metric, tangent and velocity errors are therefore allowed when their
 rewhitened combined operator perturbation stays below the registered margin.
@@ -693,14 +773,20 @@ rectangular-\(T^9\) source cell:
    \(\mathcal H_X(dT,dj,db\mid h)\) for globally opposite-wound F1 pairs,
    using a preregistered near-encounter section and no rank-conditioned
    sampling;
-2. either preregister a worst-case \(\eta_{\rm kin}>0\), or preregister
+2. include a matched intervention between a strictly straight
+   opposite-winding control and a rank-blind wiggled ensemble at the same
+   global winding, total energy, relative-speed scale, impact scale, return
+   clock and reservoir state wherever those quantities can be matched;
+   otherwise expose the unmatched energy partition as a separate
+   confounder rather than attributing the change to tangent wiggles;
+3. either preregister a worst-case \(\eta_{\rm kin}>0\), or preregister
    singular-value tail bounds, and report the probability mass on every rank
    stratum;
-3. use the event-specific pair \((N_j,b)\), not a fixed scattering axis, to
+4. use the event-specific pair \((N_j,b)\), not a fixed scattering axis, to
    push the continuous impact law through the source-to-return kernel;
-4. make the exact age augmentation and attach anonymous
+5. make the exact age augmentation and attach anonymous
    \(A,R,B,C,M\) ports;
-5. reconstruct \(Z_0,\ldots,Z_9\) and compute first entry, entrant strict
+6. reconstruct \(Z_0,\ldots,Z_9\) and compute first entry, entrant strict
    residence, retention and worst leakage for every response rank.
 
 Failure of a uniform \(\eta_{\rm kin}\) falsifies only the uniform-certificate
