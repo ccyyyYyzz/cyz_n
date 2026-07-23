@@ -202,13 +202,26 @@ been embedded into the source-authorized geometry grid, work/reservoir ledger
 or reaction propensities, and its anonymous Green/relation replay remains an
 architecture.  Average occupancy is also not strict basin residence.
 
-The active bottleneck is therefore no longer another repair of the cycle.  It
-is one target-neutral marked encounter/recollision process defined before the
-response ranks: an absolute encounter clock, normalized impact and orientation
-marks, compactification dependence, finite history or a controlled renewal
-limit, reverse channels with an energy ledger, and a fixed exchangeable initial
-law.  Brief 0012 asks for that object and for a replay of entrant strict
-residence, retention and leakage across all ten ranks under one physical law.
+Response 0012 identifies the correct factorization of that object and supplies
+exact first-entry, entrant strict-residence, conditional-retention and
+worst-leakage formulas.  It also closes a limited source-identifiability
+boundary: conditional channel data and one-encounter mark marginals do not fix
+the absolute clock, recollision correlations, reverse reservoir law or initial
+preparation.
+
+It does not yet supply a populated physical kernel.  The tuple
+\((T,K,R,\Omega_R,\mu_0)\), the finite rate/reset tables, work ledger and
+response embeddings remain free.  Its exponential renewal clock is not the
+exact GKM 2009 algorithm, which schedules recollisions at
+\(t_r\simeq r/\bar v\) and redraws the impact parameter at those times.
+Accordingly no rank-three strict-residence margin is certified or excluded.
+
+The active bottleneck is now one actually instantiated, target-neutral event
+law on the full anisotropic nine-direction state space.  It must be delivered
+as finite tables plus a deterministic reproducer, with a pre-classifier
+non-encoding witness and either a faithful scheduled-GKM source limit or an
+explicit first-hit/return derivation.  Symbolic encounter-kernel interfaces are
+no longer counted as executable progress.
 
 The wavefront-kernel construction remains an independent physical validation
 route, not the primary definition. Numerical gaps are meaningful only relative
