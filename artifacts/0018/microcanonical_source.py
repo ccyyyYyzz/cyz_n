@@ -485,9 +485,27 @@ def gamma_integer(shape: int, stream: DeterministicStream) -> float:
 def beta_integer(
     left_shape: int, right_shape: int, stream: DeterministicStream
 ) -> float:
-    left = gamma_integer(left_shape, stream)
-    right = gamma_integer(right_shape, stream)
-    return left / (left + right)
+    """Independent integer-shape Beta draw via an order statistic.
+
+    If ``a`` and ``b`` are positive integers, the ``a``-th order statistic
+    among ``a+b-1`` independent uniforms has the Beta(a,b) law.  Keeping this
+    implementation free of ``gamma_integer`` makes the hierarchical
+    factorization an algorithmically independent audit of the principal
+    Gamma-normalization sampler.
+    """
+
+    if (
+        type(left_shape) is not int
+        or type(right_shape) is not int
+        or left_shape < 1
+        or right_shape < 1
+    ):
+        raise ValueError("integer beta shapes must be positive")
+    order_statistics = sorted(
+        stream.uniform_open()
+        for _ in range(left_shape + right_shape - 1)
+    )
+    return order_statistics[left_shape - 1]
 
 
 def unit_sphere(dimension: int, stream: DeterministicStream) -> tuple[float, ...]:

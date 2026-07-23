@@ -289,6 +289,20 @@ class SamplerAndConservationTests(unittest.TestCase):
                 math.fsum(beta), residual_energy, places=13
             )
 
+    def test_hierarchical_beta_is_algorithmically_gamma_independent(self) -> None:
+        registry = registry_copy()
+        residual_energy = source.source_parameters(registry)["E_star"]
+        with mock.patch.object(
+            source,
+            "gamma_integer",
+            side_effect=AssertionError("Gamma primitive must not be called"),
+        ):
+            shares = source.sample_radial_hierarchical_beta(registry, 19)
+        self.assertTrue(all(value > 0.0 for value in shares))
+        self.assertAlmostEqual(
+            math.fsum(shares), residual_energy, places=13
+        )
+
     def test_exact_flow_conserves_energy_and_worldsheet_momentum(self) -> None:
         registry = registry_copy()
         for index in range(8):

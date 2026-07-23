@@ -24,9 +24,9 @@
   "implementation": {
     "code_inventory_normalized_lf_sha256": {
       "README.md": "97c8a26aa138b353996f3bf194f99acfb19d3496ca758950397165e715e6af72",
-      "microcanonical_source.py": "721cf2cbc5e1211b86c8ad9d38368f23412f30e8b8cc76a5e74d906f542b3e6c",
+      "microcanonical_source.py": "6efce3b4c696309ca3deb8fcc4b9bc0127e7f455c7abc2fdcf90d2eee80fbe04",
       "source_registry.json": "217d677612cb1366be6817b67b760230fc536b3c9d6020f4566d11988766d43a",
-      "test_microcanonical_source.py": "8c70d849706ae6fdb03637885a20ac2db042fa22c422696ea6e0173fa271db24"
+      "test_microcanonical_source.py": "6c409ca2feed66b52d112895569c56fa9d5bfc4d46be97209dcb79ddc0e74b9e"
     },
     "coefficient_stream_reads_only": [
       "schema_version",
@@ -60,9 +60,9 @@
       "0.46644589584555496"
     ],
     "hierarchical_beta_empirical_means": [
-      "0.060901709101817088",
-      "0.4677961441097544",
-      "0.47130214678842847"
+      "0.061817901011994351",
+      "0.46840533956811198",
+      "0.46977675941989366"
     ],
     "hostile_shapes_rejected_by_contract": [
       [
