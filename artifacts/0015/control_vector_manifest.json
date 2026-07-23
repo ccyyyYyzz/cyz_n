@@ -1,6 +1,6 @@
 {
   "constructor_reads_only": "opaque_id_and_input; report_metadata_is_not_constructor_input",
-  "constructor_spec_sha256": "c60f279192a2dd340885732a04f85edb1b62ff92c7e6f0339d24909bfe1a1a1d",
+  "constructor_spec_sha256": "5a935b5e0cc415d73a783cb6e6d926a355f2c43d662fa94aed93e0a8f9a5af01",
   "controls": [
     {
       "input": {
@@ -9,7 +9,17 @@
         "coupling_max": "1/5",
         "dilute_flag": true,
         "frame_arity": 3,
-        "metric_radii": ["2/1","2/1","2/1","2/1","2/1","2/1","2/1","2/1","2/1"],
+        "metric_radii": [
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1"
+        ],
         "proposed_reverse_ratio": "1/4",
         "relative_speed": "1/2",
         "self_dual_radius": "1/1",
@@ -18,89 +28,363 @@
         "speed_max": "3/4",
         "speed_min": "1/4"
       },
-      "obligations": {"calibration_times": ["2/1","4/1","6/1","8/1","10/1"],"expected_valid_frames": 504},
+      "obligations": {
+        "calibration_times": [
+          "2/1",
+          "4/1",
+          "6/1",
+          "8/1",
+          "10/1"
+        ],
+        "expected_valid_frames": 504
+      },
       "opaque_id": "u0",
-      "report_metadata": {"human_label": "ordinary_full_t9"}
+      "report_metadata": {
+        "human_label": "ordinary_full_t9"
+      }
     },
     {
       "input": {
-        "amplitude_status": "valid","coupling": "1/10","coupling_max": "1/5","dilute_flag": true,"frame_arity": 3,
-        "metric_radii": ["2/1","2/1","2/1","1/1","1/1","1/1","1/1","1/1","1/1"],
-        "proposed_reverse_ratio": "1/4","relative_speed": "1/2","self_dual_radius": "1/1","separation_fraction": "1/2","source_registry_id": "gkm_sparse_v1","speed_max": "3/4","speed_min": "1/4"
+        "amplitude_status": "valid",
+        "coupling": "1/10",
+        "coupling_max": "1/5",
+        "dilute_flag": true,
+        "frame_arity": 3,
+        "metric_radii": [
+          "2/1",
+          "2/1",
+          "2/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1"
+        ],
+        "proposed_reverse_ratio": "1/4",
+        "relative_speed": "1/2",
+        "self_dual_radius": "1/1",
+        "separation_fraction": "1/2",
+        "source_registry_id": "gkm_sparse_v1",
+        "speed_max": "3/4",
+        "speed_min": "1/4"
       },
-      "obligations": {"expected_valid_frames": 6},"opaque_id": "u1","report_metadata": {"human_label": "three_large_metric_control"}
+      "obligations": {
+        "expected_valid_frames": 6
+      },
+      "opaque_id": "u1",
+      "report_metadata": {
+        "human_label": "three_large_metric_control"
+      }
     },
     {
       "input": {
-        "amplitude_status": "valid","coupling": "1/10","coupling_max": "1/5","dilute_flag": true,"frame_arity": 3,
-        "metric_radii": ["2/1","2/1","2/1","2/1","1/1","1/1","1/1","1/1","1/1"],
-        "proposed_reverse_ratio": "1/4","relative_speed": "1/2","self_dual_radius": "1/1","separation_fraction": "1/2","source_registry_id": "gkm_sparse_v1","speed_max": "3/4","speed_min": "1/4"
+        "amplitude_status": "valid",
+        "coupling": "1/10",
+        "coupling_max": "1/5",
+        "dilute_flag": true,
+        "frame_arity": 3,
+        "metric_radii": [
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1"
+        ],
+        "proposed_reverse_ratio": "1/4",
+        "relative_speed": "1/2",
+        "self_dual_radius": "1/1",
+        "separation_fraction": "1/2",
+        "source_registry_id": "gkm_sparse_v1",
+        "speed_max": "3/4",
+        "speed_min": "1/4"
       },
-      "obligations": {"expected_valid_frames": 24},"opaque_id": "u2","report_metadata": {"human_label": "four_large_metric_control"}
+      "obligations": {
+        "expected_valid_frames": 24
+      },
+      "opaque_id": "u2",
+      "report_metadata": {
+        "human_label": "four_large_metric_control"
+      }
     },
     {
       "input": {
-        "amplitude_status": "valid","coupling": "1/10","coupling_max": "1/5","dilute_flag": true,"frame_arity": 3,
-        "metric_radii": ["2/1","2/1","2/1","2/1","2/1","2/1","2/1","2/1","2/1"],
-        "proposed_reverse_ratio": "1/4","relative_speed": "1/1","self_dual_radius": "1/1","separation_fraction": "1/2","source_registry_id": "gkm_sparse_v1","speed_max": "3/4","speed_min": "1/4"
+        "amplitude_status": "valid",
+        "coupling": "1/10",
+        "coupling_max": "1/5",
+        "dilute_flag": true,
+        "frame_arity": 3,
+        "metric_radii": [
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1"
+        ],
+        "proposed_reverse_ratio": "1/4",
+        "relative_speed": "1/1",
+        "self_dual_radius": "1/1",
+        "separation_fraction": "1/2",
+        "source_registry_id": "gkm_sparse_v1",
+        "speed_max": "3/4",
+        "speed_min": "1/4"
       },
-      "obligations": {"expected_uniform_source_case": "velocity"},"opaque_id": "u3","report_metadata": {"human_label": "velocity_invalid"}
+      "obligations": {
+        "expected_uniform_source_case": "velocity"
+      },
+      "opaque_id": "u3",
+      "report_metadata": {
+        "human_label": "velocity_invalid"
+      }
     },
     {
       "input": {
-        "amplitude_status": "valid","coupling": "1/2","coupling_max": "1/5","dilute_flag": false,"frame_arity": 3,
-        "metric_radii": ["2/1","2/1","2/1","2/1","2/1","2/1","2/1","2/1","2/1"],
-        "proposed_reverse_ratio": "1/4","relative_speed": "1/2","self_dual_radius": "1/1","separation_fraction": "1/2","source_registry_id": "gkm_sparse_v1","speed_max": "3/4","speed_min": "1/4"
+        "amplitude_status": "valid",
+        "coupling": "1/2",
+        "coupling_max": "1/5",
+        "dilute_flag": false,
+        "frame_arity": 3,
+        "metric_radii": [
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1"
+        ],
+        "proposed_reverse_ratio": "1/4",
+        "relative_speed": "1/2",
+        "self_dual_radius": "1/1",
+        "separation_fraction": "1/2",
+        "source_registry_id": "gkm_sparse_v1",
+        "speed_max": "3/4",
+        "speed_min": "1/4"
       },
-      "obligations": {"expected_uniform_source_case": "coupling_dilution"},"opaque_id": "u4","report_metadata": {"human_label": "coupling_dilution_invalid"}
+      "obligations": {
+        "expected_uniform_source_case": "coupling_dilution"
+      },
+      "opaque_id": "u4",
+      "report_metadata": {
+        "human_label": "coupling_dilution_invalid"
+      }
     },
     {
       "input": {
-        "amplitude_status": "valid","coupling": "1/10","coupling_max": "1/5","dilute_flag": true,"frame_arity": 3,
-        "metric_radii": ["1/1","1/1","1/1","1/1","1/1","1/1","1/1","1/1","1/1"],
-        "proposed_reverse_ratio": "1/4","relative_speed": "1/2","self_dual_radius": "1/1","separation_fraction": "1/2","source_registry_id": "gkm_sparse_v1","speed_max": "3/4","speed_min": "1/4"
+        "amplitude_status": "valid",
+        "coupling": "1/10",
+        "coupling_max": "1/5",
+        "dilute_flag": true,
+        "frame_arity": 3,
+        "metric_radii": [
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1"
+        ],
+        "proposed_reverse_ratio": "1/4",
+        "relative_speed": "1/2",
+        "self_dual_radius": "1/1",
+        "separation_fraction": "1/2",
+        "source_registry_id": "gkm_sparse_v1",
+        "speed_max": "3/4",
+        "speed_min": "1/4"
       },
-      "obligations": {"expected_uniform_source_case": "geometry"},"opaque_id": "u5","report_metadata": {"human_label": "geometry_invalid"}
+      "obligations": {
+        "expected_uniform_source_case": "geometry"
+      },
+      "opaque_id": "u5",
+      "report_metadata": {
+        "human_label": "geometry_invalid"
+      }
     },
     {
       "input": {
-        "amplitude_status": "unresolved","coupling": "1/10","coupling_max": "1/5","dilute_flag": true,"frame_arity": 3,
-        "metric_radii": ["2/1","2/1","2/1","2/1","2/1","2/1","2/1","2/1","2/1"],
-        "proposed_reverse_ratio": "1/4","relative_speed": "1/2","self_dual_radius": "1/1","separation_fraction": "1/2","source_registry_id": "gkm_sparse_v1","speed_max": "3/4","speed_min": "1/4"
+        "amplitude_status": "unresolved",
+        "coupling": "1/10",
+        "coupling_max": "1/5",
+        "dilute_flag": true,
+        "frame_arity": 3,
+        "metric_radii": [
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1"
+        ],
+        "proposed_reverse_ratio": "1/4",
+        "relative_speed": "1/2",
+        "self_dual_radius": "1/1",
+        "separation_fraction": "1/2",
+        "source_registry_id": "gkm_sparse_v1",
+        "speed_max": "3/4",
+        "speed_min": "1/4"
       },
-      "obligations": {"expected_uniform_source_case": "unresolved_amplitude"},"opaque_id": "u6","report_metadata": {"human_label": "unresolved_amplitude"}
+      "obligations": {
+        "expected_uniform_source_case": "unresolved_amplitude"
+      },
+      "opaque_id": "u6",
+      "report_metadata": {
+        "human_label": "unresolved_amplitude"
+      }
     },
     {
       "input": {
-        "amplitude_status": "valid","coupling": "1/10","coupling_max": "1/5","dilute_flag": true,"frame_arity": 2,
-        "metric_radii": ["2/1","2/1","1/1","1/1","1/1","1/1","1/1","1/1","1/1"],
-        "proposed_reverse_ratio": "1/4","relative_speed": "1/2","self_dual_radius": "1/1","separation_fraction": "1/2","source_registry_id": "gkm_sparse_v1","speed_max": "3/4","speed_min": "1/4"
+        "amplitude_status": "valid",
+        "coupling": "1/10",
+        "coupling_max": "1/5",
+        "dilute_flag": true,
+        "frame_arity": 2,
+        "metric_radii": [
+          "2/1",
+          "2/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1"
+        ],
+        "proposed_reverse_ratio": "1/4",
+        "relative_speed": "1/2",
+        "self_dual_radius": "1/1",
+        "separation_fraction": "1/2",
+        "source_registry_id": "gkm_sparse_v1",
+        "speed_max": "3/4",
+        "speed_min": "1/4"
       },
-      "obligations": {"expected_frame_arity": 2,"expected_valid_frames": 2},"opaque_id": "u7","report_metadata": {"human_label": "arity_two_semantic_control"}
+      "obligations": {
+        "expected_frame_arity": 2,
+        "expected_valid_frames": 2
+      },
+      "opaque_id": "u7",
+      "report_metadata": {
+        "human_label": "arity_two_semantic_control"
+      }
     },
     {
       "input": {
-        "amplitude_status": "valid","coupling": "1/10","coupling_max": "1/5","dilute_flag": true,"frame_arity": 4,
-        "metric_radii": ["2/1","2/1","2/1","2/1","1/1","1/1","1/1","1/1","1/1"],
-        "proposed_reverse_ratio": "1/4","relative_speed": "1/2","self_dual_radius": "1/1","separation_fraction": "1/2","source_registry_id": "gkm_sparse_v1","speed_max": "3/4","speed_min": "1/4"
+        "amplitude_status": "valid",
+        "coupling": "1/10",
+        "coupling_max": "1/5",
+        "dilute_flag": true,
+        "frame_arity": 4,
+        "metric_radii": [
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1",
+          "1/1"
+        ],
+        "proposed_reverse_ratio": "1/4",
+        "relative_speed": "1/2",
+        "self_dual_radius": "1/1",
+        "separation_fraction": "1/2",
+        "source_registry_id": "gkm_sparse_v1",
+        "speed_max": "3/4",
+        "speed_min": "1/4"
       },
-      "obligations": {"expected_frame_arity": 4,"expected_valid_frames": 24},"opaque_id": "u8","report_metadata": {"human_label": "arity_four_semantic_control"}
+      "obligations": {
+        "expected_frame_arity": 4,
+        "expected_valid_frames": 24
+      },
+      "opaque_id": "u8",
+      "report_metadata": {
+        "human_label": "arity_four_semantic_control"
+      }
     },
     {
       "input": {
-        "amplitude_status": "valid","coupling": "1/10","coupling_max": "1/5","dilute_flag": true,"frame_arity": 3,
-        "metric_radii": ["2/1","2/1","2/1","2/1","2/1","2/1","2/1","2/1","2/1"],
-        "proposed_reverse_ratio": "1/4","relative_speed": "1/4","self_dual_radius": "1/1","separation_fraction": "1/2","source_registry_id": "gkm_sparse_v1","speed_max": "3/4","speed_min": "1/4"
+        "amplitude_status": "valid",
+        "coupling": "1/10",
+        "coupling_max": "1/5",
+        "dilute_flag": true,
+        "frame_arity": 3,
+        "metric_radii": [
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1"
+        ],
+        "proposed_reverse_ratio": "1/4",
+        "relative_speed": "1/4",
+        "self_dual_radius": "1/1",
+        "separation_fraction": "1/2",
+        "source_registry_id": "gkm_sparse_v1",
+        "speed_max": "3/4",
+        "speed_min": "1/4"
       },
-      "obligations": {"expected_interval_boundary_valid": true,"expected_valid_frames": 504},"opaque_id": "u9","report_metadata": {"human_label": "closed_lower_speed_boundary"}
+      "obligations": {
+        "expected_interval_boundary_valid": true,
+        "expected_valid_frames": 504
+      },
+      "opaque_id": "u9",
+      "report_metadata": {
+        "human_label": "closed_lower_speed_boundary"
+      }
     },
     {
       "input": {
-        "amplitude_status": "unresolved","coupling": "1/10","coupling_max": "1/5","dilute_flag": true,"frame_arity": 3,
-        "metric_radii": ["2/1","2/1","2/1","2/1","2/1","2/1","2/1","2/1","2/1"],
-        "proposed_reverse_ratio": "1/4","relative_speed": "1/1","self_dual_radius": "1/1","separation_fraction": "1/2","source_registry_id": "gkm_sparse_v1","speed_max": "3/4","speed_min": "1/4"
+        "amplitude_status": "unresolved",
+        "coupling": "1/10",
+        "coupling_max": "1/5",
+        "dilute_flag": true,
+        "frame_arity": 3,
+        "metric_radii": [
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1",
+          "2/1"
+        ],
+        "proposed_reverse_ratio": "1/4",
+        "relative_speed": "1/1",
+        "self_dual_radius": "1/1",
+        "separation_fraction": "1/2",
+        "source_registry_id": "gkm_sparse_v1",
+        "speed_max": "3/4",
+        "speed_min": "1/4"
       },
-      "obligations": {"expected_uniform_source_case": "unresolved_amplitude"},"opaque_id": "u10","report_metadata": {"human_label": "precedence_probe"}
+      "obligations": {
+        "expected_uniform_source_case": "unresolved_amplitude"
+      },
+      "opaque_id": "u10",
+      "report_metadata": {
+        "human_label": "precedence_probe"
+      }
     }
   ],
   "opaque_id_renaming_control": {
@@ -108,6 +392,6 @@
     "renamed_opaque_id": "opaque_contains_three_but_is_not_read",
     "source_opaque_id": "u1"
   },
-  "report_metadata_policy": "human labels are verifier-report metadata only and are never passed to constructor stages",
-  "schema_version": "cyz-0015-control-manifest-v1"
+  "report_metadata_policy": "human_label is a fixed verifier-suite role and is never passed to constructor stages",
+  "schema_version": "cyz-0015-control-manifest-v2"
 }
