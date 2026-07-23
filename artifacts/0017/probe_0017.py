@@ -16,10 +16,31 @@ FORBIDDEN={"a","rank","sigma_3","normal_dimension","m","visible_rank",
 "response_cell","requested_winner","target_rank"}
 TOL=1e-12
 
-def cbytes(o:Any)->bytes:return json.dumps(o,sort_keys=True,separators=(",",":"),ensure_ascii=False).encode()
+def cbytes(o:Any)->bytes:return json.dumps(o,sort_keys=True,separators=(",",":"),ensure_ascii=False,allow_nan=False).encode()
 def chash(o:Any)->str:return hashlib.sha256(cbytes(o)).hexdigest()
+
+def _strict_object_pairs(pairs):
+    out={}
+    for key,value in pairs:
+        if key in out:raise ValueError(f"duplicate JSON object key: {key}")
+        out[key]=value
+    return out
+
+def _reject_nonfinite(token):
+    raise ValueError(f"non-finite JSON number: {token}")
+
 def read_json(p:Path)->Any:
-    with p.open("r",encoding="utf-8",newline=None) as f:return json.load(f)
+    with p.open("r",encoding="utf-8",newline=None) as f:
+        return json.load(f,object_pairs_hook=_strict_object_pairs,parse_constant=_reject_nonfinite)
+
+def strict_json_equal(left:Any,right:Any)->bool:
+    if type(left) is not type(right):return False
+    if isinstance(left,dict):
+        return left.keys()==right.keys() and all(strict_json_equal(left[k],right[k]) for k in left)
+    if isinstance(left,list):
+        return len(left)==len(right) and all(strict_json_equal(a,b) for a,b in zip(left,right))
+    return left==right
+
 def write_json(p:Path,o:Any)->None:p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(cbytes(o)+b"\n")
 def dot(x,y):return sum(a*b for a,b in zip(x,y))
 def norm(x):return math.sqrt(max(0.,dot(x,x)))
@@ -139,14 +160,26 @@ def dependency():
     assert not seen and "condition_on_rank" not in inspect.getsource(build_report)
     return {"registered_sampler_inputs":sorted(s),"registered_event_inputs":sorted(e),"forbidden_source_inputs":sorted(FORBIDDEN),"forbidden_seen":seen,"rank_and_sigma_computed_only_as_output_marks":True,"scope":"deterministic dependency control; not a universal hidden-variable theorem"}
 
+# Stable descriptive public API retained for the committed tests and downstream audit code.
+OUTCOME_TAGS=OUTCOMES
+canonical_bytes=cbytes
+read_semantic_json=read_json
+hard_edge_controls=hard_edge
+first_entry_and_closest_control=entry_controls
+hysteresis_control=hysteresis
+outcome_mass_ledger=outcome_ledger
+finite_mode_flow_control=flow_control
+dependency_audit=dependency
+
 def build_report():
     return {"schema_version":SCHEMA,"brief_commit":BRIEF,"scope":"exact analytic and event-semantics controls; no physical Monte Carlo executed","verdict":"inconclusive","rank_blind_finite_K_law":{"principal_measure":"normalized branch-volume microcanonical Liouville measure on the regular constrained finite-K phase manifold","event_map":"hysteretic first-entry stopping-time map with cluster-valued or exceptional outputs","full_law":"pushforward of the unconditioned source measure onto the disjoint regular/exceptional episode space","closest_approach":"secondary episode mark only","normal_object":"stratified Borel normal field with fiber dimension 9-a(j)","all_mass_retained":True,"physical_masses_computed":False},"dependency_audit":dependency(),"finite_mode_flow_control":flow_control(),"opposite_winding_rank_controls":rank_controls(),"first_entry_and_closest_control":entry_controls(),"hysteresis_control":hysteresis(),"outcome_mass_ledger_control":outcome_ledger(),"hard_edge_and_palm_controls":hard_edge(),"physical_result_ledger":{"normalized_regular_mass":"not computed","normalized_exceptional_mass":"not computed","rank_mixture":"not computed","event_conditioned_sigma_3":"not computed","joint_T_j_b_ell":"mathematically defined, not numerically identified","microcanonical_vs_gaussian_sensitivity":"not computed","K_regulator_sensitivity":"not computed","earliest_open_gate":"normalized constrained microcanonical sampler plus certified hysteretic first-entry root coverage on the preregistered finite-K source cell"}}
 def main(argv:Sequence[str]|None=None)->int:
     ap=argparse.ArgumentParser(description="Run deterministic Brief 0017 analytic/event controls.");ap.add_argument("--output",type=Path,default=Path(__file__).with_name("analytic_controls.json"));ap.add_argument("--check",action="store_true",help="compare canonical parsed JSON, independent of line endings");a=ap.parse_args(argv);r=build_report()
     if a.check:
         if not a.output.exists():raise SystemExit("report missing")
-        if cbytes(read_json(a.output))!=cbytes(r):raise SystemExit("report semantic mismatch")
-        comp="canonical semantic JSON"
+        stored=read_json(a.output)
+        if not strict_json_equal(stored,r) or cbytes(stored)!=cbytes(r):raise SystemExit("report semantic mismatch")
+        comp="type-strict canonical semantic JSON"
     else:write_json(a.output,r);comp="generated"
     print(json.dumps({"status":"PASS","comparison":comp,"output":str(a.output),"canonical_payload_sha256":chash(r),"rank_controls":8,"outcome_tags":len(OUTCOMES)},sort_keys=True,separators=(",",":")));return 0
 if __name__=="__main__":raise SystemExit(main())
