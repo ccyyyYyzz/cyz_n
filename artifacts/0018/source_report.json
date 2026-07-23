@@ -42,7 +42,7 @@
   },
   "implementation": {
     "code_inventory_normalized_lf_sha256": {
-      "README.md": "97c8a26aa138b353996f3bf194f99acfb19d3496ca758950397165e715e6af72",
+      "README.md": "518f7163d210d5a162c6d401f720402e1bed6caa51ea295e01c487b933cde545",
       "microcanonical_source.py": "8b50788ebb483b5d8103c8b863b614ff6933b2b281da5691f1d149829dea7c4b",
       "source_registry.json": "217d677612cb1366be6817b67b760230fc536b3c9d6020f4566d11988766d43a",
       "test_microcanonical_source.py": "9362025b1c5321c6e8ed920c2f371ff322f70301cfd37123bf75469264a71dcc"
