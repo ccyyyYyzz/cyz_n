@@ -1,0 +1,94 @@
+{
+  "checks": {
+    "all_9d_d_enclosures_recomputed_from_exact_dyadics": true,
+    "bottom_up_node_hashes_replayed": true,
+    "closed_arb_hulls_recomputed_independently": true,
+    "finite_window_right_censored_no_entry_only": true,
+    "half_open_root_and_tree_cover_replayed": true,
+    "least_axis_strict_empty_image_ranges_replayed": true,
+    "no_unresolved_leaves": true,
+    "problem_and_solver_registry_code_pinned": true,
+    "source_and_physical_problem_binding_replayed": true,
+    "strict_float_free_certificate_json": true
+  },
+  "commitments": {
+    "all_time_no_entry_claimed": false,
+    "arb_backend": {
+      "arithmetic": "arb outward-rounded balls",
+      "flint": "3.6.0",
+      "precision_bits": 192,
+      "python_flint": "0.9.0"
+    },
+    "certificate_semantic_sha256": "e1bf43d355c2283eebe871af1d58e5aaa330234f106663214af371ea4fcd575c",
+    "domain_topology": "complete gap-free half-open rectangular cover",
+    "exact_seam_equivalence_claimed": false,
+    "excluded_leaves": 90,
+    "history_at_right_boundary": "armed",
+    "leaf_axis_counts": {
+      "0": 1,
+      "1": 45,
+      "2": 8,
+      "3": 4,
+      "4": 1,
+      "5": 0,
+      "6": 0,
+      "7": 16,
+      "8": 15
+    },
+    "maximum_depth": 9,
+    "minimum_strict_coordinate_margin": {
+      "exponent": 165,
+      "numerator": 90250153021789152611558268882535874025588268711
+    },
+    "node_count": 179,
+    "outcome": "right_censored_no_entry",
+    "physical_problem_semantic_sha256": "1560b7df34dcec7dfa46a744d6bbb26424b6a1bf2ce3d2b94b80d308363660ca",
+    "proof_evaluation": "closed Arb hull on every owned leaf box",
+    "root_node_semantic_sha256": "dcd47a95924325d32d0be835bff4b04867c36a2abdbd30ea898db673f1a9ce63",
+    "solver_registry_semantic_sha256": "e0563bd70cd1d9b330d507605b34f0a7f61f8b6abba1f19c556da8462b51d541",
+    "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+    "source_registry_canonical_sha256": "35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb",
+    "source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c",
+    "split_nodes": 89,
+    "unresolved_leaves": 0
+  },
+  "failed_gates": [],
+  "normalized_lf_inventory": [
+    {
+      "normalized_lf_sha256": "2944edc5668ad778c9d2158ad99bbd6133603873b93167cc8b90bf5f216f5742",
+      "path": "artifacts/0018/source_registry.json"
+    },
+    {
+      "normalized_lf_sha256": "3eadcc79d1e44990906da9ab0fcd3785f7153cde081aa48482b1b2a708649555",
+      "path": "artifacts/0019/source_state_bridge_fixture.json"
+    },
+    {
+      "normalized_lf_sha256": "86e4f959a2f1b2db063172baf342d1854bac143711177e2344656756233803d4",
+      "path": "artifacts/0019/source_binding_replayer.py"
+    },
+    {
+      "normalized_lf_sha256": "64415aa17ed012ff77001c3cf63b839e5f481635a8f8dbb76fb29bfbae42f899",
+      "path": "artifacts/0019/physical_no_entry_certificate.json"
+    },
+    {
+      "normalized_lf_sha256": "3b1a3360986c32c174fa8393d365ee412f95535c629fe9241e39466e9ea57c28",
+      "path": "artifacts/0019/physical_no_entry_replayer.py"
+    },
+    {
+      "normalized_lf_sha256": "0ef5779158f3f9ce917fc76792df2992d11dd43ce560be827fea8a0cb6be36ef",
+      "path": "artifacts/0019/test_physical_no_entry_replayer.py"
+    }
+  ],
+  "report_semantic_sha256": "d769090f0399afcf3a7a70a9e59172c5fd83167d0374acdb980a7bb6853ed53e",
+  "schema_version": "cyz-brief-0019-physical-no-entry-replayer-report-v1",
+  "scope": {
+    "claim": "independent replay of finite-window physical no-entry for the pinned valid source index 2",
+    "does_not_claim": [
+      "an exact binary64 seam quotient",
+      "all-time no-entry",
+      "unconditioned source population pushforward",
+      "3+1 selection"
+    ]
+  },
+  "status": "passed"
+}

@@ -47,11 +47,11 @@
       "path": "artifacts/0019/source_state_bridge_fixture.json"
     },
     {
-      "normalized_lf_sha256": "c95ace636f241cdd57abf68bb346fd5826bc0c48506e1b29724527161c66b185",
+      "normalized_lf_sha256": "51eb20894340f0072207e3167da40d2502cc366e3369a2678619d88122a22e73",
       "path": "artifacts/0019/README.md"
     }
   ],
-  "report_semantic_sha256": "76e63181ba3dbe86b6c60f39e0e1bffb285c720747db7da7885bad19c054802b",
+  "report_semantic_sha256": "73d446e9095ee0c3435062fb7f0376a11b7c835e725ee201fc080821c253f12d",
   "schema_version": "cyz-brief-0019-source-state-bridge-report-v1",
   "scope": {
     "claim": "index 2 is bound to one exact-dyadic rank-blind 9D physical problem and index 0 is routed source_invalid before backends",

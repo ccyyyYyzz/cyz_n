@@ -203,6 +203,130 @@ the independent replayer and tests, and this README.  The report scope
 explicitly leaves the 9D exhaustive solver, unconditioned population
 pushforward, and \(3+1\) selection unimplemented.
 
+## Physical index-2 finite-window no-entry v1
+
+The first source-bound physical outcome is now closed for the single
+preregistered valid source index 2.  Its precise status is an
+**exact-dyadic cut-open rectangular numerical strip lemma**, not a general
+first-entry solver and not a physical closed-string certificate.
+
+[`physical_arb_jets.py`](physical_arb_jets.py) accepts only the code-pinned
+physical problem
+
+```text
+1560b7df34dcec7dfa46a744d6bbb26424b6a1bf2ce3d2b94b80d308363660ca
+```
+
+and exact reduced dyadic boxes in
+\((\sigma_1,\sigma_2,t)\).  At 192-bit precision with python-flint 0.9.0 /
+FLINT 3.6.0 it evaluates, using outward-rounded Arb arithmetic, all nine
+components of \(d\), their first and second derivatives, and the derived
+\(F,F_a,F_{ab},g_r,Dg_r\).  The implementation separately tests the
+single occurrence of \(Q_1-Q_2\), the minus signs of all string-2
+contributions, opposite winding, the lattice shift, and enclosure of
+higher-precision point evaluations.
+
+[`physical_no_entry_solver.py`](physical_no_entry_solver.py) applies a
+strict coordinate-strip exclusion to the registered cut-open half-open
+domain
+
+\[
+[0,L_w)\times[0,L_w)\times[t_0,t_1).
+\]
+
+For every owned leaf it evaluates the closed hull with Arb.  If the
+enclosure \(D_A=[\inf D_A,\sup D_A]\) of one target coordinate and its
+rectangular period \(L_A\) satisfy
+
+\[
+n_{\min}=
+\left\lceil\frac{\inf D_A-r_{\rm out}}{L_A}\right\rceil
+>
+\left\lfloor\frac{\sup D_A+r_{\rm out}}{L_A}\right\rfloor
+=n_{\max},
+\]
+
+then no integer image in coordinate \(A\) can lie within \(r_{\rm out}\).
+Consequently no nine-dimensional rectangular-lattice image can be within
+the outer radius on that leaf.  Contact with the radius is deliberately
+not excluded.  Normalized widest-axis midpoint bisection, fixed axis tie
+orders, half-open endpoint ownership, and bottom-up node hashes make the
+rectangular cover deterministic and gap-free.
+
+The committed v1 tree closes with
+
+```text
+nodes             179
+split nodes        89
+excluded leaves    90
+maximum depth       9
+unresolved leaves   0
+outcome             right_censored_no_entry
+```
+
+Thus every point of the registered finite cut-open window is excluded for
+source index 2, and the armed history reaches the right boundary without an
+entry.  The typed result is exactly `right_censored_no_entry`.  It asserts
+neither an all-time no-entry result nor anything about the unconditioned
+population or dimension selection.
+
+```text
+all-time no-entry      false
+population law         false
+3+1 selection          false
+exact seam quotient    false
+```
+
+The principal commitments are
+
+```text
+physical problem   1560b7df34dcec7dfa46a744d6bbb26424b6a1bf2ce3d2b94b80d308363660ca
+solver registry    e0563bd70cd1d9b330d507605b34f0a7f61f8b6abba1f19c556da8462b51d541
+root node          dcd47a95924325d32d0be835bff4b04867c36a2abdbd30ea898db673f1a9ce63
+certificate        e1bf43d355c2283eebe871af1d58e5aaa330234f106663214af371ea4fcd575c
+solver report      a95964ae459d3a6e0f60bb321864fd8f7bc355a0e5a094961357051208860d8b
+replayer report    d769090f0399afcf3a7a70a9e59172c5fd83167d0374acdb980a7bb6853ed53e
+```
+
+[`physical_no_entry_replayer.py`](physical_no_entry_replayer.py) is the
+independent trust boundary for this certificate.  It imports the separately
+anchored source-binding replayer only to reconstruct and authenticate the
+registered source and physical problem.  Downstream of that gate it
+independently reimplements strict float-free JSON, reduced dyadics, the
+physical \(K=1\) F1 equations, exact Arb endpoint ingress, all nine
+coordinate enclosures, floor/ceiling strip witnesses, the half-open
+partition, and bottom-up hashes.  It does not import or dynamically load
+`physical_arb_jets.py`, `physical_no_entry_solver.py`,
+`source_state_bridge.py`, either foundation jet/solver module, or any
+`exec`/`eval`/`__import__` path.  Every one of the 90 stored leaf witnesses
+is recomputed from the authenticated problem rather than accepted from the
+certificate.
+
+Both solver-side and independent hostile tests reseal all ordinary hashes
+after tampering.  They reject deleted or rewired subtrees, overlap or
+changed leaf boxes, reordered nodes, forged Arb endpoints, floor/ceiling
+bounds, periods, radii, margins or witness axes, replacement by a later
+valid axis, changed physical coefficients or torus periods, boundary
+contact presented as strict exclusion, a fabricated unresolved leaf, a
+rewritten solver registry or problem commitment, and upgrades to
+`first_entry`, all-time no-entry, or exact seam equivalence.  Budget
+exhaustion remains a typed unresolved result and cannot be relabelled as a
+closed cover.
+
+There is one essential analytic boundary.  The registered binary64-derived
+values obey
+
+\[
+kL_w-2\pi \simeq -2.449\times10^{-16},
+\]
+
+with the sign and nonzero enclosure certified by Arb.  Therefore the two
+\(\sigma\)-endpoints used here cannot be identified as an exact analytic
+seam.  This v1 result is a rigorous numerical strip lemma on a cut-open
+rectangle; it must **not** be called a physical closed-string certificate.
+A symbolic-\(\pi\) closed-string lift, followed by an exact seam quotient,
+is the next gate.
+
 ## Exact grammar
 
 A dyadic is serialized as
@@ -307,8 +431,13 @@ python artifacts/0019/source_state_bridge.py --write
 python artifacts/0019/source_state_bridge.py --check
 python artifacts/0019/source_binding_replayer.py --write
 python artifacts/0019/source_binding_replayer.py --check
+python -m unittest discover -s artifacts/0019 -p "test_physical_arb_jets.py" -v
+python artifacts/0019/physical_no_entry_solver.py --write
+python artifacts/0019/physical_no_entry_solver.py --check
+python artifacts/0019/physical_no_entry_replayer.py --write
+python artifacts/0019/physical_no_entry_replayer.py --check
 python -m unittest discover -s artifacts/0019 -p "test_*.py" -v
-python -m py_compile artifacts/0019/certified_solver_core.py artifacts/0019/certificate_replayer.py artifacts/0019/arb_interval_jets.py artifacts/0019/arb_krawczyk_control.py artifacts/0019/source_state_bridge.py artifacts/0019/source_binding_replayer.py artifacts/0019/test_certified_solver_core.py artifacts/0019/test_certificate_replayer.py artifacts/0019/test_arb_interval_jets.py artifacts/0019/test_arb_krawczyk_control.py artifacts/0019/test_source_state_bridge.py artifacts/0019/test_source_binding_replayer.py
+python -m py_compile artifacts/0019/certified_solver_core.py artifacts/0019/certificate_replayer.py artifacts/0019/arb_interval_jets.py artifacts/0019/arb_krawczyk_control.py artifacts/0019/source_state_bridge.py artifacts/0019/source_binding_replayer.py artifacts/0019/physical_arb_jets.py artifacts/0019/physical_no_entry_solver.py artifacts/0019/physical_no_entry_replayer.py artifacts/0019/test_certified_solver_core.py artifacts/0019/test_certificate_replayer.py artifacts/0019/test_arb_interval_jets.py artifacts/0019/test_arb_krawczyk_control.py artifacts/0019/test_source_state_bridge.py artifacts/0019/test_source_binding_replayer.py artifacts/0019/test_physical_arb_jets.py artifacts/0019/test_physical_no_entry_solver.py artifacts/0019/test_physical_no_entry_replayer.py
 ```
 
 The Arb commands require python-flint 0.9.0 on `PYTHONPATH` or in the active
@@ -348,10 +477,12 @@ substitution for an integer.
 
 The next implementation layers remain:
 
-- the nine-dimensional production image cover and rigorous metric pruning;
-- exhaustive subdivision around the now source-bound physical equations and
-  the demonstrated three-equation Arb Krawczyk primitive;
-- singular-cluster and exact seam-equivalence certificates;
+- a symbolic-\(\pi\) physical closed-string lift and exact seam quotient,
+  replacing the present cut-open binary64-derived rectangular domain;
+- exhaustive first-entry subdivision around source-bound physical equations
+  for states not closed by the coordinate-strip lemma, using the demonstrated
+  three-equation Arb Krawczyk primitive;
+- singular-cluster and seam-aware certificates;
 - global spatial minimality, earlier-sublevel exclusion, root ordering and
   tie closure;
 - hysteretic outer exit, re-arm and episode closest-point certificates;
@@ -360,10 +491,11 @@ The next implementation layers remain:
 
 Accordingly, the permitted statement for this layer is only:
 
-> The exact foundation fixture replays a gap-free image-indexed cover with
-> proof-checked excluded and unique leaves while retaining its unresolved
-> leaf.
+> For preregistered valid source index 2, an exact-dyadic, outward-rounded
+> Arb cover proves no outer-radius contact anywhere in the registered
+> cut-open finite half-open window, with 90 excluded leaves and no unresolved
+> leaf; the typed outcome is `right_censored_no_entry`.
 
-It is not a claim that the physical event solver or the \(3+1\) selection law
-is complete.  In particular, this directory still does not implement the 9D
-exhaustive solver, the population pushforward, or \(3+1\) selection.
+This is not an all-time statement, a population law, an exact seam quotient,
+or a \(3+1\) selection result.  Because the registered phase has
+\(kL_w-2\pi\ne0\), it is also not yet a physical closed-string certificate.
