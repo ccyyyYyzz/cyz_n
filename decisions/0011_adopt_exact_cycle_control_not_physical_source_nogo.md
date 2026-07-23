@@ -145,4 +145,3 @@ absolute encounter clock, normalized impact marks, compactification
 dependence, history, reverse channels and a fixed exchangeable initial law.
 Only after that input is fixed should the same anonymous all-rank strict
 residence gate be replayed.
-

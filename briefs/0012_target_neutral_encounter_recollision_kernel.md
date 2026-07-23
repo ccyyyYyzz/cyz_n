@@ -2,7 +2,7 @@
 
 Status: active
 
-Baseline commit: to be pinned after the Decision 0011 commit.
+Baseline commit: `5bdb253b4490eeefbc7f286d6d30758cb995a99c`.
 
 ## Role
 
@@ -136,4 +136,3 @@ Write the full result to
 `responses/0012_target_neutral_encounter_recollision_kernel.md`, commit it,
 and push directly to `main`.  Do not open a pull request, offer a download or
 leave the result only in chat.
-
