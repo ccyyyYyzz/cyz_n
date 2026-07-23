@@ -304,6 +304,23 @@ source-grounded should the fixed scheduled process be generalized, connected
 to anonymous response reconstruction and tested for a stable visible \(3+1\)
 basin and a loss-of-plateau prediction.
 
+Response 0017 closes the rank-blind mathematical interface for the continuous
+near-encounter law, but not its physical pushforward.  First entry,
+hysteretic outer exit, episode merger/re-arm, complete tie clusters and
+exceptional-mass retention are now separated from downstream rank and normal
+marks.  The exact opposite-winding Gram identity, the Gaussian
+\(\sigma_{\min}\) exponent seven, Gram-eigenvalue exponent \(7/2\), the pure
+volume-Palm exponent eight and the affine Kac--Rice scaling are adopted only
+as analytic controls.  A curvature-lifted counterexample blocks their
+unconditional transfer to the physical first-entry ensemble.
+
+The repaired 0017 controls and independent tail implementation now replay
+together through 27 discovered tests.  Platform-dependent eigensolver last
+bits were removed, giving one canonical primary report on Windows and WSL
+Linux.  The frozen principal source cell, executable total event schema,
+certified exhaustive root solver, event masses, rank mixture and
+event-conditioned singular-value tail remain the active gates.
+
 The wavefront-kernel construction remains an independent physical validation
 route, not the primary definition. Numerical gaps are meaningful only relative
 to fixed calibrated coefficient and observation norms.
