@@ -87,6 +87,76 @@ with a positive Arb margin on all three axes.  The deliberately wider
 \([-1/16,1/16]^3\) box fails inclusion, a zero preconditioner fails, and an
 outward root can be isolated only as a root—not mislabelled as inward entry.
 
+## Pinned source-to-physical-problem bridge
+
+[`source_state_bridge.py`](source_state_bridge.py) closes the next wiring
+layer without claiming that the event search is exhaustive.  On every build
+or replay it reads the canonical Brief 0018 `source_registry.json`, validates
+it with the canonical source implementation, and recomputes the registry
+commitment
+
+```text
+35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb
+```
+
+and source-draw identity
+
+```text
+4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4
+```
+
+It regenerates source indices 0, 1 and 2 rather than accepting a
+certificate-supplied state or validity label.  The resulting status ledger
+proves that index 0 is the least `source_invalid` state and index 2 is the
+least `valid` state, with the Brief-pinned state hashes
+
+```text
+index 0  bafc85014205bbdbb8156e059606a73a0c899911745f189a4ac4e0c90742670b
+index 2  1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c
+```
+
+The complete states are retained losslessly with canonical `float.hex()`
+binary64 leaves.  A shape-identical second projection replaces every
+binary64 leaf by its unique reduced `numerator/2^exponent` dyadic.  Replay
+decodes every hex leaf, checks it against regenerated source output, and
+checks the corresponding dyadic against `float.as_integer_ratio()`.  The
+fixture and report themselves therefore contain no ordinary JSON floating
+tokens.
+
+Validity is re-evaluated from the pinned registry before routing.  Index 0
+returns a `source_invalid` route before physical-problem construction;
+injected event-solver and Arb-evaluator probes remain at zero calls.  Index 2
+is projected into a rank-blind exact problem containing:
+
+- a nine-dimensional target and ordered eight-dimensional transverse space;
+- winding axis 8 and orientations `(+1,-1)`;
+- `Q1`, `Q2`, both transverse velocities, and every \(K=1\)
+  \(x,y,p,q,k\) initial datum;
+- physical-length world-sheet domains and the registered Fourier ODE;
+- \(G=I_9\), diagonal \(\Lambda\), all nine torus periods and image
+  convention;
+- exact \(r_{\rm in},r_{\rm out}\), the half-open time window, armed initial
+  history and right-boundary continuation convention; and
+- a typed ingress contract for a later outward-rounded Arb 9D jet.
+
+`Q1` and `Q2` occur once as the two centre data, while each string refers to
+its centre by ID.  Replay also checks the one-rounding binary64
+\(T_F=1/(2\pi\ell_s^2)\) convention and
+\(L_w=|w|L_8\).  Rank, normal, response-winner and reaction fields are
+rejected recursively from the physical problem.
+
+The physical-problem semantic SHA-256 is source-code pinned as
+
+```text
+1560b7df34dcec7dfa46a744d6bbb26424b6a1bf2ce3d2b94b80d308363660ca
+```
+
+Coefficient, state-hash, registry, orientation, wave-number, validity,
+source-index and rank-field hostile variants are required to fail.  The
+committed files are `source_state_bridge.py`,
+`test_source_state_bridge.py`, `source_state_bridge_fixture.json` and
+`source_state_bridge_report.json`.
+
 ## Exact grammar
 
 A dyadic is serialized as
@@ -187,8 +257,10 @@ python artifacts/0019/arb_interval_jets.py --write
 python artifacts/0019/arb_interval_jets.py --check
 python artifacts/0019/arb_krawczyk_control.py --write
 python artifacts/0019/arb_krawczyk_control.py --check
+python artifacts/0019/source_state_bridge.py --write
+python artifacts/0019/source_state_bridge.py --check
 python -m unittest discover -s artifacts/0019 -p "test_*.py" -v
-python -m py_compile artifacts/0019/certified_solver_core.py artifacts/0019/certificate_replayer.py artifacts/0019/arb_interval_jets.py artifacts/0019/arb_krawczyk_control.py artifacts/0019/test_certified_solver_core.py artifacts/0019/test_certificate_replayer.py artifacts/0019/test_arb_interval_jets.py artifacts/0019/test_arb_krawczyk_control.py
+python -m py_compile artifacts/0019/certified_solver_core.py artifacts/0019/certificate_replayer.py artifacts/0019/arb_interval_jets.py artifacts/0019/arb_krawczyk_control.py artifacts/0019/source_state_bridge.py artifacts/0019/test_certified_solver_core.py artifacts/0019/test_certificate_replayer.py artifacts/0019/test_arb_interval_jets.py artifacts/0019/test_arb_krawczyk_control.py artifacts/0019/test_source_state_bridge.py
 ```
 
 The Arb commands require python-flint 0.9.0 on `PYTHONPATH` or in the active
@@ -200,6 +272,17 @@ report semantic hashes with the pinned wheels used by this project.
 `--check` performs strict JSON loading, type-strict comparison against a fresh
 build, semantic replay, hostile-control replay, and normalized-LF inventory
 checking.
+
+The same modes on `source_state_bridge.py` regenerate or replay
+`source_state_bridge_fixture.json` and `source_state_bridge_report.json`.
+This bridge imports the canonical Brief 0018 source only to regenerate the
+pinned draw and to validate the regenerated sample.  It is not a
+source-separated independent source audit, and it does not import or execute
+an event solver.
+The report records `status: passed`, an empty `failed_gates` list, the
+complete fixture semantic hash and its own semantic hash (computed with only
+that self-hash field omitted); `--check` recomputes both hashes, all
+commitments and the normalized-LF inventory.
 
 The hostile controls delete a leaf, alter a split, fabricate a stored
 Krawczyk image, replace the affine root system and root location, omit an
@@ -214,8 +297,10 @@ substitution for an integer.
 The next implementation layers remain:
 
 - the nine-dimensional production image cover and rigorous metric pruning;
-- source-state binding and exhaustive subdivision around the demonstrated
-  physical three-equation Arb Krawczyk primitive;
+- a source-separated binding replayer that independently checks the exact
+  projection without importing `microcanonical_source`;
+- exhaustive subdivision around the now source-bound physical equations and
+  the demonstrated three-equation Arb Krawczyk primitive;
 - singular-cluster and exact seam-equivalence certificates;
 - global spatial minimality, earlier-sublevel exclusion, root ordering and
   tie closure;

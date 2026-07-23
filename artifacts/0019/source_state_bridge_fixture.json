@@ -1,0 +1,3580 @@
+{
+  "physical_problem": {
+    "arb_9d_jet_ingress": {
+      "jet_variables": [
+        "sigma1",
+        "sigma2",
+        "t"
+      ],
+      "proof_arithmetic_boundary": "convert dyadics exactly to Arb balls; evaluate trigonometric functions with outward rounding",
+      "required_outputs": [
+        "d",
+        "d_a",
+        "d_ab",
+        "F_a",
+        "F_ab",
+        "g_r",
+        "Dg_r"
+      ],
+      "scalar_encoding": "reduced exact dyadic numerator/2^exponent",
+      "target_component_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "dimensions": {
+      "target": 9,
+      "target_axis_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "transverse": 8,
+      "transverse_axis_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "winding_axis": 8
+    },
+    "equation_family_version": "f1-opposite-winding-worldsheet-k1-v1",
+    "f1_convention": {
+      "coordinate_units": "ell_s-natural-length-hbar-c-1",
+      "portable_pi_binary64": {
+        "exponent": 48,
+        "numerator": 884279719003555
+      },
+      "string_length_ell_s": {
+        "exponent": 0,
+        "numerator": 1
+      },
+      "string_tension": {
+        "exponent": 55,
+        "numerator": 5734161139222659
+      },
+      "tension_relation": "T_F=1/(2*pi*ell_s^2), rounded once to binary64",
+      "winding_length": {
+        "exponent": 44,
+        "numerator": 884279719003555
+      },
+      "winding_number_abs": 1,
+      "winding_relation": "L_w=abs(w)*L_A[winding_axis]"
+    },
+    "hysteresis": {
+      "distance_convention": "F_n=(1/2)*s_n^T*G*s_n",
+      "r_in": {
+        "exponent": 2,
+        "numerator": 1
+      },
+      "r_out": {
+        "exponent": 1,
+        "numerator": 1
+      }
+    },
+    "kinematics": {
+      "centre_term_multiplicity": 1,
+      "centres_Q1_Q2": {
+        "Q1": [
+          {
+            "exponent": 50,
+            "numerator": 2360612889257509
+          },
+          {
+            "exponent": 50,
+            "numerator": 2364225835617613
+          },
+          {
+            "exponent": 50,
+            "numerator": 6413067532898909
+          },
+          {
+            "exponent": 50,
+            "numerator": 6119595460309949
+          },
+          {
+            "exponent": 50,
+            "numerator": 7156468037079985
+          },
+          {
+            "exponent": 50,
+            "numerator": 8002089417482893
+          },
+          {
+            "exponent": 50,
+            "numerator": 8074662260949095
+          },
+          {
+            "exponent": 50,
+            "numerator": 1755616706581473
+          }
+        ],
+        "Q2": [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ]
+      },
+      "initial_time": {
+        "exponent": 0,
+        "numerator": 0
+      },
+      "mode_ode": [
+        "dot(x)=p",
+        "dot(y)=q",
+        "dot(p)=-k^2*x",
+        "dot(q)=-k^2*y"
+      ],
+      "mode_shape": "Y_i=x_i(t)*cos(k*sigma_i)+y_i(t)*sin(k*sigma_i)",
+      "separation": "d_perp=(Q1-Q2)+(V1-V2)*t+(Y1-Y2); d_w=o1*sigma1-o2*sigma2",
+      "strings": [
+        {
+          "centre_reference": "Q1",
+          "modes": [
+            {
+              "initial_p": [
+                {
+                  "exponent": 56,
+                  "numerator": -1688164932962969
+                },
+                {
+                  "exponent": 58,
+                  "numerator": -7238047802325291
+                },
+                {
+                  "exponent": 57,
+                  "numerator": -3670567262653831
+                },
+                {
+                  "exponent": 55,
+                  "numerator": -4090460865409483
+                },
+                {
+                  "exponent": 56,
+                  "numerator": 6367462657916457
+                },
+                {
+                  "exponent": 56,
+                  "numerator": -1363382174950789
+                },
+                {
+                  "exponent": 56,
+                  "numerator": -2630543933118331
+                },
+                {
+                  "exponent": 56,
+                  "numerator": -1165535186743551
+                }
+              ],
+              "initial_q": [
+                {
+                  "exponent": 52,
+                  "numerator": 731946412337127
+                },
+                {
+                  "exponent": 55,
+                  "numerator": 3233560050053853
+                },
+                {
+                  "exponent": 53,
+                  "numerator": -434378818654613
+                },
+                {
+                  "exponent": 53,
+                  "numerator": 1272048990331811
+                },
+                {
+                  "exponent": 57,
+                  "numerator": -318059693337399
+                },
+                {
+                  "exponent": 55,
+                  "numerator": 7631029197476251
+                },
+                {
+                  "exponent": 54,
+                  "numerator": -1713383208282733
+                },
+                {
+                  "exponent": 57,
+                  "numerator": -1721800129993141
+                }
+              ],
+              "initial_x": [
+                {
+                  "exponent": 52,
+                  "numerator": -2576654606013627
+                },
+                {
+                  "exponent": 54,
+                  "numerator": 6204847557706923
+                },
+                {
+                  "exponent": 52,
+                  "numerator": 3694794752149143
+                },
+                {
+                  "exponent": 53,
+                  "numerator": 683064575939517
+                },
+                {
+                  "exponent": 51,
+                  "numerator": 1721267440408963
+                },
+                {
+                  "exponent": 52,
+                  "numerator": 2491471799340991
+                },
+                {
+                  "exponent": 54,
+                  "numerator": -2738791991772047
+                },
+                {
+                  "exponent": 52,
+                  "numerator": -4177003482294767
+                }
+              ],
+              "initial_y": [
+                {
+                  "exponent": 53,
+                  "numerator": -8911881217356033
+                },
+                {
+                  "exponent": 55,
+                  "numerator": 5948248748530019
+                },
+                {
+                  "exponent": 54,
+                  "numerator": -5993060754566677
+                },
+                {
+                  "exponent": 52,
+                  "numerator": 1797960855239409
+                },
+                {
+                  "exponent": 53,
+                  "numerator": 2936019448240469
+                },
+                {
+                  "exponent": 48,
+                  "numerator": -446337856871041
+                },
+                {
+                  "exponent": 56,
+                  "numerator": -7693293493584253
+                },
+                {
+                  "exponent": 54,
+                  "numerator": -5806579221859369
+                }
+              ],
+              "mode_number": 1,
+              "wave_number": {
+                "exponent": 3,
+                "numerator": 1
+              }
+            }
+          ],
+          "orientation": 1,
+          "string_id": 1,
+          "transverse_velocity": [
+            {
+              "exponent": 54,
+              "numerator": 2906347212085799
+            },
+            {
+              "exponent": 53,
+              "numerator": 2373234979615625
+            },
+            {
+              "exponent": 57,
+              "numerator": -8616117176447079
+            },
+            {
+              "exponent": 56,
+              "numerator": -5657277629160439
+            },
+            {
+              "exponent": 61,
+              "numerator": -7422068656230279
+            },
+            {
+              "exponent": 56,
+              "numerator": 788957700158159
+            },
+            {
+              "exponent": 58,
+              "numerator": 8956520581507307
+            },
+            {
+              "exponent": 55,
+              "numerator": 2458543516551069
+            }
+          ]
+        },
+        {
+          "centre_reference": "Q2",
+          "modes": [
+            {
+              "initial_p": [
+                {
+                  "exponent": 56,
+                  "numerator": 3105291403251775
+                },
+                {
+                  "exponent": 58,
+                  "numerator": -4699364644457543
+                },
+                {
+                  "exponent": 56,
+                  "numerator": -3428681388910177
+                },
+                {
+                  "exponent": 56,
+                  "numerator": -712224669009871
+                },
+                {
+                  "exponent": 56,
+                  "numerator": -5451990696613405
+                },
+                {
+                  "exponent": 54,
+                  "numerator": -1771596540380027
+                },
+                {
+                  "exponent": 57,
+                  "numerator": -3985433761628269
+                },
+                {
+                  "exponent": 60,
+                  "numerator": 912689037872783
+                }
+              ],
+              "initial_q": [
+                {
+                  "exponent": 54,
+                  "numerator": -1711415843396835
+                },
+                {
+                  "exponent": 54,
+                  "numerator": -2775525428481293
+                },
+                {
+                  "exponent": 57,
+                  "numerator": 5445444162738409
+                },
+                {
+                  "exponent": 56,
+                  "numerator": -5942902339808185
+                },
+                {
+                  "exponent": 59,
+                  "numerator": -7210062858264229
+                },
+                {
+                  "exponent": 54,
+                  "numerator": 1791484969407581
+                },
+                {
+                  "exponent": 56,
+                  "numerator": -5025447491188819
+                },
+                {
+                  "exponent": 58,
+                  "numerator": 3252621255288489
+                }
+              ],
+              "initial_x": [
+                {
+                  "exponent": 52,
+                  "numerator": -2432929761477679
+                },
+                {
+                  "exponent": 52,
+                  "numerator": -1104714419896091
+                },
+                {
+                  "exponent": 52,
+                  "numerator": -4061391198954373
+                },
+                {
+                  "exponent": 53,
+                  "numerator": 5306173369031509
+                },
+                {
+                  "exponent": 56,
+                  "numerator": -6795167416162821
+                },
+                {
+                  "exponent": 52,
+                  "numerator": 4166553164386655
+                },
+                {
+                  "exponent": 53,
+                  "numerator": 7980308185242189
+                },
+                {
+                  "exponent": 53,
+                  "numerator": 4080818981887467
+                }
+              ],
+              "initial_y": [
+                {
+                  "exponent": 53,
+                  "numerator": 6113992352040709
+                },
+                {
+                  "exponent": 53,
+                  "numerator": -3389902848232041
+                },
+                {
+                  "exponent": 53,
+                  "numerator": -5963599879600613
+                },
+                {
+                  "exponent": 53,
+                  "numerator": 1354218551391055
+                },
+                {
+                  "exponent": 53,
+                  "numerator": 7235985896123313
+                },
+                {
+                  "exponent": 52,
+                  "numerator": -979464250895757
+                },
+                {
+                  "exponent": 52,
+                  "numerator": -2761940966869027
+                },
+                {
+                  "exponent": 58,
+                  "numerator": -3845894058811179
+                }
+              ],
+              "mode_number": 1,
+              "wave_number": {
+                "exponent": 3,
+                "numerator": 1
+              }
+            }
+          ],
+          "orientation": -1,
+          "string_id": 2,
+          "transverse_velocity": [
+            {
+              "exponent": 54,
+              "numerator": 6100852042655193
+            },
+            {
+              "exponent": 53,
+              "numerator": 2130364647754871
+            },
+            {
+              "exponent": 57,
+              "numerator": 8616117176447079
+            },
+            {
+              "exponent": 56,
+              "numerator": 5657277629160439
+            },
+            {
+              "exponent": 61,
+              "numerator": 7422068656230279
+            },
+            {
+              "exponent": 56,
+              "numerator": -788957700158159
+            },
+            {
+              "exponent": 58,
+              "numerator": -8956520581507307
+            },
+            {
+              "exponent": 55,
+              "numerator": -2458543516551069
+            }
+          ]
+        }
+      ],
+      "transverse_embedding": "X_i^perp=Q_i+V_i*t+Y_i(t,sigma_i)"
+    },
+    "observation": {
+      "continuation_convention": "right-censor at excluded t1; carry active/armed history to a subsequent adjacent window without boundary re-arming",
+      "initial_history": "armed",
+      "t0": {
+        "exponent": 0,
+        "numerator": 0
+      },
+      "t1": {
+        "exponent": 44,
+        "numerator": 884279719003555
+      },
+      "window_closure": "lower_closed_upper_open"
+    },
+    "schema_version": "cyz-brief-0019-exact-dyadic-f1-problem-v1",
+    "scope": {
+      "claim": "exact source-to-physical-problem binding only",
+      "does_not_claim": [
+        "exhaustive worldsheet roots",
+        "hysteretic population law",
+        "3+1 selection"
+      ]
+    },
+    "source_commitment": {
+      "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+      "source_registry_canonical_sha256": "35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb",
+      "source_sample_index": 2,
+      "source_sample_schema": "cyz-brief-0018-source-sample-v2",
+      "source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c"
+    },
+    "target_torus": {
+      "G": [
+        [
+          {
+            "exponent": 0,
+            "numerator": 1
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 1
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 1
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 1
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 1
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 1
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 1
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 1
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 1
+          }
+        ]
+      ],
+      "Lambda": [
+        [
+          {
+            "exponent": 0,
+            "numerator": 8
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 8
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 8
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 8
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 8
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 8
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 8
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 8
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 44,
+            "numerator": 884279719003555
+          }
+        ]
+      ],
+      "image_separation": "s_n=d-Lambda*n for n in Z^9",
+      "lattice_convention": "Lambda=diag(L_0,...,L_8)",
+      "metric_convention": "G=identity_9",
+      "periods_L_A": [
+        {
+          "exponent": 0,
+          "numerator": 8
+        },
+        {
+          "exponent": 0,
+          "numerator": 8
+        },
+        {
+          "exponent": 0,
+          "numerator": 8
+        },
+        {
+          "exponent": 0,
+          "numerator": 8
+        },
+        {
+          "exponent": 0,
+          "numerator": 8
+        },
+        {
+          "exponent": 0,
+          "numerator": 8
+        },
+        {
+          "exponent": 0,
+          "numerator": 8
+        },
+        {
+          "exponent": 0,
+          "numerator": 8
+        },
+        {
+          "exponent": 44,
+          "numerator": 884279719003555
+        }
+      ]
+    },
+    "worldsheet": {
+      "sigma_coordinate_units": "physical_length",
+      "sigma_domains": [
+        {
+          "closure": "lower_closed_upper_open",
+          "lower": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "upper": {
+            "exponent": 44,
+            "numerator": 884279719003555
+          }
+        },
+        {
+          "closure": "lower_closed_upper_open",
+          "lower": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "upper": {
+            "exponent": 44,
+            "numerator": 884279719003555
+          }
+        }
+      ],
+      "winding_embedding": "X_i^w=o_i*sigma_i on target axis 8",
+      "winding_orientations": [
+        1,
+        -1
+      ]
+    }
+  },
+  "physical_problem_semantic_sha256": "1560b7df34dcec7dfa46a744d6bbb26424b6a1bf2ce3d2b94b80d308363660ca",
+  "pre_registered_selection": {
+    "first_source_invalid_index": 0,
+    "first_valid_index": 2,
+    "rule": "least source index for each required validity status",
+    "scanned_indices": [
+      {
+        "sample_index": 0,
+        "source_state_sha256": "bafc85014205bbdbb8156e059606a73a0c899911745f189a4ac4e0c90742670b",
+        "validity_status": "source_invalid"
+      },
+      {
+        "sample_index": 1,
+        "source_state_sha256": "5ffab438ce4cefe8ce278aecee6cab6e5939def96469f6327b7509113c0d6c3c",
+        "validity_status": "source_invalid"
+      },
+      {
+        "sample_index": 2,
+        "source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c",
+        "validity_status": "valid"
+      }
+    ]
+  },
+  "registry_commitment": {
+    "path": "artifacts/0018/source_registry.json",
+    "registry_canonical_sha256": "35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb",
+    "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4"
+  },
+  "routes": {
+    "source_invalid_control": {
+      "arb_evaluator_executed": false,
+      "event_solver_executed": false,
+      "physical_problem_created": false,
+      "route": "source_invalid",
+      "sample_index": 0,
+      "source_state_sha256": "bafc85014205bbdbb8156e059606a73a0c899911745f189a4ac4e0c90742670b",
+      "validity_status_recomputed_from_registry": "source_invalid"
+    },
+    "valid_physical_control": {
+      "arb_evaluator_executed": false,
+      "event_solver_executed": false,
+      "physical_problem_created": true,
+      "route": "physical_problem_ready",
+      "sample_index": 2,
+      "source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c",
+      "validity_status_recomputed_from_registry": "valid"
+    }
+  },
+  "schema_version": "cyz-brief-0019-source-state-bridge-fixture-v1",
+  "selected_source_states": {
+    "source_invalid_control": {
+      "complete_dyadic_projection_semantic_sha256": "7733c4dead8e161e3f55a169f1b1a6d0740d8db67b050ab3fc771fc524324624",
+      "complete_exact_dyadic_projection": {
+        "Q1": [
+          {
+            "exponent": 50,
+            "numerator": 3074019283210289
+          },
+          {
+            "exponent": 50,
+            "numerator": 7032447196671973
+          },
+          {
+            "exponent": 50,
+            "numerator": 7363210399720297
+          },
+          {
+            "exponent": 50,
+            "numerator": 2692335203749961
+          },
+          {
+            "exponent": 50,
+            "numerator": 2524458702113681
+          },
+          {
+            "exponent": 50,
+            "numerator": 1534377150260495
+          },
+          {
+            "exponent": 50,
+            "numerator": 5089270690315223
+          },
+          {
+            "exponent": 50,
+            "numerator": 8023818679532669
+          }
+        ],
+        "Q2": [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        "Q_relative": [
+          {
+            "exponent": 50,
+            "numerator": 3074019283210289
+          },
+          {
+            "exponent": 50,
+            "numerator": 7032447196671973
+          },
+          {
+            "exponent": 50,
+            "numerator": 7363210399720297
+          },
+          {
+            "exponent": 50,
+            "numerator": 2692335203749961
+          },
+          {
+            "exponent": 50,
+            "numerator": 2524458702113681
+          },
+          {
+            "exponent": 50,
+            "numerator": 1534377150260495
+          },
+          {
+            "exponent": 50,
+            "numerator": 5089270690315223
+          },
+          {
+            "exponent": 50,
+            "numerator": 8023818679532669
+          }
+        ],
+        "constraint_diagnostics": {
+          "energy": {
+            "exponent": 0,
+            "numerator": 2
+          },
+          "energy_residual": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "target_momentum_residual": [
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            }
+          ],
+          "total_transverse_momentum": [
+            {
+              "exponent": 0,
+              "numerator": 4
+            },
+            {
+              "exponent": 0,
+              "numerator": 4
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            }
+          ],
+          "worldsheet_momenta": [
+            {
+              "exponent": 60,
+              "numerator": 165
+            },
+            {
+              "exponent": 55,
+              "numerator": 1
+            }
+          ],
+          "worldsheet_momentum_residual": [
+            {
+              "exponent": 60,
+              "numerator": 165
+            },
+            {
+              "exponent": 55,
+              "numerator": 1
+            }
+          ]
+        },
+        "energy_shares_s0_s1_s2": [
+          {
+            "exponent": 55,
+            "numerator": 3546718759910149
+          },
+          {
+            "exponent": 53,
+            "numerator": 4047032528705313
+          },
+          {
+            "exponent": 54,
+            "numerator": 8146974072116285
+          }
+        ],
+        "relative_centre_gauge": "Q2=0,Q1=Q_relative",
+        "sample_index": 0,
+        "schema_version": "cyz-brief-0018-source-sample-v2",
+        "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+        "source_state_sha256": "bafc85014205bbdbb8156e059606a73a0c899911745f189a4ac4e0c90742670b",
+        "strings": [
+          {
+            "modes": [
+              {
+                "mode_number": 1,
+                "p": [
+                  {
+                    "exponent": 57,
+                    "numerator": -723412495660317
+                  },
+                  {
+                    "exponent": 55,
+                    "numerator": -4860702059278927
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": 5346944324995243
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -7666919163548823
+                  },
+                  {
+                    "exponent": 57,
+                    "numerator": 6761103382023003
+                  },
+                  {
+                    "exponent": 57,
+                    "numerator": 6795210958288863
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": -4112447690997081
+                  },
+                  {
+                    "exponent": 55,
+                    "numerator": -59978391357635
+                  }
+                ],
+                "q": [
+                  {
+                    "exponent": 55,
+                    "numerator": 2319205379711573
+                  },
+                  {
+                    "exponent": 57,
+                    "numerator": -8587021257562413
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": 663566042482893
+                  },
+                  {
+                    "exponent": 48,
+                    "numerator": -15974327747137
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": 89352198034029
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": 722062320875761
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": -213414597152897
+                  },
+                  {
+                    "exponent": 57,
+                    "numerator": 2396265729533799
+                  }
+                ],
+                "wave_number": {
+                  "exponent": 3,
+                  "numerator": 1
+                },
+                "x": [
+                  {
+                    "exponent": 54,
+                    "numerator": 7773466523939015
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": -1982414795118443
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": 1743552748773413
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": 3986972250422099
+                  },
+                  {
+                    "exponent": 48,
+                    "numerator": 361069574756165
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": 2368973860735737
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": -3931356376115877
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": 7634544960953073
+                  }
+                ],
+                "y": [
+                  {
+                    "exponent": 50,
+                    "numerator": -1123897852312189
+                  },
+                  {
+                    "exponent": 50,
+                    "numerator": -11199183196971
+                  },
+                  {
+                    "exponent": 43,
+                    "numerator": -9335261928299
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": -3076169719515863
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": 8132154021309381
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": 8600454652001929
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": -2224127315643983
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": -6531768662322705
+                  }
+                ]
+              }
+            ],
+            "orientation": 1,
+            "transverse_velocity": [
+              {
+                "exponent": 54,
+                "numerator": 3747528722807999
+              },
+              {
+                "exponent": 53,
+                "numerator": 1735719133312687
+              },
+              {
+                "exponent": 55,
+                "numerator": 925098918554913
+              },
+              {
+                "exponent": 58,
+                "numerator": 4512966641944605
+              },
+              {
+                "exponent": 59,
+                "numerator": -4888099996842197
+              },
+              {
+                "exponent": 56,
+                "numerator": 4280180079046083
+              },
+              {
+                "exponent": 57,
+                "numerator": -5132152235891315
+              },
+              {
+                "exponent": 57,
+                "numerator": 5559070007434001
+              }
+            ]
+          },
+          {
+            "modes": [
+              {
+                "mode_number": 1,
+                "p": [
+                  {
+                    "exponent": 56,
+                    "numerator": -5570937005039775
+                  },
+                  {
+                    "exponent": 50,
+                    "numerator": 74681656810867
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": -2780067072451325
+                  },
+                  {
+                    "exponent": 57,
+                    "numerator": 8385366034398739
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -7096870595643001
+                  },
+                  {
+                    "exponent": 55,
+                    "numerator": 3490343125992649
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -5324352968245311
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": 2588317578506035
+                  }
+                ],
+                "q": [
+                  {
+                    "exponent": 47,
+                    "numerator": -22305756717045
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -2988594045586361
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -4636369707884143
+                  },
+                  {
+                    "exponent": 57,
+                    "numerator": 4972838814443957
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -3600466920320103
+                  },
+                  {
+                    "exponent": 59,
+                    "numerator": 1351531351327099
+                  },
+                  {
+                    "exponent": 57,
+                    "numerator": -4104486912588215
+                  },
+                  {
+                    "exponent": 58,
+                    "numerator": 2250821649699337
+                  }
+                ],
+                "wave_number": {
+                  "exponent": 3,
+                  "numerator": 1
+                },
+                "x": [
+                  {
+                    "exponent": 52,
+                    "numerator": -3020972368231355
+                  },
+                  {
+                    "exponent": 55,
+                    "numerator": 1661437524133141
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": -5799641466867597
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": 3371872080910781
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": 1866258597548119
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": 1941446935016567
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": 7407038622875301
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": -1899482127191985
+                  }
+                ],
+                "y": [
+                  {
+                    "exponent": 53,
+                    "numerator": -6696217458636747
+                  },
+                  {
+                    "exponent": 51,
+                    "numerator": 2575860499283321
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": 5212884198115087
+                  },
+                  {
+                    "exponent": 51,
+                    "numerator": -2236930172796111
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": 1864001258102869
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": 6414849654443791
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": -3656522847898617
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": -1050311499283387
+                  }
+                ]
+              }
+            ],
+            "orientation": -1,
+            "transverse_velocity": [
+              {
+                "exponent": 54,
+                "numerator": 5259670531932993
+              },
+              {
+                "exponent": 53,
+                "numerator": 2767880494057809
+              },
+              {
+                "exponent": 55,
+                "numerator": -925098918554913
+              },
+              {
+                "exponent": 58,
+                "numerator": -4512966641944605
+              },
+              {
+                "exponent": 59,
+                "numerator": 4888099996842197
+              },
+              {
+                "exponent": 56,
+                "numerator": -4280180079046083
+              },
+              {
+                "exponent": 57,
+                "numerator": 5132152235891315
+              },
+              {
+                "exponent": 57,
+                "numerator": -5559070007434001
+              }
+            ]
+          }
+        ],
+        "validity": {
+          "k_max_times_ell_s": {
+            "exponent": 3,
+            "numerator": 1
+          },
+          "per_string_graph_upper_bounds": [
+            {
+              "exponent": 51,
+              "numerator": 2167704148783753
+            },
+            {
+              "exponent": 51,
+              "numerator": 2487111958861037
+            }
+          ],
+          "reasons": [
+            "graph_upper_bound_exceeded"
+          ],
+          "registered_time_uniform_graph_upper_bound": {
+            "exponent": 51,
+            "numerator": 2487111958861037
+          },
+          "sample_retained_without_redraw": true,
+          "status": "source_invalid"
+        }
+      },
+      "complete_serialized_source_state_binary64": {
+        "Q1": [
+          {
+            "binary64_hex": "0x1.5d79bc6d12062p+1"
+          },
+          {
+            "binary64_hex": "0x1.8fbf9350f2fe5p+2"
+          },
+          {
+            "binary64_hex": "0x1.a28cd04482369p+2"
+          },
+          {
+            "binary64_hex": "0x1.3215446df2092p+1"
+          },
+          {
+            "binary64_hex": "0x1.1eff6b0611722p+1"
+          },
+          {
+            "binary64_hex": "0x1.5ce0813f8943cp+0"
+          },
+          {
+            "binary64_hex": "0x1.214aa2ba97bd7p+2"
+          },
+          {
+            "binary64_hex": "0x1.c819ede22bc7dp+2"
+          }
+        ],
+        "Q2": [
+          {
+            "binary64_hex": "0x0.0p+0"
+          },
+          {
+            "binary64_hex": "0x0.0p+0"
+          },
+          {
+            "binary64_hex": "0x0.0p+0"
+          },
+          {
+            "binary64_hex": "0x0.0p+0"
+          },
+          {
+            "binary64_hex": "0x0.0p+0"
+          },
+          {
+            "binary64_hex": "0x0.0p+0"
+          },
+          {
+            "binary64_hex": "0x0.0p+0"
+          },
+          {
+            "binary64_hex": "0x0.0p+0"
+          }
+        ],
+        "Q_relative": [
+          {
+            "binary64_hex": "0x1.5d79bc6d12062p+1"
+          },
+          {
+            "binary64_hex": "0x1.8fbf9350f2fe5p+2"
+          },
+          {
+            "binary64_hex": "0x1.a28cd04482369p+2"
+          },
+          {
+            "binary64_hex": "0x1.3215446df2092p+1"
+          },
+          {
+            "binary64_hex": "0x1.1eff6b0611722p+1"
+          },
+          {
+            "binary64_hex": "0x1.5ce0813f8943cp+0"
+          },
+          {
+            "binary64_hex": "0x1.214aa2ba97bd7p+2"
+          },
+          {
+            "binary64_hex": "0x1.c819ede22bc7dp+2"
+          }
+        ],
+        "constraint_diagnostics": {
+          "energy": {
+            "binary64_hex": "0x1.0000000000000p+1"
+          },
+          "energy_residual": {
+            "binary64_hex": "0x0.0p+0"
+          },
+          "target_momentum_residual": [
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            }
+          ],
+          "total_transverse_momentum": [
+            {
+              "binary64_hex": "0x1.0000000000000p+2"
+            },
+            {
+              "binary64_hex": "0x1.0000000000000p+2"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            }
+          ],
+          "worldsheet_momenta": [
+            {
+              "binary64_hex": "0x1.4a00000000000p-53"
+            },
+            {
+              "binary64_hex": "0x1.0000000000000p-55"
+            }
+          ],
+          "worldsheet_momentum_residual": [
+            {
+              "binary64_hex": "0x1.4a00000000000p-53"
+            },
+            {
+              "binary64_hex": "0x1.0000000000000p-55"
+            }
+          ]
+        },
+        "energy_shares_s0_s1_s2": [
+          {
+            "binary64_hex": "0x1.933719f9af60ap-4"
+          },
+          {
+            "binary64_hex": "0x1.cc18260892e42p-2"
+          },
+          {
+            "binary64_hex": "0x1.cf1a13790143dp-2"
+          }
+        ],
+        "relative_centre_gauge": "Q2=0,Q1=Q_relative",
+        "sample_index": 0,
+        "schema_version": "cyz-brief-0018-source-sample-v2",
+        "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+        "source_state_sha256": "bafc85014205bbdbb8156e059606a73a0c899911745f189a4ac4e0c90742670b",
+        "strings": [
+          {
+            "modes": [
+              {
+                "mode_number": 1,
+                "p": [
+                  {
+                    "binary64_hex": "-0x1.48f84c6a3a8e8p-8"
+                  },
+                  {
+                    "binary64_hex": "-0x1.144c8639a324fp-3"
+                  },
+                  {
+                    "binary64_hex": "0x1.2ff047d2008abp-4"
+                  },
+                  {
+                    "binary64_hex": "-0x1.b3d05b943d497p-4"
+                  },
+                  {
+                    "binary64_hex": "0x1.805300d600b5bp-5"
+                  },
+                  {
+                    "binary64_hex": "0x1.824355757b7dfp-5"
+                  },
+                  {
+                    "binary64_hex": "-0x1.d387faf8efab2p-3"
+                  },
+                  {
+                    "binary64_hex": "-0x1.b46675b046180p-10"
+                  }
+                ],
+                "q": [
+                  {
+                    "binary64_hex": "0x1.07a9c29a344aap-4"
+                  },
+                  {
+                    "binary64_hex": "-0x1.e81d9afbc592dp-5"
+                  },
+                  {
+                    "binary64_hex": "0x1.2dc1411fa4668p-5"
+                  },
+                  {
+                    "binary64_hex": "-0x1.d0ea043048200p-5"
+                  },
+                  {
+                    "binary64_hex": "0x1.450fb81849b40p-6"
+                  },
+                  {
+                    "binary64_hex": "0x1.485b1e121c788p-7"
+                  },
+                  {
+                    "binary64_hex": "-0x1.8432ea81a1020p-7"
+                  },
+                  {
+                    "binary64_hex": "0x1.106c82f314ecep-6"
+                  }
+                ],
+                "wave_number": {
+                  "binary64_hex": "0x1.0000000000000p-3"
+                },
+                "x": [
+                  {
+                    "binary64_hex": "0x1.b9ded36d530c7p-2"
+                  },
+                  {
+                    "binary64_hex": "-0x1.c2bfba6a45dacp-4"
+                  },
+                  {
+                    "binary64_hex": "0x1.8c70208f38094p-2"
+                  },
+                  {
+                    "binary64_hex": "0x1.c5442a16e76a6p-2"
+                  },
+                  {
+                    "binary64_hex": "0x1.48640fbe17450p+0"
+                  },
+                  {
+                    "binary64_hex": "0x1.0d5236ae715f2p-1"
+                  },
+                  {
+                    "binary64_hex": "-0x1.bef187891554ap-2"
+                  },
+                  {
+                    "binary64_hex": "0x1.b1f94046b5af1p-2"
+                  }
+                ],
+                "y": [
+                  {
+                    "binary64_hex": "-0x1.ff16ee201d3e8p-1"
+                  },
+                  {
+                    "binary64_hex": "-0x1.45f06ac265600p-7"
+                  },
+                  {
+                    "binary64_hex": "-0x1.0fb11f136d600p+0"
+                  },
+                  {
+                    "binary64_hex": "-0x1.5db8526cd15aep-2"
+                  },
+                  {
+                    "binary64_hex": "0x1.ce426a7b2ebc5p-2"
+                  },
+                  {
+                    "binary64_hex": "0x1.e8e1164707e89p-2"
+                  },
+                  {
+                    "binary64_hex": "-0x1.f9b53fa56393cp-3"
+                  },
+                  {
+                    "binary64_hex": "-0x1.7349be6df6e11p+0"
+                  }
+                ]
+              }
+            ],
+            "orientation": 1,
+            "transverse_velocity": [
+              {
+                "binary64_hex": "0x1.aa0b70c9df97ep-3"
+              },
+              {
+                "binary64_hex": "0x1.8aa82697bdabcp-3"
+              },
+              {
+                "binary64_hex": "0x1.a4afb03616908p-6"
+              },
+              {
+                "binary64_hex": "0x1.00884ed93881dp-6"
+              },
+              {
+                "binary64_hex": "-0x1.15db377f038d5p-7"
+              },
+              {
+                "binary64_hex": "0x1.e699a2a5f5b86p-5"
+              },
+              {
+                "binary64_hex": "-0x1.23baa4ef41a73p-5"
+              },
+              {
+                "binary64_hex": "0x1.3bff1d9131b11p-5"
+              }
+            ]
+          },
+          {
+            "modes": [
+              {
+                "mode_number": 1,
+                "p": [
+                  {
+                    "binary64_hex": "-0x1.3cabcd940609fp-4"
+                  },
+                  {
+                    "binary64_hex": "0x1.0fb0b68075cc0p-4"
+                  },
+                  {
+                    "binary64_hex": "-0x1.3c0e99c9c45fap-3"
+                  },
+                  {
+                    "binary64_hex": "0x1.dca722bcabe13p-5"
+                  },
+                  {
+                    "binary64_hex": "-0x1.93690f2dec679p-4"
+                  },
+                  {
+                    "binary64_hex": "0x1.8cce5ac568992p-4"
+                  },
+                  {
+                    "binary64_hex": "-0x1.2ea788754c03fp-4"
+                  },
+                  {
+                    "binary64_hex": "0x1.2641f4baa5e66p-3"
+                  }
+                ],
+                "q": [
+                  {
+                    "binary64_hex": "-0x1.44976b49ff500p-3"
+                  },
+                  {
+                    "binary64_hex": "-0x1.53c388cee1772p-5"
+                  },
+                  {
+                    "binary64_hex": "-0x1.078c0f17c5e6fp-4"
+                  },
+                  {
+                    "binary64_hex": "0x1.1aac5430f69b5p-5"
+                  },
+                  {
+                    "binary64_hex": "-0x1.995360f9f58cep-5"
+                  },
+                  {
+                    "binary64_hex": "0x1.334d7a86505ecp-9"
+                  },
+                  {
+                    "binary64_hex": "-0x1.d2a04a8d1f36ep-6"
+                  },
+                  {
+                    "binary64_hex": "0x1.ffc7103884824p-8"
+                  }
+                ],
+                "wave_number": {
+                  "binary64_hex": "0x1.0000000000000p-3"
+                },
+                "x": [
+                  {
+                    "binary64_hex": "-0x1.5771de1c4f776p-1"
+                  },
+                  {
+                    "binary64_hex": "0x1.79c4645c51454p-5"
+                  },
+                  {
+                    "binary64_hex": "-0x1.49abe41750f8dp-1"
+                  },
+                  {
+                    "binary64_hex": "0x1.7f5664b38b37ap-3"
+                  },
+                  {
+                    "binary64_hex": "0x1.a8568c310415cp-2"
+                  },
+                  {
+                    "binary64_hex": "0x1.b96f15ba5d1dcp-3"
+                  },
+                  {
+                    "binary64_hex": "0x1.a50a991f43ea5p-2"
+                  },
+                  {
+                    "binary64_hex": "-0x1.afe4695cb3ec4p-2"
+                  }
+                ],
+                "y": [
+                  {
+                    "binary64_hex": "-0x1.7ca2c9ef5f7cbp-1"
+                  },
+                  {
+                    "binary64_hex": "0x1.24d768419faf2p+0"
+                  },
+                  {
+                    "binary64_hex": "0x1.285172ee2470fp-1"
+                  },
+                  {
+                    "binary64_hex": "-0x1.fc9e79158f33cp-1"
+                  },
+                  {
+                    "binary64_hex": "0x1.a7d3273668154p-3"
+                  },
+                  {
+                    "binary64_hex": "0x1.6ca4592f0cf0fp+0"
+                  },
+                  {
+                    "binary64_hex": "-0x1.9fb2d22ec97f2p-2"
+                  },
+                  {
+                    "binary64_hex": "-0x1.dda059e8bddd8p-4"
+                  }
+                ]
+              }
+            ],
+            "orientation": -1,
+            "transverse_velocity": [
+              {
+                "binary64_hex": "0x1.2afa479b10341p-2"
+              },
+              {
+                "binary64_hex": "0x1.3aabecb4212a2p-2"
+              },
+              {
+                "binary64_hex": "-0x1.a4afb03616908p-6"
+              },
+              {
+                "binary64_hex": "-0x1.00884ed93881dp-6"
+              },
+              {
+                "binary64_hex": "0x1.15db377f038d5p-7"
+              },
+              {
+                "binary64_hex": "-0x1.e699a2a5f5b86p-5"
+              },
+              {
+                "binary64_hex": "0x1.23baa4ef41a73p-5"
+              },
+              {
+                "binary64_hex": "-0x1.3bff1d9131b11p-5"
+              }
+            ]
+          }
+        ],
+        "validity": {
+          "k_max_times_ell_s": {
+            "binary64_hex": "0x1.0000000000000p-3"
+          },
+          "per_string_graph_upper_bounds": [
+            {
+              "binary64_hex": "0x1.ece0fcf10ca24p-1"
+            },
+            {
+              "binary64_hex": "0x1.1ac07c1a629dap+0"
+            }
+          ],
+          "reasons": [
+            "graph_upper_bound_exceeded"
+          ],
+          "registered_time_uniform_graph_upper_bound": {
+            "binary64_hex": "0x1.1ac07c1a629dap+0"
+          },
+          "sample_retained_without_redraw": true,
+          "status": "source_invalid"
+        }
+      },
+      "complete_serialized_state_semantic_sha256": "69e870836dae8b22d9cf563342feb3cd74617a1498668e02f70f1b193052f103",
+      "sample_index": 0,
+      "source_state_sha256": "bafc85014205bbdbb8156e059606a73a0c899911745f189a4ac4e0c90742670b",
+      "validity_status": "source_invalid"
+    },
+    "valid_physical_control": {
+      "complete_dyadic_projection_semantic_sha256": "10fd59b2684e051c44e9a277325e5f051ed1a6049ca8c57a5a2b03728a6f188b",
+      "complete_exact_dyadic_projection": {
+        "Q1": [
+          {
+            "exponent": 50,
+            "numerator": 2360612889257509
+          },
+          {
+            "exponent": 50,
+            "numerator": 2364225835617613
+          },
+          {
+            "exponent": 50,
+            "numerator": 6413067532898909
+          },
+          {
+            "exponent": 50,
+            "numerator": 6119595460309949
+          },
+          {
+            "exponent": 50,
+            "numerator": 7156468037079985
+          },
+          {
+            "exponent": 50,
+            "numerator": 8002089417482893
+          },
+          {
+            "exponent": 50,
+            "numerator": 8074662260949095
+          },
+          {
+            "exponent": 50,
+            "numerator": 1755616706581473
+          }
+        ],
+        "Q2": [
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          },
+          {
+            "exponent": 0,
+            "numerator": 0
+          }
+        ],
+        "Q_relative": [
+          {
+            "exponent": 50,
+            "numerator": 2360612889257509
+          },
+          {
+            "exponent": 50,
+            "numerator": 2364225835617613
+          },
+          {
+            "exponent": 50,
+            "numerator": 6413067532898909
+          },
+          {
+            "exponent": 50,
+            "numerator": 6119595460309949
+          },
+          {
+            "exponent": 50,
+            "numerator": 7156468037079985
+          },
+          {
+            "exponent": 50,
+            "numerator": 8002089417482893
+          },
+          {
+            "exponent": 50,
+            "numerator": 8074662260949095
+          },
+          {
+            "exponent": 50,
+            "numerator": 1755616706581473
+          }
+        ],
+        "constraint_diagnostics": {
+          "energy": {
+            "exponent": 52,
+            "numerator": 9007199254740991
+          },
+          "energy_residual": {
+            "exponent": 52,
+            "numerator": -1
+          },
+          "target_momentum_residual": [
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            }
+          ],
+          "total_transverse_momentum": [
+            {
+              "exponent": 0,
+              "numerator": 4
+            },
+            {
+              "exponent": 0,
+              "numerator": 4
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            },
+            {
+              "exponent": 0,
+              "numerator": 0
+            }
+          ],
+          "worldsheet_momenta": [
+            {
+              "exponent": 61,
+              "numerator": -121
+            },
+            {
+              "exponent": 61,
+              "numerator": 67
+            }
+          ],
+          "worldsheet_momentum_residual": [
+            {
+              "exponent": 61,
+              "numerator": -121
+            },
+            {
+              "exponent": 61,
+              "numerator": 67
+            }
+          ]
+        },
+        "energy_shares_s0_s1_s2": [
+          {
+            "exponent": 54,
+            "numerator": 3391594736820555
+          },
+          {
+            "exponent": 51,
+            "numerator": 1095518754814505
+          },
+          {
+            "exponent": 54,
+            "numerator": 5858653734145389
+          }
+        ],
+        "relative_centre_gauge": "Q2=0,Q1=Q_relative",
+        "sample_index": 2,
+        "schema_version": "cyz-brief-0018-source-sample-v2",
+        "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+        "source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c",
+        "strings": [
+          {
+            "modes": [
+              {
+                "mode_number": 1,
+                "p": [
+                  {
+                    "exponent": 56,
+                    "numerator": -1688164932962969
+                  },
+                  {
+                    "exponent": 58,
+                    "numerator": -7238047802325291
+                  },
+                  {
+                    "exponent": 57,
+                    "numerator": -3670567262653831
+                  },
+                  {
+                    "exponent": 55,
+                    "numerator": -4090460865409483
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": 6367462657916457
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -1363382174950789
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -2630543933118331
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -1165535186743551
+                  }
+                ],
+                "q": [
+                  {
+                    "exponent": 52,
+                    "numerator": 731946412337127
+                  },
+                  {
+                    "exponent": 55,
+                    "numerator": 3233560050053853
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": -434378818654613
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": 1272048990331811
+                  },
+                  {
+                    "exponent": 57,
+                    "numerator": -318059693337399
+                  },
+                  {
+                    "exponent": 55,
+                    "numerator": 7631029197476251
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": -1713383208282733
+                  },
+                  {
+                    "exponent": 57,
+                    "numerator": -1721800129993141
+                  }
+                ],
+                "wave_number": {
+                  "exponent": 3,
+                  "numerator": 1
+                },
+                "x": [
+                  {
+                    "exponent": 52,
+                    "numerator": -2576654606013627
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": 6204847557706923
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": 3694794752149143
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": 683064575939517
+                  },
+                  {
+                    "exponent": 51,
+                    "numerator": 1721267440408963
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": 2491471799340991
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": -2738791991772047
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": -4177003482294767
+                  }
+                ],
+                "y": [
+                  {
+                    "exponent": 53,
+                    "numerator": -8911881217356033
+                  },
+                  {
+                    "exponent": 55,
+                    "numerator": 5948248748530019
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": -5993060754566677
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": 1797960855239409
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": 2936019448240469
+                  },
+                  {
+                    "exponent": 48,
+                    "numerator": -446337856871041
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -7693293493584253
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": -5806579221859369
+                  }
+                ]
+              }
+            ],
+            "orientation": 1,
+            "transverse_velocity": [
+              {
+                "exponent": 54,
+                "numerator": 2906347212085799
+              },
+              {
+                "exponent": 53,
+                "numerator": 2373234979615625
+              },
+              {
+                "exponent": 57,
+                "numerator": -8616117176447079
+              },
+              {
+                "exponent": 56,
+                "numerator": -5657277629160439
+              },
+              {
+                "exponent": 61,
+                "numerator": -7422068656230279
+              },
+              {
+                "exponent": 56,
+                "numerator": 788957700158159
+              },
+              {
+                "exponent": 58,
+                "numerator": 8956520581507307
+              },
+              {
+                "exponent": 55,
+                "numerator": 2458543516551069
+              }
+            ]
+          },
+          {
+            "modes": [
+              {
+                "mode_number": 1,
+                "p": [
+                  {
+                    "exponent": 56,
+                    "numerator": 3105291403251775
+                  },
+                  {
+                    "exponent": 58,
+                    "numerator": -4699364644457543
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -3428681388910177
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -712224669009871
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -5451990696613405
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": -1771596540380027
+                  },
+                  {
+                    "exponent": 57,
+                    "numerator": -3985433761628269
+                  },
+                  {
+                    "exponent": 60,
+                    "numerator": 912689037872783
+                  }
+                ],
+                "q": [
+                  {
+                    "exponent": 54,
+                    "numerator": -1711415843396835
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": -2775525428481293
+                  },
+                  {
+                    "exponent": 57,
+                    "numerator": 5445444162738409
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -5942902339808185
+                  },
+                  {
+                    "exponent": 59,
+                    "numerator": -7210062858264229
+                  },
+                  {
+                    "exponent": 54,
+                    "numerator": 1791484969407581
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -5025447491188819
+                  },
+                  {
+                    "exponent": 58,
+                    "numerator": 3252621255288489
+                  }
+                ],
+                "wave_number": {
+                  "exponent": 3,
+                  "numerator": 1
+                },
+                "x": [
+                  {
+                    "exponent": 52,
+                    "numerator": -2432929761477679
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": -1104714419896091
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": -4061391198954373
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": 5306173369031509
+                  },
+                  {
+                    "exponent": 56,
+                    "numerator": -6795167416162821
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": 4166553164386655
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": 7980308185242189
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": 4080818981887467
+                  }
+                ],
+                "y": [
+                  {
+                    "exponent": 53,
+                    "numerator": 6113992352040709
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": -3389902848232041
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": -5963599879600613
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": 1354218551391055
+                  },
+                  {
+                    "exponent": 53,
+                    "numerator": 7235985896123313
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": -979464250895757
+                  },
+                  {
+                    "exponent": 52,
+                    "numerator": -2761940966869027
+                  },
+                  {
+                    "exponent": 58,
+                    "numerator": -3845894058811179
+                  }
+                ]
+              }
+            ],
+            "orientation": -1,
+            "transverse_velocity": [
+              {
+                "exponent": 54,
+                "numerator": 6100852042655193
+              },
+              {
+                "exponent": 53,
+                "numerator": 2130364647754871
+              },
+              {
+                "exponent": 57,
+                "numerator": 8616117176447079
+              },
+              {
+                "exponent": 56,
+                "numerator": 5657277629160439
+              },
+              {
+                "exponent": 61,
+                "numerator": 7422068656230279
+              },
+              {
+                "exponent": 56,
+                "numerator": -788957700158159
+              },
+              {
+                "exponent": 58,
+                "numerator": -8956520581507307
+              },
+              {
+                "exponent": 55,
+                "numerator": -2458543516551069
+              }
+            ]
+          }
+        ],
+        "validity": {
+          "k_max_times_ell_s": {
+            "exponent": 3,
+            "numerator": 1
+          },
+          "per_string_graph_upper_bounds": [
+            {
+              "exponent": 52,
+              "numerator": 4565445767023547
+            },
+            {
+              "exponent": 50,
+              "numerator": 1127030360390487
+            }
+          ],
+          "reasons": [],
+          "registered_time_uniform_graph_upper_bound": {
+            "exponent": 52,
+            "numerator": 4565445767023547
+          },
+          "sample_retained_without_redraw": true,
+          "status": "valid"
+        }
+      },
+      "complete_serialized_source_state_binary64": {
+        "Q1": [
+          {
+            "binary64_hex": "0x1.0c5ee096ecc4ap+1"
+          },
+          {
+            "binary64_hex": "0x1.0cc8072339a9ap+1"
+          },
+          {
+            "binary64_hex": "0x1.6c8a6a438125dp+2"
+          },
+          {
+            "binary64_hex": "0x1.5bdbd5994b3bdp+2"
+          },
+          {
+            "binary64_hex": "0x1.96cc50f3253b1p+2"
+          },
+          {
+            "binary64_hex": "0x1.c6ddba130a28dp+2"
+          },
+          {
+            "binary64_hex": "0x1.cafdccfbec067p+2"
+          },
+          {
+            "binary64_hex": "0x1.8f2e578a14f84p+0"
+          }
+        ],
+        "Q2": [
+          {
+            "binary64_hex": "0x0.0p+0"
+          },
+          {
+            "binary64_hex": "0x0.0p+0"
+          },
+          {
+            "binary64_hex": "0x0.0p+0"
+          },
+          {
+            "binary64_hex": "0x0.0p+0"
+          },
+          {
+            "binary64_hex": "0x0.0p+0"
+          },
+          {
+            "binary64_hex": "0x0.0p+0"
+          },
+          {
+            "binary64_hex": "0x0.0p+0"
+          },
+          {
+            "binary64_hex": "0x0.0p+0"
+          }
+        ],
+        "Q_relative": [
+          {
+            "binary64_hex": "0x1.0c5ee096ecc4ap+1"
+          },
+          {
+            "binary64_hex": "0x1.0cc8072339a9ap+1"
+          },
+          {
+            "binary64_hex": "0x1.6c8a6a438125dp+2"
+          },
+          {
+            "binary64_hex": "0x1.5bdbd5994b3bdp+2"
+          },
+          {
+            "binary64_hex": "0x1.96cc50f3253b1p+2"
+          },
+          {
+            "binary64_hex": "0x1.c6ddba130a28dp+2"
+          },
+          {
+            "binary64_hex": "0x1.cafdccfbec067p+2"
+          },
+          {
+            "binary64_hex": "0x1.8f2e578a14f84p+0"
+          }
+        ],
+        "constraint_diagnostics": {
+          "energy": {
+            "binary64_hex": "0x1.fffffffffffffp+0"
+          },
+          "energy_residual": {
+            "binary64_hex": "-0x1.0000000000000p-52"
+          },
+          "target_momentum_residual": [
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            }
+          ],
+          "total_transverse_momentum": [
+            {
+              "binary64_hex": "0x1.0000000000000p+2"
+            },
+            {
+              "binary64_hex": "0x1.0000000000000p+2"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            },
+            {
+              "binary64_hex": "0x0.0p+0"
+            }
+          ],
+          "worldsheet_momenta": [
+            {
+              "binary64_hex": "-0x1.e400000000000p-55"
+            },
+            {
+              "binary64_hex": "0x1.0c00000000000p-55"
+            }
+          ],
+          "worldsheet_momentum_residual": [
+            {
+              "binary64_hex": "-0x1.e400000000000p-55"
+            },
+            {
+              "binary64_hex": "0x1.0c00000000000p-55"
+            }
+          ]
+        },
+        "energy_shares_s0_s1_s2": [
+          {
+            "binary64_hex": "0x1.819465f054296p-3"
+          },
+          {
+            "binary64_hex": "0x1.f22f2b1cdd148p-2"
+          },
+          {
+            "binary64_hex": "0x1.4d06a1eaf8d6dp-2"
+          }
+        ],
+        "relative_centre_gauge": "Q2=0,Q1=Q_relative",
+        "sample_index": 2,
+        "schema_version": "cyz-brief-0018-source-sample-v2",
+        "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+        "source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c",
+        "strings": [
+          {
+            "modes": [
+              {
+                "mode_number": 1,
+                "p": [
+                  {
+                    "binary64_hex": "-0x1.7fd821c9b2a64p-6"
+                  },
+                  {
+                    "binary64_hex": "-0x1.9b6f7541ff92bp-6"
+                  },
+                  {
+                    "binary64_hex": "-0x1.a14b913a11b0ep-6"
+                  },
+                  {
+                    "binary64_hex": "-0x1.d108145b36396p-4"
+                  },
+                  {
+                    "binary64_hex": "0x1.69f2c6dd87e29p-4"
+                  },
+                  {
+                    "binary64_hex": "-0x1.35ff498ec9614p-6"
+                  },
+                  {
+                    "binary64_hex": "-0x1.2b0ee79662ef6p-5"
+                  },
+                  {
+                    "binary64_hex": "-0x1.090313b1dc3fcp-6"
+                  }
+                ],
+                "q": [
+                  {
+                    "binary64_hex": "0x1.4cd9c6f373f38p-3"
+                  },
+                  {
+                    "binary64_hex": "0x1.6f9cfbc4965bap-4"
+                  },
+                  {
+                    "binary64_hex": "-0x1.8b10b32f11950p-5"
+                  },
+                  {
+                    "binary64_hex": "0x1.213aff0d28e8cp-3"
+                  },
+                  {
+                    "binary64_hex": "-0x1.21460b09eb370p-9"
+                  },
+                  {
+                    "binary64_hex": "0x1.b1c617096119bp-3"
+                  },
+                  {
+                    "binary64_hex": "-0x1.8594075f9a9b4p-4"
+                  },
+                  {
+                    "binary64_hex": "-0x1.877df547d66d4p-7"
+                  }
+                ],
+                "wave_number": {
+                  "binary64_hex": "0x1.0000000000000p-3"
+                },
+                "x": [
+                  {
+                    "binary64_hex": "-0x1.24ee84d002976p-1"
+                  },
+                  {
+                    "binary64_hex": "0x1.60b46a69004abp-2"
+                  },
+                  {
+                    "binary64_hex": "0x1.a40cae1708d2ep-1"
+                  },
+                  {
+                    "binary64_hex": "0x1.369f2eb429de8p-4"
+                  },
+                  {
+                    "binary64_hex": "0x1.875ef3965660cp-1"
+                  },
+                  {
+                    "binary64_hex": "0x1.1b3f5f7229f7ep-1"
+                  },
+                  {
+                    "binary64_hex": "-0x1.375d56791071ep-3"
+                  },
+                  {
+                    "binary64_hex": "-0x1.dadecd19353dep-1"
+                  }
+                ],
+                "y": [
+                  {
+                    "binary64_hex": "-0x1.fa94f0a3db101p-1"
+                  },
+                  {
+                    "binary64_hex": "0x1.521e695b11963p-3"
+                  },
+                  {
+                    "binary64_hex": "-0x1.54aa83164ae15p-2"
+                  },
+                  {
+                    "binary64_hex": "0x1.98cf18862ebc4p-2"
+                  },
+                  {
+                    "binary64_hex": "0x1.4dc96988832aap-2"
+                  },
+                  {
+                    "binary64_hex": "-0x1.95f121689a810p+0"
+                  },
+                  {
+                    "binary64_hex": "-0x1.b550279d6817dp-4"
+                  },
+                  {
+                    "binary64_hex": "-0x1.4a10d93e10c29p-2"
+                  }
+                ]
+              }
+            ],
+            "orientation": 1,
+            "transverse_velocity": [
+              {
+                "binary64_hex": "0x1.4a69d6257344ep-3"
+              },
+              {
+                "binary64_hex": "0x1.0dce3a7db6712p-2"
+              },
+              {
+                "binary64_hex": "-0x1.e9c501ba53067p-5"
+              },
+              {
+                "binary64_hex": "-0x1.41943977b5bf7p-4"
+              },
+              {
+                "binary64_hex": "-0x1.a5e5505c0cf87p-9"
+              },
+              {
+                "binary64_hex": "0x1.66c6c3baf9678p-7"
+              },
+              {
+                "binary64_hex": "0x1.fd1e873af28ebp-6"
+              },
+              {
+                "binary64_hex": "0x1.1781089f00f3ap-4"
+              }
+            ]
+          },
+          {
+            "modes": [
+              {
+                "mode_number": 1,
+                "p": [
+                  {
+                    "binary64_hex": "0x1.6107dfe07a07ep-5"
+                  },
+                  {
+                    "binary64_hex": "-0x1.0b20c184d8c47p-6"
+                  },
+                  {
+                    "binary64_hex": "-0x1.85cbc3077ccc2p-5"
+                  },
+                  {
+                    "binary64_hex": "-0x1.43e1dd32c3e78p-7"
+                  },
+                  {
+                    "binary64_hex": "-0x1.35e8e80ca561dp-4"
+                  },
+                  {
+                    "binary64_hex": "-0x1.92d07d9e60decp-4"
+                  },
+                  {
+                    "binary64_hex": "-0x1.c5176374680dap-6"
+                  },
+                  {
+                    "binary64_hex": "0x1.9f0afcf247478p-11"
+                  }
+                ],
+                "q": [
+                  {
+                    "binary64_hex": "-0x1.8521835a2738cp-4"
+                  },
+                  {
+                    "binary64_hex": "-0x1.3b8a6be759a1ap-3"
+                  },
+                  {
+                    "binary64_hex": "0x1.3589a44f6d8e9p-5"
+                  },
+                  {
+                    "binary64_hex": "-0x1.51d09c6e62bb9p-4"
+                  },
+                  {
+                    "binary64_hex": "-0x1.99d8393799ea5p-7"
+                  },
+                  {
+                    "binary64_hex": "0x1.9756264e35174p-4"
+                  },
+                  {
+                    "binary64_hex": "-0x1.1da9e2c8cb853p-4"
+                  },
+                  {
+                    "binary64_hex": "0x1.71c7bcd054d52p-7"
+                  }
+                ],
+                "wave_number": {
+                  "binary64_hex": "0x1.0000000000000p-3"
+                },
+                "x": [
+                  {
+                    "binary64_hex": "-0x1.149793464885ep-1"
+                  },
+                  {
+                    "binary64_hex": "-0x1.f65daf49bf8d8p-3"
+                  },
+                  {
+                    "binary64_hex": "-0x1.cdba0a76a470ap-1"
+                  },
+                  {
+                    "binary64_hex": "0x1.2d9efc2c71b55p-1"
+                  },
+                  {
+                    "binary64_hex": "-0x1.8242b34079a05p-4"
+                  },
+                  {
+                    "binary64_hex": "0x1.d9aea829a22bep-1"
+                  },
+                  {
+                    "binary64_hex": "0x1.c5a0c4a945a4dp-1"
+                  },
+                  {
+                    "binary64_hex": "0x1.cfef76b9dbbd6p-2"
+                  }
+                ],
+                "y": [
+                  {
+                    "binary64_hex": "0x1.5b8a4c64d8705p-1"
+                  },
+                  {
+                    "binary64_hex": "-0x1.81632862f14d2p-2"
+                  },
+                  {
+                    "binary64_hex": "-0x1.52fdccc67f9e5p-1"
+                  },
+                  {
+                    "binary64_hex": "0x1.33e9e4ed0cd3cp-3"
+                  },
+                  {
+                    "binary64_hex": "0x1.9b51740f02bb1p-1"
+                  },
+                  {
+                    "binary64_hex": "-0x1.bd68a55f56c68p-3"
+                  },
+                  {
+                    "binary64_hex": "-0x1.39ff0fc711046p-1"
+                  },
+                  {
+                    "binary64_hex": "-0x1.b53a3fa703e56p-7"
+                  }
+                ]
+              }
+            ],
+            "orientation": -1,
+            "transverse_velocity": [
+              {
+                "binary64_hex": "0x1.5acb14ed465d9p-2"
+              },
+              {
+                "binary64_hex": "0x1.e4638b04931dcp-3"
+              },
+              {
+                "binary64_hex": "0x1.e9c501ba53067p-5"
+              },
+              {
+                "binary64_hex": "0x1.41943977b5bf7p-4"
+              },
+              {
+                "binary64_hex": "0x1.a5e5505c0cf87p-9"
+              },
+              {
+                "binary64_hex": "-0x1.66c6c3baf9678p-7"
+              },
+              {
+                "binary64_hex": "-0x1.fd1e873af28ebp-6"
+              },
+              {
+                "binary64_hex": "-0x1.1781089f00f3ap-4"
+              }
+            ]
+          }
+        ],
+        "validity": {
+          "k_max_times_ell_s": {
+            "binary64_hex": "0x1.0000000000000p-3"
+          },
+          "per_string_graph_upper_bounds": [
+            {
+              "binary64_hex": "0x1.0383fad2f4bbbp+0"
+            },
+            {
+              "binary64_hex": "0x1.0041cd120ed5cp+0"
+            }
+          ],
+          "reasons": [],
+          "registered_time_uniform_graph_upper_bound": {
+            "binary64_hex": "0x1.0383fad2f4bbbp+0"
+          },
+          "sample_retained_without_redraw": true,
+          "status": "valid"
+        }
+      },
+      "complete_serialized_state_semantic_sha256": "a4aca7850b9c110ae778387a3c9ba05f68c02566dcf533f2dacd6a75164e8303",
+      "sample_index": 2,
+      "source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c",
+      "validity_status": "valid"
+    }
+  }
+}

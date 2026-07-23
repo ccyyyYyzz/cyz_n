@@ -1,0 +1,66 @@
+{
+  "checks": {
+    "arb_9d_jet_ingress_declared": true,
+    "complete_source_state_recomputed": true,
+    "every_binary64_has_canonical_dyadic_projection": true,
+    "f1_tension_and_winding_relations_replayed": true,
+    "index_0_is_least_source_invalid": true,
+    "index_2_is_least_valid": true,
+    "physical_problem_is_rank_blind": true,
+    "q_enters_each_embedding_once": true,
+    "registry_hash_recomputed_and_pinned": true,
+    "source_draw_hash_recomputed_and_pinned": true,
+    "source_invalid_executes_no_solver_or_arb": true,
+    "state_hashes_match_brief": true
+  },
+  "commitments": {
+    "first_source_invalid_index": 0,
+    "first_valid_index": 2,
+    "physical_problem_semantic_sha256": "1560b7df34dcec7dfa46a744d6bbb26424b6a1bf2ce3d2b94b80d308363660ca",
+    "registry_canonical_sha256": "35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb",
+    "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+    "source_invalid_backends_executed": false
+  },
+  "failed_gates": [],
+  "fixture_semantic_sha256": "5af600527155e1c1dbd68b8e531aa1a640e4ee2edb8317f46334ac6b219dee60",
+  "hostile_controls": {
+    "coefficient_mutation_rejected": true,
+    "index_mutation_rejected": true,
+    "orientation_mutation_rejected": true,
+    "rank_field_mutation_rejected": true,
+    "registry_hash_mutation_rejected": true,
+    "state_hash_mutation_rejected": true,
+    "validity_mutation_rejected": true,
+    "wave_number_mutation_rejected": true
+  },
+  "normalized_lf_inventory": [
+    {
+      "normalized_lf_sha256": "8bc1cafad306d995465b13b91b848e69e740eec277323f8898d4ed38c88a1806",
+      "path": "artifacts/0019/source_state_bridge.py"
+    },
+    {
+      "normalized_lf_sha256": "7d5a42032a812f280c5dc1e1db5704198cff30e4c64dc680600c814b24559680",
+      "path": "artifacts/0019/test_source_state_bridge.py"
+    },
+    {
+      "normalized_lf_sha256": "3eadcc79d1e44990906da9ab0fcd3785f7153cde081aa48482b1b2a708649555",
+      "path": "artifacts/0019/source_state_bridge_fixture.json"
+    },
+    {
+      "normalized_lf_sha256": "229395adb9a4d4aba26e618027c27e3b527412a5b990d48f0f79c44b94cba943",
+      "path": "artifacts/0019/README.md"
+    }
+  ],
+  "report_semantic_sha256": "d5fc216f80ded800f496ee4f0233db68899d1f6c30083759788e789ca009da36",
+  "schema_version": "cyz-brief-0019-source-state-bridge-report-v1",
+  "scope": {
+    "claim": "index 2 is bound to one exact-dyadic rank-blind 9D physical problem and index 0 is routed source_invalid before backends",
+    "does_not_claim": [
+      "source-separated independent binding replay",
+      "exhaustive worldsheet roots",
+      "population law",
+      "3+1 selection"
+    ]
+  },
+  "status": "passed"
+}
