@@ -2,8 +2,7 @@
 
 Status: active
 
-Baseline commit: to be filled by the submitting agent after this brief and
-Decision 0010 are committed.
+Baseline commit: `2555a8190687c1f597d8dba832c0f99377a1e35d`.
 
 ## Role
 
