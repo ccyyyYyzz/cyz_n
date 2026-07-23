@@ -1,0 +1,400 @@
+{
+  "artifact_bytes": 46017,
+  "artifact_canonical_sha256": "62a5d667fa0aa31e15bfdd64760457e3cb89ea033c5470b50e98b0825d137722",
+  "artifact_sha256": "834215c9f241c4f1a3d796e5a012855fbe7156714dad55286649c107baf68cd5",
+  "baseline_commit": "428757cf1a03fcfa57b4bc2fd316d622f1d448cb",
+  "command": "python3 artifacts/0013/reproduce_0013.py --write artifacts/0013/kernel_ledger.json.xz.b64 --report artifacts/0013/replay_report.json",
+  "executed": true,
+  "first_verification": {
+    "all_passed": true,
+    "tests": [
+      {
+        "details": {
+          "count": 504
+        },
+        "executed": true,
+        "name": "frame_count",
+        "passed": true
+      },
+      {
+        "details": {
+          "count": 21168,
+          "expected": 21168
+        },
+        "executed": true,
+        "name": "state_count",
+        "passed": true
+      },
+      {
+        "details": {
+          "count": 6552,
+          "expected": 6552
+        },
+        "executed": true,
+        "name": "mark_count",
+        "passed": true
+      },
+      {
+        "details": {
+          "positive": true,
+          "sum": "1/1"
+        },
+        "executed": true,
+        "name": "initial_law_normalization",
+        "passed": true
+      },
+      {
+        "details": {
+          "present": [
+            {
+              "channels": true,
+              "history": "none",
+              "mark_sum": "1/1"
+            },
+            {
+              "channels": true,
+              "history": "central",
+              "mark_sum": "1/1"
+            },
+            {
+              "channels": true,
+              "history": "shell",
+              "mark_sum": "1/1"
+            }
+          ],
+          "reverse_rows": true
+        },
+        "executed": true,
+        "name": "conditional_normalization",
+        "passed": true
+      },
+      {
+        "details": {
+          "conditional_probability": "1/1920",
+          "expected": "1/1920"
+        },
+        "executed": true,
+        "name": "JJP_exact_registry",
+        "passed": true
+      },
+      {
+        "details": {
+          "absent_weight": 4,
+          "present_weight": 1,
+          "reverse_ratio": "1/4"
+        },
+        "executed": true,
+        "name": "reverse_microcanonical_detailed_balance",
+        "passed": true
+      },
+      {
+        "details": {
+          "forward_energy": true,
+          "mark_involution": true,
+          "net_charge_before_after": [
+            0,
+            0
+          ],
+          "reverse_energy": true
+        },
+        "executed": true,
+        "name": "ledger_charge_reverse_involution",
+        "passed": true
+      },
+      {
+        "details": {
+          "first_five_event_times": [
+            "2/1",
+            "4/1",
+            "6/1",
+            "8/1",
+            "10/1"
+          ],
+          "poisson_clock": false,
+          "unique_hold_times": [
+            "2/1"
+          ],
+          "waiting_time_variance": "0/1"
+        },
+        "executed": true,
+        "name": "scheduled_clock_replay",
+        "passed": true
+      },
+      {
+        "details": {
+          "adjacent_generators": 8,
+          "nontrivial": true
+        },
+        "executed": true,
+        "name": "full_T9_covariance",
+        "passed": true
+      },
+      {
+        "details": {
+          "constructor_inputs_include_count": false,
+          "four_large_mark_counts": [
+            3
+          ],
+          "four_large_valid_frames": 24,
+          "three_large_mark_counts": [
+            1
+          ],
+          "three_large_valid_frames": 6
+        },
+        "executed": true,
+        "name": "same_law_isotropic_source_limits",
+        "passed": true
+      },
+      {
+        "details": {
+          "difference": "87400420288798117198345141610053441338992553880719139055267180627259199983796216165208204946274812661/108711107081668565621693313735296356103984938336747016352393373874708716734464363002784120832000000000000",
+          "difference_decimal": "0.000803969554",
+          "iid_decimal": "0.411746357838",
+          "iid_redraw_survival": "1269275878167768613385278966226121654780707077020911047134884574552373835439858483075551381336971561681/3082664494792685020522553456614306394152350682002664236844488032326809675919417700889133056000000000000",
+          "n_scheduled_encounters": 4,
+          "persistent_class_survival": "1000269157063293250647465164122726826621152691958256498526531013508073595102085331518729171139123497681/2424599111061338058927160843436286503912272179563315339675591861566102466995336270885945344000000000000",
+          "persistent_decimal": "0.412550327392",
+          "same_one_mark_marginal": true
+        },
+        "executed": true,
+        "name": "history_control",
+        "passed": true
+      },
+      {
+        "details": {
+          "base": "2/1",
+          "changed_separation": "3/1",
+          "changed_velocity": "4/1",
+          "conditional_channel_at_fixed_mark": "1/4"
+        },
+        "executed": true,
+        "name": "clock_control",
+        "passed": true
+      },
+      {
+        "details": {
+          "hidden_three_S9_invariant": true,
+          "hidden_three_accepted": false,
+          "hidden_three_rejection": [
+            "forbidden_or_unregistered_op:count_if"
+          ],
+          "registered_errors": [],
+          "registered_kernel_accepted": true
+        },
+        "executed": true,
+        "name": "nonencoding_dependency_gate",
+        "passed": true
+      },
+      {
+        "details": {
+          "hi": "342647244523312988285643481/1759871083703813623775232000",
+          "lo": "951797901453647189682343/4888530788066148954931200",
+          "selected": "7530708670842043698585571/38678485356127771951104000",
+          "width": "1/1759871083703813623775232000"
+        },
+        "executed": true,
+        "name": "outward_source_interval",
+        "passed": true
+      }
+    ]
+  },
+  "mark_count": 6552,
+  "reload_verification": {
+    "all_passed": true,
+    "tests": [
+      {
+        "details": {
+          "count": 504
+        },
+        "executed": true,
+        "name": "frame_count",
+        "passed": true
+      },
+      {
+        "details": {
+          "count": 21168,
+          "expected": 21168
+        },
+        "executed": true,
+        "name": "state_count",
+        "passed": true
+      },
+      {
+        "details": {
+          "count": 6552,
+          "expected": 6552
+        },
+        "executed": true,
+        "name": "mark_count",
+        "passed": true
+      },
+      {
+        "details": {
+          "positive": true,
+          "sum": "1/1"
+        },
+        "executed": true,
+        "name": "initial_law_normalization",
+        "passed": true
+      },
+      {
+        "details": {
+          "present": [
+            {
+              "channels": true,
+              "history": "central",
+              "mark_sum": "1/1"
+            },
+            {
+              "channels": true,
+              "history": "none",
+              "mark_sum": "1/1"
+            },
+            {
+              "channels": true,
+              "history": "shell",
+              "mark_sum": "1/1"
+            }
+          ],
+          "reverse_rows": true
+        },
+        "executed": true,
+        "name": "conditional_normalization",
+        "passed": true
+      },
+      {
+        "details": {
+          "conditional_probability": "1/1920",
+          "expected": "1/1920"
+        },
+        "executed": true,
+        "name": "JJP_exact_registry",
+        "passed": true
+      },
+      {
+        "details": {
+          "absent_weight": 4,
+          "present_weight": 1,
+          "reverse_ratio": "1/4"
+        },
+        "executed": true,
+        "name": "reverse_microcanonical_detailed_balance",
+        "passed": true
+      },
+      {
+        "details": {
+          "forward_energy": true,
+          "mark_involution": true,
+          "net_charge_before_after": [
+            0,
+            0
+          ],
+          "reverse_energy": true
+        },
+        "executed": true,
+        "name": "ledger_charge_reverse_involution",
+        "passed": true
+      },
+      {
+        "details": {
+          "first_five_event_times": [
+            "2/1",
+            "4/1",
+            "6/1",
+            "8/1",
+            "10/1"
+          ],
+          "poisson_clock": false,
+          "unique_hold_times": [
+            "2/1"
+          ],
+          "waiting_time_variance": "0/1"
+        },
+        "executed": true,
+        "name": "scheduled_clock_replay",
+        "passed": true
+      },
+      {
+        "details": {
+          "adjacent_generators": 8,
+          "nontrivial": true
+        },
+        "executed": true,
+        "name": "full_T9_covariance",
+        "passed": true
+      },
+      {
+        "details": {
+          "constructor_inputs_include_count": false,
+          "four_large_mark_counts": [
+            3
+          ],
+          "four_large_valid_frames": 24,
+          "three_large_mark_counts": [
+            1
+          ],
+          "three_large_valid_frames": 6
+        },
+        "executed": true,
+        "name": "same_law_isotropic_source_limits",
+        "passed": true
+      },
+      {
+        "details": {
+          "difference": "87400420288798117198345141610053441338992553880719139055267180627259199983796216165208204946274812661/108711107081668565621693313735296356103984938336747016352393373874708716734464363002784120832000000000000",
+          "difference_decimal": "0.000803969554",
+          "iid_decimal": "0.411746357838",
+          "iid_redraw_survival": "1269275878167768613385278966226121654780707077020911047134884574552373835439858483075551381336971561681/3082664494792685020522553456614306394152350682002664236844488032326809675919417700889133056000000000000",
+          "n_scheduled_encounters": 4,
+          "persistent_class_survival": "1000269157063293250647465164122726826621152691958256498526531013508073595102085331518729171139123497681/2424599111061338058927160843436286503912272179563315339675591861566102466995336270885945344000000000000",
+          "persistent_decimal": "0.412550327392",
+          "same_one_mark_marginal": true
+        },
+        "executed": true,
+        "name": "history_control",
+        "passed": true
+      },
+      {
+        "details": {
+          "base": "2/1",
+          "changed_separation": "3/1",
+          "changed_velocity": "4/1",
+          "conditional_channel_at_fixed_mark": "1/4"
+        },
+        "executed": true,
+        "name": "clock_control",
+        "passed": true
+      },
+      {
+        "details": {
+          "hidden_three_S9_invariant": true,
+          "hidden_three_accepted": false,
+          "hidden_three_rejection": [
+            "forbidden_or_unregistered_op:count_if"
+          ],
+          "registered_errors": [],
+          "registered_kernel_accepted": true
+        },
+        "executed": true,
+        "name": "nonencoding_dependency_gate",
+        "passed": true
+      },
+      {
+        "details": {
+          "hi": "342647244523312988285643481/1759871083703813623775232000",
+          "lo": "951797901453647189682343/4888530788066148954931200",
+          "selected": "7530708670842043698585571/38678485356127771951104000",
+          "width": "1/1759871083703813623775232000"
+        },
+        "executed": true,
+        "name": "outward_source_interval",
+        "passed": true
+      }
+    ]
+  },
+  "schema": "cyz_n.artifacts.0013.replay_report.v1",
+  "script_sha256": "9c9af73a314261e173709f9123871026640b6a3095475d0e0e2cfbd4f00e6432",
+  "serialization_replay_same": true,
+  "state_count": 21168,
+  "verify_command": "python3 artifacts/0013/reproduce_0013.py --verify artifacts/0013/kernel_ledger.json.xz.b64 --verify-report artifacts/0013/replay_report.json"
+}
