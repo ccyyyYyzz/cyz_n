@@ -1,6 +1,6 @@
 {
   "constructor_reads_only": "opaque_id_and_input; report_metadata_is_not_constructor_input",
-  "constructor_spec_sha256": "54afdc9c48c98581349a8ba6da880d9ddec0534155e263f344c0654c7fb6b442",
+  "constructor_spec_sha256": "c60f279192a2dd340885732a04f85edb1b62ff92c7e6f0339d24909bfe1a1a1d",
   "controls": [
     {
       "input": {
@@ -103,7 +103,11 @@
       "obligations": {"expected_uniform_source_case": "unresolved_amplitude"},"opaque_id": "u10","report_metadata": {"human_label": "precedence_probe"}
     }
   ],
-  "opaque_id_renaming_control": {"expected": "expanded_kernel_isomorphic","renamed_opaque_id": "opaque_contains_three_but_is_not_read","source_opaque_id": "u1"},
+  "opaque_id_renaming_control": {
+    "expected": "expanded_kernel_isomorphic",
+    "renamed_opaque_id": "opaque_contains_three_but_is_not_read",
+    "source_opaque_id": "u1"
+  },
   "report_metadata_policy": "human labels are verifier-report metadata only and are never passed to constructor stages",
   "schema_version": "cyz-0015-control-manifest-v1"
 }
