@@ -101,7 +101,12 @@ class Brief0017Controls(unittest.TestCase):
             text = json.dumps(report, sort_keys=True, indent=2, ensure_ascii=False)
             path.write_bytes(text.replace("\n", "\r\n").encode("utf-8"))
             stored = p.read_semantic_json(path)
+            self.assertTrue(p.strict_json_equal(stored, report))
             self.assertEqual(p.canonical_bytes(stored), p.canonical_bytes(report))
+            path.write_text('{"x":1,"x":2}', encoding="utf-8")
+            with self.assertRaisesRegex(ValueError, "duplicate JSON object key"):
+                p.read_semantic_json(path)
+            self.assertFalse(p.strict_json_equal({"x": 1}, {"x": 1.0}))
 
 
 if __name__ == "__main__":
