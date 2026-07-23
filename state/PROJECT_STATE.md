@@ -317,9 +317,39 @@ unconditional transfer to the physical first-entry ensemble.
 The repaired 0017 controls and independent tail implementation now replay
 together through 27 discovered tests.  Platform-dependent eigensolver last
 bits were removed, giving one canonical primary report on Windows and WSL
-Linux.  The frozen principal source cell, executable total event schema,
-certified exhaustive root solver, event masses, rank mixture and
-event-conditioned singular-value tail remain the active gates.
+Linux. At the 0017 boundary, the frozen principal source cell, executable
+total event schema, certified exhaustive root solver, event masses, rank
+mixture and event-conditioned singular-value tail were all still open.
+
+Response 0018 closes the first two of those gates. Starting from the single
+ambient delta--Liouville measure at zero world-sheet momentum, it derives
+\[
+\left(\frac{s_0}{E_*},\frac{s_1}{E_*},\frac{s_2}{E_*}\right)
+\sim\operatorname{Dirichlet}(4,16K-1,16K-1).
+\]
+The canonical \(K=1\) cell has \(E_*=1\) and shape \((4,15,15)\). Its direct
+Gamma-and-sphere sampler, hierarchical-Beta control and single shared source
+registry now replay on Windows and WSL Linux. All 512 registered draws are
+retained; source validity labels 283 valid and 229 invalid draws without
+redraw or conditioning. The independent full audit executes 514
+preregistered gates with zero failures. These counts characterize the audit
+cell and are not physical probabilities or a cosmological preparation.
+
+Response 0018 also closes a total, disjoint, cluster-preserving and rank-blind
+event-record contract. It binds source state, problem data, root functions,
+proof models, gap-free domain/image coverage, candidates, clusters, geometry,
+rank marks and episode history. Finite-window no-entry remains distinct from
+global no-entry; ambiguous earliest ordering remains distinct from incomplete
+root coverage; strict outer overshoot is required before re-arming. A formal
+physical solver envelope is non-authoritative until the independent Brief
+0019 replayer reconstructs and accepts its functions and proof bundle.
+
+The active physical gate is therefore now the exhaustive 9D interval solver,
+not the source definition or record schema. Physical first-entry masses, the
+joint law of \((T,j,b,\ell,a,\sigma_3)\), the unconditioned finite-\(K\)
+population pushforward and all dimension-selection dynamics remain open. In
+particular, Brief 0018 does not yet supply a visible \(3+1\) basin, cone,
+signature or time direction.
 
 The wavefront-kernel construction remains an independent physical validation
 route, not the primary definition. Numerical gaps are meaningful only relative
