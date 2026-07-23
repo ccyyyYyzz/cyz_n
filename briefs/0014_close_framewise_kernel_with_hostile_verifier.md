@@ -223,4 +223,3 @@ End with the strongest result actually achieved:
 
 Do not call a state/mark registry a kernel.  Do not claim rank-three selection
 or exclusion.
-

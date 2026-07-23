@@ -192,4 +192,3 @@ then validate the reloaded artifact with an independent hostile verifier.  A
 certificate that survives changes to energy, reverse IDs, source-validity
 routing or hidden-three dependencies is evidence that the certificate is not
 checking the claimed object.
-
