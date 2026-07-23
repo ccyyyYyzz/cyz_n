@@ -101,6 +101,38 @@ def _rank(g):
  if any(g[i][i]*g[j][j]-g[i][j]**2 for i in range(3) for j in range(i+1,3)):return 2
  return 1 if any(g[i][i] for i in range(3)) else 0
 
+def _decimal_singular_values(g,r):
+ """Deterministic high-precision singular values for a 3-column control."""
+ with localcontext() as c:
+  c.prec=110
+  a=[[Decimal(x.numerator)/Decimal(x.denominator) for x in row] for row in g]
+  for _ in range(48):
+   for p,q in ((0,1),(0,2),(1,2)):
+    apq=a[p][q]
+    if apq==0:continue
+    diagonal_scale=max(abs(a[p][p]),abs(a[q][q]),Decimal(1))
+    if abs(apq)<=Decimal("1e-96")*diagonal_scale:
+     a[p][q]=a[q][p]=Decimal(0);continue
+    tau=(a[q][q]-a[p][p])/(2*apq);root=(1+tau*tau).sqrt()
+    t=1/(tau+root) if tau>=0 else -1/(-tau+root)
+    cosine=1/(1+t*t).sqrt();sine=t*cosine
+    app,aqq=a[p][p],a[q][q]
+    for j in range(3):
+     if j in (p,q):continue
+     ajp,ajq=a[j][p],a[j][q]
+     a[j][p]=a[p][j]=cosine*ajp-sine*ajq
+     a[j][q]=a[q][j]=sine*ajp+cosine*ajq
+    a[p][p]=app-t*apq;a[q][q]=aqq+t*apq
+    a[p][q]=a[q][p]=Decimal(0)
+  eigenvalues=sorted((a[i][i] for i in range(3)),reverse=True)
+  if r==3:
+   determinant=_fdet(g)
+   exact_det=Decimal(determinant.numerator)/Decimal(determinant.denominator)
+   eigenvalues[2]=exact_det/(eigenvalues[0]*eigenvalues[1])
+  else:
+   for i in range(r,3):eigenvalues[i]=Decimal(0)
+  return [float(max(Decimal(0),value).sqrt()) for value in eigenvalues]
+
 def _eig3(m):
  m=[vector(r,expected_dim=3) for r in m];off=m[0][1]**2+m[0][2]**2+m[1][2]**2
  if off==0:return sorted((m[0][0],m[1][1],m[2][2]),reverse=True)
@@ -111,11 +143,7 @@ def _eig3(m):
 
 def rank_record(i,p1,p2,u):
  p1,p2,u=vector(p1,expected_dim=8),vector(p2,expected_dim=8),vector(u,expected_dim=8);cols=[(1.,)+p1,(1.,)+tuple(-x for x in p2),(0.,)+u];g=gram(cols)
- f1,f2,fu=_fv(p1),_fv(p2),_fv(u);fg=_fg([(Fraction(1),)+f1,(Fraction(1),)+tuple(-x for x in f2),(Fraction(0),)+fu]);r=_rank(fg);ev=_eig3(g)
- if r==3:ev[2]=float(_fdet(fg))/(ev[0]*ev[1])
- else:
-  for j in range(r,3):ev[j]=0.
- sv=[math.sqrt(max(0.,x)) for x in ev];tol=RANK_REL_TOL*sv[0] if sv[0] else 0.;q=tuple(a+b for a,b in zip(f1,f2));rhs=(_fdot(q,q)*_fdot(fu,fu)-_fdot(q,fu)**2)+_fdet(_fg([f1,q,fu]));lhs=_fdet(fg);fl,fr=det3(g),float(rhs);den=max(abs(float(lhs)),abs(fr))
+ f1,f2,fu=_fv(p1),_fv(p2),_fv(u);fg=_fg([(Fraction(1),)+f1,(Fraction(1),)+tuple(-x for x in f2),(Fraction(0),)+fu]);r=_rank(fg);sv=_decimal_singular_values(fg,r);tol=RANK_REL_TOL*sv[0] if sv[0] else 0.;q=tuple(a+b for a,b in zip(f1,f2));rhs=(_fdot(q,q)*_fdot(fu,fu)-_fdot(q,fu)**2)+_fdet(_fg([f1,q,fu]));lhs=_fdet(fg);fl,fr=det3(g),float(rhs);den=max(abs(float(lhs)),abs(fr))
  err=0. if den==0 else abs(fl-fr)/den
  return {"id":i,"exact_rank":r,"rank":r,"numerical_rank":sum(s>tol for s in sv),"rank_relative_tolerance":RANK_REL_TOL,"rank_absolute_tolerance":tol,"singular_values_raw":sv,"sigma_3_raw":sv[2],"gram_determinant_exact":str(lhs),"exterior_identity_rhs_exact":str(rhs),"identity_certified_exact":lhs==rhs,"identity_relative_float_error":err}
 

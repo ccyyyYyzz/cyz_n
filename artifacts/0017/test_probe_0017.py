@@ -128,6 +128,11 @@ class Brief0017Controls(unittest.TestCase):
         ledger = report["physical_result_ledger"]
         self.assertEqual(ledger["physical_finite_K_first_entry_law"], "not computed")
         self.assertEqual(ledger["three_plus_one_selection"], "not computed")
+        committed = p.read_semantic_json(
+            Path(p.__file__).with_name("analytic_controls.json")
+        )
+        self.assertTrue(p.strict_json_equal(committed, report))
+        self.assertEqual(p.canonical_bytes(committed), p.canonical_bytes(report))
         with tempfile.TemporaryDirectory() as temporary:
             path = Path(temporary) / "report.json"
             text = json.dumps(report, sort_keys=True, indent=2, ensure_ascii=False)
