@@ -225,13 +225,29 @@ products states lack a reverse row.  Its verifier checks frame maps and
 hard-coded ledger identities, while energy, destination, cemetery, age,
 full-process `S9` and disguised hidden-three mutations remain undetected.
 
-The active bottleneck is therefore narrower and executable: construct a
-frame-local source-state row for every positive scheduled atom, with explicit
-destination and reverse IDs, then validate the reloaded object using a
-separate hostile verifier.  Full-process `S9`, source-validity cemetery routes,
-same-law three/four kernels and semantic non-encoding remain false until that
-object survives the prescribed mutations.  A state/mark registry or a
-prepared `count_if` adversary is not counted as a completed kernel.
+Response 0014 repairs that frame-local generator.  Independent expansion
+confirms 21,172 full-`T9` states, 78,628 atoms, exact row normalization,
+positive reverse closure, deterministic age schedules, complete adjacent
+`S9` covariance and same-path three/four control kernels.  These facts are
+conditionally adopted at generator level.
+
+The committed independent verifier does not execute: its encoded source
+shards fail base85 decoding before argument parsing, are not bound by the
+artifact hash, and cannot regenerate the submitted hostile-mutation report.
+The compact artifact stores the constructor graph, inputs, counts and
+expansion hashes rather than expanded rows, so the missing verifier is a hard
+evidence gap rather than a packaging nicety.  The registered graph also omits
+frame/state/channel/ledger/initial/age construction rules, fixed frame arity
+three remains an explicit microscopic prior, and invalid cemetery exits
+change physical payload while claiming otherwise.
+
+The active bottleneck is therefore to make the adopted generator-level object
+independently replayable and to close the complete constructor dependency
+boundary.  Brief 0015 requires readable verifier code, hashes for every
+executable dependency, a projection-preserving killed-state lift, generic
+opaque metric inputs and arity-2/4 semantic controls.  Until it passes,
+hostile-mutation closure, complete semantic non-encoding and any rank-three
+selection claim remain false.
 
 The wavefront-kernel construction remains an independent physical validation
 route, not the primary definition. Numerical gaps are meaningful only relative
