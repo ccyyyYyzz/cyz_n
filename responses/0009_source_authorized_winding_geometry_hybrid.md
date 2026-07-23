@@ -6,1943 +6,1235 @@ repository_commit: 5e13d300c98d2e72c8ff39ade2e880f1d449ace5
 status: proposed
 ---
 
-# Response 0009 — The source-authorized winding–geometry PDMP and the metastable visible-rank theorem
+# Response 0009 — Source-authorized winding–geometry dynamics and a metastable visible-rank theorem
 
 ## Executive result
 
-The source-authorized construction exists, but its positive theorem is a
-**metastable visible-rank theorem**, not an exact dimension-changing phase
-transition.
+A source-authorized constructive hybrid exists, but its strongest honest positive result is a metastable response-visible three-direction theorem, not an exact dimension-changing phase transition.
 
-The microscopic/mesoscopic state has no dimension variable, no projector-rank
-variable and no reset of the form
+The microscopic and mesoscopic state has no dimension variable, no visible-rank variable, no event projector and no reset of the form
 
-\[
-s\longmapsto s\pm1.
-\]
+```
+s → s ± 1.
+```
 
-It contains instead nine anonymous directional scale factors, their velocities,
-a shifted dilaton, directional winding and momentum occupations, a loop or
-oscillator reservoir, pair-impact data, and a pre-quotient probe/port sector.
-The continuous geometry obeys the anisotropic dilaton-gravity equations used in
-string-gas cosmology.  GKM collision events change only winding/source
-occupations and the energy reservoir.  At every stochastic jump,
+It contains nine anonymous directional scale factors and velocities, a shifted dilaton, directional winding and momentum occupations, a loop or oscillator reservoir, pair-impact and recollision marks, and a pre-quotient probe sector. The continuous geometry follows anisotropic dilaton gravity. A GKM event changes only winding or source occupations and the energy reservoir. At every stochastic jump,
 
-\[
-(\lambda_i,\dot\lambda_i,\varphi,\dot\varphi)
-\]
+```
+λᵢ⁺ = λᵢ⁻,
+hᵢ⁺ = hᵢ⁻,
+φ̄⁺ = φ̄⁻,
+ν⁺ = ν⁻.
+```
 
-are unchanged.  Geometry reacts only afterwards through the directional
-pressures in the continuous equations of motion.
+Geometry responds only afterwards through the directional pressures in its continuous equations of motion.
 
-The resulting **anonymous winding–geometry PDMP** is
+The resulting anonymous winding–geometry PDMP has generator
 
-\[
-\boxed{
-\mathcal L
-=
-F_{\rm dg}\!\cdot\nabla
-+F_{\rm probe}\!\cdot\nabla
-+\mathcal L_{W}
-+\mathcal L_{K}
-+\mathcal L_{\rm marks}.
-}
-\tag{1}
-\]
+```
+𝓛 = F_dg · ∇ + F_probe · ∇ + 𝓛_W + 𝓛_K + 𝓛_marks.          (1)
+```
 
-Here \(F_{\rm dg}\) is the anisotropic dilaton-gravity drift,
-\(\mathcal L_W\) is a normalized marked winding-pair annihilation/creation
-generator, and \(F_{\rm probe}\) comes from one democratic pre-quotient scalar
-probe action.  The probe term is the smallest new measurable action term:
-source cosmology by itself specifies neither a source map nor a readout map.
-It couples to the zero and first Fourier harmonics of all nine cycles before
-any scale quotient is taken.
+Here F_dg is the anisotropic dilaton-gravity drift, 𝓛_W is a normalized marked winding-pair annihilation and creation generator, and F_probe follows from one democratic pre-quotient scalar-probe action. The probe term is the smallest additional measurable action term: source cosmology specifies neither an intervention map nor a readout map.
 
-The visible spatial rank at bandwidth \(\Lambda\) is then an output.  The
-anonymous response algebra contains one circle germ for each first-harmonic
-pole family that lies in the declared band with nonzero residue.  If the
-strict spectral gap
+Visible spatial rank at bandwidth Λ is an output. The response algebra contains one circle germ for each first-harmonic pole family that lies in the declared band with nonzero residue. If a strict spectral gap separates a set L of low-gap harmonics,
 
-\[
-\max_{i\in L} e^{-\lambda_i}
-<\Lambda_-
-<\Lambda_+
-<\min_{j\notin L}e^{-\lambda_j}
-\tag{2}
-\]
+```
+max{i ∈ L} exp(−λᵢ) < Λ₋ < Λ₊ < min{j ∉ L} exp(−λⱼ),          (2)
+```
 
-holds, complete anonymous response data reconstruct
+then complete anonymous response data reconstruct
 
-\[
-\mathcal A_I
-\simeq
-\frac{
-\mathbb R[c_i,s_i:i\in L]
-}{(c_i^2+s_i^2-1:i\in L)}
-\tag{3}
-\]
+```
+A_I ≅ ℝ[cᵢ,sᵢ : i ∈ L] / (cᵢ² + sᵢ² − 1 : i ∈ L),          (3)
+```
 
-throughout \(I=[\Lambda_-,\Lambda_+]\), and therefore infer
+throughout I = [Λ₋,Λ₊], and therefore infer
 
-\[
-d_{\rm spatial}^{\rm vis}=|L|.
-\tag{4}
-\]
+```
+d_spatial^vis = |L|.                                        (4)
+```
 
-No rank label, preferred subset, metric, cone flag or target-dependent
-threshold is passed to the reconstruction.  At higher bandwidth the same
-pre-quotient ports reveal the remaining harmonics; the three-dimensional
-plateau is never interpreted as proof that the other six directions do not
-exist.
+No rank label, preferred subset, metric, cone flag, time vector or target-dependent threshold is passed to the reconstruction. At larger bandwidth the same pre-quotient ports reveal the remaining harmonics. A three-direction plateau is never interpreted as evidence that the other six microscopic directions do not exist.
 
-The main exact model theorem is as follows.
+The principal constructive statement is deliberately general.
 
-> **Source-authorized metastable three-large-direction theorem.**  
-> Consider the declared PDMP below in the source-valid dilute radiation
-> domain.  Suppose the actual GKM impact-mark kernel and the anisotropic
-> pressure bounds satisfy strict, target-neutral clearance/blockade
-> inequalities.  Let a resolved predecessor have four low-gap directional
-> pole families, while one of those four directions carries at least
-> \(w_*>0\) winding pairs and therefore has uniformly negative directional
-> pressure.  Let the other three low-gap directions have sufficiently rapid
-> winding clearance and nonnegative pressure.
+> **Source-authorized one-direction recollapse theorem.**
 >
-> Then the fourth direction recollapses continuously, without any rank jump,
-> and crosses the predeclared response band in a computable time
-> \(T_{\rm rec}\), except on an event whose probability is bounded by an
-> explicit Poisson tail.  After response settling, the anonymous
-> reconstruction changes from visible spatial rank four to rank three.
-> On the resulting three-direction tube, for every finite horizon \(T\),
-> the probability of leaving the rank-three response plateau is bounded by
+> Fix any m in {1,…,8}. Start from a resolved predecessor with m+1 low-gap directional pole families. Suppose m of those directions are winding-cleared and have nonnegative directional pressure, while the remaining low-gap direction carries enough winding pairs to have uniformly negative pressure. Suppose the source-authorized impact-mark kernel gives strict clearance and blockade margins and the response margins are positive on a predeclared bandwidth interval.
 >
-> \[
-> \epsilon_{\rm plat}(T)
-> \le
-> 6\Bigl\lceil\frac{T}{T_{\rm rec}}\Bigr\rceil
-> \Pr\!\left[
-> {\rm Pois}(\overline\gamma_4 w_*^2T_{\rm rec})
-> \ge q_*
-> \right]
-> +3\overline\kappa_{\rm cr}T
-> +\epsilon_{\rm resp}(T).
-> \tag{5}
-> \]
+> Then the wound marginal direction recollapses continuously, without a rank jump, and crosses the predeclared response band in a computable time T_rec except on an event bounded by an explicit Poisson tail. After response settling, the anonymous reconstruction changes from visible spatial rank m+1 to rank m.
 >
-> Here \(\overline\gamma_4\) is not a rate keyed to the numeral four.  It is the
-> supremum of the actual source-authorized impact integral on the marginal
-> fourth-direction geometry; \(q_*\) is the number of annihilation events
-> required to remove the trapping pressure; and
-> \(\overline\kappa_{\rm cr}\) is the reverse pair-creation intensity in the
-> chosen thermodynamic regime.  The attraction and leakage statements hold
-> on an open parameter cell because all defining inequalities are strict and
-> the rates depend continuously on the impact, radius, dilaton and occupation
-> data.
+> For every finite horizon T, the probability of leaving the m-direction response plateau obeys
+>
+> ```
+> P(τ_exit ≤ T)
+> ≤ (9−m) ceil(T / T_rec) p_blk
+>   + m κ̄_cr T
+>   + ε_resp(T).                                               (5)
+> ```
+>
+> The same generator works for every m. It never evaluates m, three, or a target rank.
 
-Finite-width GKM rates remain positive.  Therefore this is a concentration and
-finite-time metastability theorem.  It is not an exact invariant
-rank-three phase, and the response must abstain once the leakage budget or a
-spectral margin closes.
+The desired executable is the corollary m = 3: a resolved visible-spatial-rank-four predecessor enters a metastable visible-spatial-rank-three response tube. Finite-width GKM rates remain positive, so this is a concentration and finite-time metastability theorem. It is not an exact forward-invariant rank-three phase.
 
 There is also a sharp source boundary.
 
-> **Anisotropic-extension underdetermination theorem.**  
-> The isotropic fixed-\(d\) GKM equations do not uniquely determine an
-> anisotropic collision kernel.  Infinitely many permutation-equivariant
-> smooth hazard functions agree with all supplied isotropic restrictions and
-> have different transverse derivatives away from those restrictions.
-> Consequently no anisotropic three-direction selection theorem follows from
-> the published rate without an additional pair-impact/recollision mark law.
+> **Anisotropic-extension underdetermination theorem.**
+>
+> The published fixed-dimension GKM restrictions do not uniquely determine an anisotropic collision kernel. Infinitely many smooth permutation-equivariant hazards agree on every supplied isotropic restriction and have different transverse derivatives away from those restrictions. Therefore no anisotropic three-direction selection theorem follows from the source rate without one additional pair-impact and recollision mark law.
 
-The smallest non-target-keyed missing term is therefore measurable: the
-normalized distribution of pair impact vectors and recollision times on the
-actual anisotropic torus.  The executable below declares that kernel, estimates
-it from marked events, and kills the model if the inferred kernel does not
-produce the required open clearance/blockade cell.
+The smallest non-target-keyed missing term is measurable: the normalized joint distribution of pair recollision times, impact vectors and energy-partition marks on the actual anisotropic torus.
 
-This response fixes one audited primitive stringlike winding charge sector.
-It does not derive why that orbit dominates a duality-complete species
-ensemble.  It also uses the one time coordinate already supplied by the source
-cosmology and does not claim to select one time direction or a time arrow.
+This executable fixes one audited primitive stringlike winding sector. It does not derive why that charge orbit dominates a duality-complete species ensemble. It also uses the one time coordinate already supplied by the source cosmology and does not claim to select one time direction or a time arrow.
 
 ---
 
-# 1. Classification of claims
+# 1. Claim classification
 
-Every substantive statement below is assigned one of the six labels required
-by the brief.
+Every substantive statement belongs to exactly one of the following classes.
 
 ## `primary-source derived`
 
-The following inputs are imported from primary sources.
-
-1. The anisotropic toroidal dilaton-gravity equations, shifted dilaton and
-   directional pressure coupling of Easther, Greene, Jackson and Kabat,
-   arXiv:hep-th/0409121, following Tseytlin and Vafa,
-   arXiv:hep-th/9109048.
-2. The GKM wound-string impact-parameter amplitude and dilute-pair collision
-   prescription of Greene, Kabat and Marnerides, arXiv:0908.0955.
-3. The source Boltzmann structure
-   
-   \[
-   \dot W=-\Gamma_W(W^2-\langle W\rangle^2)
-   \]
-   
-   and the winding/momentum energy and pressure signs used in that string-gas
-   system.
-4. The explicitly conditional successive-fluctuation scenario of Greene,
-   Kabat and Marnerides, arXiv:1212.2115.
+1. Anisotropic toroidal dilaton-gravity equations, the shifted dilaton and directional pressure coupling, following Tseytlin–Vafa and Easther–Greene–Jackson–Kabat.
+2. The GKM wound-string impact-parameter amplitude and dilute-pair collision prescription.
+3. The source Boltzmann structure for winding annihilation and reverse equilibrium production.
+4. Winding and momentum energy and pressure signs.
+5. The explicitly conditional successive-fluctuation scenario of Greene, Kabat and Marnerides.
 
 ## `derived from a newly proposed action`
 
-The following terms are new.
-
-1. A permutation-covariant anisotropic impact-mark closure that reduces to the
-   GKM kernel on the source isotropic submanifolds.
-2. A stochastic occupation-level lift of the source Boltzmann equation with
-   exact reservoir energy accounting.
-3. A democratic scalar probe/port action coupling to all zero and first
-   torus harmonics before quotienting.
-4. The finite response-band functor that uses only pole positions, residues,
-   products and physical handles.
+1. A normalized anisotropic impact and recollision mark closure that reduces to the GKM kernel on the source isotropic submanifolds.
+2. An occupation-level, energy-conserving stochastic lift of the source Boltzmann equations.
+3. A democratic scalar probe action coupled to the zero and first Fourier harmonics of all nine cycles before any response quotient.
+4. The scale-indexed pole and relation functor used by the anonymous reconstructor.
 
 ## `exact theorem about a declared model`
 
-The PDMP well-posedness and constraint theorem, the anisotropic-extension
-underdetermination theorem, the response-rank theorem, the comparison-ODE
-recollapse bound, the winding clearance/retention tail bounds, the metastable
-plateau theorem and the finite joint-generator pole/residue identities are
-exact for the displayed model.
+1. PDMP well-posedness, energy accounting and permutation covariance.
+2. Anisotropic-extension underdetermination.
+3. Port underdetermination.
+4. The anonymous circle-algebra rank theorem.
+5. Geometry comparison bounds.
+6. Winding clearance and blockade tail bounds.
+7. The one-direction recollapse and metastable plateau theorem.
+8. Finite joint-generator first-passage and pole-residue identities.
 
 ## `controlled asymptotic/numerical conjecture`
 
-The use of the GKM eikonal amplitude over a finite anisotropic impact ensemble,
-the dilute recollision closure, the passive-probe approximation and any
-continuum-to-finite Galerkin error estimate require explicit source-regime and
-numerical bounds.
+1. Use of the GKM eikonal expression over a finite anisotropic impact ensemble.
+2. Dilute recollision and molecular-chaos closure.
+3. Passive-probe approximation.
+4. Finite-volume and Galerkin convergence to the continuum hybrid.
+5. Extension of the open predecessor cell to a source-derived Hagedorn fluctuation measure.
 
 ## `no-go/underdetermination`
 
-The published isotropic GKM rate does not determine the anisotropic mark law;
-source cosmology alone does not determine any operational port map; positive
-finite-width hazards do not yield an exact invariant rank-three phase; and the
-construction does not select a primitive stringlike orbit or one physical time
-orientation.
+1. Fixed-dimension GKM data do not determine anisotropic hazards.
+2. Source cosmology alone does not determine an operational port map.
+3. Positive finite-width hazards do not yield an exact invariant rank-three phase.
+4. This executable does not select the primitive stringlike charge orbit.
+5. It does not select one time direction or a universal all-field cone.
 
 ## `open gate`
 
-A duality-complete action must still derive the primitive stringlike charge
-orbit, its initial-state measure, the anisotropic impact/recollision law, a
-universal all-field carrier beyond the declared probes, and a physical
-retarded/advanced or entropy-current selection.
+A duality-complete action must still derive the primitive stringlike orbit and initial-state measure, the anisotropic impact law, a universal all-field carrier, and a physical retarded-versus-advanced or entropy-current selection.
 
 ---
 
 # 2. Source equations and the exact source boundary
 
-## 2.1 Anisotropic toroidal geometry
+## 2.1 Anisotropic nine-torus
 
-Use the homogeneous anisotropic nine-torus
+Use the homogeneous anisotropic torus
 
-\[
-ds^2=-dt^2+\alpha'\sum_{i=1}^{9}e^{2\lambda_i(t)}d\theta_i^2,
-\qquad
-0\le\theta_i<2\pi,
-\tag{6}
-\]
+```
+ds² = −dt² + α′ Σᵢ exp(2λᵢ(t)) dθᵢ²,
+0 ≤ θᵢ < 2π,
+i = 1,…,9.                                                   (6)
+```
 
-and the shifted dilaton
+Define the shifted dilaton and velocities
 
-\[
-\varphi=2\phi-\sum_{i=1}^{9}\lambda_i.
-\tag{7}
-\]
+```
+φ̄ = 2φ − Σᵢ λᵢ,
+hᵢ = dλᵢ/dt,
+ν = dφ̄/dt.                                                    (7)
+```
 
-Set \(\alpha'=1\) in the dynamical equations and write
+Set α′ = 1 in the dynamical equations. The source equations are
 
-\[
-h_i=\dot\lambda_i,
-\qquad
-\nu=\dot\varphi.
-\tag{8}
-\]
+```
+dλᵢ/dt = hᵢ,                                                   (8)
 
-The source equations are
+dhᵢ/dt = ν hᵢ + exp(φ̄) Pᵢ / (8π²),                            (9)
 
-\[
-\dot\lambda_i=h_i,
-\tag{9}
-\]
+dφ̄/dt = ν,                                                    (10)
 
-\[
-\dot h_i
-=
-\nu h_i+\frac{e^\varphi}{8\pi^2}P_i,
-\tag{10}
-\]
+dν/dt = ½(ν² + Σᵢ hᵢ²).                                      (11)
+```
 
-\[
-\dot\varphi=\nu,
-\tag{11}
-\]
+The Hamiltonian constraint is
 
-\[
-\dot\nu
-=
-\frac12\left(\nu^2+\sum_{i=1}^{9}h_i^2\right),
-\tag{12}
-\]
+```
+E = (2π)² exp(−φ̄) (ν² − Σᵢ hᵢ²).                              (12)
+```
 
-with Hamiltonian constraint
+The source cosmology chooses the branch ν < 0. This supplies a time coordinate and an orientation convention to this subproblem. It is not a theorem selecting one time direction.
 
-\[
-\boxed{
-E
-=
-(2\pi)^2e^{-\varphi}
-\left(
-\nu^2-\sum_{i=1}^{9}h_i^2
-\right).
-}
-\tag{13}
-\]
-
-The source cosmology chooses the branch \(\nu<0\).  That branch supplies a time
-coordinate and a time orientation convention to this subproblem.  It is not a
-derivation that the fundamental world has one time direction.
-
-## 2.2 Directional source energy and pressure
+## 2.2 Directional source occupations
 
 Let
 
-\[
-w_i^+,w_i^-\in\mathbb N,
-\qquad
-k_i^+,k_i^-\in\mathbb N
-\tag{14}
-\]
+```
+wᵢ⁺, wᵢ⁻ ∈ ℕ    winding and anti-winding occupations,
+kᵢ⁺, kᵢ⁻ ∈ ℕ    momentum and anti-momentum occupations.
+```
 
-be winding/anti-winding and momentum/anti-momentum occupations in direction
-\(i\).  Define
+Write
 
-\[
-w_i=w_i^++w_i^-,
-\qquad
-k_i=k_i^++k_i^-.
-\tag{15}
-\]
+```
+wᵢ = wᵢ⁺ + wᵢ⁻,
+kᵢ = kᵢ⁺ + kᵢ⁻.
+```
 
-With one unit of winding or momentum energy in string units,
+In the declared string-unit normalization,
 
-\[
-E_W=\sum_i w_i e^{\lambda_i},
-\qquad
-E_K=\sum_i k_i e^{-\lambda_i}.
-\tag{16}
-\]
+```
+E_W = Σᵢ wᵢ exp(λᵢ),
+E_K = Σᵢ kᵢ exp(−λᵢ),
+E = E_W + E_K + E₀,                                           (13)
+```
 
-Let \(E_0\ge0\) be the pressureless oscillator/loop reservoir used in the
-minimal executable.  Then
+where E₀ is a pressureless loop and oscillator reservoir. Directional pressure is
 
-\[
-E=E_W+E_K+E_0,
-\tag{17}
-\]
-
-\[
-P_i=-w_i e^{\lambda_i}+k_i e^{-\lambda_i}.
-\tag{18}
-\]
+```
+Pᵢ = −wᵢ exp(λᵢ) + kᵢ exp(−λᵢ).                               (14)
+```
 
 Between reactions,
 
-\[
-\dot E=-\sum_i h_iP_i.
-\tag{19}
-\]
+```
+dE/dt = −Σᵢ hᵢ Pᵢ.                                           (15)
+```
 
-Substitution into (9)--(13) shows that the Hamiltonian constraint propagates.
-Indeed, differentiating its right-hand side and using (10)--(12) gives exactly
-\(-\sum_i h_iP_i\).
-
-A more detailed executable may replace \(E_0\) by an explicit finite set of
-oscillator and loop occupations.  The pressure and energy must then be derived
-from those occupations rather than assigned independently.
+Differentiating the right side of (12) and using (8)–(11) gives (15), so the Hamiltonian constraint propagates.
 
 ## 2.3 What a GKM event authorizes
 
-For a pair of opposite winding strings, the GKM impact representation gives,
-in ten spacetime dimensions, a conditional interconnection probability of the
-form
+For an oppositely wound pair, the GKM calculation supplies an impact-dependent interaction probability or rate in its heavy, dilute and slow regime. In the audited logarithmic form,
 
-\[
-P_{\rm GKM}(b\mid X)
-=
-\min\!\left\{
-1,
-\frac{1}{v}
-\frac{\pi\alpha'\kappa_8^2s_R}
-{4(4\pi Y\alpha')^3}
-\exp\!\left[-\frac{\|b\|^2}{4Y\alpha'}\right]
-\right\},
-\tag{20}
-\]
+```
+log Γ_GKM
+= φ + 2 log R − log 4
+  + m log[2πR / sqrt(π Δ²)]
+  − |b|² / Δ²,
 
-where
+Δ² = 4 log R²,                                                (16)
+```
 
-\[
-s_R\simeq\frac{4R^2}{\alpha'^2},
-\qquad
-Y=\log\frac{\alpha's_R}{4},
-\qquad
-\Delta^2=4Y\alpha'.
-\tag{21}
-\]
+with m the number of admitted transverse impact directions in that fixed-dimension calculation.
 
-The impact vector belongs to the six-dimensional space transverse to the pair
-worldsheet kinematics.  The source permits the occupation reaction
+The authorized reaction is
 
-\[
-W_i^++W_i^-\longrightarrow\text{loops/oscillators},
-\tag{22}
-\]
+```
+Wᵢ⁺ + Wᵢ⁻ → loops or oscillators.                              (17)
+```
 
-not a change of \(\lambda_i\), not a change of the number of dimensions and not
-a projector reset.
+It may change source occupations and reservoir energy. It does not change λᵢ, hᵢ, the number of dimensions, an event projector or a response rank.
 
-The source Boltzmann equation also contains the reverse equilibrium term.  In
-the radiation regime \(\langle W_i\rangle=0\); in a regime with nonzero
-equilibrium winding, a stochastic lift must include pair creation with the
-same charge and energy bookkeeping.
+The source Boltzmann equation contains a reverse equilibrium term. A Hagedorn-regime stochastic lift must include reverse pair creation. In the radiation control used below, the equilibrium winding occupation is zero and the reverse channel vanishes.
 
-## 2.4 Anisotropic-extension underdetermination
+---
 
-Let \(\mathcal M_{\rm iso}\) be the finite union of source submanifolds on which
-some declared set of directions have one common radius and the rest are fixed
-at the self-dual radius.  The published fixed-\(d\) simulations determine a
-hazard only on \(\mathcal M_{\rm iso}\).
+# 3. The missing anisotropic mark law
+
+## 3.1 Exact underdetermination
+
+Let M_iso be the finite union of source submanifolds on which a declared subset of scale factors coincide and the remaining radii are fixed at the self-dual value.
 
 ### Theorem 1 — anisotropic-extension underdetermination
 
-Let \(H_i(\lambda,w,k,\varphi)\) be any smooth \(S_9\)-equivariant anisotropic
-extension of the supplied hazards.  There are infinitely many smooth,
-\(S_9\)-equivariant functions \(F_i\not\equiv0\) satisfying
+Let Hᵢ be one smooth S₉-equivariant anisotropic hazard extending all supplied source restrictions. There are infinitely many smooth S₉-equivariant functions Fᵢ, not identically zero, such that
 
-\[
-F_i|_{\mathcal M_{\rm iso}}=0.
-\tag{23}
-\]
+```
+Fᵢ restricted to M_iso is zero.                               (18)
+```
 
-For sufficiently small \(\epsilon\),
+For sufficiently small ε,
 
-\[
-H_i^{(\epsilon)}=H_i+\epsilon F_i
-\tag{24}
-\]
+```
+Hᵢ^(ε) = Hᵢ + ε Fᵢ                                           (19)
+```
 
-has the same source restrictions but arbitrary prescribed changes of selected
-transverse derivatives at an anisotropic point.  The resulting
-winding/geometry flows can have different metastable directional subsets.
+has the same source restrictions but arbitrarily different selected transverse derivatives at a chosen anisotropic point. The associated winding and geometry flows can therefore have different metastable directional subsets.
 
 #### Proof
 
-Each isotropic source set is a proper real-analytic submanifold of the full
-anisotropic state space.  A finite product of squared defining functions
-vanishes on their union and is nonzero on a dense open complement.  Averaging
-that product times an arbitrary directional seed over \(S_9\) produces the
-required equivariant \(F_i\).  Its first nonzero anisotropic derivatives may be
-chosen through the seed.  Therefore the source restrictions do not determine
-the anisotropic flow.
+Each isotropic source set is a proper real-analytic submanifold of the full anisotropic state space. A product of squared defining functions vanishes on their finite union and is nonzero on a dense open complement. Multiplying it by an arbitrary directional seed and averaging over S₉ gives an equivariant Fᵢ. Its first nonzero anisotropic derivative can be varied through the seed.
 
-### Consequence
+## 3.2 Minimal measurable repair
 
-A positive construction must declare and measure one additional object:
+For a pair a,b wound in direction i, declare the normalized mark kernel
 
-\[
-\boxed{
-\text{the normalized pair recollision/impact mark kernel}
-\quad
-\mathsf M_{i,ab}(d\tau,db,d\eta\mid X).
-}
-\tag{25}
-\]
+```
+Mᵢ,ab(dτ, db, dη | X)
+= νᵢ,ab(X) exp[−νᵢ,ab(X) τ] dτ
+  × μᵢ,ab,X(db)
+  × κᵢ,ab,X(dη | b).                                         (20)
+```
 
-It is not a target-rank term.  It records the waiting time to a pair encounter,
-the physical impact vector and the energy-partition mark.
+The factors describe:
 
-## 2.5 Minimal anisotropic impact closure
+1. the absolute recollision waiting time;
+2. the physical impact vector;
+3. the energy-partition mark after an accepted event.
 
-For a pair \(a,b\) wound in direction \(i\), let
+Both μ and κ are probability kernels. The accepted absolute pair hazard is
 
-\[
-\mathsf M_{i,ab}
-=
-\nu_{i,ab}(X)e^{-\nu_{i,ab}(X)\tau}d\tau
-\otimes
-\mu_{i,ab,X}(db)
-\otimes
-\kappa_{i,ab,X}(d\eta\mid b),
-\tag{26}
-\]
+```
+γ̄ᵢ,ab(X)
+= νᵢ,ab(X) ∫ P_GKM(b | X) μᵢ,ab,X(db).                         (21)
+```
 
-where both probability kernels are normalized.  The absolute accepted pair
-hazard is
+The absolute attempt frequency νᵢ,ab is retained. Rescaling every microscopic clock changes attraction time and is observable.
 
-\[
-\boxed{
-\overline\gamma_{i,ab}(X)
-=
-\nu_{i,ab}(X)
-\int P_{\rm GKM}(b\mid X)\,
-\mu_{i,ab,X}(db).
-}
-\tag{27}
-\]
+## 3.3 Finite impact-box control
 
-The absolute recollision scale \(\nu_{i,ab}\) is retained.  Multiplying both a
-collision and a relaxation hazard by the same constant therefore changes the
-attraction time, as it must.
+For an exact finite control, use a six-coordinate unsaturated impact box
 
-For the exact finite control, take a source-valid unsaturated impact box in the
-six transverse coordinates,
+```
+μ(db) = Π_{α=1}^6 [1_{[−rα,rα]}(bα) dbα / (2rα)].             (22)
+```
 
-\[
-\mu(db)
-=
-\prod_{\alpha=1}^{6}
-\frac{{\bf1}_{[-r_\alpha,r_\alpha]}(b_\alpha)}{2r_\alpha}\,db_\alpha.
-\tag{28}
-\]
+When the source expression does not saturate its probability cap on the box and has Gaussian factor exp(−|b|² / Δ²), the impact average factorizes:
 
-If the expression inside the minimum in (20) is below one throughout the box,
-then
+```
+γ̄ᵢ,ab
+= νᵢ,ab Cᵢ(X)
+  Π_{α=1}^6 [sqrt(π) Δᵢ erf(rα / Δᵢ) / (2rα)].                (23)
+```
 
-\[
-\overline\gamma_{i,ab}
-=
-\nu_{i,ab}\,\mathcal C_i(X)
-\prod_{\alpha=1}^{6}
-\frac{\sqrt\pi\Delta_i}{2r_\alpha}
-\operatorname{erf}\!\left(\frac{r_\alpha}{\Delta_i}\right),
-\tag{29}
-\]
+For rα / Δᵢ much smaller than one, a factor approaches one. For a dilute large-impact coordinate it is asymptotic to sqrt(π) Δᵢ / (2rα). Suppression is therefore a continuous function of actual widths and string thickness, not a discrete count supplied to the generator.
 
-with \(\mathcal C_i\) equal to the source prefactor in (20).  For a compact
-transverse direction \(r_\alpha/\Delta_i\ll1\), the factor tends to one.  For a
-large dilute impact direction it is asymptotic to
-
-\[
-\frac{\sqrt\pi\Delta_i}{2r_\alpha}.
-\tag{30}
-\]
-
-No discrete count of large directions enters (29).  Suppression is a continuous
-function of the actual separations and string thicknesses.
-
-The source-valid domain requires heavy, dilute, slowly moving strings and a
-controlled impact regime.  Outside it the process moves to an explicit
-out-of-validity state rather than extrapolating (20).
+Outside the source-valid regime, the process enters an explicit out-of-validity state. The eikonal expression is not extrapolated.
 
 ---
 
-# 3. The source-authorized winding–geometry PDMP
+# 4. The source-authorized winding–geometry PDMP
 
-## 3.1 State space
+## 4.1 State space
 
 The state is
 
-\[
-X=
-(\lambda,h,\varphi,\nu,
- w^+,w^-,k^+,k^-,E_0,
- \mathfrak b,
- \Psi,\Pi_\Psi),
-\tag{31}
-\]
+```
+X = (λ,h,φ̄,ν,
+     w⁺,w⁻,k⁺,k⁻,E₀,
+     impact marks,
+     Ψ,Π_Ψ).                                                   (24)
+```
 
-where
+The components are:
 
-* \(\lambda,h\in\mathbb R^9\);
-* \(\varphi,\nu\in\mathbb R\);
-* the four occupation vectors lie in \(\mathbb N^9\);
-* \(E_0\ge0\);
-* \(\mathfrak b\) contains the current pair-impact and recollision data;
-* \(\Psi,\Pi_\Psi\) are the finite pre-quotient probe coordinates introduced in
-  Section 5.
+1. λ,h in ℝ⁹;
+2. shifted dilaton variables φ̄,ν in ℝ;
+3. four occupation vectors in ℕ⁹;
+4. reservoir energy E₀ ≥ 0;
+5. marked recollision and impact data;
+6. finite pre-quotient probe coordinates Ψ and momenta Π_Ψ.
 
-There is no rank, projector or preferred subset in \(X\).
+There is no field named rank, dimension, large-count, target axes or projector.
 
-Define the source-valid domain \(\mathcal D_{\rm src}\) by:
+Define the source-valid domain D_src by:
 
-1. the constraint (13);
-2. \(\nu<0\);
-3. \(0<E\le E_{\max}\);
+1. constraint (12);
+2. ν < 0;
+3. 0 < E ≤ E_max;
 4. finite occupation and Fourier cutoffs;
-5. weak coupling and the heavy/dilute inequalities needed for (20);
-6. bounded \(\lambda,h,\varphi,\nu\) on the declared experiment interval;
-7. nonnegative reservoir energy.
+5. the weak-coupling, heavy and dilute conditions needed for the GKM kernel;
+6. bounded geometry variables during the declared experiment;
+7. E₀ ≥ 0.
 
-At the first exit from this domain, the process enters an absorbing cemetery
-state \(\dagger\).  This boundary rule is part of the model.  No reflecting
-cosmological wall is invented.
+At first exit, the process enters an absorbing state †. No artificial reflecting cosmological wall is added.
 
-## 3.2 Occupation jumps
+## 4.2 Occupation reactions
 
 Let
 
-\[
-a_i^-(X)
-=
-\sum_{a\in W_i^+}
-\sum_{b\in W_i^-}
-\overline\gamma_{i,ab}(X).
-\tag{32}
-\]
+```
+aᵢ⁻(X) = Σ_{a in Wᵢ⁺} Σ_{b in Wᵢ⁻} γ̄ᵢ,ab(X).                (25)
+```
 
-The annihilation reset is
+An accepted annihilation reset is
 
-\[
-J_i^-:
-(w_i^+,w_i^-,E_0)
-\longmapsto
-(w_i^+-1,w_i^--1,E_0+2e^{\lambda_i}).
-\tag{33}
-\]
+```
+Jᵢ⁻ :
+(wᵢ⁺, wᵢ⁻, E₀)
+→ (wᵢ⁺−1, wᵢ⁻−1, E₀ + 2 exp(λᵢ)).                            (26)
+```
 
-It leaves every geometry and probe coordinate unchanged.
+Every geometry and probe coordinate is unchanged at the jump.
 
-For a thermodynamic regime with nonzero equilibrium winding, introduce a
-reverse intensity
+In a regime with nonzero equilibrium winding, introduce a reverse intensity
 
-\[
-a_i^+(X)
-=
-\overline\gamma_i^{\rm cr}(X)
-\langle W_i^+\rangle_X
-\langle W_i^-\rangle_X
-\mathbf1_{\{E_0\ge2e^{\lambda_i}\}},
-\tag{34}
-\]
+```
+aᵢ⁺(X)
+= γ̄ᵢ^cr(X) ⟨Wᵢ⁺⟩_X ⟨Wᵢ⁻⟩_X
+  1_{E₀ ≥ 2 exp(λᵢ)},                                        (27)
+```
 
 and reset
 
-\[
-J_i^+:
-(w_i^+,w_i^-,E_0)
-\longmapsto
-(w_i^++1,w_i^-+1,E_0-2e^{\lambda_i}).
-\tag{35}
-\]
+```
+Jᵢ⁺ :
+(wᵢ⁺, wᵢ⁻, E₀)
+→ (wᵢ⁺+1, wᵢ⁻+1, E₀ − 2 exp(λᵢ)).                            (28)
+```
 
-In the radiation phase used for the plateau control,
+In the radiation control, the equilibrium winding occupations vanish and so does (27). Momentum-pair channels are included analogously only when their source Boltzmann rates belong to the chosen thermodynamic closure.
 
-\[
-\langle W_i^\pm\rangle=0
-\tag{36}
-\]
+Net winding charge qᵢ = wᵢ⁺ − wᵢ⁻ is conserved by (26)–(28).
 
-and this reverse channel vanishes.  A Hagedorn executable must retain it.
+## 4.3 Generator
 
-Momentum-pair reactions are included analogously when their source Boltzmann
-rates are part of the chosen thermodynamic closure.  They are not used as a
-rank controller.
+For a smooth cylinder function f,
 
-The net winding charges
+```
+𝓛f(X)
+= F_dg(X) · ∇_{λ,h,φ̄,ν,E₀} f
+  + F_probe(X) · ∇_{Ψ,Π_Ψ} f
+  + Σᵢ aᵢ⁻(X)[f(Jᵢ⁻X)−f(X)]
+  + Σᵢ aᵢ⁺(X)[f(Jᵢ⁺X)−f(X)]
+  + 𝓛_K f
+  + 𝓛_marks f.                                                (29)
+```
 
-\[
-q_i=w_i^+-w_i^-
-\tag{37}
-\]
+F_dg is (8)–(11), with E₀ evolving between jumps so that (15) holds. The mark generator refreshes data according to (20). F_probe is derived in Section 5.
 
-are conserved by (33)--(35).
+A static audit of every occupation reset must prove
 
-## 3.3 Generator
+```
+λ⁺ = λ⁻,
+h⁺ = h⁻,
+φ̄⁺ = φ̄⁻,
+ν⁺ = ν⁻.                                                      (30)
+```
 
-For a smooth cylinder function \(f\),
+## Theorem 2 — well-posedness, conservation and symmetry
 
-\[
-\begin{aligned}
-\mathcal L f(X)
-={}&
-F_{\rm dg}(X)\cdot\nabla_{\lambda,h,\varphi,\nu,E_0}f
-+F_{\rm probe}(X)\cdot\nabla_{\Psi,\Pi_\Psi}f
-\\
-&+
-\sum_{i=1}^{9}
-a_i^-(X)
-\left[f(J_i^-X)-f(X)\right]
-\\
-&+
-\sum_{i=1}^{9}
-a_i^+(X)
-\left[f(J_i^+X)-f(X)\right]
-+\mathcal L_Kf
-+\mathcal L_{\rm marks}f.
-\end{aligned}
-\tag{38}
-\]
+Assume the stopped source-valid domain is compact, the marked hazards are bounded and measurable, and the continuous drift is locally Lipschitz. Then:
 
-The drift \(F_{\rm dg}\) is (9)--(12), with \(E_0\) evolving between jumps so
-that (19) holds.  The mark generator refreshes pair impact and recollision data
-using (26).  The probe drift follows from the action in Section 5.
+1. every jump intensity is nonnegative;
+2. 𝓛1 = 0;
+3. the total jump intensity is bounded;
+4. no finite-time explosion occurs before absorption;
+5. continuous path pieces are absolutely continuous and obey (8)–(11);
+6. every jump preserves total matter energy and constraint (12);
+7. the process is equivariant under S₉ when source parameters, marks and ports are permuted with their directional labels.
 
-There is no stochastic geometry jump.  A static audit of every reset map must
-verify
+The process is not generally O(9)-equivariant.
 
-\[
-\lambda^+=\lambda^-,
-\quad
-h^+=h^-,
-\quad
-\varphi^+=\varphi^-,
-\quad
-\nu^+=\nu^-.
-\tag{39}
-\]
+#### Proof
 
-## Theorem 2 — well-posedness, energy accounting and symmetry
-
-Assume the source-valid domain is compact before adjoining \(\dagger\), the
-marked hazards are bounded and measurable, and the drift is locally Lipschitz.
-Then:
-
-1. all jump intensities are nonnegative;
-2. \(\mathcal L1=0\);
-3. the total jump intensity is bounded by a finite constant;
-4. the PDMP has no finite-time explosion before absorption;
-5. continuous path pieces are absolutely continuous and obey (9)--(12);
-6. every jump preserves total matter energy and the Hamiltonian constraint;
-7. the process is equivariant under the permutation group \(S_9\), provided
-   source parameters, mark kernels and ports are permuted with their
-   directional labels.
-
-It is not generally \(O(9)\)-equivariant.
-
-### Proof
-
-The energy cap and positive minimum string excitation energy bound all
-occupations.  Bounded recollision frequencies and finite pair counts bound the
-total intensity.  Standard PDMP construction then gives a unique stopped
-process.  Equation (19) propagates the constraint on continuous pieces.  The
-resets (33)--(35) leave geometry fixed and transfer precisely the winding
-energy difference to \(E_0\), so the constraint is unchanged at jumps.  The
-formulae commute with simultaneous permutations of all directional data.
-Identical coordinate formulae provide \(S_9\), not continuous rotation
-symmetry.
+The energy cap and positive minimum excitation energy bound every occupation. Finite pair counts and bounded recollision frequencies bound the total intensity. Standard PDMP construction gives a unique stopped process. Equation (15) propagates the constraint continuously. Resets (26) and (28) leave geometry fixed and transfer exactly the winding energy difference to E₀. Simultaneous directional permutations commute with all equations and kernels. Diagonal torus coordinates supply permutation covariance, not arbitrary continuous rotation covariance.
 
 ---
 
-# 4. Why a new port term is logically indispensable
+# 5. Why a port term is indispensable
 
-The source cosmology determines trajectories and occupation statistics.  It
-does not determine which perturbations an apparatus can prepare or which
-linear combinations it can read.
+Source cosmology determines unforced trajectories and occupation statistics. It does not determine which perturbations can be prepared or which linear combinations can be read.
 
 ## Theorem 3 — port underdetermination
 
-Fix one winding/geometry PDMP.  Let \(W_1\) and \(W_2\) be two pre-quotient port
-matrices with different kernels.  They leave the unforced PDMP law unchanged
-but produce different transfer matrices, observability Grams and scale-visible
-response quotients.  Therefore no operational visible-rank statement follows
-from the source variables without an additional source/readout action.
+Fix one unforced winding–geometry PDMP. Two pre-quotient port matrices with different kernels leave its unforced probability law unchanged but produce different transfer matrices, observability Grams and response quotients. Therefore the source variables alone do not determine operational visible rank.
 
-### Proof
+#### Proof
 
-The unforced generator (38) does not contain a port matrix.  Adding two
-linearly coupled probe sectors with different \(W\) changes only the forced
-input/output map.  A mode in \(\ker W_1^\vee\setminus\ker W_2^\vee\) is invisible
-in the first experiment and visible in the second.  Hence the response quotient
-is not determined by the cosmological state alone.
+The unforced generator contains no port matrix. A microscopic mode in ker C₁ but not ker C₂ is invisible in one experiment and visible in the other, even though the cosmological law is identical.
 
-## Minimal measurable repair
+## 5.1 Minimal democratic probe action
 
-Introduce \(N_f\) passive scalar probe species on the same source background:
+Introduce N_f passive scalar probe species on the same source geometry:
 
-\[
-\begin{aligned}
-S_{\rm probe}
-={}&
--\frac12
-\sum_{A=1}^{N_f}
-\int dt\,d^9\theta\,
-\sqrt{g_9}
-\left[
-K_{AB}
-\left(
--\dot\psi_A\dot\psi_B
-+\sum_i e^{-2\lambda_i}
-\partial_i\psi_A\partial_i\psi_B
-\right)
-+M^2_{AB}\psi_A\psi_B
-\right]
-\\
-&+
-\sum_a\int dt\,u_a(t)
-\sum_A\int d^9\theta\,
- f_{aA}(\theta)\psi_A(t,\theta).
-\end{aligned}
-\tag{40}
-\]
+```
+S_probe
+= −½ Σ_{A,B} ∫ dt d⁹θ sqrt(g₉)
+    K_AB [−∂ₜψ_A ∂ₜψ_B
+          + Σᵢ exp(−2λᵢ) ∂ᵢψ_A ∂ᵢψ_B]
+  −½ Σ_{A,B} ∫ dt d⁹θ sqrt(g₉) M²_AB ψ_A ψ_B
+  + Σ_a ∫ dt u_a(t) Σ_A ∫ d⁹θ f_aA(θ) ψ_A.                    (31)
+```
 
-Readouts are the same finite linear functionals of \(\psi_A\).  The finite
-pre-quotient dictionary contains, for every \(i=1,\ldots,9\),
+Readouts are the same finite linear functionals of ψ. The pre-quotient dictionary includes, for every i,
 
-\[
-1,
-\qquad
-\cos\theta_i,
-\qquad
-\sin\theta_i.
-\tag{41}
-\]
+```
+1, cos θᵢ, sin θᵢ.                                            (32)
+```
 
-All nine directional pairs are included before any bandwidth restriction.  A
-calibrated port matrix mixes these functions anonymously.  The term is
-permutation-covariant when its Gram is the same on every directional harmonic
-pair.
+All nine harmonic pairs are included before any bandwidth quotient. The calibrated port Gram is the same on every directional pair, up to anonymous invertible mixing.
 
-This probe action does not select a dimension.  It uses the one Lorentzian time
-already supplied by the source cosmology.  It is an executable response control,
-not a fundamental derivation of a universal cone for every field in nature.
+This term does not select a dimension. It uses the one Lorentzian time already present in the source cosmology. It is an executable common-cone control for the declared probes, not a proof of universal coupling for every field in nature.
 
 ---
 
-# 5. Joint response, exact relation quotient and visible rank
+# 6. One joint response operator
 
-## 5.1 One joint generator
+## 6.1 Resolvent of the full hybrid
 
-Let \(\mathscr L_X\) denote the backward generator of the full PDMP plus the
-linear probe drift.  A weak controlled port perturbation adds operators
-\(\mathscr B_a\), and readouts are \(\mathscr C_b\).  In a stationary or frozen
-mesoscopic state the joint transfer is
+Let 𝓛_X be the backward generator of the full PDMP plus the linear probe drift. Weak controlled interventions are operators B_a and readouts are C_b. In a frozen or stationary mesoscopic state,
 
-\[
-\boxed{
-\mathbb G_{ba}(z)
-=
-\left\langle
-\mathscr C_b,
-(z-\mathscr L_X)^{-1}
-\mathscr B_a
-\right\rangle.
-}
-\tag{42}
-\]
+```
+G_ba(z) = ⟨C_b, (z−𝓛_X)⁻¹ B_a⟩.                               (33)
+```
 
-For the finite executable, \(\mathscr L_X\) is represented on a finite
-occupation/geometry/probe Galerkin space, so (42) is a rational matrix
-function.  No independent departure matrix is appended.
+For the finite executable, 𝓛_X is represented on a finite occupation, geometry and probe Galerkin space, so (33) is rational.
 
-A spectral mode is observable only when its Laurent coefficient is nonzero.
-For a simple eigenvalue \(\zeta_\alpha\),
+For a simple eigenvalue ζ_α with right and left vectors r_α and ℓ_α, the observable residue is
 
-\[
-\mathcal R_\alpha
-=
-\frac{
-(\mathscr C r_\alpha)
-(\ell_\alpha^\vee\mathscr B)
-}{
-\ell_\alpha^\vee r_\alpha
-}.
-\tag{43}
-\]
+```
+R_α = (C r_α)(ℓ_α* B) / (ℓ_α* r_α).                           (34)
+```
 
-A zero residue means the mode is not an observed response direction.
+A zero residue means the mode is unobserved. Repeated or Jordan eigenvalues require the full Laurent coefficients.
 
-## 5.2 Scale-indexed intervention algebra
+## 6.2 Scale-indexed response algebra
 
-Let \(\Lambda>0\) be a predeclared physical bandwidth.  A pole family belongs to
-the scale-\(\Lambda\) intervention algebra only when:
+Let Λ be a predeclared bandwidth. A pole family enters the scale-Λ intervention algebra only if:
 
-1. its frequency lies inside the declared band;
-2. its residue is separated from zero by the calibrated response margin;
+1. its frequency lies in the declared band;
+2. its residue is separated from zero;
 3. its source and readout directions pass the pre-quotient observability test.
 
-The cutoff is declared before data are generated and is not chosen to make the
-answer three.
+The bandwidth grid is declared before data generation and is never chosen to make the result three.
 
-For a massless first harmonic in direction \(i\), the frozen-background probe
-frequency is
+For a massless first harmonic in direction i,
 
-\[
-\omega_i(X)=e^{-\lambda_i}.
-\tag{44}
-\]
+```
+ωᵢ(X) = exp(−λᵢ).                                             (35)
+```
 
-The two observable response functions associated with that harmonic are
-anonymous versions of
+The associated anonymous response functions are basis transforms of
 
-\[
-c_i=\cos\theta_i,
-\qquad
-s_i=\sin\theta_i.
-\tag{45}
-\]
+```
+cᵢ = cos θᵢ,
+sᵢ = sin θᵢ,
+```
 
-Their products satisfy
+with relation
 
-\[
-c_i^2+s_i^2-1=0.
-\tag{46}
-\]
+```
+cᵢ² + sᵢ² − 1 = 0.                                           (36)
+```
 
 ## Theorem 4 — target-neutral visible-rank reconstruction
 
-Fix a nonzero band
+Fix I = [Λ₋,Λ₊] with Λ₋ < Λ₊. Suppose there is a set L and margins δω, δR > 0 such that
 
-\[
-I=[\Lambda_-,\Lambda_+],
-\qquad
-\Lambda_-<\Lambda_+.
-\tag{47}
-\]
+```
+ωᵢ + δω < Λ₋       for i in L,
+ωⱼ − δω > Λ₊       for j not in L,                            (37)
+```
 
-Suppose there is a subset \(L\subset\{1,\ldots,9\}\) and a uniform spectral
-margin \(\delta_\omega>0\) such that
+and every included pole pair has residue and pre-quotient observability singular value at least δR.
 
-\[
-\omega_i+\delta_\omega<\Lambda_-
-\quad(i\in L),
-\tag{48}
-\]
+Assume the finite-harmonic context, relation and physical-handle completeness artifacts of the existing reconstruction stack. Then at every scale in I the reconstructed spatial response algebra is (3), and its regular local cotangent rank is
 
-\[
-\omega_j-\delta_\omega>\Lambda_+
-\quad(j\notin L),
-\tag{49}
-\]
+```
+d_spatial^vis = |L|.                                         (38)
+```
 
-and every included pole pair has a residue and observability singular value at
-least \(\delta_R>0\).
+The result is invariant under anonymous invertible changes of source and readout basis.
 
-Assume the response-0005 context, relation and physical-handle completeness
-artifacts for the finite harmonic dictionary.  Then, at every scale in \(I\),
-the reconstructed spatial response algebra is isomorphic to (3), its regular
-local cotangent rank is
+#### Proof
 
-\[
-\boxed{
-d_{\rm spatial}^{\rm vis}=|L|,
-}
-\tag{50}
-\]
+Conditions (37) select actual observable pole families in the declared band. Complete products recover relation (36) for each pair. At a regular handle, one equation in two generators leaves one independent local cotangent direction. Distinct pairs have no additional relations in the complete control. The total rank is therefore |L|. Algebra isomorphisms induced by port-basis changes preserve it.
 
-and the result is invariant under anonymous invertible changes of the
-registered port basis.
+## 6.3 Green-derived biform
 
-### Proof
+The principal form of the proposed probe action is
 
-Conditions (48)--(49) select the actual response pole families in the declared
-band.  Complete source/readout data identify their finite product algebra.  The
-only independent local relation for each first-harmonic pair is (46).  At a
-regular handle its differential has rank one in the two-generator pair, so the
-pair contributes one cotangent direction.  Relations between distinct
-harmonic pairs are absent in the complete control.  Thus the local dimension is
-\(|L|\).  Generator-basis changes induce algebra isomorphisms and preserve the
-local cotangent rank.
+```
+Q_X(ξ) = −ξ_t² + Σᵢ exp(−2λᵢ) ξᵢ².                            (39)
+```
 
-## 5.3 Biforms
+On the scale-I response branch, only resolved spatial generators occur:
 
-The principal part of the declared probe equation is
+```
+Q_I(ξ) = −ξ_t² + Σ_{i in L} exp(−2λᵢ) ξᵢ².                   (40)
+```
 
-\[
-Q_X(\xi)
-=-\xi_t^2+
-\sum_{i=1}^{9}e^{-2\lambda_i}\xi_i^2.
-\tag{51}
-\]
+The reconstructor is not given (39) or (40). It receives complete finite two-jet Green matrices, constructs the contextual quotient and applies the adopted algebraic equations
 
-On the scale-\(I\) response branch, only the resolved directional generators
-enter, giving
+```
+H_x^∨(p_L,x) = β_x,
+L_x = μ₂,x^∨(ker H_x^∨).                                      (41)
+```
 
-\[
-Q_I(\xi)
-=-\xi_t^2+
-\sum_{i\in L}e^{-2\lambda_i}\xi_i^2.
-\tag{52}
-\]
+Complete polarization data for the declared minimally coupled probes recover the common K_AB factor. This is an executable common-cone control, not a universal all-field theorem.
 
-The neutral reconstruction is not given (52).  It receives the complete
-finite two-jet Green matrices, constructs the contextual Loewy quotient and
-uses
+## 6.4 Non-hiding provenance
 
-\[
-H_x^\vee(p_{L,x})=\beta_x,
-\qquad
-\mathcal L_x=\mu_{2,x}^\vee(\ker H_x^\vee).
-\tag{53}
-\]
+At a higher predeclared bandwidth above all first-harmonic gaps, the same ports expose all nine directional pairs. Thus the low-band statement is
 
-For the declared minimally coupled probe family, complete polarization data
-recover the fixed-\(Q_I\) factors \(K_{AB}\).  This is an executable common-cone
-control.  It is not a proof that every microscopic sector has the same cone.
-
-## 5.4 Scale provenance and non-hiding
-
-At a higher predeclared bandwidth \(\Lambda_{\rm hi}\) above all first-harmonic
-gaps, the same ports expose all nine directional pairs.  The low-band response
-therefore says
-
-> only \(|L|\) directions belong to the present intervention algebra,
+> only |L| directions belong to the present intervention algebra,
 
 not
 
-> only \(|L|\) microscopic directions exist.
+> only |L| microscopic directions exist.
 
-Within a plateau band, old resolved directions are carried by the identity
-inclusion and have a positive old-direction singular-value margin.  Crossing a
-trapped harmonic gap produces a nonzero relative Kähler differential rank.
-This is a scale reveal, not a retroactive contradiction.
+Within a plateau band, old visible directions are carried by the identity inclusion with a positive old-direction singular-value margin. Crossing a trapped harmonic gap yields a nonzero relative Kähler differential rank.
 
 ---
 
-# 6. Geometry comparison bounds
+# 7. Continuous geometry bounds
 
-The metastability proof uses the actual continuous geometry, not a dimension
-jump.
+Assume a forward tube on which
 
-Assume throughout a forward tube that
+```
+−ū ≤ ν ≤ −u_ < 0,
+exp(φ̄) ≥ g_ > 0.                                             (42)
+```
 
-\[
--\overline u\le\nu\le-\underline u<0,
-\qquad
-e^\varphi\ge g_->0.
-\tag{54}
-\]
+Set
 
-Let
+```
+c_g = g_ / (8π²).                                            (43)
+```
 
-\[
-c_g=\frac{g_-}{8\pi^2}.
-\tag{55}
-\]
+## Lemma 1 — wound-direction recollapse
 
-## Lemma 1 — wound-direction recollapse bound
+Suppose direction j obeys
 
-Suppose a direction \(j\) obeys
-
-\[
-P_j\le-P_-<0,
-\qquad
-h_j(0)\le H_+.
-\tag{56}
-\]
+```
+Pⱼ ≤ −P_ < 0,
+hⱼ(0) ≤ H_+.                                                  (44)
+```
 
 Then
 
-\[
-\dot h_j\le-\underline u h_j-c_gP_-,
-\tag{57}
-\]
+```
+dhⱼ/dt ≤ −u_ hⱼ − c_g P_,                                   (45)
+```
 
-and hence
+and therefore
 
-\[
-h_j(t)
-\le
-\left(H_++\frac{c_gP_-}{\underline u}\right)e^{-\underline ut}
--
-\frac{c_gP_-}{\underline u}.
-\tag{58}
-\]
+```
+hⱼ(t)
+≤ (H_+ + c_g P_ / u_) exp(−u_ t)
+  − c_g P_ / u_.                                              (46)
+```
 
-Moreover
+Integration gives
 
-\[
-\lambda_j(t)
-\le
-\lambda_j(0)
-+
-\frac{H_++c_gP_-/\underline u}{\underline u}
-\left(1-e^{-\underline ut}\right)
--
-\frac{c_gP_-}{\underline u}t.
-\tag{59}
-\]
+```
+λⱼ(t)
+≤ λⱼ(0)
+  + (H_+ + c_g P_ / u_)(1−exp(−u_ t))/u_
+  − (c_g P_ / u_) t.                                         (47)
+```
 
-For every finite response threshold \(\lambda_{\rm trap}<\lambda_j(0)\), the
-right-hand side reaches \(\lambda_{\rm trap}\) at a unique finite comparison
-time.  Denote that time by
-
-\[
-T_{\rm rec}.
-\tag{60}
-\]
-
-Then the actual direction crosses the threshold no later than
-\(T_{\rm rec}\), provided (56) remains valid.
+For every finite trap threshold λ_trap below λⱼ(0), the right side reaches λ_trap at one finite comparison time T_rec. The actual direction crosses no later than T_rec while (44) remains valid.
 
 ## Lemma 2 — cleared-direction persistence
 
 Suppose
 
-\[
-P_i\ge P_+>0,
-\qquad
-h_i(0)\ge0.
-\tag{61}
-\]
+```
+Pᵢ ≥ P_+ > 0,
+hᵢ(0) ≥ 0.                                                    (48)
+```
 
 Then
 
-\[
-\dot h_i\ge-\overline uh_i+c_gP_+,
-\tag{62}
-\]
+```
+dhᵢ/dt ≥ −ū hᵢ + c_g P_+,                                   (49)
+```
 
 so
 
-\[
-h_i(t)
-\ge
-h_i(0)e^{-\overline ut}
-+
-\frac{c_gP_+}{\overline u}
-\left(1-e^{-\overline ut}\right)>0
-\tag{63}
-\]
+```
+hᵢ(t)
+≥ hᵢ(0) exp(−ūt)
+  + (c_g P_+ / ū)(1−exp(−ūt)) > 0.                          (50)
+```
 
-for \(t>0\).  Thus its radius remains in the low-gap side of the response band
-as long as the pressure bound holds.
-
-Both lemmas are direct scalar comparison theorems for the source equations.
+Its radius remains on the low-gap side of the response band while the pressure bound holds.
 
 ---
 
-# 7. Winding clearance and retention bounds
+# 8. Winding clearance and blockade bounds
 
 Let
 
-\[
-n_i=\min(w_i^+,w_i^-)
-\tag{64}
-\]
+```
+nᵢ = min(wᵢ⁺, wᵢ⁻)                                          (51)
+```
 
 be the number of annihilable pairs.
 
 ## Lemma 3 — rapid-clearance tail
 
-Suppose that while \(n_i>0\), its pair-annihilation intensity obeys
+Suppose that while nᵢ > 0,
 
-\[
-a_i^-(X)\ge\underline\gamma n_i^2.
-\tag{65}
-\]
+```
+aᵢ⁻(X) ≥ γ_ nᵢ².                                             (52)
+```
 
-Ignoring reverse creation, the clearance time \(T_i^{\rm clr}\) satisfies
+Ignoring reverse creation, the clearance time Tᵢ^clr obeys
 
-\[
-\Pr(T_i^{\rm clr}>T)
-\le
-n_i(0)e^{-\underline\gamma T}.
-\tag{66}
-\]
+```
+P(Tᵢ^clr > T) ≤ nᵢ(0) exp(−γ_ T).                             (53)
+```
 
-### Proof
+#### Proof
 
-The pure-death chain with rate \(\underline\gamma n^2\) is faster than one in
-which each of the \(n_i(0)\) initial pairs dies independently at rate
-\(\underline\gamma\).  The latter has probability at most
-\(n_i(0)e^{-\underline\gamma T}\) that one pair survives.
+For the pure-death chain, dE[nᵢ]/dt ≤ −γ_ E[nᵢ]. Hence E[nᵢ(T)] ≤ nᵢ(0) exp(−γ_T), and P(nᵢ(T)>0) ≤ E[nᵢ(T)].
 
-## Lemma 4 — blockade retention tail
+## Lemma 4 — winding-retention tail
 
 Suppose
 
-\[
-a_j^-(X)\le\overline\gamma n_j^2
-\tag{67}
-\]
+```
+aⱼ⁻(X) ≤ γ̄ nⱼ²                                              (54)
+```
 
-until time \(T\), and let \(n_j(0)=n_0\).  To fall below the trapping threshold
-\(n_{\rm trap}\), at least
+until time T and nⱼ(0) = n₀. To fall below n_trap requires at least
 
-\[
-q_*=n_0-n_{\rm trap}+1
-\tag{68}
-\]
+```
+q_* = n₀ − n_trap + 1                                        (55)
+```
 
-annihilations are required.  Then
+annihilations. Then
 
-\[
-\Pr\left[
-\inf_{0\le t\le T}n_j(t)<n_{\rm trap}
-\right]
-\le
-\Pr\left[
-{\rm Pois}(\overline\gamma n_0^2T)\ge q_*
-\right].
-\tag{69}
-\]
+```
+P[min_{0≤t≤T} nⱼ(t) < n_trap]
+≤ P[Pois(γ̄ n₀² T) ≥ q_*].                                   (56)
+```
 
-### Proof
-
-Before the threshold is crossed, the total annihilation intensity is at most
-\(\overline\gamma n_0^2\).  Uniformization couples the event count below a
-Poisson process of that rate.  Reverse creation only increases \(n_j\) and
-therefore cannot invalidate the upper bound.
+Reverse pair creation can only increase nⱼ and does not weaken this upper bound.
 
 ---
 
-# 8. The metastable visible-rank-three theorem
+# 9. General metastable visible-rank theorem
 
-## 8.1 Target-neutral tubes
+## 9.1 Target-neutral physical tubes
 
-Fix a response band \(I=[\Lambda_-,\Lambda_+]\) before selecting any state.
-For a subset \(L\subset\{1,\ldots,9\}\), define the physical tube
-\(\mathcal T_L(I)\) by the actual inequalities:
+Fix the response band I before choosing a state. For a subset L, define T_L(I) by actual inequalities.
 
-1. for \(i\in L\),
-   
-   \[
-   e^{-\lambda_i}+\delta_\omega<\Lambda_-,
-   \quad
-   n_i\le n_{\rm clear},
-   \quad
-   P_i\ge P_+,
-   \quad
-   h_i\ge0;
-   \tag{70}
-   \]
+For every i in L,
 
-2. for \(j\notin L\),
-   
-   \[
-   e^{-\lambda_j}-\delta_\omega>\Lambda_+,
-   \quad
-   n_j\ge n_{\rm trap},
-   \quad
-   P_j\le-P_-;
-   \tag{71}
-   \]
+```
+exp(−λᵢ) + δω < Λ₋,
+nᵢ ≤ n_clear,
+Pᵢ ≥ P_+,
+hᵢ ≥ 0.                                                       (57)
+```
 
-3. the full response and source-valid margins remain positive.
+For every j outside L,
 
-The union over all subsets of a given cardinality is permutation invariant.
-No named coordinate subset is preferred.
+```
+exp(−λⱼ) − δω > Λ₊,
+nⱼ ≥ n_trap,
+Pⱼ ≤ −P_.                                                      (58)
+```
 
-A four-direction predecessor tube
-\(\mathcal U_{L,j_*}^{(4)}(I)\), with \(|L|=3\), has the three directions in
-\(L\) satisfying the clear inequalities and one extra direction \(j_*\notin L\)
-that is initially response-resolved but still satisfies
+All source-valid and response margins must also remain positive.
 
-\[
-n_{j_*}\ge n_{\rm trap},
-\qquad
-P_{j_*}\le-P_-.
-\tag{72}
-\]
+The union over every subset with a fixed cardinality is permutation invariant. No named coordinate set is preferred.
 
-Thus the predecessor is physically and operationally four-dimensional in
-space at the initial time.  It is not an inconclusive or hidden state.
+For |L| = m, a predecessor tube U_{L,j*}^{m+1}(I) has the m directions in L satisfying (57) and one extra direction j* outside L that is initially low-gap but still obeys
 
-## 8.2 Source-derived rate-separation hypotheses
+```
+n_{j*} ≥ n_trap,
+P_{j*} ≤ −P_.                                                  (59)
+```
 
-The PDMP never evaluates the number \(|L|\).  The following bounds are computed
-from (27) on the actual state tube:
+The predecessor is therefore operationally visible-spatial-rank m+1 at time zero.
 
-\[
-\underline\gamma_{\rm clr}
-=
-\inf_{X\in\mathcal U\cup\mathcal T}
-\min_{i\in L}
-\frac{a_i^-(X)}{n_i^2},
-\tag{73}
-\]
+## 9.2 Source-rate margins
 
-\[
-\overline\gamma_{\rm blk}
-=
-\sup_{X\in\mathcal U\cup\mathcal T}
-\max_{j\notin L}
-\frac{a_j^-(X)}{n_j^2}.
-\tag{74}
-\]
+Compute from the actual mark integral (21)
 
-The geometric origin of a useful separation is that an additional dilute
-transverse impact direction contributes a factor asymptotic to (30).  The
-existence of a strict separation is an empirical/model condition, not inserted
-as a step table.
+```
+γ_clr
+= inf over the forward tube, i in L of aᵢ⁻ / nᵢ²,             (60)
 
-Let the three clear directions satisfy
+γ_blk
+= sup over the forward tube, j outside L of aⱼ⁻ / nⱼ².        (61)
+```
 
-\[
-3n_{\max}e^{-\underline\gamma_{\rm clr}T_{\rm clr}}
-\le\epsilon_{\rm clr},
-\tag{75}
-\]
+No branch in the generator refers to m or |L|. A useful separation can arise because each additional dilute impact coordinate contributes a factor like (23). Whether strict separation exists is an empirical property of the declared mark law.
 
-and let
+Let
 
-\[
-p_{\rm blk}
-=
-\Pr\!\left[
-{\rm Pois}
-(\overline\gamma_{\rm blk}n_0^2T_{\rm rec})
-\ge q_*
-\right].
-\tag{76}
-\]
+```
+ε_clr = m n_max exp(−γ_clr T_clr),                             (62)
 
-## Theorem 5 — source-authorized metastable visible-rank selection
+p_blk = P[Pois(γ_blk n₀² T_rec) ≥ q_*].                       (63)
+```
+
+## Theorem 5 — source-authorized one-direction recollapse
 
 Assume:
 
-1. the PDMP of Section 3 remains in its forward source-valid tube;
-2. the four-direction predecessor tube is nonempty and has positive radius;
-3. Lemma 2 and (75) keep the three directions in \(L\) on the low-gap side of
-   the band;
-4. Lemma 1 applies to the extra wound direction for time \(T_{\rm rec}\);
-5. the impact kernel obeys (73)--(76);
-6. complete anonymous response data satisfy Theorem 4 before and after the
-   crossing;
-7. the probe settling error after time \(T_{\rm obs}\) is at most
-   \(\epsilon_{\rm resp}\).
+1. the PDMP remains in its source-valid forward tube;
+2. U_{L,j*}^{m+1}(I) is nonempty and has positive radius;
+3. Lemma 2 keeps the m directions in L on the low-gap side;
+4. Lemma 1 applies to j* for T_rec;
+5. the impact kernel satisfies (60)–(63);
+6. complete anonymous response data satisfy Theorem 4 before and after crossing;
+7. the response settling error after T_obs is at most ε_resp.
 
 Then:
 
 ### Resolved predecessor
 
-At time zero the response reconstructs
+At time zero,
 
-\[
-d_{\rm spatial}^{\rm vis}=4.
-\tag{77}
-\]
+```
+d_spatial^vis = m + 1.                                       (64)
+```
 
 ### Attraction
 
 With probability at least
 
-\[
-1-p_{\rm blk}-\epsilon_{\rm clr}-\epsilon_{\rm resp},
-\tag{78}
-\]
+```
+1 − p_blk − ε_clr − ε_resp,                                  (65)
+```
 
-the state reaches
+the state reaches the union of tubes T_L(I) with |L| = m by
 
-\[
-\bigcup_{|L|=3}\mathcal T_L(I)
-\tag{79}
-\]
+```
+T_attr ≤ T_rec + T_obs,                                      (66)
+```
 
-by
+and the anonymous response reconstructs
 
-\[
-T_{\rm attr}
-\le
-T_{\rm rec}+T_{\rm obs},
-\tag{80}
-\]
-
-and the response reconstructs
-
-\[
-\boxed{
-d_{\rm spatial}^{\rm vis}=3
-}
-\tag{81}
-\]
-
-throughout the nonzero scale interval \(I\).
+```
+d_spatial^vis = m.                                           (67)
+```
 
 ### Plateau leakage
 
-For a finite horizon \(T\), let
+For horizon T, define N_T = ceil(T / T_rec). If reverse pair creation in the m clear directions has total intensity at most m κ̄_cr, then
 
-\[
-N_T=\left\lceil\frac{T}{T_{\rm rec}}\right\rceil.
-\tag{82}
-\]
+```
+P(τ_exit ≤ T)
+≤ (9−m) N_T p_blk
+  + m κ̄_cr T
+  + ε_resp(T).                                                 (68)
+```
 
-If reverse creation in the three clear directions has total intensity at most
-\(3\overline\kappa_{\rm cr}\), then
+In the radiation control κ̄_cr = 0.
 
-\[
-\boxed{
-\Pr(\tau_{\rm exit}\le T)
-\le
-6N_Tp_{\rm blk}
-+3\overline\kappa_{\rm cr}T
-+\epsilon_{\rm resp}(T).
-}
-\tag{83}
-\]
+### Open cell
 
-In the radiation control, \(\overline\kappa_{\rm cr}=0\).
-
-### Open parameter cell
-
-If every inequality above is strict, continuity of the drift, hazards, pole
-positions and residues gives a positive-radius open parameter and initial-state
-cell with the same conclusion.
+If all inequalities are strict, continuity of drift, hazards, poles and residues gives a positive-radius open parameter and initial-state cell with the same conclusion.
 
 #### Proof
 
-Lemma 4 bounds the probability that the fourth direction loses enough winding
-pressure before the comparison recollapse time.  On the complementary event,
-Lemma 1 drives its first-harmonic gap above the response band.  Lemma 2 keeps
-the three cleared directions below the band, while Lemma 3 controls their
-initial winding clearance.  Theorem 4 therefore changes the reconstructed
-rank from four to three after response settling.  Repeating the blockade bound
-on each trapped direction and each recollapse-sized time window, followed by a
-union bound and the reverse-creation bound, gives (83).  Strict inequalities
-persist on an open neighborhood.
+Lemma 4 bounds loss of winding pressure in the marginal direction before T_rec. On the complementary event, Lemma 1 drives its first-harmonic gap above the band. Lemma 2 preserves the m cleared low-gap directions. Lemma 3 controls any residual initial winding there. Theorem 4 changes the reconstructed rank from m+1 to m. Repeating the blockade estimate for every trapped direction over N_T windows and adding reverse-creation and response errors gives (68). Strict inequalities persist under small perturbations.
 
-## 8.3 What the theorem does not say
+## Corollary 5.1 — the executable m = 3 control
 
-1. It does not make rank a microscopic state.
-2. It does not say the rank-three tube is exactly invariant.
-3. It does not prove that a generic Hagedorn initial ensemble enters the
-   predecessor tube.
-4. It does not derive the primitive stringlike charge orbit.
-5. It does not select one time direction.
-6. It does not prove a universal common cone beyond the declared probes.
+For m = 3, a resolved visible-spatial-rank-four predecessor enters a visible-spatial-rank-three response tube with the bounds above. The generator itself is unchanged for every m.
 
-## 8.4 Same-model failure cells
+## 9.3 Same-model failure cells
 
-The same equations fail to produce the plateau when, for example:
+The same equations do not produce the plateau when, for example:
 
-* the impact preparation is concentrated at small \(b/\Delta\), so
-  \(\overline\gamma_{\rm blk}\) is too large;
-* weak coupling or rapid dilution makes
-  \(\underline\gamma_{\rm clr}\) too small;
-* reverse pair creation closes the plateau lifetime;
-* directional pressure fails to satisfy either comparison inequality;
-* a probe pole or residue crosses its declared margin.
+1. the impact distribution is concentrated at small impact, making γ_blk too large;
+2. weak coupling or rapid dilution makes γ_clr too small;
+3. reverse pair creation closes the plateau lifetime;
+4. pressure fails either comparison inequality;
+5. a pole, residue, observability or interval margin closes.
 
-These are model failures or inconclusive regions, not parameters silently
-retuned to preserve three.
+These are declared failure or inconclusive cells, not post-hoc parameter retuning.
+
+## 9.4 Limits of the theorem
+
+The theorem does not:
+
+1. make rank a microscopic state;
+2. make the m-direction tube exactly invariant;
+3. prove that a generic Hagedorn ensemble enters the predecessor tube;
+4. derive primitive string-orbit dominance;
+5. select one time direction;
+6. prove a universal common cone beyond the declared probes.
 
 ---
 
-# 9. One joint departure operator
+# 10. Attraction, leakage and departure from one generator
 
-## 9.1 Resolvent and first-passage data use the same generator
+## 10.1 Counting-process and first-passage identities
 
-Let \(\mathscr L_{\mathcal T}\) be the generator killed on exit from the plateau
-tube.  For initial law \(\rho_0\), the exact survival probability is
+Let Nᵢ(t) count accepted winding annihilations. Then
 
-\[
-\Pr_{\rho_0}(\tau_{\rm exit}>T)
-=
-\left\langle
-\mathbf1,
- e^{T\mathscr L_{\mathcal T}^*}\rho_0
-\right\rangle.
-\tag{84}
-\]
+```
+Nᵢ(t) − ∫₀ᵗ aᵢ⁻(X_u) du                                     (69)
+```
 
-The response transfer is the resolvent (42) of the same \(\mathscr L\).
-Therefore attraction, leakage and response poles cannot be fit with unrelated
-operators.
+is a martingale. Absolute event counts therefore identify the compensator of the same process that drives geometry.
 
-For the finite executable with transient generator matrix \(Q_{\mathcal T}\),
+Let 𝓛_T be the generator killed upon exit from a plateau tube. For initial law ρ₀,
 
-\[
-\Pr_\alpha(\tau_{\rm exit}>T)
-=
-\alpha^\top e^{Q_{\mathcal T}T}\mathbf1,
-\tag{85}
-\]
+```
+P_{ρ₀}(τ_exit > T)
+= ⟨1, exp(T 𝓛_T*) ρ₀⟩.                                      (70)
+```
 
-and for a predecessor transient block \(Q_{\rm pred}\),
+For a finite approximation with transient matrix Q_T,
 
-\[
-\mathbb E_\alpha\tau_{\rm hit}
-=
-\alpha^\top(-Q_{\rm pred})^{-1}\mathbf1.
-\tag{86}
-\]
+```
+P_α(τ_exit > T) = αᵀ exp(Q_T T) 1,                            (71)
+```
 
-The off-diagonal entries of these matrices are the same absolute event rates
-estimated from marked GKM counts.
+and for a predecessor transient block Q_pred,
 
-## 9.2 Coupled geometry–winding pole
+```
+E_α[τ_hit] = αᵀ (−Q_pred)⁻¹ 1.                               (72)
+```
 
-A minimal linear geometry/winding block has
+The off-diagonal entries are the same absolute marked-event rates used in (25).
 
-\[
-A_j
-=
-\begin{pmatrix}
--a_j&g_j\\
-h_j&-\Omega_j
-\end{pmatrix},
-\qquad
-W=e_1,
-\tag{87}
-\]
+## 10.2 Full coupled poles and residues
 
-with stability condition
+A minimal winding–geometry linear block is
 
-\[
-a_j\Omega_j-g_jh_j>0.
-\tag{88}
-\]
+```
+A_j = [[−a_j, g_j],
+       [ h_j, −Ω_j]],
+port vector W = e₁.                                           (73)
+```
 
-Its geometry-port transfer is
+Assume a_j Ω_j − g_j h_j > 0. The transfer is
 
-\[
+```
 G_j(z)
-=
-\frac{z+\Omega_j}
-{(z+a_j)(z+\Omega_j)-g_jh_j}.
-\tag{89}
-\]
+= (z + Ω_j) / [(z+a_j)(z+Ω_j) − g_j h_j].                    (74)
+```
 
-The poles are
+Its poles are
 
-\[
-\zeta_\pm
-=
--\frac{a_j+\Omega_j}{2}
-\pm
-\frac12
-\sqrt{(a_j-\Omega_j)^2+4g_jh_j},
-\tag{90}
-\]
+```
+ζ_±
+= −(a_j+Ω_j)/2
+  ± ½ sqrt[(a_j−Ω_j)² + 4 g_j h_j],                          (75)
+```
 
 with residues
 
-\[
-R_\pm
-=
-\frac{\zeta_\pm+\Omega_j}
-{\zeta_\pm-\zeta_\mp}.
-\tag{91}
-\]
+```
+R_± = (ζ_± + Ω_j) / (ζ_± − ζ_∓).                              (76)
+```
 
-If \(g_jh_j\ne0\), \(z=-\Omega_j\) is a transfer zero, not a pole.  If
-\(g_jh_j=0\), the factor is removable for a geometry-only port.  A defect mode
-with zero or sub-threshold residue is not an observable departure.
+If g_j h_j is nonzero, z = −Ω_j is a transfer zero, not a pole. If g_j h_j = 0, the factor is removable for a geometry-only port. A zero or sub-threshold residue is not an observed departure.
 
-The coefficients in (87) are not independent fit parameters:
+The coefficients are derived from one linearization:
 
-* \(a_j\) and \(g_j\) are derivatives of the source geometry drift and
-  directional pressure;
-* \(\Omega_j\) and \(h_j\) are derivatives or spectral data of the same winding
-  reaction generator built from the absolute marked event rates.
+1. a_j and g_j are derivatives of the dilaton-gravity and pressure drift;
+2. Ω_j and h_j are eigenvalue and coupling data of the winding reaction generator built from the marked absolute rates.
 
-## 9.3 Response-band departure
+## 10.3 Geometry-to-band relation
 
-The same probe block has first-harmonic poles at frequencies controlled by
+Because ω_j = exp(−λ_j),
 
-\[
-\omega_j=e^{-\lambda_j}.
-\tag{92}
-\]
+```
+log[ω_j(T) / ω_j(0)] = −∫₀ᵀ h_j(t) dt.                        (77)
+```
 
-As bandwidth crosses a trapped-direction pole with nonzero residue, the
-relative response algebra acquires the additional circle relation and the
-visible-rank certificate must change or become inconclusive.  No new channel
-is inserted at departure.
+At a response-band crossing ω_j(T_cross) = Λ,
+
+```
+∫₀^{T_cross} h_j(t) dt = log[ω_j(0) / Λ].                    (78)
+```
+
+This exact identity ties geometry relaxation and departure bandwidth.
 
 ## Theorem 6 — joint identifiability and falsifiability
 
-In the finite control, suppose:
+In the finite executable, suppose:
 
-1. absolute marked event counts identify all nonzero reaction intensities;
+1. marked event counts identify every nonzero reaction intensity;
 2. continuous geometry records identify the drift Jacobian;
-3. the port pair satisfies the pre-quotient Hautus condition;
-4. every claimed pole has residue above a calibrated threshold.
+3. the pre-quotient source/readout pair satisfies the Hautus condition;
+4. every claimed pole has residue above a calibrated threshold;
+5. finite approximation errors are enclosed.
 
-Then one joint generator determines simultaneously:
+Then one joint generator determines
 
-\[
-\left\{
-\mathbb E\tau_{\rm hit},
-\Pr(\tau_{\rm exit}\le T),
-\zeta_\alpha,
-\mathcal R_\alpha,
-\Lambda_{\rm dep}
-\right\}.
-\tag{93}
-\]
+```
+{ E τ_hit,
+  P(τ_exit ≤ T),
+  all observable poles,
+  all observable Laurent residues,
+  response-band crossing scales }.                           (79)
+```
 
-The model is falsified if no one parameter set reproduces the absolute event
-counts, the geometry relaxation, the first-passage/leakage statistics and the
-observed poles/residues.  A manually appended high-bandwidth pole fails this
-joint fit.
+The model is falsified if no one parameter set reproduces absolute event counts, geometry relaxation, attraction and leakage statistics, and response poles and residues. A manually appended high-bandwidth channel has no matching eigenmode or event compensator and fails this test.
 
 ---
 
-# 10. Pre-quotient observability and ordered-time boundary
+# 11. Pre-quotient observability and time boundary
 
-## 10.1 Non-hiding
+## 11.1 Non-hiding
 
-For a finite linearization
+For a finite pre-quotient linearization
 
-\[
-\dot\xi=A_X\xi+Bu,
-\qquad
-y=C\xi,
-\tag{94}
-\]
+```
+dξ/dt = A_X ξ + B u,
+y = C ξ,                                                       (80)
+```
 
-computed before any bandwidth quotient, microscopic observability requires
+microscopic observability requires, for every eigenvalue z of A_X,
 
-\[
-\operatorname{rank}
-\begin{pmatrix}
-zI-A_X\\C
-\end{pmatrix}
-=
-\dim\mathcal H_{\rm pre}
-\tag{95}
-\]
+```
+rank [[zI−A_X], [C]] = dim H_pre.                              (81)
+```
 
-for every eigenvalue \(z\) of \(A_X\).  Equivalently the finite-time
-observability Gram has zero kernel.
+Equivalently, the finite-time observability Gram has zero kernel.
 
-A readout that becomes complete only after deleting the six trapped sectors
-does not establish non-hiding.  The exact control includes all nine first
-harmonics at sufficiently high bandwidth and verifies (95) there.
+A readout that becomes complete only after deleting trapped sectors does not establish non-hiding. The finite positive control includes all nine first harmonics at sufficiently high bandwidth and verifies (81) before quotienting.
 
-## 10.2 Time
+## 11.2 Ordered time
 
-The source cosmology already contains one Lorentzian time and chooses the
-\(\nu<0\) branch.  The probe Green function may be evaluated with retarded or
-advanced boundary conditions.
+The source cosmology already contains one Lorentzian time and chooses the ν < 0 branch. Probe transfer may be evaluated with retarded or advanced boundary conditions.
 
-Using a retarded resolvent in an experiment supplies directed support.  It does
-not prove that the microscopic dynamics selected retarded rather than advanced
-boundary data.  A later closed-loop module must derive either:
+A retarded Green function supplies directed support to the experiment. It does not prove that the microscopic dynamics selected retarded rather than advanced data. A later closed-loop module must derive either:
 
-* a retarded/advanced boundary selection; or
-* a non-equilibrium entropy current with a component-pure response margin.
+1. retarded-versus-advanced boundary selection; or
+2. a non-equilibrium entropy current with a component-pure response margin.
 
-The PDMP evolution parameter and the source cosmological time are not newly
-selected spacetime directions.
+Neither the PDMP flow parameter nor the supplied cosmological time is a newly selected spacetime direction.
 
 ---
 
-# 11. Executable finite control
+# 12. Executable finite control
 
-## 11.1 Finite state and no hidden rank
+## 12.1 Finite state
 
 Use:
 
-\[
-9\text{ directional scale factors},
-\qquad
-w_i^\pm,k_i^\pm\le N_{\max},
-\tag{96}
-\]
+1. nine directional scale factors and velocities;
+2. winding and momentum occupations bounded by N_max;
+3. one finite loop and oscillator reservoir;
+4. a finite six-coordinate impact grid for each eligible pair;
+5. two minimally coupled probe species;
+6. a finite Fourier truncation containing all zero and first harmonics;
+7. rational interval boxes for every continuous parameter.
 
-one finite loop reservoir, a finite impact grid in every pair-transverse
-coordinate, and two minimally coupled probe species.  The state file must not
-contain fields named `rank`, `dimension`, `large_count`, `target_axes` or
-`projector`.
+The state schema must not contain variables named rank, dimension, large-count, target-axes or projector.
 
-The only diagnostic count is computed after response reconstruction.
-
-## 11.2 Initial perturbation family
+## 12.2 Open predecessor family
 
 Choose an open family containing:
 
-* four initially low-gap directional pole pairs;
-* three of them with low winding occupation and nonnegative pressure;
-* one with at least \(n_0\ge n_{\rm trap}\) winding pairs and negative pressure;
-* six high-gap wound directions;
-* random \(S_9\) permutations of all directional data;
-* interval perturbations of impact widths, recollision frequencies, dilaton,
-  velocities, occupations and port bases.
+1. four initially low-gap directional pole pairs;
+2. three with low winding occupation and nonnegative pressure;
+3. one with at least n₀ ≥ n_trap winding pairs and negative pressure;
+4. six high-gap wound directions;
+5. random S₉ permutations of all directional data;
+6. interval perturbations of impact widths, recollision frequencies, dilaton, velocities, occupations and port bases.
 
 No named set of three directions is fixed across runs.
 
-## 11.3 Event engine
+## 12.3 Event engine
 
 For every opposite winding pair:
 
-1. draw a recollision waiting time from (26);
-2. draw the six-dimensional impact mark;
-3. evaluate (20);
-4. accept or reject annihilation;
-5. if accepted, apply only (33);
-6. integrate (9)--(12) continuously until the next event;
+1. draw recollision time from (20);
+2. draw its physical impact mark;
+3. evaluate the GKM acceptance expression;
+4. apply only occupation and reservoir reset (26) when accepted;
+5. integrate (8)–(11) until the next event;
+6. assert (30) after every jump;
 7. stop at the source-valid boundary.
 
-The code must assert (39) after every jump.
-
-## 11.4 Response engine
+## 12.4 Response replay
 
 At selected physical times:
 
-1. linearize the same full generator;
-2. emit anonymous source/readout records from (40);
+1. linearize the same complete generator;
+2. emit anonymous source/readout records from (31);
 3. verify pre-quotient Hautus ranks;
 4. sweep a predeclared bandwidth grid;
-5. reconstruct the relation ideal and contextual two-jet;
+5. reconstruct the response ideal and contextual two-jet;
 6. invert the complete Green matrix;
-7. reconstruct the principal biform without passing \(\lambda_i\), the subset
-   \(L\), a metric or a cone flag;
-8. perform full polarization tomography for both declared probes;
+7. reconstruct the biform without passing λ, L, a metric or cone flag;
+8. perform complete polarization tomography for the declared probes;
 9. compute relative Kähler ranks between adjacent scales.
 
-## 11.5 Acceptance tests
+## 12.5 Acceptance conditions
 
-A successful control must show, with certified interval bounds:
+A successful finite control must certify interval bounds for
 
-\[
-d_{\rm spatial}^{\rm vis}(0)=4,
-\tag{97}
-\]
+```
+d_spatial^vis(0) = 4,                                        (82)
 
-\[
-\Pr\left[
-\tau_{Z_3}\le T_{\rm rec}+T_{\rm obs}
-\right]
-\ge1-\epsilon_{\rm attr},
-\tag{98}
-\]
+P[τ_{T₃} ≤ T_rec + T_obs] ≥ 1 − ε_attr,                       (83)
 
-\[
-d_{\rm spatial}^{\rm vis}(t)=3
-\quad
-\text{for all }\Lambda\in I
-\tag{99}
-\]
+d_spatial^vis(t,Λ) = 3 for every Λ in I                      (84)
+```
 
-on the surviving plateau paths, and
+on surviving plateau paths, and
 
-\[
-\Pr(\tau_{\rm exit}\le T)
-\le\epsilon_{\rm plat}(T).
-\tag{100}
-\]
+```
+P(τ_exit ≤ T) ≤ ε_plat(T).                                   (85)
+```
 
-It must also produce at least one predeclared failure cell in which either
-\(\underline\gamma_{\rm clr}\) or the blockade/spectral margin closes.
+It must also contain a predeclared failure cell in which an impact, pressure, pole, residue or interval margin closes.
 
-## 11.6 Exact finite implementation
+## 12.6 Interval-certified implementation
 
-A completely finite control uses:
+A fully finite implementation uses:
 
-* rational interval boxes for the continuous source domain;
-* finite-volume outward-rounded integration of (9)--(12);
-* a finite impact grid with interval enclosures of (20);
-* exact integer occupation jumps;
-* a finite Fourier probe truncation;
-* exact or interval-certified matrix resolvents and residues;
-* a killed finite-state approximation whose semigroup error is bounded by the
-  declared finite-volume residual.
+1. outward-rounded finite-volume integration of the continuous source equations;
+2. exact integer occupation jumps;
+3. interval enclosures of every marked GKM probability;
+4. a finite Fourier and occupation Galerkin generator;
+5. exact or interval-certified matrix resolvents and residues;
+6. a killed finite-state approximation with a declared semigroup residual.
 
-The theorem about the finite control is exact after those interval enclosures
-are supplied.  Convergence to a continuum cosmology is a controlled numerical
-conjecture, not claimed here.
+The theorem about that finite control is exact once these enclosures are supplied. Convergence to a continuum cosmology is a controlled numerical conjecture.
 
 ---
 
-# 12. Mandatory adversaries
+# 13. Mandatory adversaries
 
-## 12.1 Collision changes winding but geometry remains trapped
+## 13.1 Occupations change but geometry is uncoupled
 
-Set the winding pressure coupling in (10) to zero while retaining all GKM
-events.
+Set directional pressure coupling in (9) to zero while retaining every GKM event.
 
-**Required result:** occupations change, but no source-authorized mechanism
-changes the response gaps.  No visible-rank attraction is certified.
+**Required output:** occupations change, but no response-gap attraction occurs.
 
-## 12.2 Hidden threshold naming three
+## 13.2 Hidden threshold naming three
 
-Insert a rule that changes a source or pressure term when an external counter
-reaches three.
+Insert a rate or pressure rule that consults a counter and changes behavior at three.
 
-**Required result:** reject by static generator audit.  The declared generator
-may depend on \(\lambda,h,w,k,\varphi\), impact marks and source parameters, not an
-operational-rank target.
+**Required output:** reject by static generator audit.
 
-## 12.3 Direct rank reset disguised as a mark
+## 13.3 Direct rank reset disguised as a mark
 
-Let an accepted collision alter a scale factor, velocity or harmonic
-availability directly.
+Let a collision alter λ, h or harmonic availability instantaneously.
 
-**Required result:** (39) fails and the model is rejected.
+**Required output:** equation (30) fails and the model is rejected.
 
-## 12.4 Full-support concentration mislabeled exact selection
+## 13.4 Full-support metastability mislabeled exact selection
 
-Run finite-width positive rates with nonzero escape probability.
+Run finite-width positive hazards with nonzero plateau escape.
 
-**Required result:** report the metastable bound (83), never an exact invariant
-rank-three phase.
+**Required output:** report (68), never an exact invariant dimension phase.
 
-## 12.5 Permutation symmetry mislabeled rotation symmetry
+## 13.5 Permutation symmetry mislabeled rotation symmetry
 
 Apply a generic continuous rotation to the diagonal torus coordinates.
 
-**Required result:** no \(O(9)\) claim.  Only simultaneous \(S_9\) permutation
-covariance is certified.
+**Required output:** no O(9) claim; only simultaneous S₉ covariance is certified.
 
-## 12.6 Quotient-only observability
+## 13.6 Quotient-only observability
 
-Delete a pre-quotient port row for one trapped harmonic, but retain a complete
-low-band quotient readout.
+Delete one pre-quotient port row for a trapped harmonic while preserving complete low-band readout.
 
-**Required result:** the microscopic Hautus test fails.  The visible plateau
-may be described, but non-hiding is unresolved.
+**Required output:** microscopic non-hiding is unresolved.
 
-## 12.7 Different attraction and departure generators
+## 13.7 Different attraction and departure generators
 
-Fit first-passage times with one rate matrix and transfer poles with another.
+Fit first-passage data with one rate matrix and transfer poles with another.
 
-**Required result:** reject by Theorem 6.
+**Required output:** reject by Theorem 6.
 
-## 12.8 Retarded data smuggled in as selected time
+## 13.8 Retarded data smuggled in as selected time
 
-Use a retarded Green function and declare that the dynamics selected the time
-arrow.
+Use a retarded Green function and call the time arrow dynamically selected.
 
-**Required result:** reject the selection claim.  Retarded support is an input
-boundary convention in this control.
+**Required output:** reject the selection claim; retarded support is a boundary convention here.
 
-## 12.9 Zero-residue mode
+## 13.9 Zero-residue mode
 
-Include an eigenvalue whose spectral projector is annihilated by a source or
-readout port.
+Include an eigenvalue annihilated by source or readout ports.
 
-**Required result:** it is not an observed departure and contributes no
-response generator.
+**Required output:** it is not an observed departure or response generator.
 
-## 12.10 Scale/error perturbation destroys the plateau
+## 13.10 Scale or error perturbation destroys the plateau
 
-Enlarge the predeclared bandwidth or interval error until a trapped pole or
-residue enters the uncertainty tube.
+Enlarge the predeclared bandwidth or uncertainty until a trapped pole or residue enters the margin tube.
 
-**Required result:** the three-dimensional result becomes `inconclusive` or
-changes rank.  No tolerance may fill the lost scale interval.
+**Required output:** the rank-three result changes or becomes inconclusive. No tolerance fills an unproved scale interval.
 
 ---
 
-# 13. Composition with the closed-loop verdict logic
+# 14. Closed-loop verdict semantics
 
-Let \(\mathfrak M_{\mathscr D}\) be the raw microscopic candidate fiber defined
-only by data consistency and predeclared complexity/source-validity bounds.
-Neither a rank-three plateau nor successful reconstruction is a membership
-condition.
+Let M_D be the raw microscopic candidate fiber defined only by data consistency and predeclared complexity and source-validity bounds. A rank-three plateau and successful reconstruction are not membership conditions.
 
-For every \(M\in\mathfrak M_{\mathscr D}\), distinguish:
+For every candidate M distinguish
 
-\[
-\mathsf T_{\rm hyb}(M)
-=
-\text{the actual hybrid has the metastable response plateau},
-\tag{101}
-\]
+```
+T_hyb(M) = the actual hybrid has the metastable response plateau,
+R_hyb(M,D) = the registered response and probability route proves it.       (86)
+```
 
-\[
-\mathsf R_{\rm hyb}(M,\mathscr D)
-=
-\text{the registered response and probability route proves it}.
-\tag{102}
-\]
+A positive within-class statement requires, uniformly over M_D:
 
-A positive within-class statement requires, uniformly over the entire raw
-fiber:
-
-1. the source-valid hybrid generator and mark law;
-2. a resolved rank-four predecessor;
-3. the open attraction cell and bounds (78)--(83);
+1. the source-valid hybrid generator and anisotropic mark law;
+2. a resolved rank-four response predecessor;
+3. the open attraction cell and bounds (65)–(68);
 4. pre-quotient zero-kernel observability;
-5. the response-0005 context, relation/carrier and physical-cover artifacts at
-   every scale in \(I\);
-6. one full microscopic/response orbit;
+5. context, relation/carrier and physical-cover artifacts at every scale in I;
+6. one full microscopic and response orbit;
 7. all feasible declared probe symbols sharing the reconstructed biform;
-8. explicit acknowledgement that the time and primitive string sector are
-   supplied boundary conditions.
+8. explicit acknowledgement that the time and primitive string sector are supplied boundary conditions.
 
-If the raw fiber is empty, report model-class/data incompatibility separately.
-For a nonempty fiber:
+If M_D is empty, report model-class/data incompatibility separately. For a nonempty fiber:
 
-* `certified within class` requires actual truth and route success for every
-  candidate plus one full orbit;
-* `class-excluded` requires an exact or positively separated obstruction for
-  every candidate;
-* every other case is `inconclusive`.
+1. `certified within class` requires truth and route success for every candidate plus one full orbit;
+2. `class-excluded` requires an actual or positively separated obstruction for every candidate;
+3. every other case is `inconclusive`.
 
-A failed impact-kernel estimate, missing port, closed spectral gap or absent
-attraction proof is evidence loss, not proof that no physical plateau exists.
+A failed impact-kernel estimate, missing port, closed spectral margin or absent attraction proof is evidence loss, not proof that no physical plateau exists.
 
 ---
 
-# 14. Evidence ledger
+# 15. Evidence ledger
 
 | classification | result |
 |---|---|
-| `primary-source derived` | Anisotropic shifted-dilaton gravity and directional pressure equations; winding/momentum energies and pressure signs; GKM impact-parameter annihilation probability and fixed-\(d\) Boltzmann structure; the conditional nature of the successive-fluctuation scenario. |
-| `derived from a newly proposed action` | The normalized anisotropic recollision/impact mark kernel; occupation-level energy-conserving stochastic lift; democratic all-direction scalar probe/port action; finite response-band functor. |
-| `exact theorem about a declared model` | Anisotropic-extension underdetermination; stopped-PDMP well-posedness and constraint preservation; port underdetermination; anonymous circle-algebra rank theorem; geometry comparison bounds; winding tail bounds; metastable attraction/leakage theorem; joint finite-generator first-passage and pole/residue identities. |
-| `controlled asymptotic/numerical conjecture` | GKM eikonal validity on the finite anisotropic mark ensemble; dilute recollision closure; passive-probe approximation; finite-volume/Galerkin convergence; extension of the open parameter cell to a realistic Hagedorn fluctuation ensemble. |
-| `no-go/underdetermination` | GKM fixed-\(d\) data do not determine anisotropic hazards; cosmology alone does not determine ports; positive finite-width rates do not yield exact rank selection; this executable does not select the primitive string orbit, one time direction or a universal all-field cone. |
-| `open gate` | Derive the anisotropic impact and initial-fluctuation laws from a duality-complete action, prove primitive string-orbit dominance, derive a universal mediator beyond the probe control, and select retarded/advanced orientation or an entropy current. |
+| `primary-source derived` | Anisotropic shifted-dilaton gravity and directional pressure equations; winding and momentum energies and pressure signs; GKM impact-dependent winding annihilation and the fixed-d Boltzmann structure; conditional successive-fluctuation scenario. |
+| `derived from a newly proposed action` | Normalized anisotropic recollision and impact marks; occupation-level energy-conserving stochastic lift; democratic all-direction scalar probe action; finite response-band functor. |
+| `exact theorem about a declared model` | Anisotropic-extension underdetermination; stopped-PDMP well-posedness and constraint preservation; port underdetermination; anonymous circle-algebra rank theorem; geometry comparison and winding tail bounds; general metastable recollapse theorem; joint first-passage and pole-residue identities. |
+| `controlled asymptotic/numerical conjecture` | GKM eikonal validity on a finite anisotropic mark ensemble; dilute recollision closure; passive probes; finite-volume and Galerkin convergence; emergence of the predecessor cell from a realistic Hagedorn fluctuation ensemble. |
+| `no-go/underdetermination` | Fixed-d GKM data do not determine anisotropic hazards; cosmology does not determine ports; finite-width hazards do not yield exact rank selection; the executable does not select the primitive string orbit, one time direction or a universal all-field cone. |
+| `open gate` | Derive anisotropic impact and initial-fluctuation laws from a duality-complete action, prove primitive string-orbit dominance, derive a universal all-field carrier, and select retarded versus advanced orientation or an entropy current. |
 
 ---
 
-# 15. Minimal constructive theorem and remaining hard gate
+# 16. Minimal constructive theorem and remaining hard gate
 
-> **Source-authorized winding–geometry hybrid theorem.**  
-> Fix the anisotropic toroidal dilaton-gravity equations (9)--(13), the
-> source-authorized winding occupation reactions (32)--(36), one normalized
-> measurable impact/recollision kernel (25)--(29), and the democratic
-> pre-quotient probe action (40).  Let the resulting stopped PDMP be (38), with
-> no geometry jump and no rank state.
+> **Source-authorized winding–geometry hybrid theorem.**
 >
-> Suppose a positive-radius rank-four response predecessor tube satisfies the
-> source-valid pressure and impact-rate separation hypotheses of Theorem 5,
-> and suppose the complete anonymous response artifacts certify the pole,
-> relation, Green, biform and scale-map margins throughout a nonzero bandwidth
-> interval \(I\).
+> Fix the anisotropic toroidal dilaton-gravity equations (8)–(12), source-authorized winding occupation reactions (25)–(28), one normalized measurable impact and recollision kernel (20)–(23), and the democratic pre-quotient probe action (31). Let the resulting stopped PDMP be (29), with no geometry jump and no microscopic rank state.
 >
-> Then the same hybrid generator carries the predecessor, with probability
-> bounded below by (78), into a response-defined visible spatial-rank-three
-> tube by the time (80).  Its finite-horizon departure probability is bounded
-> by (83).  Absolute winding counts, geometry relaxation, first-passage data,
-> transfer poles/residues and bandwidth departure are constrained by one joint
-> generator as in Theorem 6.
+> Suppose a positive-radius rank-four response predecessor satisfies the source-valid pressure and impact-rate separation hypotheses of Theorem 5, and suppose complete anonymous response artifacts certify pole, relation, Green, biform and scale-map margins throughout a nonzero bandwidth interval I.
 >
-> The result is permutation anonymous, contains no target-rank branch and never
-> permits a GKM event to jump geometry.  It is a metastable scale-relative
-> selection statement, not an exact invariant dimension phase or an ambient
-> dimension claim.
+> Then the same hybrid generator carries the predecessor, with probability bounded below by (65), into a response-defined visible-spatial-rank-three tube by time (66). Its finite-horizon departure probability is bounded by (68). Absolute winding counts, geometry relaxation, first-passage data, transfer poles and residues, and bandwidth departure are constrained by one joint generator as in Theorem 6.
+>
+> The result is permutation anonymous, contains no target-rank branch and never permits a GKM event to jump geometry. It is a metastable scale-relative selection statement, not an exact invariant dimension phase or an ambient-dimension claim.
 
-This is the required option **(1): a source-authorized minimal hybrid plus a
-theorem and executable finite control that can now be implemented.**
+This is the required constructive outcome: a source-authorized minimal hybrid, an exact theorem about the declared finite model, and an executable control.
 
 The remaining hard gate is
 
-\[
-\boxed{
-\begin{gathered}
-\text{derive from a duality-complete microscopic action, rather than declare,}\\
-\text{the anisotropic pair-impact/recollision kernel and the initial fluctuation
-measure,}\\
-\text{prove dominance of one primitive stringlike rank-active charge orbit,}\\
-\text{derive a universal all-field carrier, and select a physical retarded or
-entropy-current time component.}
-\end{gathered}
-}
-\tag{103}
-\]
+> derive from a duality-complete microscopic action, rather than declare, the anisotropic pair-impact and recollision kernel and the initial fluctuation measure; prove dominance of one primitive stringlike rank-active charge orbit; derive a universal all-field carrier; and select a physical retarded or entropy-current time component.
 
-Until (103) is closed, the project has a source-faithful executable showing how
-winding occupation dynamics can produce a metastable response-visible
-three-direction plateau without dimension jumps, but not a fundamental
-selection of the complete \(3+1\) package.
+Until that gate is closed, the project has a source-faithful executable showing how winding occupation dynamics can produce a metastable response-visible three-direction plateau without any dimension jump, but not a fundamental selection of the complete 3+1 package.
 
 ---
 
 # References
 
-1. Richard Easther, Brian R. Greene, Mark G. Jackson and Daniel Kabat,
-   *String windings in the early universe*, arXiv:hep-th/0409121.
-2. Brian Greene, Daniel Kabat and Stefanos Marnerides,
-   *Dynamical Decompactification and Three Large Dimensions*,
-   arXiv:0908.0955.
-3. Brian Greene, Daniel Kabat and Stefanos Marnerides,
-   *On three dimensions as the preferred dimensionality of space via the
-   Brandenberger--Vafa mechanism*, arXiv:1212.2115.
-4. A. A. Tseytlin and C. Vafa,
-   *Elements of String Cosmology*, arXiv:hep-th/9109048.
-5. Mairi Sakellariadou,
-   *Numerical Experiments in String Cosmology*, arXiv:hep-th/9511075.
+1. Richard Easther, Brian R. Greene, Mark G. Jackson and Daniel Kabat, *String Windings in the Early Universe*, arXiv:hep-th/0409121.
+2. Brian Greene, Daniel Kabat and Stefanos Marnerides, *Dynamical Decompactification and Three Large Dimensions*, arXiv:0908.0955.
+3. Brian Greene, Daniel Kabat and Stefanos Marnerides, *On Three Dimensions as the Preferred Dimensionality of Space via the Brandenberger–Vafa Mechanism*, arXiv:1212.2115.
+4. A. A. Tseytlin and C. Vafa, *Elements of String Cosmology*, arXiv:hep-th/9109048.
+5. Mairi Sakellariadou, *Numerical Experiments in String Cosmology*, arXiv:hep-th/9511075.
