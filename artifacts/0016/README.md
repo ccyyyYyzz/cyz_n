@@ -4,13 +4,16 @@ Run the deterministic probe and all regression tests from this directory's
 repository root:
 
 ```text
+python artifacts/0016/probe_0016.py
 python artifacts/0016/probe_0016.py --check
 python -m unittest discover -s artifacts/0016 -p "test_*.py" -v
 ```
 
 The first command writes
-`artifacts/0016/source_to_return_kinematic_probe.json`.  The implementation
-uses only the Python standard library.
+`artifacts/0016/source_to_return_kinematic_probe.json`; the second compares
+its parsed JSON payload against a fresh computation.  The comparison is
+invariant under LF/CRLF checkout conversion.  The implementation uses only
+the Python standard library.
 
 The event rank is computed solely from the incoming local Jacobian
 `[tau1, -tau2, relative_velocity]` through its symmetric 3-by-3 Gram matrix.

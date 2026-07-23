@@ -838,6 +838,13 @@ def serialize_report(report: dict[str, Any]) -> str:
     ) + "\n"
 
 
+def read_semantic_json(path: Path) -> Any:
+    """Read JSON with universal-newline handling for cross-platform checks."""
+
+    with path.open("r", encoding="utf-8", newline=None) as handle:
+        return json.load(handle)
+
+
 def parse_arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
@@ -849,7 +856,10 @@ def parse_arguments() -> argparse.Namespace:
     parser.add_argument(
         "--check",
         action="store_true",
-        help="fail unless every declared numerical/theorem control passes",
+        help=(
+            "fail unless the stored report has the same parsed-JSON payload "
+            "and every declared numerical/theorem control passes"
+        ),
     )
     return parser.parse_args()
 
@@ -858,12 +868,32 @@ def main() -> int:
     arguments = parse_arguments()
     report = build_report()
     serialized = serialize_report(report)
-    arguments.output.parent.mkdir(parents=True, exist_ok=True)
-    arguments.output.write_text(serialized, encoding="utf-8", newline="\n")
 
-    if arguments.check and report["status"] != "PASS":
+    if report["status"] != "PASS":
         raise SystemExit("Brief 0016 probe checks failed")
-    print(f"{report['status']}: wrote {arguments.output}")
+
+    if arguments.check:
+        if not arguments.output.exists():
+            raise SystemExit(f"Brief 0016 report missing: {arguments.output}")
+        try:
+            stored = read_semantic_json(arguments.output)
+        except (OSError, UnicodeError, json.JSONDecodeError) as error:
+            raise SystemExit(
+                f"Brief 0016 report parse failure: {error}"
+            ) from error
+        if stored != report:
+            raise SystemExit("Brief 0016 report semantic mismatch")
+        action = "verified canonical semantic JSON"
+    else:
+        arguments.output.parent.mkdir(parents=True, exist_ok=True)
+        arguments.output.write_text(
+            serialized,
+            encoding="utf-8",
+            newline="\n",
+        )
+        action = "wrote"
+
+    print(f"{report['status']}: {action}: {arguments.output}")
     return 0
 
 

@@ -140,6 +140,13 @@ class SuppressionAndOnsetTests(unittest.TestCase):
             output.write_text(first, encoding="utf-8", newline="\n")
             self.assertEqual(output.read_text(encoding="utf-8"), first)
 
+            # Parsed-JSON replay must be invariant under a CRLF checkout.
+            output.write_bytes(first.replace("\n", "\r\n").encode("utf-8"))
+            self.assertEqual(
+                probe_0016.read_semantic_json(output),
+                decoded,
+            )
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
