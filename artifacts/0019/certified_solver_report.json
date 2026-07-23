@@ -1,0 +1,87 @@
+{
+  "brief": "0019",
+  "fixture_semantic_sha256": "612dd00e52f1449aa672f8695c4f2cbd895c56afea98ac309da5c2c3d5e35a33",
+  "forbidden_claim": "The physical finite-K hysteretic world-sheet solver or the 3+1 selection law is complete.",
+  "hostile_controls": [
+    {
+      "control": "deleted_leaf",
+      "expected_gate": "cover_topology",
+      "observed_gate": "cover_topology",
+      "result": "rejected_as_intended"
+    },
+    {
+      "control": "wrong_split",
+      "expected_gate": "cover_partition",
+      "observed_gate": "cover_partition",
+      "result": "rejected_as_intended"
+    },
+    {
+      "control": "fake_krawczyk_inclusion",
+      "expected_gate": "unique_root_witness",
+      "observed_gate": "unique_root_witness",
+      "result": "rejected_as_intended"
+    },
+    {
+      "control": "missing_image",
+      "expected_gate": "image_enumeration",
+      "observed_gate": "image_enumeration",
+      "result": "rejected_as_intended"
+    },
+    {
+      "control": "duplicate_node_id",
+      "expected_gate": "cover_ids",
+      "observed_gate": "cover_ids",
+      "result": "rejected_as_intended"
+    }
+  ],
+  "implementation_scope": "first_verifiable_certificate_foundation",
+  "normalized_lf_code_inventory": [
+    {
+      "normalized_lf_sha256": "593973137d6e58874416333fd84dd587b8329169a530a310b55ffeca6f438c48",
+      "path": "artifacts/0019/certified_solver_core.py"
+    },
+    {
+      "normalized_lf_sha256": "247970a74f1440591eed31e8d591c067b2a807dceef5fad3590a57df89b53734",
+      "path": "artifacts/0019/test_certified_solver_core.py"
+    },
+    {
+      "normalized_lf_sha256": "21d27ffd9f49acafc1efb03025c6d5540fb21a110b99c908c0a9d1e0c56d1964",
+      "path": "artifacts/0019/README.md"
+    }
+  ],
+  "open_items": [
+    "independent source-separated certificate_replayer.py",
+    "Arb-backed finite-K trigonometric d/F/g interval jets",
+    "nine-dimensional production image enumeration and metric pruning",
+    "singular-cluster, seam-equivalence and tie certificates",
+    "first-entry globality and no-earlier-sublevel cover",
+    "hysteretic outer exit, re-arm and episode closest-point replay",
+    "exact recurrence no-entry certificates",
+    "clean independent Linux replay",
+    "unconditioned population-law execution"
+  ],
+  "permitted_claim": "The exact foundation fixture replays a gap-free image-indexed cover with proof-checked excluded and unique leaves while retaining its unresolved leaf.",
+  "proved": [
+    "canonical exact dyadic scalar grammar",
+    "endpoint-aware gap-free split-forest replay",
+    "complete exact rectangular-lattice image fixture",
+    "recomputed affine range exclusion",
+    "recomputed one-dimensional exact Krawczyk strict inclusion",
+    "explicit preservation of deterministic-budget unresolved leaves"
+  ],
+  "replay_summary": {
+    "bundle_semantic_sha256": "612dd00e52f1449aa672f8695c4f2cbd895c56afea98ac309da5c2c3d5e35a33",
+    "coverage": "gap_free_exact_partition",
+    "image_count": 6,
+    "leaf_count": 8,
+    "node_count": 10,
+    "resolution": "unresolved_present",
+    "root_count": 6,
+    "status_counts": {
+      "excluded_range": 6,
+      "unique_root": 1,
+      "unresolved": 1
+    }
+  },
+  "schema_version": "cyz-brief-0019-certified-solver-foundation-report-v1"
+}

@@ -1,0 +1,652 @@
+{
+  "arithmetic": {
+    "interval": "exact_endpoints_with_closure_flags",
+    "partition_policy": "split_point_belongs_to_right_child",
+    "scalar": "canonical_numerator_over_power_of_two"
+  },
+  "function_registry": {
+    "functions": [
+      {
+        "function_id": "affine_unique_root",
+        "intercept": {
+          "exponent": 0,
+          "numerator": -1
+        },
+        "kind": "affine_1d",
+        "slope": {
+          "exponent": 0,
+          "numerator": 2
+        }
+      },
+      {
+        "function_id": "affine_positive_guard",
+        "intercept": {
+          "exponent": 0,
+          "numerator": 1
+        },
+        "kind": "affine_1d",
+        "slope": {
+          "exponent": 0,
+          "numerator": 1
+        }
+      }
+    ],
+    "schema_version": "cyz-brief-0019-exact-affine-registry-v1"
+  },
+  "image_enumeration": {
+    "dimension": 2,
+    "manifest": [
+      {
+        "image_id": "n[0,0]",
+        "lattice_vector": [
+          0,
+          0
+        ]
+      },
+      {
+        "image_id": "n[0,1]",
+        "lattice_vector": [
+          0,
+          1
+        ]
+      },
+      {
+        "image_id": "n[1,0]",
+        "lattice_vector": [
+          1,
+          0
+        ]
+      },
+      {
+        "image_id": "n[1,1]",
+        "lattice_vector": [
+          1,
+          1
+        ]
+      },
+      {
+        "image_id": "n[2,0]",
+        "lattice_vector": [
+          2,
+          0
+        ]
+      },
+      {
+        "image_id": "n[2,1]",
+        "lattice_vector": [
+          2,
+          1
+        ]
+      }
+    ],
+    "metric_diagonal": [
+      {
+        "exponent": 2,
+        "numerator": 1
+      },
+      {
+        "exponent": 0,
+        "numerator": 4
+      }
+    ],
+    "metric_inverse_diagonal": [
+      {
+        "exponent": 0,
+        "numerator": 4
+      },
+      {
+        "exponent": 2,
+        "numerator": 1
+      }
+    ],
+    "periods": [
+      {
+        "exponent": 0,
+        "numerator": 2
+      },
+      {
+        "exponent": 1,
+        "numerator": 3
+      }
+    ],
+    "r_out": {
+      "exponent": 1,
+      "numerator": 1
+    },
+    "separation_bounds": [
+      {
+        "lower": {
+          "exponent": 1,
+          "numerator": 1
+        },
+        "lower_closed": true,
+        "upper": {
+          "exponent": 1,
+          "numerator": 7
+        },
+        "upper_closed": true
+      },
+      {
+        "lower": {
+          "exponent": 2,
+          "numerator": -1
+        },
+        "lower_closed": true,
+        "upper": {
+          "exponent": 2,
+          "numerator": 5
+        },
+        "upper_closed": true
+      }
+    ],
+    "sqrt_metric_inverse_diagonal": [
+      {
+        "exponent": 0,
+        "numerator": 2
+      },
+      {
+        "exponent": 1,
+        "numerator": 1
+      }
+    ]
+  },
+  "initial_cover": {
+    "cover_hash": "c90ee05fd702cd5088c7cba78c17dac754a916d2c96bcbccd2e650213935ec0e",
+    "nodes": [
+      {
+        "axis": "u",
+        "box": {
+          "axes": [
+            "u"
+          ],
+          "intervals": [
+            {
+              "lower": {
+                "exponent": 0,
+                "numerator": 0
+              },
+              "lower_closed": true,
+              "upper": {
+                "exponent": 0,
+                "numerator": 1
+              },
+              "upper_closed": false
+            }
+          ]
+        },
+        "child_hashes": {
+          "left": "ff8b2680555ab10cc23181dc0ba2a9649218df1c29f131f46d33ede3b400e5c1",
+          "right": "e743bb842b0b49eac1669c9869c02d2db0de559b56468c36fa0c74a35bf03b82"
+        },
+        "image_id": "n[0,0]",
+        "left_child_id": "leaf-0-0-excluded",
+        "node_hash": "c45e76756402f0b7d9985b4041797ff9bb516db4aa4a4e4fc47c2131ad10c0ca",
+        "node_id": "root-0-0",
+        "node_type": "split",
+        "right_child_id": "split-0-0-right",
+        "split_point": {
+          "exponent": 2,
+          "numerator": 1
+        }
+      },
+      {
+        "box": {
+          "axes": [
+            "u"
+          ],
+          "intervals": [
+            {
+              "lower": {
+                "exponent": 0,
+                "numerator": 0
+              },
+              "lower_closed": true,
+              "upper": {
+                "exponent": 2,
+                "numerator": 1
+              },
+              "upper_closed": false
+            }
+          ]
+        },
+        "image_id": "n[0,0]",
+        "node_hash": "ff8b2680555ab10cc23181dc0ba2a9649218df1c29f131f46d33ede3b400e5c1",
+        "node_id": "leaf-0-0-excluded",
+        "node_type": "leaf",
+        "status": "excluded_range",
+        "witness": {
+          "function_id": "affine_unique_root",
+          "range": {
+            "lower": {
+              "exponent": 0,
+              "numerator": -1
+            },
+            "lower_closed": true,
+            "upper": {
+              "exponent": 1,
+              "numerator": -1
+            },
+            "upper_closed": true
+          },
+          "witness_type": "exact_affine_component_range",
+          "zero_separation": "strictly_negative"
+        }
+      },
+      {
+        "axis": "u",
+        "box": {
+          "axes": [
+            "u"
+          ],
+          "intervals": [
+            {
+              "lower": {
+                "exponent": 2,
+                "numerator": 1
+              },
+              "lower_closed": true,
+              "upper": {
+                "exponent": 0,
+                "numerator": 1
+              },
+              "upper_closed": false
+            }
+          ]
+        },
+        "child_hashes": {
+          "left": "6a8f4c8193ecb9fa79fdbf210e847e749011f15399287b2d90ae7282d4889942",
+          "right": "b7dc786c9a5e14865bbcfc64d1abe4239a4f1f632b934ff7d761e8cba0e14f4b"
+        },
+        "image_id": "n[0,0]",
+        "left_child_id": "leaf-0-0-unique",
+        "node_hash": "e743bb842b0b49eac1669c9869c02d2db0de559b56468c36fa0c74a35bf03b82",
+        "node_id": "split-0-0-right",
+        "node_type": "split",
+        "right_child_id": "leaf-0-0-unresolved",
+        "split_point": {
+          "exponent": 2,
+          "numerator": 3
+        }
+      },
+      {
+        "box": {
+          "axes": [
+            "u"
+          ],
+          "intervals": [
+            {
+              "lower": {
+                "exponent": 2,
+                "numerator": 1
+              },
+              "lower_closed": true,
+              "upper": {
+                "exponent": 2,
+                "numerator": 3
+              },
+              "upper_closed": false
+            }
+          ]
+        },
+        "image_id": "n[0,0]",
+        "node_hash": "6a8f4c8193ecb9fa79fdbf210e847e749011f15399287b2d90ae7282d4889942",
+        "node_id": "leaf-0-0-unique",
+        "node_type": "leaf",
+        "status": "unique_root",
+        "witness": {
+          "arithmetic": "exact_dyadic_rational",
+          "derivative_enclosure": {
+            "lower": {
+              "exponent": 0,
+              "numerator": 2
+            },
+            "lower_closed": true,
+            "upper": {
+              "exponent": 0,
+              "numerator": 2
+            },
+            "upper_closed": true
+          },
+          "function_id": "affine_unique_root",
+          "inclusion_margins": {
+            "lower": {
+              "exponent": 2,
+              "numerator": 1
+            },
+            "upper": {
+              "exponent": 2,
+              "numerator": 1
+            }
+          },
+          "krawczyk_image": {
+            "lower": {
+              "exponent": 1,
+              "numerator": 1
+            },
+            "lower_closed": true,
+            "upper": {
+              "exponent": 1,
+              "numerator": 1
+            },
+            "upper_closed": true
+          },
+          "midpoint": {
+            "exponent": 1,
+            "numerator": 1
+          },
+          "point_value": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "preconditioner": {
+            "exponent": 1,
+            "numerator": 1
+          },
+          "witness_type": "exact_interval_krawczyk_1d"
+        }
+      },
+      {
+        "box": {
+          "axes": [
+            "u"
+          ],
+          "intervals": [
+            {
+              "lower": {
+                "exponent": 2,
+                "numerator": 3
+              },
+              "lower_closed": true,
+              "upper": {
+                "exponent": 0,
+                "numerator": 1
+              },
+              "upper_closed": false
+            }
+          ]
+        },
+        "image_id": "n[0,0]",
+        "node_hash": "b7dc786c9a5e14865bbcfc64d1abe4239a4f1f632b934ff7d761e8cba0e14f4b",
+        "node_id": "leaf-0-0-unresolved",
+        "node_type": "leaf",
+        "status": "unresolved",
+        "witness": {
+          "next_action": "bisect_box",
+          "operation_limit": 64,
+          "operations_used": 64,
+          "reason": "operation_budget_exhausted",
+          "witness_type": "deterministic_budget_stop"
+        }
+      },
+      {
+        "box": {
+          "axes": [
+            "u"
+          ],
+          "intervals": [
+            {
+              "lower": {
+                "exponent": 0,
+                "numerator": 0
+              },
+              "lower_closed": true,
+              "upper": {
+                "exponent": 0,
+                "numerator": 1
+              },
+              "upper_closed": false
+            }
+          ]
+        },
+        "image_id": "n[0,1]",
+        "node_hash": "78202070189d8e694c10d629639397d48d06c4f065f5e97dacbe63ef04bdf60c",
+        "node_id": "root-0-1",
+        "node_type": "leaf",
+        "status": "excluded_range",
+        "witness": {
+          "function_id": "affine_positive_guard",
+          "range": {
+            "lower": {
+              "exponent": 0,
+              "numerator": 1
+            },
+            "lower_closed": true,
+            "upper": {
+              "exponent": 0,
+              "numerator": 2
+            },
+            "upper_closed": true
+          },
+          "witness_type": "exact_affine_component_range",
+          "zero_separation": "strictly_positive"
+        }
+      },
+      {
+        "box": {
+          "axes": [
+            "u"
+          ],
+          "intervals": [
+            {
+              "lower": {
+                "exponent": 0,
+                "numerator": 0
+              },
+              "lower_closed": true,
+              "upper": {
+                "exponent": 0,
+                "numerator": 1
+              },
+              "upper_closed": false
+            }
+          ]
+        },
+        "image_id": "n[1,0]",
+        "node_hash": "05848a06c0dd9d3a9fe678d100aa306fd5566f6c8750c86049a7d41ae10128b8",
+        "node_id": "root-1-0",
+        "node_type": "leaf",
+        "status": "excluded_range",
+        "witness": {
+          "function_id": "affine_positive_guard",
+          "range": {
+            "lower": {
+              "exponent": 0,
+              "numerator": 1
+            },
+            "lower_closed": true,
+            "upper": {
+              "exponent": 0,
+              "numerator": 2
+            },
+            "upper_closed": true
+          },
+          "witness_type": "exact_affine_component_range",
+          "zero_separation": "strictly_positive"
+        }
+      },
+      {
+        "box": {
+          "axes": [
+            "u"
+          ],
+          "intervals": [
+            {
+              "lower": {
+                "exponent": 0,
+                "numerator": 0
+              },
+              "lower_closed": true,
+              "upper": {
+                "exponent": 0,
+                "numerator": 1
+              },
+              "upper_closed": false
+            }
+          ]
+        },
+        "image_id": "n[1,1]",
+        "node_hash": "c1330a99bf9567af29640df5c696ee77559848b887a6a93f3c7b1f3fb2af733d",
+        "node_id": "root-1-1",
+        "node_type": "leaf",
+        "status": "excluded_range",
+        "witness": {
+          "function_id": "affine_positive_guard",
+          "range": {
+            "lower": {
+              "exponent": 0,
+              "numerator": 1
+            },
+            "lower_closed": true,
+            "upper": {
+              "exponent": 0,
+              "numerator": 2
+            },
+            "upper_closed": true
+          },
+          "witness_type": "exact_affine_component_range",
+          "zero_separation": "strictly_positive"
+        }
+      },
+      {
+        "box": {
+          "axes": [
+            "u"
+          ],
+          "intervals": [
+            {
+              "lower": {
+                "exponent": 0,
+                "numerator": 0
+              },
+              "lower_closed": true,
+              "upper": {
+                "exponent": 0,
+                "numerator": 1
+              },
+              "upper_closed": false
+            }
+          ]
+        },
+        "image_id": "n[2,0]",
+        "node_hash": "8d9231535646317ec0e4170591a4e2089573b1834b30fabe2d9eb0ed1a7bfbe0",
+        "node_id": "root-2-0",
+        "node_type": "leaf",
+        "status": "excluded_range",
+        "witness": {
+          "function_id": "affine_positive_guard",
+          "range": {
+            "lower": {
+              "exponent": 0,
+              "numerator": 1
+            },
+            "lower_closed": true,
+            "upper": {
+              "exponent": 0,
+              "numerator": 2
+            },
+            "upper_closed": true
+          },
+          "witness_type": "exact_affine_component_range",
+          "zero_separation": "strictly_positive"
+        }
+      },
+      {
+        "box": {
+          "axes": [
+            "u"
+          ],
+          "intervals": [
+            {
+              "lower": {
+                "exponent": 0,
+                "numerator": 0
+              },
+              "lower_closed": true,
+              "upper": {
+                "exponent": 0,
+                "numerator": 1
+              },
+              "upper_closed": false
+            }
+          ]
+        },
+        "image_id": "n[2,1]",
+        "node_hash": "6b84d1884a1e6a4a9d8eec0c63b530334b7e2d458433dd89dd12e001aae9ef9d",
+        "node_id": "root-2-1",
+        "node_type": "leaf",
+        "status": "excluded_range",
+        "witness": {
+          "function_id": "affine_positive_guard",
+          "range": {
+            "lower": {
+              "exponent": 0,
+              "numerator": 1
+            },
+            "lower_closed": true,
+            "upper": {
+              "exponent": 0,
+              "numerator": 2
+            },
+            "upper_closed": true
+          },
+          "witness_type": "exact_affine_component_range",
+          "zero_separation": "strictly_positive"
+        }
+      }
+    ],
+    "parameter_domain": {
+      "axes": [
+        "u"
+      ],
+      "intervals": [
+        {
+          "lower": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "lower_closed": true,
+          "upper": {
+            "exponent": 0,
+            "numerator": 1
+          },
+          "upper_closed": false
+        }
+      ]
+    },
+    "root_hashes": [
+      {
+        "node_hash": "c45e76756402f0b7d9985b4041797ff9bb516db4aa4a4e4fc47c2131ad10c0ca",
+        "root_id": "root-0-0"
+      },
+      {
+        "node_hash": "78202070189d8e694c10d629639397d48d06c4f065f5e97dacbe63ef04bdf60c",
+        "root_id": "root-0-1"
+      },
+      {
+        "node_hash": "05848a06c0dd9d3a9fe678d100aa306fd5566f6c8750c86049a7d41ae10128b8",
+        "root_id": "root-1-0"
+      },
+      {
+        "node_hash": "c1330a99bf9567af29640df5c696ee77559848b887a6a93f3c7b1f3fb2af733d",
+        "root_id": "root-1-1"
+      },
+      {
+        "node_hash": "8d9231535646317ec0e4170591a4e2089573b1834b30fabe2d9eb0ed1a7bfbe0",
+        "root_id": "root-2-0"
+      },
+      {
+        "node_hash": "6b84d1884a1e6a4a9d8eec0c63b530334b7e2d458433dd89dd12e001aae9ef9d",
+        "root_id": "root-2-1"
+      }
+    ],
+    "root_ids": [
+      "root-0-0",
+      "root-0-1",
+      "root-1-0",
+      "root-1-1",
+      "root-2-0",
+      "root-2-1"
+    ]
+  },
+  "schema_version": "cyz-brief-0019-certified-solver-foundation-v1"
+}
