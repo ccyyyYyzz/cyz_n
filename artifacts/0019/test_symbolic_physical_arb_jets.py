@@ -35,6 +35,12 @@ def _arb_leaves(value: Any) -> Iterable[arb]:
             yield from _arb_leaves(item)
 
 
+def _canonical_problem() -> dict[str, Any]:
+    fixture = lift.strict_json_load(lift.FIXTURE_PATH)
+    lift.verify_fixture(fixture)
+    return fixture["closed_string_problem"]
+
+
 class SymbolicProblemAdapterTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
@@ -110,7 +116,8 @@ class SymbolicProblemAdapterTests(unittest.TestCase):
         )
 
     def test_metric_winding_and_phase_mutants_are_rejected(self) -> None:
-        metric_mutant = copy.deepcopy(self.problem)
+        canonical = _canonical_problem()
+        metric_mutant = copy.deepcopy(canonical)
         metric_mutant["target_torus"]["metric_diagonal"][8] = (
             jets.symbolic_atom(64, 2)
         )
@@ -119,7 +126,7 @@ class SymbolicProblemAdapterTests(unittest.TestCase):
                 metric_mutant, _point_box()
             )
 
-        length_mutant = copy.deepcopy(self.problem)
+        length_mutant = copy.deepcopy(canonical)
         length_mutant["exact_parameters"]["L_star"] = jets.symbolic_atom(
             8, 1
         )
@@ -128,7 +135,7 @@ class SymbolicProblemAdapterTests(unittest.TestCase):
                 length_mutant, _point_box()
             )
 
-        phase_mutant = copy.deepcopy(self.problem)
+        phase_mutant = copy.deepcopy(canonical)
         phase_mutant["kinematics"]["strings"][0]["modes"][0][
             "spatial_phase_coefficient"
         ] = jets.symbolic_atom(1, 1)
@@ -141,9 +148,7 @@ class SymbolicProblemAdapterTests(unittest.TestCase):
 class SymbolicPhysicalJetTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.problem = jets.build_problem_adapter(
-            old_jets.load_registered_physical_problem()
-        )
+        cls.problem = _canonical_problem()
         cls.zero = jets.evaluate_symbolic_physical_jets(
             cls.problem, _point_box(), precision_bits=192
         )
@@ -388,52 +393,60 @@ class CanonicalLiftIntegrationTests(unittest.TestCase):
         )
         self.assertEqual(result["variable_order"], ("u1", "u2", "t"))
 
-    def test_canonical_and_adapter_have_identical_jets_on_same_box(self) -> None:
-        centre = {
-            "u1": Fraction(5, 16),
-            "u2": Fraction(3, 16),
-            "t": Fraction(1, 8),
-        }
-        width = Fraction(1, 2**14)
-        box = {
-            name: jets.closed_interval(value - width, value + width)
-            for name, value in centre.items()
-        }
-        canonical = jets.evaluate_symbolic_physical_jets(
-            self.problem, box, precision_bits=192
+    def test_production_apis_fail_closed_on_complete_problem_hash(self) -> None:
+        mutants = []
+
+        coefficient = copy.deepcopy(self.problem)
+        coefficient["kinematics"]["strings"][0]["modes"][0][
+            "initial_x"
+        ][0]["numerator"] += 2
+        mutants.append(coefficient)
+
+        source = copy.deepcopy(self.problem)
+        source["source_commitment"]["source_state_sha256"] = "0" * 64
+        mutants.append(source)
+
+        seam = copy.deepcopy(self.problem)
+        seam["worldsheet"]["seam_image_actions"]["u2_plus_1"][
+            "n8_reindex_shift"
+        ] = -1
+        mutants.append(seam)
+
+        lattice = copy.deepcopy(self.problem)
+        lattice["target_torus"]["lattice_matrix_diagonal"][0] = (
+            jets.symbolic_atom(7)
         )
-        adapted = jets.evaluate_symbolic_physical_jets(
-            self.adapter, box, precision_bits=192
-        )
-        for key in (
-            "variables",
-            "d",
-            "d_a",
-            "d_ab",
-            "separation",
-            "F",
-            "F_a",
-            "F_ab",
-            "g_r",
-            "Dg_r",
-        ):
-            canonical_values = list(_arb_leaves(canonical[key]))
-            adapted_values = list(_arb_leaves(adapted[key]))
-            self.assertEqual(
-                len(canonical_values), len(adapted_values), key
-            )
-            for index, (canonical_value, adapted_value) in enumerate(
-                zip(canonical_values, adapted_values)
+        mutants.append(lattice)
+
+        for mutant in mutants:
+            with self.subTest(
+                digest=old_jets.semantic_sha256(mutant)
             ):
-                self.assertEqual(
-                    jets.arb_exact_endpoints(
-                        canonical_value, precision_bits=192
-                    ),
-                    jets.arb_exact_endpoints(
-                        adapted_value, precision_bits=192
-                    ),
-                    f"{key}[leaf {index}]",
-                )
+                with self.assertRaises(jets.SymbolicPhysicalJetError):
+                    jets.evaluate_symbolic_physical_jets(
+                        mutant, _point_box()
+                    )
+                with self.assertRaises(jets.SymbolicPhysicalJetError):
+                    jets.exact_seam_image_shift(mutant, 0)
+
+    def test_adapter_projection_matches_canonical_jet_inputs(self) -> None:
+        for key in ("initial_time", "centres_Q1_Q2", "strings"):
+            self.assertEqual(
+                self.adapter["kinematics"][key],
+                self.problem["kinematics"][key],
+            )
+        self.assertEqual(
+            self.adapter["target_torus"]["periods"],
+            self.problem["target_torus"]["periods"],
+        )
+        self.assertEqual(
+            self.adapter["target_torus"]["metric_diagonal"],
+            self.problem["target_torus"]["metric_diagonal"],
+        )
+        self.assertEqual(
+            self.adapter["worldsheet"]["orientations"],
+            self.problem["worldsheet"]["orientations"],
+        )
 
     def test_canonical_192_bit_box_contains_512_bit_point(self) -> None:
         centre = {

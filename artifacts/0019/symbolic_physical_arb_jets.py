@@ -33,6 +33,9 @@ TRANSVERSE_PERIOD = Fraction(8)
 NORMALIZED_WINDING_PERIOD = Fraction(1)
 WINDING_LENGTH_COEFFICIENT = Fraction(16)
 TIME_FREQUENCY_DENOMINATOR = 8
+CANONICAL_CLOSED_STRING_PROBLEM_SEMANTIC_SHA256 = (
+    "3bb6599f211c26d98ecba2077051ad9d0339daf96d580a6399cc5a1ba7f030e0"
+)
 
 SymbolicPhysicalJetError = base.PhysicalJetError
 dyadic_fraction = base.dyadic_fraction
@@ -98,6 +101,27 @@ def _source_problem(problem: Mapping[str, Any]) -> Mapping[str, Any]:
         return problem
     _fail("$.problem", "missing direct exact-source kinematics")
     raise AssertionError("unreachable")
+
+
+def _require_canonical_problem(problem: Any) -> str:
+    """Fail closed unless ``problem`` is the pinned symbolic lift.
+
+    Structural validation remains useful for readable diagnostics and unit
+    controls, but it cannot bind source coefficients, provenance and fields
+    that do not enter the local jet formula.  The production evaluator and
+    seam API therefore require the complete canonical problem digest.
+    """
+
+    if type(problem) is not dict:
+        _fail("$.problem", "expected the canonical problem object")
+    digest = base.semantic_sha256(problem)
+    if digest != CANONICAL_CLOSED_STRING_PROBLEM_SEMANTIC_SHA256:
+        _fail(
+            "$.problem",
+            "semantic SHA-256 is not the pinned symbolic-pi closed-string "
+            "problem",
+        )
+    return digest
 
 
 def _normalized_worldsheet(problem: Mapping[str, Any]) -> Mapping[str, Any]:
@@ -743,6 +767,7 @@ def exact_seam_image_shift(
     integer harmonics and winding orientations, never on Arb endpoint balls.
     """
 
+    _require_canonical_problem(problem)
     convention = _validate_convention(problem)
     if worldsheet_axis not in (0, 1):
         _fail("$.worldsheet_axis", "expected 0 or 1")
@@ -787,6 +812,7 @@ def evaluate_symbolic_physical_jets(
             f"Arb precision must be an integer of at least "
             f"{MINIMUM_PRECISION_BITS} bits"
         )
+    problem_digest = _require_canonical_problem(problem)
     convention = _validate_convention(problem)
     problem_map = _mapping(problem, "$.problem")
     source = convention.source
@@ -919,7 +945,7 @@ def evaluate_symbolic_physical_jets(
             [F_a[0], F_a[1], F_a[2]],
         ]
         return {
-            "problem_sha256": base.semantic_sha256(problem_map),
+            "problem_sha256": problem_digest,
             "precision_bits": precision_bits,
             "variable_order": VARIABLE_ORDER,
             "variables": variables,
