@@ -35,6 +35,8 @@ Use primary sources, in particular:
   DOI:10.1088/1475-7516/2005/02/009;
 - Danos--Frey--Mazumdar, *Interaction Rates in String Gas Cosmology*,
   arXiv:hep-th/0409162, DOI:10.1103/PhysRevD.70.106010.
+- Alexander--Brandenberger--Easson, *Brane Gases in the Early Universe*,
+  arXiv:hep-th/0005212, DOI:10.1103/PhysRevD.62.103509.
 
 Do not infer more from a source than it states.  In particular, a numerical
 recollision prescription is not a first-principles return theorem, and a
