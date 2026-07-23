@@ -794,28 +794,86 @@ F_{\rm enc}(\varepsilon)
 The metric and source scales used to make \(\varepsilon\) dimensionless must
 be registered.
 
-### 6.2 Fixed-point Gaussian tail is an audit proposition
+### 6.2 Fixed-point Gaussian benchmark and physical audit
 
-At one world-sheet point selected independently of the random fields, an
-unconstrained isotropic Gaussian surrogate suggests that the normalized
-matrix
+At one world-sheet point selected independently of the random fields, first
+declare the exact standard surrogate
+
+\[
+B=[q,u]\in\mathbb R^{8\times2},
+\qquad B_{Ai}\stackrel{\rm iid}{\sim}N(0,1).
+\]
+
+If \(\lambda_1>\lambda_2>0\) are the eigenvalues of \(B^\top B\), their
+ordered density is
+
+\[
+f(\lambda_1,\lambda_2)
+=\frac1{2880}
+e^{-(\lambda_1+\lambda_2)/2}
+(\lambda_1\lambda_2)^{5/2}
+(\lambda_1-\lambda_2).
+\]
+
+Consequently the fixed-point small-singular-value law is
+
+\[
+\boxed{
+\Pr[s_{\min}(B)\le\varepsilon]
+=
+\frac{\sqrt{\pi/2}}{48}\,\varepsilon^7
++o(\varepsilon^7).
+}
+\]
+
+This is an exact theorem of the standardized iid control, not yet a theorem
+about the physical world-sheet preparation or an encounter event.
+
+More generally, if the eight rows are independent with
+
+\[
+(q^A,u^A)\sim N_2(0,\Sigma_K),
+\qquad \Sigma_K\succ0,
+\]
+
+and \(a_1,a_2\) are the eigenvalues of \(\Sigma_K\), then
+
+\[
+\Pr[s_{\min}(B)\le\varepsilon]
+=C_{\Sigma_K}\varepsilon^7+o(\varepsilon^7),
+\]
+
+\[
+C_{\Sigma_K}
+=
+\frac{1}{48\sqrt{2\pi}}
+\int_0^1
+\frac{
+\left((1-t)/a_1+t/a_2\right)^{7/2}
+}{
+\sqrt{t(1-t)}
+}\,dt .
+\]
+
+For iid entries of variance \(\sigma^2\), this reduces to
+
+\[
+\Pr[s_{\min}(B)\le\varepsilon]
+=
+\frac{\sqrt{\pi/2}}{48}
+\left(\frac{\varepsilon}{\sigma}\right)^7
++O\!\left((\varepsilon/\sigma)^9\right).
+\]
+
+For the finite-\(K\) canonical control, the normalized matrix
 
 \[
 B=[q,u]\in\mathbb R^{8\times2}
 \]
 
-has a real Gaussian law.  The rank-one determinantal set has codimension
-seven.  This motivates the candidate asymptotic
-
-\[
-\Pr[
-s_{\min}(B)<\varepsilon
-]
-\stackrel{?}{=}
-C\varepsilon^7+o(\varepsilon^7).
-\]
-
-This is a proposition to audit, not an adopted result.  The audit must check:
+need not have independent identical rows after target-momentum and
+level-matching conditioning.  A singular covariance can change even the
+exponent.  The physical audit must therefore check:
 
 1. the exact covariance and independence of \(q\) and \(u\);
 2. the effect of target momentum and level-matching constraints;
@@ -826,8 +884,9 @@ This is a proposition to audit, not an adopted result.  The audit must check:
 6. the behavior near the compact support boundary;
 7. the effect of first-entry or closest-approach conditioning.
 
-No conclusion of Brief 0017 may cite the exponent seven unless the relevant
-version has passed these audits.
+No conclusion of Brief 0017 may cite the fixed-point exponent seven for the
+microcanonical or encounter law unless the relevant version has passed these
+audits.
 
 ### 6.3 First-entry Kac--Rice/Palm weight
 
@@ -855,8 +914,26 @@ W_{\rm in}
 \left(-\partial_tF_X\right)_+ .
 \]
 
-The first-entry law also contains the armed-history condition and the global
-factor that no earlier eligible entry occurred.  Therefore the event
+This Jacobian is not by itself the Palm Radon--Nikodym weight.  Conditional
+on a proposed pair jet \(B\), the effective local first-entry weight has the
+form
+
+\[
+\mathcal W_{\rm in}(B)
+=
+p_{g\mid B}(0)\,
+\mathbb E\!\left[
+|\det Dg|\,
+\mathbf1_{\rm spatial\ Morse}
+\mathbf1_{\rm inward}
+S_{\rm earlier}
+\mid g=0,B
+\right],
+\]
+
+where \(S_{\rm earlier}\) is the armed-history/no-earlier-eligible-entry
+factor.  Thus the constraint density, Jacobian, section indicators and
+global survival condition must be analyzed together.  The first-entry
 distribution of \(q,u\) is not the fixed-point distribution.
 
 For a unique interior closest approach, the local weight is
@@ -873,28 +950,134 @@ W_{\rm c}
 together with membership in the selected episode and its own exclusion
 conditions.
 
-If, near \(s_{\min}=0\),
+There is one exact event-biased analytic control.  For the standardized iid
+matrix above, a strictly affine, translation-smooth, all-regular-roots
+stationary intensity with no additional survival tilt reduces to the
+incoming-volume-biased law
+
+\[
+\frac{s_1s_2}{\mathbb E[s_1s_2]}\,dP(B),
+\qquad
+\mathbb E[s_1s_2]=7.
+\]
+
+It obeys
+
+\[
+\boxed{
+\Pr_{\rm volume}[s_{\min}(B)\le\varepsilon]
+=\frac1{105}\varepsilon^8+o(\varepsilon^8).
+}
+\]
+
+For a time-reversal-symmetric affine first-entry control, the inward factor
+\(1/2\) cancels after normalization.  This benchmark concerns all regular
+stationary roots, or the equivalent declared volume-biased surrogate.  It is
+not automatically the earliest first entry of a finite episode and it does
+not include an arbitrary no-earlier-entry tilt.
+
+For affine first entry, with
+
+\[
+A=[\tau_1,-\tau_2],
+\qquad v=P_{(\operatorname{im}A)^\perp}u,
+\]
+
+the spatial coarea and inward-flux factors combine as
+
+\[
+\sqrt{\det(A^\top A)}\,\|v\|
+=\sqrt{\det(J^\top J)}.
+\]
+
+For affine closest approach,
+
+\[
+p_{g_{\rm c}\mid J}(0)
+\propto\det(J^\top J)^{-1/2},
+\qquad
+\det\nabla^2F=\det(J^\top J),
+\]
+
+so their product gives the same incoming-volume weight.  Looking only at
+the closest-approach Hessian would incorrectly predict two added powers.
+In the reduced opposite-winding control with a unit longitudinal direction,
+this volume is \(V(B)=|q\wedge u|\).  The full identity involving
+\(p_1\wedge q\wedge u\) preserves the exponent only when the extra factor is
+integrable and nonzero on the principal rank-one stratum; it can change the
+constant.
+
+If, near \(s_{\min}=0\), the **complete** effective weight satisfies
 
 \[
 0<c_-
 \le
-\mathbb E[W\mid q,u]
+\mathcal W(B)
 \le c_+<\infty,
 \]
 
 then a fixed-point tail exponent can survive the Palm tilt.  If instead
 
 \[
-\mathbb E[W\mid q,u]
-\asymp s_{\min}^{\alpha},
+m(s)
+:=\mathbb E[\mathcal W(B)\mid s_{\min}=s]
+\sim w_0s^\alpha L(s),
+\qquad \alpha>-7,
 \]
 
-the exponent can shift by \(\alpha\).  If the regular weight vanishes on a
+where \(L\) is slowly varying and the fixed-point coefficient is \(C\), then
+
+\[
+\Pr_{\rm event}[s_{\min}\le\varepsilon]
+\sim
+\frac{7Cw_0}{(7+\alpha)\mathbb E\mathcal W}
+\varepsilon^{7+\alpha}L(\varepsilon).
+\]
+
+Thus a no-earlier-entry factor with power \(\gamma\) adds \(\gamma\) to the
+tail exponent.  An integrable absolutely continuous Palm weight does not
+create an exact lower-rank atom, and polynomial suppression does not create
+a positive essential margin.  If the regular weight vanishes on a
 degenerate or grazing branch, that branch is not to be redrawn.  Its mass
 must remain in the appropriate exceptional outcome.
 
-The event-conditioned tail is thus an open calculation even if the
-fixed-point Gaussian proposition is proved.
+Conversely, curvature can change the answer in the other direction.  On a
+principal corank-one closest-approach stratum where
+
+\[
+p_{g\mid B}(0)\asymp s_{\min}^{-1}
+\]
+
+but the curvature-lifted Morse Hessian determinant tends to a nonzero
+positive limit, the local closest-event intensity has an
+\(\varepsilon^6\) tail.  This is a conditional counterexample, not a
+universal exponent for first entry, episode-selected closest approach or
+the globally first event.
+
+One local model realizing the conditional scaling is
+
+\[
+\Phi_\delta(x_1,x_2,t)
+=
+r e_4+x_1e_1+x_2e_2+\delta t e_3+\frac12t^2e_4 .
+\]
+
+At the origin,
+
+\[
+s_{\min}\asymp\delta,
+\qquad
+\nabla^2F
+=\operatorname{diag}(1,1,\delta^2+r).
+\]
+
+Hence the Morse determinant tends to \(r>0\) while the zero-gradient density
+scales as \(\delta^{-1}\).  This counterexample applies only to local
+closest points sampled by stationary intensity with a smooth separation
+density and no cancelling global-selection factor.
+
+The event-conditioned tail is thus an open calculation even after the
+relevant fixed-point law is proved.
 
 ## 7. Why the other source routes are downstream or incomplete
 
@@ -1091,6 +1274,11 @@ The response must include a strictly straight opposite-winding pair.  It has
 \(p_1=p_2=0\) and rank at most two.  A constructor that reports rank three
 for this control is rejected.
 
+If its regular-event volume or flux is zero, a Palm law restricted to
+regular events may assign it zero conditional mass.  The unconditioned
+source law must still retain the branch as no-entry, grazing, tied or
+degenerate mass rather than deleting it.
+
 It must include an excited collinear-wiggle pair with \(p_1+p_2=0\), and a
 pair with \(u\parallel p_1+p_2\).  Both have rank at most two despite
 nonzero oscillator energy.
@@ -1103,6 +1291,32 @@ It must include a near-degenerate sequence with
 
 while exact rank remains three.  A hard numerical rank threshold may label
 the sequence for diagnostics, but it may not erase its singular-value data.
+
+It must include deterministic quadrature of the standardized Gaussian hard
+edge and volume-biased Palm control.  The computed limits must reproduce
+
+\[
+\frac{F(\varepsilon)}{\varepsilon^7}
+\longrightarrow\frac{\sqrt{\pi/2}}{48},
+\qquad
+\frac{F_{\rm volume}(\varepsilon)}{\varepsilon^8}
+\longrightarrow\frac1{105}.
+\]
+
+The same test must show that the smallest Gram eigenvalue
+\(\sigma_{\min}^2\) has exponent \(7/2\), not seven.
+
+It must include an affine closest-approach control that separately verifies
+
+\[
+\det\nabla^2F\asymp\delta^2,\qquad
+p_g(0)\asymp\delta^{-1},\qquad
+p_g(0)\det\nabla^2F\asymp\delta,
+\]
+
+and the curvature-lifted control above with
+\(\det\nabla^2F\to r>0\).  This prevents the event-tail calculation from
+silently dropping the constraint density.
 
 It must include a regular first-entry example with
 
@@ -1268,6 +1482,17 @@ does and does not provide.
     crossing-conditioned angle/velocity-dependent reaction probabilities.
     It does not supply the prior law of angle, velocity, impact or first
     encounter.
+11. A. Edelman, *Eigenvalues and Condition Numbers of Random Matrices*,
+    SIAM J. Matrix Anal. Appl. 9, 543--560 (1988),
+    DOI:10.1137/0609045.  This source supplies exact Gaussian/Wishart
+    singular-value distributions.  It does not identify the physical
+    world-sheet covariance or an encounter Palm law.
+12. J.-M. Azaïs and M. Wschebor,
+    *A General Expression for the Distribution of the Maximum of a Gaussian
+    Field and the Approximation of the Tail*, arXiv:math/0607041.  This
+    source supplies a Rice-formula treatment of roots of random systems.  It
+    does not replace the present event section, armed-history law or
+    no-earlier-entry factor.
 
 Do not use a review to strengthen a claim beyond these primary sources.
 
