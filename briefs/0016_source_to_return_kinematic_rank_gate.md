@@ -126,6 +126,23 @@ Do all of the following.
    the familiar \(2p+1\) ceiling is a carrier/encounter fact rather than a
    theorem about response-visible dimension.
 
+There is a mandatory degeneracy test.  For two locally straight strings with
+opposite winding around the same cycle,
+
+\[
+\tau_2=-\tau_1,
+\qquad
+DF=[\tau_1,\tau_1,v_{\rm rel}],
+\]
+
+so the displayed difference map has rank at most two.  Reconcile this with the
+\(d-3\) impact space used in the GKM amplitude.  Either identify and derive the
+third independent incoming/world-sheet jet used by that source limit, prove
+that local tangent fluctuations give it a quantitative nonzero singular-value
+margin, or conclude that \(d-3\) genericity assumes a non-collinear local
+preparation not determined by global opposite winding.  Merely renaming an
+arbitrary scattering axis as the third role is not a derivation.
+
 If a source-faithful derivation of all three previous role labels
 `(w,v,s)` is impossible, replace them.  A pair of string tangents plus relative
 velocity is preferable to retaining a role name that has no invariant
@@ -298,6 +315,8 @@ Add a small readable standard-Python artifact under `artifacts/0016/` that:
 3. emits the exact valid-frame onset table
    \(N_{\rm valid}(q,a)\) for \(q=0,\ldots,9\) and \(a=1,\ldots,4\);
 4. includes full-rank, near-degenerate and degenerate F1 Gram-matrix controls;
+   the degenerate controls must include a straight opposite-winding pair and a
+   relative velocity lying in the tangent span;
 5. contains no target-rank branch; and
 6. writes one deterministic JSON report with formulas, tolerances and source
    classification.
