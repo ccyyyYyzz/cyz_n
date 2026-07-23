@@ -172,6 +172,19 @@
     7,
     8
   ],
+  "executable_dependencies": [
+    "artifacts/0015/generate_0015.py",
+    "artifacts/0015/generator_core.py",
+    "artifacts/0015/generator_model.py",
+    "artifacts/0015/generator_artifact.py",
+    "artifacts/0015/verify_0015.py",
+    "artifacts/0015/verifier_core.py",
+    "artifacts/0015/verifier_model.py",
+    "artifacts/0015/verifier_semantics.py",
+    "artifacts/0015/verifier_replay.py",
+    "artifacts/0015/verifier_replay_runtime.py",
+    "artifacts/0015/verifier_hostile.py"
+  ],
   "forbidden_capabilities": [
     "environment_read",
     "file_read",
@@ -405,7 +418,8 @@
     "s9.ledger_vector_action",
     "constructor_program",
     "operation_schemas",
-    "forbidden_capabilities"
+    "forbidden_capabilities",
+    "executable_dependencies"
   ],
   "operation_schemas": {
     "construct_adjacent_s9_actions": {
