@@ -90,7 +90,7 @@
   "implementation": {
     "baseline_coefficient_payload_sha256": "490500d615188ed95587d7a5ef4cb4762ebbd6c92d140840ed44c7ea849ce5f6",
     "code_inventory_normalized_lf_sha256": {
-      "README.md": "e47d7058f19ac6dde573748825ab502f22e2ade13a27560a071e8f923c036731",
+      "README.md": "261d991868a97cbdc836a274af83f8e48ea8f3afc9c8e12f9fffc869209b6f92",
       "microcanonical_source.py": "12bb5ea71cebac869cbb519d46dd3c531e74b982203270e349a807b32853719e",
       "source_registry.json": "2944edc5668ad778c9d2158ad99bbd6133603873b93167cc8b90bf5f216f5742",
       "test_microcanonical_source.py": "e06ce135125991b977e2affb53930ace816b8b8500f33ba72316c47017e52489"
