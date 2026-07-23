@@ -826,6 +826,14 @@ Consequently the fixed-point small-singular-value law is
 }
 \]
 
+In particular,
+
+\[
+\Pr[s_{\min}(B)=0]=0,
+\qquad
+\operatorname*{ess\,inf}s_{\min}(B)=0.
+\]
+
 This is an exact theorem of the standardized iid control, not yet a theorem
 about the physical world-sheet preparation or an encounter event.
 
