@@ -193,6 +193,17 @@ The active problem is to originate the smallest dimension-variable dynamics
 that also supplies an anonymous multi-probe response interface and a
 loss-of-plateau prediction.
 
+Response 0010 has now fixed the correct all-rank comparison problem and the
+arbitrary-\(m\) continuum recollapse lemma.  Its stronger global no-go is not
+yet adopted: a nonzero Duhamel derivative proves score variation but not winner
+reversal, and the response cells themselves vary with the generator.  The
+current exact boundary is local score underdetermination inside a label-stable
+response region.  Brief 0011 requires either explicit source-compatible
+counter-completions with a replayed non-three winner or an honest retreat to
+that local theorem.  The finite residual state, augmented-operator orientation
+and noncircular response cells must also be closed before the hybrid is called
+complete.
+
 The wavefront-kernel construction remains an independent physical validation
 route, not the primary definition. Numerical gaps are meaningful only relative
 to fixed calibrated coefficient and observation norms.

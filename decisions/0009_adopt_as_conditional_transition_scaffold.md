@@ -1,6 +1,6 @@
 ---
 brief: 0009
-response_commit: 03cf5c1
+response_commit: 31992da
 status: conditionally_adopted
 supersedes: none
 ---
@@ -9,18 +9,24 @@ supersedes: none
 
 ## Verdict
 
-Response 0009 is adopted as a useful **source-faithful design scaffold** and as
+The repaired final Response 0009 is adopted as a useful **source-faithful
+design scaffold** and as
 a map of the new measurable closures that are required.  It is not adopted as
 an exact derivation or selection of three visible spatial directions.
 
 Its strongest presently valid positive interpretation is:
 
 > after the comparison and probability bounds are repaired, the declared
-> model can provide a conditional, scale-relative (k+1\to k) rank-transition
+> model can provide a conditional, scale-relative \(k+1\to k\) rank-transition
 > witness with no microscopic rank state and no geometry jump.
 
-For (k=3), this is a conditional (4\to3) witness.  It does not yet explain
-why the same anonymous dynamics prefers (k=3) over every other (k).
+For \(k=3\), this is a conditional \(4\to3\) witness.  It does not yet explain
+why the same anonymous dynamics prefers \(k=3\) over every other \(k\).
+
+The original `03cf5c1` draft presented the construction through a
+three-direction corollary.  The final `31992da` response correctly generalized
+the statement to arbitrary \(m\).  That repair is canonical: it exposes rather
+than resolves the absence of a preference for three.
 
 ## Adopted source boundary
 
@@ -171,16 +177,17 @@ adiabatic or quasi-stationary error bound.  The next executable should instead
 use one finite generator (Q\) for both killed-semigroup and
 \(C(zI-Q)^{-1}B\) calculations.
 
-## Why the present theorem does not select three
+## Why the repaired theorem does not select three
 
-The predecessor family in 0009 assumes exactly:
+The initial 0009 draft illustrated the predecessor family by assuming exactly:
 
 - three already-clear, positive-pressure, low-gap directions;
 - one additional low-gap but wound direction that will recollapse;
 - six high-gap trapped directions.
 
 Taking the union over all three-element subsets removes coordinate names but
-does not remove the input cardinality three.  The same argument has the formal
+does not remove the input cardinality three.  The final response now makes the
+same argument with the formal
 replacement
 
 \[
@@ -191,12 +198,12 @@ replacement
 6\mapsto 9-k,
 \]
 
-and yields a conditional (k+1\to k) statement whenever the corresponding
+and yields a conditional \(k+1\to k\) statement whenever the corresponding
 clearance, pressure, and spectral inequalities are supplied.  Nothing in the
 current proof fails structurally for (k\ne3\).
 
-Therefore Theorem 5 is retained only after repair and only under the name
-**conditional (k+1\to k) metastable response-transition lemma**.
+Therefore the final arbitrary-cardinality statement is retained only under the
+name **conditional \(k+1\to k\) metastable response-transition lemma**.
 
 ## Required target-neutral selection criterion
 
