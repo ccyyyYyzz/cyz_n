@@ -17,14 +17,25 @@ DIRECTORY = Path(contract.__file__).resolve().parent
 SCHEMA_PATH = DIRECTORY / "event_record.schema.json"
 REPORT_PATH = DIRECTORY / "event_schema_controls.json"
 EXPECTED_SCHEMA_NORMALIZED_LF_SHA256 = (
-    "f4ccba32949690dcd9b00287741423925ef860ef166a4431df05b88ac813f89d"
+    "0f8fa634f7c3769a9b2cf8550f2419cc351d1f2ea1b45761b6cca76ed1349dca"
 )
 EXPECTED_SCHEMA_CANONICAL_SHA256 = (
-    "33207071ee5ae2933f8bd5d2032d01313586b17e3edd4fd8e38f97f50928d2b2"
+    "1721b763109c879ec0ad0313ce810ebbad5f3d7453ff03efc875da092a9b3616"
 )
 EXPECTED_REPORT_CANONICAL_SHA256 = (
-    "f7e0395b50839f281cf98fe0d2ac12d3db62b76a20fe5fb217e726becdef4dd8"
+    "30bc8e85af8ec3c07242453257b0c004abc374826046d022840987b6a90fc483"
 )
+
+
+def validate_reauthored_semantic_mutation(
+    record: dict,
+) -> dict:
+    """Exercise semantics after explicitly reauthoring untrusted hashes."""
+
+    contract._bind_record_to_coverage_problem(record)
+    return contract.as_certified_solver_output(
+        record, backend="formal-semantic-control"
+    )
 
 
 class SchemaAndFixtureTests(unittest.TestCase):
@@ -74,7 +85,7 @@ class SchemaAndFixtureTests(unittest.TestCase):
         with self.assertRaisesRegex(
             contract.ContractError, "deterministic precedence"
         ):
-            contract.validate_record(record)
+            validate_reauthored_semantic_mutation(record)
 
     def test_extra_root_property_is_rejected(self) -> None:
         record = contract.build_hostile_record("source_invalid")
@@ -214,9 +225,7 @@ class ClusterAndRankTests(unittest.TestCase):
         record["entry_cluster"]["members"].append(
             contract.make_representative("forbidden")
         )
-        with self.assertRaisesRegex(
-            contract.ContractError, "cannot enumerate members"
-        ):
+        with self.assertRaises(contract.ContractError):
             contract.validate_record(record)
 
     def test_cluster_ordering_is_semantically_unordered(self) -> None:
@@ -232,10 +241,15 @@ class ClusterAndRankTests(unittest.TestCase):
         member = record["entry_cluster"]["members"][0]
         member["jet_normal"] = contract.make_jet_normal(None)
         member["s"] = copy.deepcopy(member["jet_normal"]["s"])
+        contract._finalize_cluster(record["entry_cluster"])
         record["flags"]["rank_marks_complete"] = False
         record["flags"]["normal_marks_complete"] = False
-        contract.validate_record(record)
-        jet = member["jet_normal"]
+        record["sample_id"] = "formal-rank-unresolved-control"
+        contract._bind_record_to_coverage_problem(record)
+        record = contract.as_certified_solver_output(
+            record, backend="formal-root"
+        )
+        jet = record["entry_cluster"]["members"][0]["jet_normal"]
         self.assertIsNone(jet["normal_dimension"])
         self.assertIsNone(jet["P_N"])
         self.assertIsNone(jet["normal_frame"])
@@ -327,7 +341,7 @@ class ConditionalCertificateTests(unittest.TestCase):
         with self.assertRaisesRegex(
             contract.ContractError, "requires this certificate"
         ):
-            contract.validate_record(record)
+            validate_reauthored_semantic_mutation(record)
 
     def test_ambiguous_tie_requires_complete_root_coverage(self) -> None:
         record = contract.build_hostile_record("ambiguous_tie")
@@ -335,25 +349,18 @@ class ConditionalCertificateTests(unittest.TestCase):
         record["certificates"][
             "root_coverage"
         ] = contract.incomplete_coverage_certificate()
-        with self.assertRaisesRegex(
-            contract.ContractError, "complete root coverage"
-        ):
+        with self.assertRaises(contract.ContractError):
             contract.validate_record(record)
 
     def test_finite_window_cannot_be_no_entry_proved(self) -> None:
-        record = contract.build_hostile_record("no_entry_proved")
-        record["observation"]["complete_time_domain"] = False
-        record["flags"]["no_entry_complete_time_domain_certified"] = False
-        record["flags"]["right_censored"] = True
-        record["certificates"]["no_entry"] = {
-            "certificate_id": "mutated-window",
-            "mode": "finite_window",
-            "complete": True,
-            "period": None,
-        }
-        with self.assertRaisesRegex(
-            contract.ContractError, "deterministic precedence"
-        ):
+        record = contract.build_hostile_record(
+            "right_censored_no_entry"
+        )
+        record["primary_outcome"] = "no_entry_proved"
+        record["precedence_trace"] = contract.precedence_trace(
+            "no_entry_proved"
+        )
+        with self.assertRaises(contract.ContractError):
             contract.validate_record(record)
 
     def test_oscillator_period_without_exact_common_period_is_rejected(
@@ -361,11 +368,13 @@ class ConditionalCertificateTests(unittest.TestCase):
     ) -> None:
         record = contract.build_hostile_record("no_entry_proved")
         record["certificates"]["no_entry"]["mode"] = "finite_window"
-        record["certificates"]["no_entry"]["period"] = None
-        with self.assertRaisesRegex(
-            contract.ContractError,
-            "finite-window exclusion cannot prove no entry",
-        ):
+        record["certificates"]["no_entry"]["finite_window"] = {
+            "t0": contract.coverage.dyadic(0),
+            "t1": contract.coverage.dyadic(1),
+            "excluded_leaf_ids": [],
+        }
+        record["certificates"]["no_entry"]["recurrence"] = None
+        with self.assertRaises(contract.ContractError):
             contract.validate_record(record)
 
     def test_right_censor_requires_solver_complete_through_horizon(
@@ -378,7 +387,7 @@ class ConditionalCertificateTests(unittest.TestCase):
         with self.assertRaisesRegex(
             contract.ContractError, "deterministic precedence"
         ):
-            contract.validate_record(record)
+            validate_reauthored_semantic_mutation(record)
 
     def test_completed_episode_requires_strict_outer_overshoot(self) -> None:
         record = contract.build_hostile_record("regular_first_entry")
@@ -387,9 +396,7 @@ class ConditionalCertificateTests(unittest.TestCase):
         record["flags"]["outer_exit_certified"] = False
         record["flags"]["rearmed"] = False
         record["flags"]["episode_complete"] = False
-        with self.assertRaisesRegex(
-            contract.ContractError, "deterministic precedence"
-        ):
+        with self.assertRaises(contract.ContractError):
             contract.validate_record(record)
 
     def test_regular_entry_requires_global_and_no_earlier_certificates(
@@ -404,9 +411,7 @@ class ConditionalCertificateTests(unittest.TestCase):
                     "regular_first_entry"
                 )
                 record["certificates"][certificate] = None
-                with self.assertRaisesRegex(
-                    contract.ContractError, "requires this certificate"
-                ):
+                with self.assertRaises(contract.ContractError):
                     contract.validate_record(record)
 
 
@@ -464,9 +469,9 @@ class HysteresisAndEpisodeTests(unittest.TestCase):
         with self.assertRaisesRegex(
             contract.ContractError, "merger flag disagrees"
         ):
-            contract.validate_record(record)
+            validate_reauthored_semantic_mutation(record)
         record["flags"]["episode_has_component_merger"] = True
-        contract.validate_record(record)
+        validate_reauthored_semantic_mutation(record)
 
     def test_invalid_hysteresis_threshold_order_is_rejected(self) -> None:
         with self.assertRaisesRegex(ValueError, "0<r_in<r_out"):

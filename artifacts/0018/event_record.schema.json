@@ -1,5 +1,159 @@
 {
   "$defs": {
+    "affineModel": {
+      "additionalProperties": false,
+      "properties": {
+        "coefficients": {
+          "items": {
+            "$ref": "#/$defs/dyadic"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "constant": {
+          "$ref": "#/$defs/dyadic"
+        },
+        "variable_order": {
+          "const": [
+            "sigma1",
+            "sigma2",
+            "time"
+          ]
+        }
+      },
+      "required": [
+        "variable_order",
+        "coefficients",
+        "constant"
+      ],
+      "type": "object"
+    },
+    "affineSet": {
+      "additionalProperties": false,
+      "properties": {
+        "base_point": {
+          "items": {
+            "$ref": "#/$defs/dyadic"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "constant": {
+          "items": {
+            "$ref": "#/$defs/dyadic"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "declared_dimension": {
+          "maximum": 3,
+          "minimum": 1,
+          "type": "integer"
+        },
+        "declared_rank": {
+          "maximum": 2,
+          "minimum": 0,
+          "type": "integer"
+        },
+        "matrix": {
+          "items": {
+            "items": {
+              "$ref": "#/$defs/dyadic"
+            },
+            "maxItems": 3,
+            "minItems": 3,
+            "type": "array"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "null_direction": {
+          "items": {
+            "$ref": "#/$defs/dyadic"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "parameter_interval": {
+          "$ref": "#/$defs/exactInterval"
+        },
+        "variable_order": {
+          "const": [
+            "sigma1",
+            "sigma2",
+            "time"
+          ]
+        }
+      },
+      "required": [
+        "variable_order",
+        "matrix",
+        "constant",
+        "base_point",
+        "null_direction",
+        "parameter_interval",
+        "declared_rank",
+        "declared_dimension"
+      ],
+      "type": "object"
+    },
+    "affineSystem": {
+      "additionalProperties": false,
+      "properties": {
+        "constant": {
+          "items": {
+            "$ref": "#/$defs/dyadic"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "kind": {
+          "const": "exact_affine"
+        },
+        "matrix": {
+          "items": {
+            "items": {
+              "$ref": "#/$defs/dyadic"
+            },
+            "maxItems": 3,
+            "minItems": 3,
+            "type": "array"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "root": {
+          "items": {
+            "$ref": "#/$defs/dyadic"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "variable_order": {
+          "const": [
+            "sigma1",
+            "sigma2",
+            "time"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "variable_order",
+        "matrix",
+        "constant",
+        "root"
+      ],
+      "type": "object"
+    },
     "box": {
       "additionalProperties": false,
       "properties": {
@@ -20,12 +174,45 @@
       ],
       "type": "object"
     },
-    "closestCertificate": {
+    "closest": {
       "additionalProperties": false,
       "properties": {
         "certificate_id": {
           "minLength": 1,
           "type": "string"
+        },
+        "coverage_manifest_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "episode_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "global_minimum_certificate_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "status": {
           "enum": [
@@ -34,101 +221,33 @@
             "window_only",
             "unresolved"
           ]
+        },
+        "time": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/interval"
+            },
+            {
+              "type": "null"
+            }
+          ]
         }
       },
       "required": [
         "certificate_id",
-        "status"
+        "status",
+        "time",
+        "episode_id",
+        "coverage_manifest_sha256",
+        "global_minimum_certificate_id"
       ],
       "type": "object"
     },
     "cluster": {
       "additionalProperties": false,
-      "allOf": [
-        {
-          "if": {
-            "properties": {
-              "representation": {
-                "const": "singleton"
-              }
-            }
-          },
-          "then": {
-            "properties": {
-              "cardinality": {
-                "const": 1
-              },
-              "implicit_set": {
-                "type": "null"
-              },
-              "members": {
-                "items": {
-                  "$ref": "#/$defs/representative"
-                },
-                "maxItems": 1,
-                "minItems": 1,
-                "type": "array"
-              }
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "representation": {
-                "const": "finite"
-              }
-            }
-          },
-          "then": {
-            "properties": {
-              "cardinality": {
-                "minimum": 2,
-                "type": "integer"
-              },
-              "implicit_set": {
-                "type": "null"
-              },
-              "members": {
-                "items": {
-                  "$ref": "#/$defs/representative"
-                },
-                "minItems": 2,
-                "type": "array"
-              }
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "representation": {
-                "const": "implicit"
-              }
-            }
-          },
-          "then": {
-            "properties": {
-              "cardinality": {
-                "enum": [
-                  "continuum",
-                  "unknown"
-                ]
-              },
-              "implicit_set": {
-                "$ref": "#/$defs/implicitSet"
-              },
-              "members": {
-                "maxItems": 0,
-                "type": "array"
-              }
-            }
-          }
-        }
-      ],
       "properties": {
         "cardinality": {
-          "oneOf": [
+          "anyOf": [
             {
               "minimum": 1,
               "type": "integer"
@@ -147,18 +266,29 @@
         "implicit_set": {
           "anyOf": [
             {
-              "type": "null"
+              "$ref": "#/$defs/implicitSet"
             },
             {
-              "$ref": "#/$defs/implicitSet"
+              "type": "null"
             }
           ]
+        },
+        "member_hashes": {
+          "items": {
+            "pattern": "^[0-9a-f]{64}$",
+            "type": "string"
+          },
+          "type": "array"
         },
         "members": {
           "items": {
             "$ref": "#/$defs/representative"
           },
           "type": "array"
+        },
+        "members_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
         },
         "representation": {
           "enum": [
@@ -177,24 +307,504 @@
         "unordered",
         "cardinality",
         "members",
+        "member_hashes",
+        "members_sha256",
         "implicit_set"
       ],
       "type": "object"
     },
-    "completeCertificate": {
+    "componentEvent": {
       "additionalProperties": false,
       "properties": {
+        "component_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "time": {
+          "$ref": "#/$defs/interval"
+        },
+        "transition": {
+          "enum": [
+            "birth",
+            "merge",
+            "split",
+            "disappear"
+          ]
+        }
+      },
+      "required": [
+        "component_id",
+        "transition",
+        "time"
+      ],
+      "type": "object"
+    },
+    "coverageCandidate": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "image_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "leaf_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "physical_root_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "time_interval": {
+          "$ref": "#/$defs/exactInterval"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "leaf_id",
+        "image_id",
+        "physical_root_id",
+        "time_interval"
+      ],
+      "type": "object"
+    },
+    "coverageCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
         "certificate_id": {
           "minLength": 1,
           "type": "string"
         },
-        "complete": {
-          "type": "boolean"
+        "domain_count": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "image_count": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "leaf_counts": {
+          "additionalProperties": false,
+          "properties": {
+            "certified_singular_cluster": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "excluded": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "unique_root": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "unresolved": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "excluded",
+            "unique_root",
+            "certified_singular_cluster",
+            "unresolved"
+          ],
+          "type": "object"
+        },
+        "manifest": {
+          "$ref": "#/$defs/coverageManifest"
+        },
+        "manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "node_count": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "physical_root_count": {
+          "minimum": 0,
+          "type": "integer"
         }
       },
       "required": [
         "certificate_id",
-        "complete"
+        "manifest",
+        "manifest_sha256",
+        "leaf_counts",
+        "node_count",
+        "image_count",
+        "domain_count",
+        "candidate_count",
+        "physical_root_count"
+      ],
+      "type": "object"
+    },
+    "coverageDomain": {
+      "additionalProperties": false,
+      "properties": {
+        "box": {
+          "$ref": "#/$defs/exactBox"
+        },
+        "domain_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "image_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "root_node_id": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "domain_id",
+        "image_id",
+        "root_node_id",
+        "box"
+      ],
+      "type": "object"
+    },
+    "coverageImage": {
+      "additionalProperties": false,
+      "properties": {
+        "image_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "lattice_vector": {
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 9,
+          "minItems": 9,
+          "type": "array"
+        },
+        "physical_image_key": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "seam_equivalence_key": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "image_id",
+        "lattice_vector",
+        "physical_image_key",
+        "seam_equivalence_key"
+      ],
+      "type": "object"
+    },
+    "coverageLeaf": {
+      "additionalProperties": false,
+      "properties": {
+        "classification": {
+          "enum": [
+            "excluded",
+            "unique_root",
+            "certified_singular_cluster",
+            "unresolved"
+          ]
+        },
+        "domain_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "image_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "leaf_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "node_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "witness": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/exclusionWitness"
+            },
+            {
+              "$ref": "#/$defs/uniqueWitness"
+            },
+            {
+              "$ref": "#/$defs/singularWitness"
+            },
+            {
+              "$ref": "#/$defs/unresolvedWitness"
+            }
+          ]
+        }
+      },
+      "required": [
+        "leaf_id",
+        "node_id",
+        "domain_id",
+        "image_id",
+        "classification",
+        "witness"
+      ],
+      "type": "object"
+    },
+    "coverageManifest": {
+      "additionalProperties": false,
+      "properties": {
+        "candidates": {
+          "items": {
+            "$ref": "#/$defs/coverageCandidate"
+          },
+          "type": "array"
+        },
+        "exact_inputs": {
+          "additionalProperties": false,
+          "properties": {
+            "coordinate_order": {
+              "const": [
+                "sigma1",
+                "sigma2",
+                "time"
+              ]
+            },
+            "images": {
+              "items": {
+                "$ref": "#/$defs/coverageImage"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            "initial_domains": {
+              "items": {
+                "$ref": "#/$defs/coverageDomain"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            "problem_commitment": {
+              "$ref": "#/$defs/problemCommitment"
+            },
+            "problem_commitment_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "required": [
+            "coordinate_order",
+            "images",
+            "initial_domains",
+            "problem_commitment",
+            "problem_commitment_sha256"
+          ],
+          "type": "object"
+        },
+        "exact_inputs_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "images": {
+          "items": {
+            "$ref": "#/$defs/coverageImage"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "initial_domains": {
+          "items": {
+            "$ref": "#/$defs/coverageDomain"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "leaves": {
+          "items": {
+            "$ref": "#/$defs/coverageLeaf"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "nodes": {
+          "items": {
+            "$ref": "#/$defs/coverageNode"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "quotient_classes": {
+          "items": {
+            "$ref": "#/$defs/coverageQuotient"
+          },
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "cyz-brief-0018-coverage-manifest-v1"
+        }
+      },
+      "required": [
+        "schema_version",
+        "exact_inputs",
+        "exact_inputs_sha256",
+        "images",
+        "initial_domains",
+        "nodes",
+        "leaves",
+        "candidates",
+        "quotient_classes"
+      ],
+      "type": "object"
+    },
+    "coverageNode": {
+      "additionalProperties": false,
+      "properties": {
+        "box": {
+          "$ref": "#/$defs/exactBox"
+        },
+        "children": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "domain_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "split",
+            "leaf"
+          ]
+        },
+        "leaf_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "node_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "split_axis": {
+          "anyOf": [
+            {
+              "enum": [
+                "sigma1",
+                "sigma2",
+                "time"
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "split_value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/dyadic"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "node_id",
+        "domain_id",
+        "kind",
+        "box",
+        "split_axis",
+        "split_value",
+        "children",
+        "leaf_id"
+      ],
+      "type": "object"
+    },
+    "coverageQuotient": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_ids": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "physical_root_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "proof_type": {
+          "enum": [
+            "identity",
+            "seam_equivalence"
+          ]
+        },
+        "representative_candidate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "seam_equivalence_key": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "seam_proof": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/seamProof"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "physical_root_id",
+        "candidate_ids",
+        "representative_candidate_id",
+        "proof_type",
+        "seam_equivalence_key",
+        "seam_proof"
+      ],
+      "type": "object"
+    },
+    "dyadic": {
+      "additionalProperties": false,
+      "properties": {
+        "numerator": {
+          "type": "integer"
+        },
+        "power_of_two": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "numerator",
+        "power_of_two"
       ],
       "type": "object"
     },
@@ -204,20 +814,20 @@
         "T_in": {
           "anyOf": [
             {
-              "type": "null"
+              "$ref": "#/$defs/interval"
             },
             {
-              "$ref": "#/$defs/interval"
+              "type": "null"
             }
           ]
         },
         "T_out": {
           "anyOf": [
             {
-              "type": "null"
+              "$ref": "#/$defs/interval"
             },
             {
-              "$ref": "#/$defs/interval"
+              "type": "null"
             }
           ]
         },
@@ -226,30 +836,7 @@
         },
         "component_events": {
           "items": {
-            "additionalProperties": false,
-            "properties": {
-              "component_id": {
-                "minLength": 1,
-                "type": "string"
-              },
-              "time": {
-                "$ref": "#/$defs/interval"
-              },
-              "transition": {
-                "enum": [
-                  "birth",
-                  "merge",
-                  "split",
-                  "disappear"
-                ]
-              }
-            },
-            "required": [
-              "component_id",
-              "transition",
-              "time"
-            ],
-            "type": "object"
+            "$ref": "#/$defs/componentEvent"
           },
           "type": "array"
         },
@@ -288,32 +875,430 @@
       ],
       "type": "object"
     },
-    "globalCertificate": {
+    "equalTimeBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "candidate_time_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "member_time_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "representative_id": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "representative_id",
+        "member_time_sha256",
+        "candidate_time_sha256"
+      ],
+      "type": "object"
+    },
+    "equalTimeProof": {
+      "additionalProperties": false,
+      "properties": {
+        "bindings": {
+          "items": {
+            "$ref": "#/$defs/equalTimeBinding"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "exact_time": {
+          "$ref": "#/$defs/dyadic"
+        }
+      },
+      "required": [
+        "exact_time",
+        "bindings"
+      ],
+      "type": "object"
+    },
+    "eventProofModel": {
+      "additionalProperties": false,
+      "properties": {
+        "content_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "model_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "model_kind": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "model_id",
+        "model_kind",
+        "content_sha256"
+      ],
+      "type": "object"
+    },
+    "eventProofModelRegistry": {
+      "additionalProperties": false,
+      "properties": {
+        "models": {
+          "items": {
+            "$ref": "#/$defs/eventProofModel"
+          },
+          "type": "array"
+        },
+        "schema_version": {
+          "const": "cyz-brief-0018-event-proof-model-registry-v1"
+        }
+      },
+      "required": [
+        "schema_version",
+        "models"
+      ],
+      "type": "object"
+    },
+    "exactBox": {
+      "additionalProperties": false,
+      "properties": {
+        "sigma1": {
+          "$ref": "#/$defs/exactInterval"
+        },
+        "sigma2": {
+          "$ref": "#/$defs/exactInterval"
+        },
+        "time": {
+          "$ref": "#/$defs/exactInterval"
+        }
+      },
+      "required": [
+        "sigma1",
+        "sigma2",
+        "time"
+      ],
+      "type": "object"
+    },
+    "exactInterval": {
+      "additionalProperties": false,
+      "properties": {
+        "hi": {
+          "$ref": "#/$defs/dyadic"
+        },
+        "lo": {
+          "$ref": "#/$defs/dyadic"
+        }
+      },
+      "required": [
+        "lo",
+        "hi"
+      ],
+      "type": "object"
+    },
+    "exclusionWitness": {
+      "additionalProperties": false,
+      "properties": {
+        "affine_model": {
+          "$ref": "#/$defs/affineModel"
+        },
+        "backend": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "function_component": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "model_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "model_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "problem_commitment_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "range": {
+          "$ref": "#/$defs/exactInterval"
+        },
+        "type": {
+          "const": "interval_exclusion"
+        }
+      },
+      "required": [
+        "type",
+        "function_component",
+        "affine_model",
+        "range",
+        "backend",
+        "problem_commitment_sha256",
+        "model_id",
+        "model_sha256"
+      ],
+      "type": "object"
+    },
+    "finiteWindowProof": {
+      "additionalProperties": false,
+      "properties": {
+        "excluded_leaf_ids": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "t0": {
+          "$ref": "#/$defs/dyadic"
+        },
+        "t1": {
+          "$ref": "#/$defs/dyadic"
+        }
+      },
+      "required": [
+        "t0",
+        "t1",
+        "excluded_leaf_ids"
+      ],
+      "type": "object"
+    },
+    "geometryCertificate": {
       "additionalProperties": false,
       "properties": {
         "certificate_id": {
           "minLength": 1,
           "type": "string"
         },
-        "complete": {
-          "type": "boolean"
+        "contact_multiplicity": {
+          "anyOf": [
+            {
+              "minimum": 2,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "determinant_range": {
+          "$ref": "#/$defs/interval"
+        },
+        "flux_class": {
+          "enum": [
+            "strict_inward",
+            "exact_zero_multiplicity",
+            "unresolved"
+          ]
+        },
+        "flux_range": {
+          "$ref": "#/$defs/interval"
+        },
+        "flux_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "hessian_class": {
+          "enum": [
+            "positive_definite",
+            "psd_singular",
+            "unresolved"
+          ]
+        },
+        "hessian_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "leading_minor_range": {
+          "$ref": "#/$defs/interval"
+        },
+        "one_sided_behavior": {
+          "enum": [
+            "inward_crossing",
+            "touch_or_plateau",
+            "unresolved"
+          ]
+        },
+        "time_derivative_jet": {
+          "items": {
+            "$ref": "#/$defs/interval"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "time_derivative_jet_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
         }
       },
       "required": [
         "certificate_id",
-        "complete"
+        "hessian_sha256",
+        "flux_sha256",
+        "hessian_class",
+        "leading_minor_range",
+        "determinant_range",
+        "flux_class",
+        "flux_range",
+        "time_derivative_jet",
+        "time_derivative_jet_sha256",
+        "contact_multiplicity",
+        "one_sided_behavior"
       ],
       "type": "object"
+    },
+    "globalLowerBoundProof": {
+      "additionalProperties": false,
+      "properties": {
+        "backend": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "model_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "model_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "observable": {
+          "const": "rho=sqrt(2F_min)"
+        },
+        "problem_commitment_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "r_in": {
+          "$ref": "#/$defs/dyadic"
+        },
+        "rho_affine": {
+          "$ref": "#/$defs/rhoAffine"
+        },
+        "rho_lower_bound": {
+          "$ref": "#/$defs/dyadic"
+        },
+        "time_domain": {
+          "const": "all_real"
+        },
+        "witness_range": {
+          "$ref": "#/$defs/exactInterval"
+        }
+      },
+      "required": [
+        "observable",
+        "time_domain",
+        "rho_affine",
+        "rho_lower_bound",
+        "r_in",
+        "witness_range",
+        "backend",
+        "problem_commitment_sha256",
+        "model_id",
+        "model_sha256"
+      ],
+      "type": "object"
+    },
+    "globalMinimum": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_ids": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "candidate_time_bindings": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "candidate_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "time_interval_sha256": {
+                "pattern": "^[0-9a-f]{64}$",
+                "type": "string"
+              }
+            },
+            "required": [
+              "candidate_id",
+              "time_interval_sha256"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "certificate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "coverage_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "earliest_time": {
+          "$ref": "#/$defs/dyadic"
+        },
+        "excluded_leaf_ids": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "minimizer_candidate_ids": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "certificate_id",
+        "coverage_manifest_sha256",
+        "earliest_time",
+        "candidate_ids",
+        "minimizer_candidate_ids",
+        "candidate_time_bindings",
+        "excluded_leaf_ids"
+      ],
+      "type": "object"
+    },
+    "hash": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
     },
     "implicitSet": {
       "additionalProperties": false,
       "properties": {
-        "defining_equations": {
+        "candidate_ids": {
           "items": {
             "minLength": 1,
             "type": "string"
           },
           "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "defining_equations": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
           "type": "array"
         },
         "dimension_status": {
@@ -330,7 +1315,7 @@
           "type": "array"
         },
         "jet_field_certificate_ref": {
-          "oneOf": [
+          "anyOf": [
             {
               "minLength": 1,
               "type": "string"
@@ -341,7 +1326,7 @@
           ]
         },
         "normal_field_certificate_ref": {
-          "oneOf": [
+          "anyOf": [
             {
               "minLength": 1,
               "type": "string"
@@ -358,6 +1343,7 @@
       },
       "required": [
         "defining_equations",
+        "candidate_ids",
         "domain_boxes",
         "dimension_status",
         "set_certificate_ref",
@@ -386,18 +1372,58 @@
       "additionalProperties": false,
       "properties": {
         "G": {
-          "$ref": "#/$defs/matrix9x9"
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 9,
+            "minItems": 9,
+            "type": "array"
+          },
+          "maxItems": 9,
+          "minItems": 9,
+          "type": "array"
         },
         "H": {
-          "$ref": "#/$defs/matrix3x3"
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 3,
+            "minItems": 3,
+            "type": "array"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
         },
         "J": {
-          "$ref": "#/$defs/matrix9x3"
+          "items": {
+            "items": {
+              "type": "number"
+            },
+            "maxItems": 3,
+            "minItems": 3,
+            "type": "array"
+          },
+          "maxItems": 9,
+          "minItems": 9,
+          "type": "array"
         },
         "P_N": {
-          "oneOf": [
+          "anyOf": [
             {
-              "$ref": "#/$defs/matrix9x9"
+              "items": {
+                "items": {
+                  "type": "number"
+                },
+                "maxItems": 9,
+                "minItems": 9,
+                "type": "array"
+              },
+              "maxItems": 9,
+              "minItems": 9,
+              "type": "array"
             },
             {
               "type": "null"
@@ -405,9 +1431,14 @@
           ]
         },
         "b": {
-          "oneOf": [
+          "anyOf": [
             {
-              "$ref": "#/$defs/vector9"
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 9,
+              "minItems": 9,
+              "type": "array"
             },
             {
               "type": "null"
@@ -419,9 +1450,14 @@
           "type": "string"
         },
         "ell": {
-          "oneOf": [
+          "anyOf": [
             {
-              "$ref": "#/$defs/vector9"
+              "items": {
+                "type": "number"
+              },
+              "maxItems": 9,
+              "minItems": 9,
+              "type": "array"
             },
             {
               "type": "null"
@@ -429,10 +1465,10 @@
           ]
         },
         "normal_dimension": {
-          "oneOf": [
+          "anyOf": [
             {
               "maximum": 9,
-              "minimum": 6,
+              "minimum": 0,
               "type": "integer"
             },
             {
@@ -441,12 +1477,13 @@
           ]
         },
         "normal_frame": {
-          "oneOf": [
+          "anyOf": [
             {
               "items": {
                 "items": {
                   "type": "number"
                 },
+                "minItems": 1,
                 "type": "array"
               },
               "maxItems": 9,
@@ -461,8 +1498,16 @@
         "rank": {
           "$ref": "#/$defs/rank"
         },
+        "rank_certificate": {
+          "$ref": "#/$defs/rankCertificate"
+        },
         "s": {
-          "$ref": "#/$defs/vector9"
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 9,
+          "minItems": 9,
+          "type": "array"
         },
         "singular_value_intervals": {
           "items": {
@@ -480,6 +1525,7 @@
         "J",
         "singular_value_intervals",
         "rank",
+        "rank_certificate",
         "normal_dimension",
         "P_N",
         "normal_frame",
@@ -489,52 +1535,138 @@
       ],
       "type": "object"
     },
-    "matrix2x2Intervals": {
-      "items": {
-        "items": {
-          "$ref": "#/$defs/interval"
+    "noEarlier": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_ids": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
         },
-        "maxItems": 2,
-        "minItems": 2,
-        "type": "array"
+        "certificate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "coverage_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "earliest_time": {
+          "$ref": "#/$defs/dyadic"
+        },
+        "excluded_before_leaf_ids": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array",
+          "uniqueItems": true
+        },
+        "history_interval": {
+          "$ref": "#/$defs/exactInterval"
+        },
+        "hysteresis_registry_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "initial_armed_witness": {
+          "additionalProperties": false,
+          "properties": {
+            "backend": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "model_id": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "model_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "observable": {
+              "const": "rho=sqrt(2F_min)"
+            },
+            "problem_commitment_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "rho_affine": {
+              "$ref": "#/$defs/rhoAffine"
+            },
+            "rho_range": {
+              "$ref": "#/$defs/exactInterval"
+            },
+            "time": {
+              "$ref": "#/$defs/dyadic"
+            }
+          },
+          "required": [
+            "observable",
+            "time",
+            "rho_affine",
+            "rho_range",
+            "backend",
+            "problem_commitment_sha256",
+            "model_id",
+            "model_sha256"
+          ],
+          "type": "object"
+        },
+        "initial_rho_lower_bound": {
+          "$ref": "#/$defs/dyadic"
+        },
+        "r_in": {
+          "$ref": "#/$defs/dyadic"
+        }
       },
-      "maxItems": 2,
-      "minItems": 2,
-      "type": "array"
+      "required": [
+        "certificate_id",
+        "coverage_manifest_sha256",
+        "earliest_time",
+        "candidate_ids",
+        "excluded_before_leaf_ids",
+        "history_interval",
+        "initial_rho_lower_bound",
+        "r_in",
+        "hysteresis_registry_id",
+        "initial_armed_witness"
+      ],
+      "type": "object"
     },
-    "matrix3x3": {
-      "items": {
-        "$ref": "#/$defs/vector3"
-      },
-      "maxItems": 3,
-      "minItems": 3,
-      "type": "array"
-    },
-    "matrix9x3": {
-      "items": {
-        "$ref": "#/$defs/vector3"
-      },
-      "maxItems": 9,
-      "minItems": 9,
-      "type": "array"
-    },
-    "matrix9x9": {
-      "items": {
-        "$ref": "#/$defs/vector9"
-      },
-      "maxItems": 9,
-      "minItems": 9,
-      "type": "array"
-    },
-    "noEntryCertificate": {
+    "noEntry": {
       "additionalProperties": false,
       "properties": {
         "certificate_id": {
           "minLength": 1,
           "type": "string"
         },
-        "complete": {
-          "type": "boolean"
+        "coverage_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "finite_window": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/finiteWindowProof"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "global_lower_bound": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/globalLowerBoundProof"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "mode": {
           "enum": [
@@ -543,10 +1675,10 @@
             "global_lower_bound"
           ]
         },
-        "period": {
-          "oneOf": [
+        "recurrence": {
+          "anyOf": [
             {
-              "$ref": "#/$defs/interval"
+              "$ref": "#/$defs/recurrenceProof"
             },
             {
               "type": "null"
@@ -557,16 +1689,59 @@
       "required": [
         "certificate_id",
         "mode",
-        "complete",
-        "period"
+        "coverage_manifest_sha256",
+        "finite_window",
+        "recurrence",
+        "global_lower_bound"
       ],
       "type": "object"
     },
-    "outerExitCertificate": {
+    "orderingInterval": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "time_interval": {
+          "$ref": "#/$defs/exactInterval"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "time_interval"
+      ],
+      "type": "object"
+    },
+    "orderingProof": {
+      "additionalProperties": false,
+      "properties": {
+        "all_candidates_isolated": {
+          "const": true
+        },
+        "candidate_intervals": {
+          "items": {
+            "$ref": "#/$defs/orderingInterval"
+          },
+          "minItems": 2,
+          "type": "array"
+        },
+        "only_remaining_uncertainty": {
+          "const": "earliest_order"
+        }
+      },
+      "required": [
+        "candidate_intervals",
+        "all_candidates_isolated",
+        "only_remaining_uncertainty"
+      ],
+      "type": "object"
+    },
+    "outer": {
       "additionalProperties": false,
       "properties": {
         "boundary_time": {
-          "oneOf": [
+          "anyOf": [
             {
               "$ref": "#/$defs/interval"
             },
@@ -579,11 +1754,92 @@
           "minLength": 1,
           "type": "string"
         },
+        "coverage_manifest_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "global_minimum_certificate_id": {
+          "anyOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "grazing_touch_count": {
+          "minimum": 0,
+          "type": "integer"
+        },
+        "hysteresis_registry_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "image_manifest_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "observed": {
           "type": "boolean"
         },
+        "post_boundary_interval": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/interval"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "post_boundary_witness": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/postBoundaryWitness"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "r_out": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "rearmed": {
           "type": "boolean"
+        },
+        "rho_lower_bound": {
+          "anyOf": [
+            {
+              "type": "number"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "strict_overshoot": {
           "type": "boolean"
@@ -592,60 +1848,477 @@
       "required": [
         "certificate_id",
         "observed",
+        "grazing_touch_count",
         "strict_overshoot",
         "boundary_time",
+        "post_boundary_interval",
+        "post_boundary_witness",
+        "rho_lower_bound",
+        "r_out",
+        "hysteresis_registry_id",
+        "global_minimum_certificate_id",
+        "coverage_manifest_sha256",
+        "image_manifest_sha256",
         "rearmed"
+      ],
+      "type": "object"
+    },
+    "postBoundaryWitness": {
+      "additionalProperties": false,
+      "properties": {
+        "backend": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "exact_time_interval": {
+          "$ref": "#/$defs/exactInterval"
+        },
+        "model_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "model_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "observable": {
+          "const": "rho=sqrt(2F_min)"
+        },
+        "problem_commitment_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "rho_affine": {
+          "$ref": "#/$defs/rhoAffine"
+        },
+        "rho_range": {
+          "$ref": "#/$defs/exactInterval"
+        },
+        "time_interval_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "observable",
+        "exact_time_interval",
+        "time_interval_sha256",
+        "rho_affine",
+        "rho_range",
+        "backend",
+        "problem_commitment_sha256",
+        "model_id",
+        "model_sha256"
+      ],
+      "type": "object"
+    },
+    "problemCommitment": {
+      "additionalProperties": false,
+      "properties": {
+        "authority_mode": {
+          "const": "pinned_synthetic_fixture"
+        },
+        "equation_family": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "equation_version": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "event_model_registry": {
+          "$ref": "#/$defs/eventProofModelRegistry"
+        },
+        "event_model_registry_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "fixture_registry_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "function_registry": {
+          "additionalProperties": false,
+          "properties": {
+            "models": {
+              "items": {
+                "$ref": "#/$defs/registeredProblemModel"
+              },
+              "minItems": 1,
+              "type": "array"
+            },
+            "schema_version": {
+              "const": "cyz-brief-0018-synthetic-function-registry-v1"
+            }
+          },
+          "required": [
+            "schema_version",
+            "models"
+          ],
+          "type": "object"
+        },
+        "function_registry_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "lattice_registry": {
+          "additionalProperties": false,
+          "properties": {
+            "dimension": {
+              "const": 9
+            },
+            "images": {
+              "items": {
+                "$ref": "#/$defs/coverageImage"
+              },
+              "minItems": 1,
+              "type": "array"
+            }
+          },
+          "required": [
+            "dimension",
+            "images"
+          ],
+          "type": "object"
+        },
+        "lattice_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "metric_registry": {
+          "additionalProperties": false,
+          "properties": {
+            "basis": {
+              "const": "registered-target-coordinate-basis"
+            },
+            "dimension": {
+              "const": 9
+            },
+            "matrix": {
+              "items": {
+                "items": {
+                  "$ref": "#/$defs/dyadic"
+                },
+                "maxItems": 9,
+                "minItems": 9,
+                "type": "array"
+              },
+              "maxItems": 9,
+              "minItems": 9,
+              "type": "array"
+            }
+          },
+          "required": [
+            "dimension",
+            "basis",
+            "matrix"
+          ],
+          "type": "object"
+        },
+        "metric_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "observation_window": {
+          "$ref": "#/$defs/exactInterval"
+        },
+        "observation_window_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "physical_replay_boundary": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "schema_version": {
+          "const": "cyz-brief-0018-event-problem-commitment-v1"
+        },
+        "solver_registry": {
+          "additionalProperties": false,
+          "properties": {
+            "budget_semantics": {
+              "const": "deterministic-finite-fixture"
+            },
+            "proof_backend": {
+              "const": "exact-synthetic-fixture"
+            },
+            "rank_blind_selection": {
+              "const": true
+            },
+            "schema_version": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "schema_version",
+            "proof_backend",
+            "budget_semantics",
+            "rank_blind_selection"
+          ],
+          "type": "object"
+        },
+        "solver_registry_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "source_draw_registry": {
+          "additionalProperties": false,
+          "properties": {
+            "E_perp": {
+              "$ref": "#/$defs/dyadic"
+            },
+            "K": {
+              "minimum": 1,
+              "type": "integer"
+            },
+            "L_A": {
+              "$ref": "#/$defs/dyadic"
+            },
+            "L_w": {
+              "$ref": "#/$defs/dyadic"
+            },
+            "P_tot": {
+              "items": {
+                "$ref": "#/$defs/dyadic"
+              },
+              "maxItems": 8,
+              "minItems": 8,
+              "type": "array"
+            },
+            "T_F": {
+              "$ref": "#/$defs/dyadic"
+            },
+            "pi_1": {
+              "$ref": "#/$defs/dyadic"
+            },
+            "pi_2": {
+              "$ref": "#/$defs/dyadic"
+            },
+            "prng": {
+              "additionalProperties": false,
+              "properties": {
+                "algorithm": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "seed_convention": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "version": {
+                  "minLength": 1,
+                  "type": "string"
+                }
+              },
+              "required": [
+                "algorithm",
+                "version",
+                "seed_convention"
+              ],
+              "type": "object"
+            },
+            "registry_role": {
+              "const": "source-substream-seed-input-only"
+            },
+            "schema_version": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "schema_version",
+            "registry_role",
+            "L_A",
+            "T_F",
+            "L_w",
+            "K",
+            "E_perp",
+            "P_tot",
+            "pi_1",
+            "pi_2",
+            "prng"
+          ],
+          "type": "object"
+        },
+        "source_draw_registry_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "source_registry": {
+          "additionalProperties": false,
+          "properties": {
+            "preparation_name": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "redraw_on_invalid": {
+              "const": false
+            },
+            "registry_role": {
+              "const": "canonical-source-registry"
+            },
+            "schema_version": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "source_draw_registry_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "source_state_sha256": {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            "validity_predicate_version": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "schema_version",
+            "registry_role",
+            "preparation_name",
+            "source_draw_registry_sha256",
+            "source_state_sha256",
+            "validity_predicate_version",
+            "redraw_on_invalid"
+          ],
+          "type": "object"
+        },
+        "source_registry_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "source_state_registry": {
+          "additionalProperties": false,
+          "properties": {
+            "initial_rho_affine": {
+              "$ref": "#/$defs/rhoAffine"
+            },
+            "initial_state": {
+              "const": "armed"
+            },
+            "initial_time": {
+              "$ref": "#/$defs/dyadic"
+            },
+            "schema_version": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "schema_version",
+            "initial_state",
+            "initial_time",
+            "initial_rho_affine"
+          ],
+          "type": "object"
+        },
+        "source_state_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "threshold_registry": {
+          "additionalProperties": false,
+          "properties": {
+            "injectivity_radius": {
+              "$ref": "#/$defs/dyadic"
+            },
+            "r_in": {
+              "$ref": "#/$defs/dyadic"
+            },
+            "r_out": {
+              "$ref": "#/$defs/dyadic"
+            },
+            "registry_id": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "registry_id",
+            "r_in",
+            "r_out",
+            "injectivity_radius"
+          ],
+          "type": "object"
+        },
+        "threshold_registry_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "schema_version",
+        "authority_mode",
+        "fixture_registry_id",
+        "equation_family",
+        "equation_version",
+        "source_state_registry",
+        "source_state_sha256",
+        "source_registry",
+        "source_registry_sha256",
+        "source_draw_registry",
+        "source_draw_registry_sha256",
+        "solver_registry",
+        "solver_registry_sha256",
+        "metric_registry",
+        "metric_sha256",
+        "lattice_registry",
+        "lattice_sha256",
+        "threshold_registry",
+        "threshold_registry_sha256",
+        "observation_window",
+        "observation_window_sha256",
+        "function_registry",
+        "function_registry_sha256",
+        "event_model_registry",
+        "event_model_registry_sha256",
+        "physical_replay_boundary"
+      ],
+      "type": "object"
+    },
+    "proofProvenance": {
+      "additionalProperties": false,
+      "properties": {
+        "backend": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "problem_commitment_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "proof_content_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "proof_id": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "proof_id",
+        "backend",
+        "problem_commitment_sha256",
+        "proof_content_sha256"
       ],
       "type": "object"
     },
     "rank": {
       "additionalProperties": false,
-      "allOf": [
-        {
-          "if": {
-            "properties": {
-              "status": {
-                "const": "certified"
-              }
-            }
-          },
-          "then": {
-            "properties": {
-              "exact_rank": {
-                "maximum": 3,
-                "minimum": 0,
-                "type": "integer"
-              },
-              "possible_ranks": {
-                "maxItems": 1,
-                "minItems": 1
-              }
-            }
-          }
-        },
-        {
-          "if": {
-            "properties": {
-              "status": {
-                "const": "unresolved"
-              }
-            }
-          },
-          "then": {
-            "properties": {
-              "exact_rank": {
-                "type": "null"
-              },
-              "possible_ranks": {
-                "minItems": 2
-              }
-            }
-          }
-        }
-      ],
       "properties": {
         "exact_rank": {
-          "oneOf": [
+          "anyOf": [
             {
               "maximum": 3,
               "minimum": 0,
@@ -662,14 +2335,9 @@
             "minimum": 0,
             "type": "integer"
           },
-          "maxItems": 4,
           "minItems": 1,
           "type": "array",
           "uniqueItems": true
-        },
-        "proof_kind": {
-          "minLength": 1,
-          "type": "string"
         },
         "status": {
           "enum": [
@@ -681,10 +2349,231 @@
       "required": [
         "status",
         "exact_rank",
-        "possible_ranks",
-        "proof_kind"
+        "possible_ranks"
       ],
       "type": "object"
+    },
+    "rankCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "G_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "H_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "J_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "certificate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "declared_rank": {
+          "anyOf": [
+            {
+              "maximum": 3,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "method": {
+          "enum": [
+            "exact_rational_elimination",
+            "interval_singular_enclosure"
+          ]
+        },
+        "possible_ranks": {
+          "items": {
+            "maximum": 3,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "singular_intervals_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "certificate_id",
+        "method",
+        "J_sha256",
+        "G_sha256",
+        "H_sha256",
+        "singular_intervals_sha256",
+        "declared_rank",
+        "possible_ranks"
+      ],
+      "type": "object"
+    },
+    "recurrenceProof": {
+      "additionalProperties": false,
+      "properties": {
+        "L_w": {
+          "$ref": "#/$defs/dyadic"
+        },
+        "P": {
+          "$ref": "#/$defs/dyadic"
+        },
+        "backend": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "lattice_vector": {
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 8,
+          "minItems": 8,
+          "type": "array"
+        },
+        "m": {
+          "minimum": 1,
+          "type": "integer"
+        },
+        "problem_commitment_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "relative_velocity": {
+          "items": {
+            "$ref": "#/$defs/dyadic"
+          },
+          "maxItems": 8,
+          "minItems": 8,
+          "type": "array"
+        },
+        "time_seam_cover": {
+          "$ref": "#/$defs/timeSeamCover"
+        },
+        "transverse_periods": {
+          "items": {
+            "$ref": "#/$defs/dyadic"
+          },
+          "maxItems": 8,
+          "minItems": 8,
+          "type": "array"
+        }
+      },
+      "required": [
+        "m",
+        "L_w",
+        "P",
+        "relative_velocity",
+        "transverse_periods",
+        "lattice_vector",
+        "time_seam_cover",
+        "backend",
+        "problem_commitment_sha256"
+      ],
+      "type": "object"
+    },
+    "registeredProblemModel": {
+      "additionalProperties": false,
+      "properties": {
+        "model": {
+          "$ref": "#/$defs/registeredProblemModelContent"
+        },
+        "model_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "model_kind": {
+          "enum": [
+            "exclusion_affine",
+            "root_system",
+            "singular_root_system",
+            "unresolved_problem_partition",
+            "rho_affine"
+          ]
+        },
+        "model_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        }
+      },
+      "required": [
+        "model_id",
+        "model_kind",
+        "model",
+        "model_sha256"
+      ],
+      "type": "object"
+    },
+    "registeredProblemModelContent": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/rootModel"
+        },
+        {
+          "$ref": "#/$defs/affineSet"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "affine_model": {
+              "$ref": "#/$defs/affineModel"
+            },
+            "function_component": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "function_component",
+            "affine_model"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "equation_status": {
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          "required": [
+            "equation_status"
+          ],
+          "type": "object"
+        },
+        {
+          "additionalProperties": false,
+          "properties": {
+            "observable": {
+              "const": "rho=sqrt(2F_min)"
+            },
+            "rho_affine": {
+              "$ref": "#/$defs/rhoAffine"
+            },
+            "time_domain": {
+              "enum": [
+                "initial_time",
+                "registered-post-boundary-interval",
+                "all_real"
+              ]
+            }
+          },
+          "required": [
+            "observable",
+            "time_domain",
+            "rho_affine"
+          ],
+          "type": "object"
+        }
+      ]
     },
     "representative": {
       "additionalProperties": false,
@@ -693,13 +2582,30 @@
           "$ref": "#/$defs/interval"
         },
         "H_sigma_sigma": {
-          "$ref": "#/$defs/matrix2x2Intervals"
+          "items": {
+            "items": {
+              "$ref": "#/$defs/interval"
+            },
+            "maxItems": 2,
+            "minItems": 2,
+            "type": "array"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": "array"
         },
         "box": {
           "$ref": "#/$defs/box"
         },
+        "candidate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
         "dF_dt": {
           "$ref": "#/$defs/interval"
+        },
+        "geometry_certificate": {
+          "$ref": "#/$defs/geometryCertificate"
         },
         "grad_sigma": {
           "items": {
@@ -720,7 +2626,12 @@
           "type": "string"
         },
         "s": {
-          "$ref": "#/$defs/vector9"
+          "items": {
+            "type": "number"
+          },
+          "maxItems": 9,
+          "minItems": 9,
+          "type": "array"
         },
         "torus_image": {
           "items": {
@@ -733,6 +2644,7 @@
       },
       "required": [
         "representative_id",
+        "candidate_id",
         "box",
         "torus_image",
         "log_unique",
@@ -741,69 +2653,200 @@
         "grad_sigma",
         "dF_dt",
         "H_sigma_sigma",
+        "geometry_certificate",
         "jet_normal"
       ],
       "type": "object"
     },
-    "rootCoverageCertificate": {
+    "rhoAffine": {
       "additionalProperties": false,
       "properties": {
-        "certificate_id": {
-          "minLength": 1,
-          "type": "string"
+        "intercept": {
+          "$ref": "#/$defs/dyadic"
         },
-        "complete": {
-          "type": "boolean"
-        },
-        "coverage_tree_hash": {
-          "$ref": "#/$defs/sha256"
-        },
-        "deterministic_budget_hash": {
-          "$ref": "#/$defs/sha256"
-        },
-        "leaf_counts": {
-          "additionalProperties": false,
-          "properties": {
-            "excluded": {
-              "minimum": 0,
-              "type": "integer"
-            },
-            "singular_cluster": {
-              "minimum": 0,
-              "type": "integer"
-            },
-            "unique_root": {
-              "minimum": 0,
-              "type": "integer"
-            },
-            "unresolved": {
-              "minimum": 0,
-              "type": "integer"
-            }
-          },
-          "required": [
-            "excluded",
-            "unique_root",
-            "singular_cluster",
-            "unresolved"
-          ],
-          "type": "object"
+        "slope": {
+          "$ref": "#/$defs/dyadic"
         }
       },
       "required": [
-        "certificate_id",
-        "complete",
-        "coverage_tree_hash",
-        "deterministic_budget_hash",
-        "leaf_counts"
+        "slope",
+        "intercept"
       ],
       "type": "object"
     },
-    "sha256": {
-      "pattern": "^[0-9a-f]{64}$",
-      "type": "string"
+    "rootModel": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/affineSystem"
+        },
+        {
+          "$ref": "#/$defs/separableQuadratic"
+        }
+      ]
     },
-    "sourceValidityCertificate": {
+    "seamBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "image_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "lattice_delta": {
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 9,
+          "minItems": 9,
+          "type": "array"
+        }
+      },
+      "required": [
+        "candidate_id",
+        "image_id",
+        "lattice_delta"
+      ],
+      "type": "object"
+    },
+    "seamProof": {
+      "additionalProperties": false,
+      "properties": {
+        "base_candidate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "lattice_delta_bindings": {
+          "items": {
+            "$ref": "#/$defs/seamBinding"
+          },
+          "minItems": 2,
+          "type": "array"
+        }
+      },
+      "required": [
+        "base_candidate_id",
+        "lattice_delta_bindings"
+      ],
+      "type": "object"
+    },
+    "separableQuadratic": {
+      "additionalProperties": false,
+      "properties": {
+        "derivative_range": {
+          "$ref": "#/$defs/exactInterval"
+        },
+        "endpoint_values": {
+          "additionalProperties": false,
+          "properties": {
+            "hi": {
+              "$ref": "#/$defs/dyadic"
+            },
+            "lo": {
+              "$ref": "#/$defs/dyadic"
+            }
+          },
+          "required": [
+            "lo",
+            "hi"
+          ],
+          "type": "object"
+        },
+        "kind": {
+          "const": "separable_quadratic"
+        },
+        "spatial_root": {
+          "items": {
+            "$ref": "#/$defs/dyadic"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": "array"
+        },
+        "time_coefficients": {
+          "items": {
+            "$ref": "#/$defs/dyadic"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        },
+        "time_isolating_interval": {
+          "$ref": "#/$defs/exactInterval"
+        },
+        "variable_order": {
+          "const": [
+            "sigma1",
+            "sigma2",
+            "time"
+          ]
+        }
+      },
+      "required": [
+        "kind",
+        "variable_order",
+        "spatial_root",
+        "time_coefficients",
+        "time_isolating_interval",
+        "endpoint_values",
+        "derivative_range"
+      ],
+      "type": "object"
+    },
+    "singularWitness": {
+      "additionalProperties": false,
+      "properties": {
+        "affine_set": {
+          "$ref": "#/$defs/affineSet"
+        },
+        "backend": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "candidate_ids": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "model_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "model_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "problem_commitment_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "set_certificate_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "type": {
+          "const": "singular_set_certificate"
+        }
+      },
+      "required": [
+        "type",
+        "candidate_ids",
+        "affine_set",
+        "set_certificate_sha256",
+        "backend",
+        "problem_commitment_sha256",
+        "model_id",
+        "model_sha256"
+      ],
+      "type": "object"
+    },
+    "sourceValidity": {
       "additionalProperties": false,
       "properties": {
         "certificate_id": {
@@ -836,7 +2879,7 @@
       ],
       "type": "object"
     },
-    "tieCertificate": {
+    "tie": {
       "additionalProperties": false,
       "properties": {
         "candidate_ids": {
@@ -844,11 +2887,32 @@
             "minLength": 1,
             "type": "string"
           },
-          "type": "array"
+          "type": "array",
+          "uniqueItems": true
         },
         "certificate_id": {
           "minLength": 1,
           "type": "string"
+        },
+        "equal_time_proof": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/equalTimeProof"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ordering_proof": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/orderingProof"
+            },
+            {
+              "type": "null"
+            }
+          ]
         },
         "status": {
           "enum": [
@@ -861,11 +2925,79 @@
       "required": [
         "certificate_id",
         "status",
-        "candidate_ids"
+        "candidate_ids",
+        "equal_time_proof",
+        "ordering_proof"
       ],
       "type": "object"
     },
-    "torusCertificate": {
+    "timeSeamCover": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "lattice_vector": {
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 8,
+          "minItems": 8,
+          "type": "array"
+        },
+        "state_t0": {
+          "items": {
+            "$ref": "#/$defs/dyadic"
+          },
+          "maxItems": 8,
+          "minItems": 8,
+          "type": "array"
+        },
+        "state_tP": {
+          "items": {
+            "$ref": "#/$defs/dyadic"
+          },
+          "maxItems": 8,
+          "minItems": 8,
+          "type": "array"
+        },
+        "t0": {
+          "$ref": "#/$defs/dyadic"
+        },
+        "tP": {
+          "$ref": "#/$defs/dyadic"
+        },
+        "wrapped_state_t0": {
+          "items": {
+            "$ref": "#/$defs/dyadic"
+          },
+          "maxItems": 8,
+          "minItems": 8,
+          "type": "array"
+        },
+        "wrapped_state_tP": {
+          "items": {
+            "$ref": "#/$defs/dyadic"
+          },
+          "maxItems": 8,
+          "minItems": 8,
+          "type": "array"
+        }
+      },
+      "required": [
+        "t0",
+        "tP",
+        "lattice_vector",
+        "state_t0",
+        "state_tP",
+        "wrapped_state_t0",
+        "wrapped_state_tP",
+        "coverage_manifest_sha256"
+      ],
+      "type": "object"
+    },
+    "torus": {
       "additionalProperties": false,
       "properties": {
         "certificate_id": {
@@ -873,7 +3005,8 @@
           "type": "string"
         },
         "image_manifest_hash": {
-          "$ref": "#/$defs/sha256"
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
         },
         "unique": {
           "type": "boolean"
@@ -886,11 +3019,64 @@
       ],
       "type": "object"
     },
-    "unresolvedCertificate": {
+    "uniqueWitness": {
+      "additionalProperties": false,
+      "properties": {
+        "backend": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "candidate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "determinant_range": {
+          "$ref": "#/$defs/exactInterval"
+        },
+        "model_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "model_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "operator_box": {
+          "$ref": "#/$defs/exactBox"
+        },
+        "problem_commitment_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "root_model": {
+          "$ref": "#/$defs/rootModel"
+        },
+        "type": {
+          "const": "interval_newton_inclusion"
+        }
+      },
+      "required": [
+        "type",
+        "candidate_id",
+        "operator_box",
+        "determinant_range",
+        "root_model",
+        "backend",
+        "problem_commitment_sha256",
+        "model_id",
+        "model_sha256"
+      ],
+      "type": "object"
+    },
+    "unresolved": {
       "additionalProperties": false,
       "properties": {
         "certificate_id": {
           "minLength": 1,
+          "type": "string"
+        },
+        "coverage_manifest_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
           "type": "string"
         },
         "reason_codes": {
@@ -901,254 +3087,78 @@
           "minItems": 1,
           "type": "array"
         },
-        "unresolved_leaf_count": {
-          "minimum": 0,
-          "type": "integer"
+        "unresolved_leaf_ids": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
         }
       },
       "required": [
         "certificate_id",
+        "coverage_manifest_sha256",
         "reason_codes",
-        "unresolved_leaf_count"
+        "unresolved_leaf_ids"
       ],
       "type": "object"
     },
-    "vector3": {
-      "items": {
-        "type": "number"
+    "unresolvedWitness": {
+      "additionalProperties": false,
+      "properties": {
+        "backend": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "event_order_relevant": {
+          "type": "boolean"
+        },
+        "model_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "model_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "problem_commitment_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "reason_code": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "type": {
+          "const": "unresolved"
+        }
       },
-      "maxItems": 3,
-      "minItems": 3,
-      "type": "array"
-    },
-    "vector9": {
-      "items": {
-        "type": "number"
-      },
-      "maxItems": 9,
-      "minItems": 9,
-      "type": "array"
+      "required": [
+        "type",
+        "reason_code",
+        "event_order_relevant",
+        "backend",
+        "problem_commitment_sha256",
+        "model_id",
+        "model_sha256"
+      ],
+      "type": "object"
     }
   },
-  "$id": "https://github.com/ccyyyYyzz/cyz_n/raw/main/artifacts/0018/event_record.schema.json",
+  "$id": "https://example.invalid/cyz/brief-0018/event-record-v2.schema.json",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "additionalProperties": false,
-  "allOf": [
-    {
-      "if": {
-        "properties": {
-          "primary_outcome": {
-            "const": "source_invalid"
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "entry_cluster": {
-            "type": "null"
-          }
-        }
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "primary_outcome": {
-            "const": "torus_branch_ambiguous"
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "certificates": {
-            "properties": {
-              "torus_log": {
-                "$ref": "#/$defs/torusCertificate"
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "primary_outcome": {
-            "const": "ambiguous_tie"
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "certificates": {
-            "properties": {
-              "root_coverage": {
-                "$ref": "#/$defs/rootCoverageCertificate"
-              },
-              "tie": {
-                "$ref": "#/$defs/tieCertificate"
-              }
-            }
-          },
-          "entry_cluster": {
-            "$ref": "#/$defs/cluster"
-          }
-        }
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "primary_outcome": {
-            "const": "numerically_unresolved"
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "certificates": {
-            "properties": {
-              "unresolved": {
-                "$ref": "#/$defs/unresolvedCertificate"
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "primary_outcome": {
-            "enum": [
-              "no_entry_proved",
-              "right_censored_no_entry"
-            ]
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "certificates": {
-            "properties": {
-              "no_entry": {
-                "$ref": "#/$defs/noEntryCertificate"
-              },
-              "root_coverage": {
-                "$ref": "#/$defs/rootCoverageCertificate"
-              }
-            }
-          },
-          "entry_cluster": {
-            "type": "null"
-          }
-        }
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "primary_outcome": {
-            "enum": [
-              "right_censored_active_episode",
-              "tie_cluster",
-              "degenerate_spatial_minimum",
-              "grazing_entry",
-              "regular_first_entry"
-            ]
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "certificates": {
-            "properties": {
-              "closest": {
-                "$ref": "#/$defs/closestCertificate"
-              },
-              "global_minimum": {
-                "$ref": "#/$defs/globalCertificate"
-              },
-              "no_earlier_entry": {
-                "$ref": "#/$defs/globalCertificate"
-              },
-              "outer_exit": {
-                "$ref": "#/$defs/outerExitCertificate"
-              },
-              "root_coverage": {
-                "$ref": "#/$defs/rootCoverageCertificate"
-              }
-            }
-          },
-          "entry_cluster": {
-            "$ref": "#/$defs/cluster"
-          }
-        }
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "primary_outcome": {
-            "const": "tie_cluster"
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "certificates": {
-            "properties": {
-              "tie": {
-                "$ref": "#/$defs/tieCertificate"
-              }
-            }
-          },
-          "entry_cluster": {
-            "properties": {
-              "representation": {
-                "enum": [
-                  "finite",
-                  "implicit"
-                ]
-              }
-            }
-          }
-        }
-      }
-    },
-    {
-      "if": {
-        "properties": {
-          "primary_outcome": {
-            "enum": [
-              "degenerate_spatial_minimum",
-              "grazing_entry",
-              "regular_first_entry"
-            ]
-          }
-        }
-      },
-      "then": {
-        "properties": {
-          "entry_cluster": {
-            "properties": {
-              "representation": {
-                "const": "singleton"
-              }
-            }
-          }
-        }
-      }
-    }
-  ],
+  "description": "Strict structural schema; event_contract.py replays all exact proof bindings and outcome semantics.",
   "properties": {
     "certificates": {
       "additionalProperties": false,
       "properties": {
         "closest": {
-          "oneOf": [
+          "anyOf": [
             {
-              "$ref": "#/$defs/closestCertificate"
+              "$ref": "#/$defs/closest"
             },
             {
               "type": "null"
@@ -1156,9 +3166,9 @@
           ]
         },
         "global_minimum": {
-          "oneOf": [
+          "anyOf": [
             {
-              "$ref": "#/$defs/globalCertificate"
+              "$ref": "#/$defs/globalMinimum"
             },
             {
               "type": "null"
@@ -1166,9 +3176,9 @@
           ]
         },
         "no_earlier_entry": {
-          "oneOf": [
+          "anyOf": [
             {
-              "$ref": "#/$defs/globalCertificate"
+              "$ref": "#/$defs/noEarlier"
             },
             {
               "type": "null"
@@ -1176,9 +3186,9 @@
           ]
         },
         "no_entry": {
-          "oneOf": [
+          "anyOf": [
             {
-              "$ref": "#/$defs/noEntryCertificate"
+              "$ref": "#/$defs/noEntry"
             },
             {
               "type": "null"
@@ -1186,9 +3196,9 @@
           ]
         },
         "outer_exit": {
-          "oneOf": [
+          "anyOf": [
             {
-              "$ref": "#/$defs/outerExitCertificate"
+              "$ref": "#/$defs/outer"
             },
             {
               "type": "null"
@@ -1196,9 +3206,9 @@
           ]
         },
         "root_coverage": {
-          "oneOf": [
+          "anyOf": [
             {
-              "$ref": "#/$defs/rootCoverageCertificate"
+              "$ref": "#/$defs/coverageCertificate"
             },
             {
               "type": "null"
@@ -1206,9 +3216,9 @@
           ]
         },
         "source_validity": {
-          "oneOf": [
+          "anyOf": [
             {
-              "$ref": "#/$defs/sourceValidityCertificate"
+              "$ref": "#/$defs/sourceValidity"
             },
             {
               "type": "null"
@@ -1216,9 +3226,9 @@
           ]
         },
         "tie": {
-          "oneOf": [
+          "anyOf": [
             {
-              "$ref": "#/$defs/tieCertificate"
+              "$ref": "#/$defs/tie"
             },
             {
               "type": "null"
@@ -1226,9 +3236,9 @@
           ]
         },
         "torus_log": {
-          "oneOf": [
+          "anyOf": [
             {
-              "$ref": "#/$defs/torusCertificate"
+              "$ref": "#/$defs/torus"
             },
             {
               "type": "null"
@@ -1236,9 +3246,9 @@
           ]
         },
         "unresolved": {
-          "oneOf": [
+          "anyOf": [
             {
-              "$ref": "#/$defs/unresolvedCertificate"
+              "$ref": "#/$defs/unresolved"
             },
             {
               "type": "null"
@@ -1261,7 +3271,7 @@
       "type": "object"
     },
     "entry_cluster": {
-      "oneOf": [
+      "anyOf": [
         {
           "$ref": "#/$defs/cluster"
         },
@@ -1483,7 +3493,6 @@
           "regular_first_entry"
         ]
       },
-      "minItems": 1,
       "type": "array"
     },
     "primary_outcome": {
@@ -1503,30 +3512,288 @@
       ]
     },
     "registry_hash": {
-      "$ref": "#/$defs/sha256"
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
     },
     "sample_id": {
       "minLength": 1,
       "type": "string"
     },
     "schema_version": {
-      "const": "cyz-brief-0018-event-record-v1"
+      "const": "cyz-brief-0018-event-record-v2"
     },
     "scope": {
       "additionalProperties": false,
       "properties": {
-        "physical_outcome_mass_estimated": {
+        "authoritative_physical_certificate": {
           "const": false
+        },
+        "event_model_registry": {
+          "$ref": "#/$defs/eventProofModelRegistry"
+        },
+        "event_model_registry_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
+        },
+        "independent_replayer": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "physical_outcome_mass_estimated": {
+          "type": "boolean"
         },
         "physical_root_solver_run": {
-          "const": false
+          "type": "boolean"
+        },
+        "problem_commitment_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "proof_backend": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "proof_provenance": {
+          "items": {
+            "$ref": "#/$defs/proofProvenance"
+          },
+          "type": "array"
+        },
+        "proof_provenance_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
         },
         "rank_used_for_event_selection": {
-          "const": false
+          "type": "boolean"
+        },
+        "record_kind": {
+          "enum": [
+            "synthetic_control",
+            "certified_solver_output"
+          ]
+        },
+        "replay_authority": {
+          "enum": [
+            "builtin-pinned-synthetic-fixture",
+            "external-0019-independent-replay-required"
+          ]
+        },
+        "solver_registry_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "solver_run_manifest": {
+          "anyOf": [
+            {
+              "additionalProperties": false,
+              "properties": {
+                "backend": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "coverage_manifest_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "executable_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "independent_replayer": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "input_manifest_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "problem_commitment_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "proof_artifact_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "run_id": {
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "solver_registry_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "source_draw_registry_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "source_registry_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "source_state_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                },
+                "source_validity_sha256": {
+                  "pattern": "^[0-9a-f]{64}$",
+                  "type": "string"
+                }
+              },
+              "required": [
+                "run_id",
+                "backend",
+                "executable_sha256",
+                "input_manifest_sha256",
+                "coverage_manifest_sha256",
+                "proof_artifact_sha256",
+                "problem_commitment_sha256",
+                "source_state_sha256",
+                "source_registry_sha256",
+                "source_draw_registry_sha256",
+                "source_validity_sha256",
+                "solver_registry_sha256",
+                "independent_replayer"
+              ],
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "solver_run_manifest_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_draw_registry_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_registry_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_state_sha256": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_validity": {
+          "additionalProperties": false,
+          "properties": {
+            "certificate_id": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "history_valid": {
+              "type": "boolean"
+            },
+            "initial_state": {
+              "enum": [
+                "armed",
+                "active",
+                "unknown"
+              ]
+            },
+            "invalid_reasons": {
+              "items": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "type": "array"
+            },
+            "predicate_version": {
+              "minLength": 1,
+              "type": "string"
+            },
+            "source_valid": {
+              "type": "boolean"
+            },
+            "status": {
+              "enum": [
+                "valid",
+                "invalid"
+              ]
+            }
+          },
+          "required": [
+            "certificate_id",
+            "predicate_version",
+            "status",
+            "source_valid",
+            "history_valid",
+            "initial_state",
+            "invalid_reasons"
+          ],
+          "type": "object"
+        },
+        "source_validity_sha256": {
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
         }
       },
       "required": [
+        "record_kind",
         "physical_root_solver_run",
+        "proof_backend",
+        "solver_run_manifest",
+        "solver_run_manifest_sha256",
+        "problem_commitment_sha256",
+        "source_state_sha256",
+        "source_registry_sha256",
+        "source_draw_registry_sha256",
+        "source_validity",
+        "source_validity_sha256",
+        "solver_registry_sha256",
+        "event_model_registry",
+        "event_model_registry_sha256",
+        "proof_provenance",
+        "proof_provenance_sha256",
+        "replay_authority",
+        "independent_replayer",
+        "authoritative_physical_certificate",
         "physical_outcome_mass_estimated",
         "rank_used_for_event_selection"
       ],
@@ -1536,7 +3803,8 @@
       "additionalProperties": false,
       "properties": {
         "classification_registry_hash": {
-          "$ref": "#/$defs/sha256"
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
         },
         "history_valid": {
           "type": "boolean"
@@ -1556,7 +3824,8 @@
           "type": "array"
         },
         "sampling_registry_hash": {
-          "$ref": "#/$defs/sha256"
+          "pattern": "^[0-9a-f]{64}$",
+          "type": "string"
         },
         "source_valid": {
           "type": "boolean"
@@ -1587,6 +3856,6 @@
     "precedence_trace",
     "scope"
   ],
-  "title": "Brief 0018 total rank-blind event record",
+  "title": "Brief 0018 total event record v2",
   "type": "object"
 }

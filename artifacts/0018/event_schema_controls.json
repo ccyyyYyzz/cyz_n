@@ -3,30 +3,40 @@
     "active_inner_contact_is_secondary": true,
     "all_primary_tags_have_valid_hostile_schema_fixtures": true,
     "ambiguous_tie_precedes_generic_unresolved": true,
+    "ambiguous_tie_uses_two_isolated_interval_root_proofs": true,
+    "coordinated_root_rewrite_fails_pinned_replay": true,
+    "deleted_leaf_fails_structural_replay": true,
     "each_fixture_has_exactly_one_primary_value": true,
     "finite_window_and_complete_time_no_entry_are_distinct": true,
     "implicit_positive_dimensional_cluster_is_not_scalarized": true,
+    "missing_completed_geometry_routes_to_numerical_unresolved": true,
     "no_physical_solver_or_mass_claim": true,
+    "outer_exit_has_replayable_post_boundary_rho_bound": true,
     "outer_touch_does_not_rearm": true,
+    "physical_envelope_requires_external_0019_replay": true,
     "rank_two_fixture_has_seven_dimensional_normal": true,
-    "source_invalid_fixture_has_no_root_certificate": true
+    "source_invalid_fixture_has_no_root_certificate": true,
+    "source_invalid_freezes_all_event_flags_and_certificates": true,
+    "source_v2_bindings_are_carried_by_formal_envelope": true,
+    "tied_grazing_degenerate_cluster_has_one_primary_row": true,
+    "unified_proof_model_registry_covers_all_event_layers": true
   },
-  "event_schema_canonical_sha256": "33207071ee5ae2933f8bd5d2032d01313586b17e3edd4fd8e38f97f50928d2b2",
-  "event_schema_normalized_lf_sha256": "f4ccba32949690dcd9b00287741423925ef860ef166a4431df05b88ac813f89d",
-  "event_schema_version": "cyz-brief-0018-event-record-v1",
+  "event_schema_canonical_sha256": "1721b763109c879ec0ad0313ce810ebbad5f3d7453ff03efc875da092a9b3616",
+  "event_schema_normalized_lf_sha256": "0f8fa634f7c3769a9b2cf8550f2419cc351d1f2ea1b45761b6cca76ed1349dca",
+  "event_schema_version": "cyz-brief-0018-event-record-v2",
   "fixture_canonical_sha256": {
-    "ambiguous_tie": "4e730a071f40f24992599c0b64e92876320dd1b3ed1b1d52dd169f680d4421b8",
-    "degenerate_spatial_minimum": "b5df79786497a52914ab8dca85725ea4b702c550d8a1b50c42558dc2f1b98720",
-    "grazing_entry": "e632ed2139723a13078bcfb22d9ec319c87fe6d4625d7ff248e745179c1bd81a",
-    "left_censored_active_episode": "9d4c94a4fe1c0466a54633176457d88166867495fceb71263691b965b0d9d7aa",
-    "no_entry_proved": "3c38d44b2d7764361b1ed33f0127f79acdb81e70b1a287b33ee4cc939f0412af",
-    "numerically_unresolved": "ed98bb692bef89b4c11b20b98c8a3c08ef70d8a2ff32846be6f3b9dfa432fd3d",
-    "regular_first_entry": "7842a60ae830153e953cb4e0b65106df93e59d314a37e46cad0d268d62a0bba5",
-    "right_censored_active_episode": "1b0a3b51c7baeebaedd019c2e006fb6be6fd5757758ad1df177e2b7723e1602a",
-    "right_censored_no_entry": "5a2acc9de562c1eb25841fa7cef4df02b74fa9ddca5ac2af243b033100753196",
-    "source_invalid": "3a8db9cc2091e1353ea9b937355e4ea1d93970b1314201c51657fb6ef08905df",
-    "tie_cluster": "e627cce1034eedb8dd2d1d1b0b4c60fdf997edcdb87ae7afb6720b0843337b65",
-    "torus_branch_ambiguous": "f5cc53c9a39ad628ac990f78db25c59c80ad2cc8090d70ec2bfb382bf47e0836"
+    "ambiguous_tie": "f907e6b51e1257ffab3230b807b9719c3675c507c0bb07087841b4b699eb1f8d",
+    "degenerate_spatial_minimum": "cfe882a1b05c0c48694714184a9d5f42631a34f6855c1fe7ca9ef7b0667c473c",
+    "grazing_entry": "a06da28d6cf7961302d7372110ab8b8d588835e13073bbad54f4afcddc024ca7",
+    "left_censored_active_episode": "15f24470cb162ad09f2659d055262ab927fdd0250fbb0210e8f34048d37fd7c2",
+    "no_entry_proved": "053a1cfc207d0fc71b9dd83aec0819eecdec9a14cf240b9863d6032154f7bda7",
+    "numerically_unresolved": "d7c91c7c24d0bc69222a462810611dcbaa79a9ddf79b932d755cdc83f76c22fe",
+    "regular_first_entry": "c2bf88d6d7dc3ff1e8ad4ef31d8ffafa0119ea5904ec99a67bdb6f1c07a5debf",
+    "right_censored_active_episode": "eb061d6eb2a42606383169acdf2a30aca0cd3626e001840a4a65afe5fefca716",
+    "right_censored_no_entry": "a2e77f8c77b72887b8574a9e8edc73e0a979fe62f89e373fe435290cd0ee95ab",
+    "source_invalid": "406bfc966b7eed9aea421bad022109d09eac6ff181b5b97c4de8a5cd38b0d227",
+    "tie_cluster": "6adb409019868173cfee643b6c2d657465407ed1eec30a2c29fc73bafd37a4ca",
+    "torus_branch_ambiguous": "ac055ccd3c62972fe387a1c9c81c2811edf02f1ef52e1e075f1cec914295b7f4"
   },
   "hysteresis_control": {
     "final_state": "active",
@@ -48,7 +58,7 @@
       }
     ]
   },
-  "implicit_cluster_fixture_canonical_sha256": "ee7bb0d126945398131fd43ab2d457eb11bb481bafcc2fc0300f689de1f422d0",
+  "implicit_cluster_fixture_canonical_sha256": "59c8926f33cfa148e3bc8650e85a3bf10dea9b408727337e1ae4006578048dad",
   "primary_precedence": [
     "source_invalid",
     "left_censored_active_episode",
@@ -63,7 +73,7 @@
     "grazing_entry",
     "regular_first_entry"
   ],
-  "schema_version": "cyz-brief-0018-event-schema-controls-v1",
+  "schema_version": "cyz-brief-0018-event-schema-controls-v2",
   "scope": "synthetic event-contract controls only; no physical root solver, source sampler, event population, or outcome mass",
   "status": "PASS"
 }
