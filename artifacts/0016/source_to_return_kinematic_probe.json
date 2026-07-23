@@ -1,0 +1,1080 @@
+{
+  "artifact": "cyz-brief-0016-probe-v1",
+  "boundary": {
+    "does_not_prove": [
+      "a source preparation with a positive rank-3 margin",
+      "a source-valid small-impact reaction profile",
+      "a first-principles return law",
+      "response-visible spatial rank three",
+      "one time direction or a 3+1 signature"
+    ],
+    "proves": "A local encounter-rank/codimension calculation and suppression under two declared impact preparations.",
+    "verdict": "The D-4 impact dimension is recovered for rank-3 incoming geometry, not for strict straight opposite winding. Naming a scattering axis does not remove that obstruction."
+  },
+  "checks": {
+    "all_pass": true,
+    "ball_at_least_box_on_declared_grid": true,
+    "ball_codimension_ordering_holds_on_declared_grid": true,
+    "ball_strictly_decreasing_across_rho_for_positive_codimension": true,
+    "box_codimension_ordering_holds_on_declared_grid": true,
+    "box_strictly_decreasing_across_rho_for_positive_codimension": true,
+    "declared_large_rho_bounds_hold_for_rho_at_least_one": true,
+    "fixed_scattering_axis_counterexample_passes": true,
+    "gkm_D_minus_4_matches_local_normal_if_and_only_if_rank3": true,
+    "kinematic_control_ranks_match": true,
+    "ordering_checked_at_decimal_precision": 100,
+    "reported_significant_digits": 18
+  },
+  "declarations": {
+    "codimension_grid": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "decimal_internal_precision": 100,
+    "declared_rank3_margin_eta_kin": "0.0001",
+    "encounter_jacobian": "J = [tau1, -tau2, relative_velocity]",
+    "encounter_parameter_metric": "positive diagonal H per control (identity by default); a physical run must register the arc-length/time scale",
+    "local_metric": "Euclidean orthonormal chart (G = I)",
+    "rank_absolute_tolerance": "9.9999999999999998e-13",
+    "rank_relative_tolerance": "1e-10",
+    "reported_significant_digits": 18,
+    "rho_grid": [
+      "0",
+      "0.25",
+      "0.5",
+      "1",
+      "2",
+      "4",
+      "8"
+    ],
+    "spacetime_dimension_D": 10,
+    "spatial_dimension_d": 9,
+    "suppression_profile_scope": "declared full-support Gaussian surrogate; extending the large-impact source profile through b=0 is a control closure"
+  },
+  "fixed_scattering_axis_counterexample": {
+    "axis_is_nonzero_and_orthogonal_to_every_incoming_column": true,
+    "counterexample_passes": true,
+    "fixed_scattering_axis": [
+      0.0,
+      0.0,
+      1.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    "gkm_D_minus_4_dimension": 6,
+    "incoming_control": "strict_opposite_winding_rank2",
+    "incoming_normal_dimension_after_declaring_axis": 7,
+    "incoming_rank_after_declaring_axis": 2,
+    "incoming_rank_before_declaring_axis": 2,
+    "reason": "A fixed scattering axis is outgoing/normal data, not a third incoming column of D Phi_e. Appending or naming it cannot turn the rank-2 opposite-winding source jet into a rank-3 encounter."
+  },
+  "formulas": {
+    "ball": "g_ball(c,rho) = c integral_0^1 u^(c-1) exp(-rho^2 u^2) du, with g_ball(0,rho)=1",
+    "ball_large_rho_bounds": "exp(-1) rho^(-c) <= g_ball(c,rho) <= Gamma(c/2+1) rho^(-c), rho>=1",
+    "box": "g_box(c,rho) = [sqrt(pi) erf(rho)/(2 rho)]^c, with g_box(0,rho)=1",
+    "box_large_rho_bounds": "[exp(-1)/rho]^c <= g_box(c,rho) <= [sqrt(pi)/(2 rho)]^c, rho>=1",
+    "gkm_impact_dimension": "D - 4 = d - 3",
+    "kinematic_rank": "a = rank([tau1, -tau2, relative_velocity])",
+    "normal_dimension": "c = d - a",
+    "valid_frame_onset": "N_valid(q,a) = q!/(q-a)! for q>=a, else 0"
+  },
+  "kinematic_controls": [
+    {
+      "analyzed_matrix": "G^(1/2) J H^(-1/2)",
+      "domain_metric_diag": [
+        "1",
+        "1",
+        "1"
+      ],
+      "eigenvalues_descending": [
+        "1.5999999999999996",
+        "1",
+        "0.39999999999999991"
+      ],
+      "gkm_dimension_matches_local_normal": true,
+      "gkm_impact_dimension_D_minus_4": 6,
+      "gram_matrix": [
+        [
+          "1",
+          "-0.59999999999999998",
+          "0"
+        ],
+        [
+          "-0.59999999999999998",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "jacobian_column_convention": [
+        "tau1",
+        "-tau2",
+        "relative_velocity"
+      ],
+      "kinematic_rank": 3,
+      "name": "jjp_noncollinear_rank3",
+      "normal_dimension_d_minus_rank": 6,
+      "passes_declared_rank3_margin": true,
+      "rank_threshold": "1.2649110640673515e-10",
+      "relative_velocity": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "singular_values_descending": [
+        "1.2649110640673515",
+        "1",
+        "0.63245553203367577"
+      ],
+      "smallest_singular_value": "0.63245553203367577",
+      "target_metric_diag": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "tau1": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tau2": [
+        0.6,
+        0.8,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "analyzed_matrix": "G^(1/2) J H^(-1/2)",
+      "domain_metric_diag": [
+        "1",
+        "1",
+        "1"
+      ],
+      "eigenvalues_descending": [
+        "1.9999999999994993",
+        "1",
+        "4.9998893913993925e-13"
+      ],
+      "gkm_dimension_matches_local_normal": true,
+      "gkm_impact_dimension_D_minus_4": 6,
+      "gram_matrix": [
+        [
+          "1",
+          "0.99999999999949996",
+          "0"
+        ],
+        [
+          "0.99999999999949996",
+          "0.99999999999999989",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "jacobian_column_convention": [
+        "tau1",
+        "-tau2",
+        "relative_velocity"
+      ],
+      "kinematic_rank": 3,
+      "name": "near_opposite_rank3_below_margin",
+      "normal_dimension_d_minus_rank": 6,
+      "passes_declared_rank3_margin": false,
+      "rank_threshold": "1.414213562372918e-10",
+      "relative_velocity": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "singular_values_descending": [
+        "1.414213562372918",
+        "1",
+        "7.0709895993413769e-07"
+      ],
+      "smallest_singular_value": "7.0709895993413769e-07",
+      "target_metric_diag": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "tau1": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tau2": [
+        -0.9999999999995,
+        9.999999999995e-07,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "analyzed_matrix": "G^(1/2) J H^(-1/2)",
+      "domain_metric_diag": [
+        "4",
+        "1",
+        "1"
+      ],
+      "eigenvalues_descending": [
+        "1",
+        "1",
+        "0.25"
+      ],
+      "gkm_dimension_matches_local_normal": true,
+      "gkm_impact_dimension_D_minus_4": 6,
+      "gram_matrix": [
+        [
+          "0.25",
+          "0",
+          "0"
+        ],
+        [
+          "0",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "jacobian_column_convention": [
+        "tau1",
+        "-tau2",
+        "relative_velocity"
+      ],
+      "kinematic_rank": 3,
+      "name": "full_rank_rescaled_domain_metric",
+      "normal_dimension_d_minus_rank": 6,
+      "passes_declared_rank3_margin": true,
+      "rank_threshold": "1e-10",
+      "relative_velocity": [
+        0.0,
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "singular_values_descending": [
+        "1",
+        "1",
+        "0.5"
+      ],
+      "smallest_singular_value": "0.5",
+      "target_metric_diag": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "tau1": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tau2": [
+        -0.0,
+        -1.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0
+      ]
+    },
+    {
+      "analyzed_matrix": "G^(1/2) J H^(-1/2)",
+      "domain_metric_diag": [
+        "1",
+        "1",
+        "1"
+      ],
+      "eigenvalues_descending": [
+        "1.9999999999999996",
+        "1",
+        "0"
+      ],
+      "gkm_dimension_matches_local_normal": false,
+      "gkm_impact_dimension_D_minus_4": 6,
+      "gram_matrix": [
+        [
+          "1",
+          "1",
+          "0"
+        ],
+        [
+          "1",
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "0",
+          "1"
+        ]
+      ],
+      "jacobian_column_convention": [
+        "tau1",
+        "-tau2",
+        "relative_velocity"
+      ],
+      "kinematic_rank": 2,
+      "name": "strict_opposite_winding_rank2",
+      "normal_dimension_d_minus_rank": 7,
+      "passes_declared_rank3_margin": false,
+      "rank_threshold": "1.4142135623730951e-10",
+      "relative_velocity": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "singular_values_descending": [
+        "1.4142135623730949",
+        "1",
+        "0"
+      ],
+      "smallest_singular_value": "0",
+      "target_metric_diag": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "tau1": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tau2": [
+        -1.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0
+      ]
+    },
+    {
+      "analyzed_matrix": "G^(1/2) J H^(-1/2)",
+      "domain_metric_diag": [
+        "1",
+        "1",
+        "1"
+      ],
+      "eigenvalues_descending": [
+        "3",
+        "0.99999999999999978",
+        "0"
+      ],
+      "gkm_dimension_matches_local_normal": false,
+      "gkm_impact_dimension_D_minus_4": 6,
+      "gram_matrix": [
+        [
+          "1",
+          "0",
+          "1"
+        ],
+        [
+          "0",
+          "1",
+          "-1"
+        ],
+        [
+          "1",
+          "-1",
+          "2"
+        ]
+      ],
+      "jacobian_column_convention": [
+        "tau1",
+        "-tau2",
+        "relative_velocity"
+      ],
+      "kinematic_rank": 2,
+      "name": "independent_tangents_velocity_in_span_rank2",
+      "normal_dimension_d_minus_rank": 7,
+      "passes_declared_rank3_margin": false,
+      "rank_threshold": "1.7320508075688773e-10",
+      "relative_velocity": [
+        1.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "singular_values_descending": [
+        "1.7320508075688772",
+        "0.99999999999999989",
+        "0"
+      ],
+      "smallest_singular_value": "0",
+      "target_metric_diag": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "tau1": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tau2": [
+        0.0,
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "analyzed_matrix": "G^(1/2) J H^(-1/2)",
+      "domain_metric_diag": [
+        "1",
+        "1",
+        "1"
+      ],
+      "eigenvalues_descending": [
+        "6",
+        "0",
+        "0"
+      ],
+      "gkm_dimension_matches_local_normal": false,
+      "gkm_impact_dimension_D_minus_4": 6,
+      "gram_matrix": [
+        [
+          "1",
+          "1",
+          "2"
+        ],
+        [
+          "1",
+          "1",
+          "2"
+        ],
+        [
+          "2",
+          "2",
+          "4"
+        ]
+      ],
+      "jacobian_column_convention": [
+        "tau1",
+        "-tau2",
+        "relative_velocity"
+      ],
+      "kinematic_rank": 1,
+      "name": "opposite_winding_collinear_velocity_rank1",
+      "normal_dimension_d_minus_rank": 8,
+      "passes_declared_rank3_margin": false,
+      "rank_threshold": "2.449489742783178e-10",
+      "relative_velocity": [
+        2.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "singular_values_descending": [
+        "2.4494897427831779",
+        "0",
+        "0"
+      ],
+      "smallest_singular_value": "0",
+      "target_metric_diag": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "tau1": [
+        1.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "tau2": [
+        -1.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0,
+        -0.0
+      ]
+    }
+  ],
+  "source_classification": [
+    {
+      "claim": "rank(J), dim ker-normal = d-rank(J), and the equality d-rank(J)=D-4 iff rank(J)=3",
+      "classification": "exact theorem about a declared geometric model"
+    },
+    {
+      "claim": "The GKM/JJP D-4 impact count applies to the rank-3 non-collinear incoming stratum.",
+      "classification": "primary-source derived",
+      "scope": "conditional on the source preparation occupying the rank-3 non-collinear stratum"
+    },
+    {
+      "claim": "Uniform-ball and independent-uniform-box averages and their codimension monotonicity",
+      "classification": "exact theorem about a declared geometric model",
+      "scope": "the preparations and the full-support Gaussian profile are declarations, not primary-source outputs"
+    },
+    {
+      "claim": "The numerical values, Gram eigensolver controls, and near-degenerate tolerance classification",
+      "classification": "controlled numerical probe"
+    },
+    {
+      "claim": "eta_kin=1e-4 is a preregistered diagnostic threshold for these controls, not a source-derived physical margin",
+      "classification": "derived from a newly proposed measurable closure"
+    },
+    {
+      "claim": "A fixed outgoing scattering axis cannot repair a rank-2 incoming opposite-winding source jet.",
+      "classification": "no-go/underdetermination"
+    }
+  ],
+  "status": "PASS",
+  "suppression_table": [
+    {
+      "ball": {
+        "0": "1",
+        "1": "1",
+        "2": "1",
+        "3": "1",
+        "4": "1",
+        "5": "1",
+        "6": "1"
+      },
+      "ball_at_least_box": true,
+      "box": {
+        "0": "1",
+        "1": "1",
+        "2": "1",
+        "3": "1",
+        "4": "1",
+        "5": "1",
+        "6": "1"
+      },
+      "large_rho_bound_checks": [],
+      "rho": "0",
+      "strictly_decreasing_in_codimension": {
+        "ball": true,
+        "box": true
+      }
+    },
+    {
+      "ball": {
+        "0": "1",
+        "1": "0.979551548721023349",
+        "2": "0.969390994984387422",
+        "3": "0.963323661781141516",
+        "4": "0.959293829469172351",
+        "5": "0.956423958706629197",
+        "6": "0.954276799473435108"
+      },
+      "ball_at_least_box": true,
+      "box": {
+        "0": "1",
+        "1": "0.979551548721023349",
+        "2": "0.959521236601755380",
+        "3": "0.939900513343960958",
+        "4": "0.920681003489761829",
+        "5": "0.901854502846422103",
+        "6": "0.883412974984241331"
+      },
+      "large_rho_bound_checks": [],
+      "rho": "0.25",
+      "strictly_decreasing_in_codimension": {
+        "ball": true,
+        "box": true
+      }
+    },
+    {
+      "ball": {
+        "0": "1",
+        "1": "0.922562012825584898",
+        "2": "0.884796867714380527",
+        "3": "0.862567378525080176",
+        "4": "0.847968677143805270",
+        "5": "0.837665954536753074",
+        "6": "0.830014728868804823"
+      },
+      "ball_at_least_box": true,
+      "box": {
+        "0": "1",
+        "1": "0.922562012825584898",
+        "2": "0.851120667508794673",
+        "3": "0.785211596174369010",
+        "4": "0.724406390660616212",
+        "5": "0.668309817871575078",
+        "6": "0.616557250766700354"
+      },
+      "large_rho_bound_checks": [],
+      "rho": "0.5",
+      "strictly_decreasing_in_codimension": {
+        "ball": true,
+        "box": true
+      }
+    },
+    {
+      "ball": {
+        "0": "1",
+        "1": "0.746824132812427025",
+        "2": "0.632120558828557678",
+        "3": "0.568417037461477056",
+        "4": "0.528482235314230714",
+        "5": "0.501343990725086835",
+        "6": "0.481808382428365176"
+      },
+      "ball_at_least_box": true,
+      "box": {
+        "0": "1",
+        "1": "0.746824132812427025",
+        "2": "0.557746285351033641",
+        "3": "0.416538385886638170",
+        "4": "0.311080918822876643",
+        "5": "0.232322737434387856",
+        "6": "0.173504226917045888"
+      },
+      "large_rho_bound_checks": [
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 1
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 2
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 3
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 4
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 5
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 6
+        }
+      ],
+      "rho": "1",
+      "strictly_decreasing_in_codimension": {
+        "ball": true,
+        "box": true
+      }
+    },
+    {
+      "ball": {
+        "0": "1",
+        "1": "0.441040695381210840",
+        "2": "0.245421090277816455",
+        "3": "0.158521896184678747",
+        "4": "0.113552725694541137",
+        "5": "0.0876289108099653544",
+        "6": "0.0714278151043552178"
+      },
+      "ball_at_least_box": true,
+      "box": {
+        "0": "1",
+        "1": "0.441040695381210840",
+        "2": "0.194516894982342013",
+        "3": "0.0857898666264060830",
+        "4": "0.0378368224335714713",
+        "5": "0.0166875784771177599",
+        "6": "0.00735990121577654423"
+      },
+      "large_rho_bound_checks": [
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 1
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 2
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 3
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 4
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 5
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 6
+        }
+      ],
+      "rho": "2",
+      "strictly_decreasing_in_codimension": {
+        "ball": true,
+        "box": true
+      }
+    },
+    {
+      "ball": {
+        "0": "1",
+        "1": "0.221556727947392236",
+        "2": "0.0624999929665515800",
+        "3": "0.0207709326948953922",
+        "4": "0.00781248505392210760",
+        "5": "0.00324544064995635515",
+        "6": "0.00146481984726513531"
+      },
+      "ball_at_least_box": true,
+      "box": {
+        "0": "1",
+        "1": "0.221556727947392236",
+        "2": "0.0490873836987547761",
+        "3": "0.0108756401157942684",
+        "4": "0.00240957123838877612",
+        "5": "0.000533856719333563075",
+        "6": "0.000118279547928273568"
+      },
+      "large_rho_bound_checks": [
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 1
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 2
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 3
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 4
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 5
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 6
+        }
+      ],
+      "rho": "4",
+      "strictly_decreasing_in_codimension": {
+        "ball": true,
+        "box": true
+      }
+    },
+    {
+      "ball": {
+        "0": "1",
+        "1": "0.110778365681594752",
+        "2": "0.0156250000000000000",
+        "3": "0.00259636794566237699",
+        "4": "0.000488281250000000000",
+        "5": "0.000101420622877436601",
+        "6": "0.0000228881835937500000"
+      },
+      "ball_at_least_box": true,
+      "box": {
+        "0": "1",
+        "1": "0.110778365681594752",
+        "2": "0.0122718463030851298",
+        "3": "0.00135945507735149117",
+        "4": "0.000150598211686544168",
+        "5": "0.0000166830237652062062",
+        "6": "0.00000184811810733674885"
+      },
+      "large_rho_bound_checks": [
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 1
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 2
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 3
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 4
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 5
+        },
+        {
+          "ball_bound_holds": true,
+          "box_bound_holds": true,
+          "codimension": 6
+        }
+      ],
+      "rho": "8",
+      "strictly_decreasing_in_codimension": {
+        "ball": true,
+        "box": true
+      }
+    }
+  ],
+  "valid_frame_onset": [
+    {
+      "counts_by_arity": {
+        "1": 0,
+        "2": 0,
+        "3": 0,
+        "4": 0
+      },
+      "q": 0
+    },
+    {
+      "counts_by_arity": {
+        "1": 1,
+        "2": 0,
+        "3": 0,
+        "4": 0
+      },
+      "q": 1
+    },
+    {
+      "counts_by_arity": {
+        "1": 2,
+        "2": 2,
+        "3": 0,
+        "4": 0
+      },
+      "q": 2
+    },
+    {
+      "counts_by_arity": {
+        "1": 3,
+        "2": 6,
+        "3": 6,
+        "4": 0
+      },
+      "q": 3
+    },
+    {
+      "counts_by_arity": {
+        "1": 4,
+        "2": 12,
+        "3": 24,
+        "4": 24
+      },
+      "q": 4
+    },
+    {
+      "counts_by_arity": {
+        "1": 5,
+        "2": 20,
+        "3": 60,
+        "4": 120
+      },
+      "q": 5
+    },
+    {
+      "counts_by_arity": {
+        "1": 6,
+        "2": 30,
+        "3": 120,
+        "4": 360
+      },
+      "q": 6
+    },
+    {
+      "counts_by_arity": {
+        "1": 7,
+        "2": 42,
+        "3": 210,
+        "4": 840
+      },
+      "q": 7
+    },
+    {
+      "counts_by_arity": {
+        "1": 8,
+        "2": 56,
+        "3": 336,
+        "4": 1680
+      },
+      "q": 8
+    },
+    {
+      "counts_by_arity": {
+        "1": 9,
+        "2": 72,
+        "3": 504,
+        "4": 3024
+      },
+      "q": 9
+    }
+  ]
+}

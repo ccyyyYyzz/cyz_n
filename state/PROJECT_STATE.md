@@ -256,16 +256,53 @@ also remains an explicit microscopic closure input.  The arity-two and
 arity-four controls establish software sensitivity, not a physical derivation
 of three.
 
+Response 0016 removes that fixed frame arity from the physical claim chain.
+For two local \(p\)-carriers the invariant encounter rank is
+\[
+a=\operatorname{rank}D\Phi_e\le\min(d,2p+1),
+\]
+and the impact normal dimension is \(d-a\).  F1 rank three requires two
+non-collinear local tangents and relative velocity outside their span.
+Strictly straight same-cycle opposite winding has rank at most two.  The JJP
+\(D-4=d-3\) impact count is therefore adopted only on the non-collinear
+rank-three source stratum; the cited GKM Boltzmann model does not supply the
+local tangent law connecting its straight opposite-winding state to that
+stratum.
+
+The fixed-arity scheduled process conserves arity pathwise, and its valid
+ordered frames have the exact onset \(q!/(q-a)!\).  It cannot select arity
+three.  Under two declared full-support Gaussian ball/box controls, exact
+impact-codimension suppression and its monotonic bounds are closed by a
+deterministic probe.  The Gaussian small-impact extension and both
+preparations remain closures.
+
+The adopted verdict is only a conditional source-family three-ceiling:
+for a predeclared family with \(\ell\) effectively extended directions,
+general-position F1 encounters give
+\(a_\ell=\min(\ell,3)\) and \(c_\ell=(\ell-3)_+\).  A single fixed \(T^9\)
+event still has \(c=9-a\), so this is neither strict three-selection nor an
+anonymous visible-rank ceiling.
+
+The earliest missing physical object is now the bundle-valued near-encounter
+law
+\[
+\mathcal H_X(dT,dj,db\mid h),\qquad b\in N_j,
+\]
+with a predeclared microscopic generator, preparation, event section and
+rank-unconditioned sampling rule.  It must report every rank stratum and
+either a uniform singular-value margin or a controlled small-value tail.
+
 For the fixed-digest theorem, the active scientific bottleneck has therefore
-moved from certificate replay to physical closure.  The frame-role arity,
-sparse impact preparation, return clock, post-miss history evolution,
+moved from certificate replay to physical closure.  Fixed frame-role arity is
+no longer an admissible physical input; the local pair-jet/impact bundle,
+impact preparation, return clock, post-miss history evolution,
 reverse-reservoir law and initial preparation must be derived or independently
 constrained by the source model.  In parallel, the stronger general-
 specification theorem remains blocked on typed executable semantics and two
 genuinely independent dispatchers.  Only after the physical ingredients are
-source-grounded should the fixed scheduled process be connected to anonymous
-response reconstruction and tested for a stable visible \(3+1\) basin and a
-loss-of-plateau prediction.
+source-grounded should the fixed scheduled process be generalized, connected
+to anonymous response reconstruction and tested for a stable visible \(3+1\)
+basin and a loss-of-plateau prediction.
 
 The wavefront-kernel construction remains an independent physical validation
 route, not the primary definition. Numerical gaps are meaningful only relative

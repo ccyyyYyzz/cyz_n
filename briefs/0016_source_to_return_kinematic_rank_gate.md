@@ -105,6 +105,18 @@ D\Phi_e=\bigl[D_\sigma X_1,\,-D_{\sigma'}X_2,\,
 v_{\rm rel}\bigr].
 \]
 
+Distinguish an exact diagonal hit, for which \(\Phi_e=0\), from a finite-impact
+event.  The latter requires a predeclared closest-approach or first-entry
+section.  At an interior closest approach,
+
+\[
+b=\Phi_e(z_*),\qquad D\Phi_e(z_*)^\top G b=0.
+\]
+
+Thus the event jet determines the normal space but not the separate impact
+coordinate.  The physical law must output the joint pair \((j,b)\) with
+\(b\in N_j\).
+
 Do all of the following.
 
 1. Define the coordinate-independent kinematic rank
@@ -210,6 +222,11 @@ P(b\mid X)=P_0(X)
 \]
 
 with the source-validity and normalization conditions made explicit.
+The GKM Gaussian is a large-impact asymptotic.  If a declared preparation has
+support through \(b=0\), extending that profile across the unresolved core
+must be labeled as a new closure, or replaced by a source-valid exact/eikonal
+profile.  Require \(G_N>0\), \(\Delta>0\), \(0\le P_0\le1\), and route
+out-of-domain events to the source-invalid outcome rather than clipping them.
 
 Do not silently assume an impact preparation.  At minimum compare two
 predeclared, target-neutral controls for \(c=\dim N_x\):
@@ -239,11 +256,15 @@ Prove the relevant monotonicity and large-\(\rho\) bounds rather than only
 plotting them.  State which facts survive changing the impact preparation and
 which are closure-dependent.
 
-For a generic F1 encounter in an effectively \(m\)-dimensional large
-subspace, recover \(c=(m-3)_+\) only as a restriction/corollary of the
-full-metric construction.  The source-to-return compiler may receive the
-metric, tangents, velocities and world-sheet state.  It may not receive
-`m`, a response rank, a visible count, a band label or a target stratum.
+For a predeclared family of effective source models with \(\ell\) extended
+directions, recover
+\(a_\ell=\min(\ell,3)\) and \(c_\ell=(\ell-3)_+\) only as a corollary of the
+full-metric construction.  A single fixed \(T^9\) event instead has
+\(c=9-a\).  The source-to-return compiler may receive the metric, tangents,
+velocities and world-sheet state.  It may not receive `m`, a response rank, a
+visible count, a band label or a target stratum.  Only after anonymous
+reconstruction may the visible output \(m\) be compared with the independent
+source-family index \(\ell\).
 
 ## Part IV — distinguish a three-ceiling from exact three-selection
 
@@ -293,20 +314,26 @@ object is a covariant source-to-return law.  Specify
 \[
 \mathscr P_X
 \bigl(
-d\tau,db,dc,dh',dX',d\Delta E_R,d\dagger
+dT,dj,db,dc,dh',dX',d\Delta E_R,d\dagger
 \mid h
 \bigr),
 \]
 
 where \(X\) is the full source state and the outputs include:
 
-- absolute first-hit or return time;
+- holding time to the first hit or return (or absolute time only when current
+  time is included in \(X\));
+- the selected near-encounter jet \(j\);
 - continuous full-metric impact/orientation data;
 - conditional reaction channel;
 - post-miss history;
 - updated source state;
 - reservoir transfer and a reference-measure reverse event; and
 - a source-invalid killed outcome.
+
+This is a bundle-valued kernel on
+\(\{(j,b):b\in N_j\}\), not an independent product measure for \(j\) and
+\(b\).
 
 The interface must output its kinematic rank from the invariant encounter
 map.  `frame_arity` is forbidden as an input.
