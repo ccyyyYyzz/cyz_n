@@ -227,27 +227,45 @@ full-process `S9` and disguised hidden-three mutations remain undetected.
 
 Response 0014 repairs that frame-local generator.  Independent expansion
 confirms 21,172 full-`T9` states, 78,628 atoms, exact row normalization,
-positive reverse closure, deterministic age schedules, complete adjacent
-`S9` covariance and same-path three/four control kernels.  These facts are
-conditionally adopted at generator level.
+reverse closure for positive accepted non-null atoms, finite-countdown
+schedule records, eight adjacent-action checks and same-path three/four
+control kernels.  These facts are conditionally adopted at generator level.
 
-The committed independent verifier does not execute: its encoded source
-shards fail base85 decoding before argument parsing, are not bound by the
-artifact hash, and cannot regenerate the submitted hostile-mutation report.
-The compact artifact stores the constructor graph, inputs, counts and
-expansion hashes rather than expanded rows, so the missing verifier is a hard
-evidence gap rather than a packaging nicety.  The registered graph also omits
-frame/state/channel/ledger/initial/age construction rules, fixed frame arity
-three remains an explicit microscopic prior, and invalid cemetery exits
-change physical payload while claiming otherwise.
+Response 0015 closes that software-evidence gap for one exact registered
+contract.  A readable verifier imports no generator module, reconstructs all
+eleven controls through a source-separated fixed implementation, binds the
+exact eleven-file executable inventory and actual loaded source paths, reruns
+the external generator, checks a real single-instance opaque-ID rename,
+performs live adjacent-`S9` replay for five role-selected controls and runs a
+94-case fresh-subprocess hostile suite.  The killed lift is projection-
+preserving, strict typed inputs reject the explicitly forbidden response-
+derived input fields, and LF/CRLF clean-copy replay preserves the canonical
+artifact.
 
-The active bottleneck is therefore to make the adopted generator-level object
-independently replayable and to close the complete constructor dependency
-boundary.  Brief 0015 requires readable verifier code, hashes for every
-executable dependency, a projection-preserving killed-state lift, generic
-opaque metric inputs and arity-2/4 semantic controls.  Until it passes,
-hostile-mutation closure, complete semantic non-encoding and any rank-three
-selection claim remain false.
+Certificate publication uses the direct `python -I` CLI.  The three side
+components are not certificates; the stored main PASS is a generation-bound
+execution record under trusted repository provenance.  `--check-report`
+checks only freshness and internal consistency.  Independent live evidence
+requires rerunning `--report`.
+
+This is a fixed-digest certificate, not a general constructor interpreter.
+The natural-language rules and serialized `constructor_program` are
+registration data selecting one audited implementation on each side; a
+specification change is rejected rather than interpreted.  Frame arity three
+also remains an explicit microscopic closure input.  The arity-two and
+arity-four controls establish software sensitivity, not a physical derivation
+of three.
+
+For the fixed-digest theorem, the active scientific bottleneck has therefore
+moved from certificate replay to physical closure.  The frame-role arity,
+sparse impact preparation, return clock, post-miss history evolution,
+reverse-reservoir law and initial preparation must be derived or independently
+constrained by the source model.  In parallel, the stronger general-
+specification theorem remains blocked on typed executable semantics and two
+genuinely independent dispatchers.  Only after the physical ingredients are
+source-grounded should the fixed scheduled process be connected to anonymous
+response reconstruction and tested for a stable visible \(3+1\) basin and a
+loss-of-plateau prediction.
 
 The wavefront-kernel construction remains an independent physical validation
 route, not the primary definition. Numerical gaps are meaningful only relative
