@@ -37,7 +37,7 @@
   "implementation_scope": "first_verifiable_certificate_foundation",
   "normalized_lf_code_inventory": [
     {
-      "normalized_lf_sha256": "593973137d6e58874416333fd84dd587b8329169a530a310b55ffeca6f438c48",
+      "normalized_lf_sha256": "a8984336441c556136419d5b96cb3da2e0ef64d9082384027777d7bb3f5d0461",
       "path": "artifacts/0019/certified_solver_core.py"
     },
     {
@@ -45,13 +45,13 @@
       "path": "artifacts/0019/test_certified_solver_core.py"
     },
     {
-      "normalized_lf_sha256": "21d27ffd9f49acafc1efb03025c6d5540fb21a110b99c908c0a9d1e0c56d1964",
+      "normalized_lf_sha256": "ba351b8099a5b851af48110abb1ae1529d3c05ca3b73a9f3c2a6eb77f5dbf42a",
       "path": "artifacts/0019/README.md"
     }
   ],
   "open_items": [
     "independent source-separated certificate_replayer.py",
-    "Arb-backed finite-K trigonometric d/F/g interval jets",
+    "source-bound nine-dimensional Arb interval jets and physical Krawczyk replay",
     "nine-dimensional production image enumeration and metric pruning",
     "singular-cluster, seam-equivalence and tie certificates",
     "first-entry globality and no-earlier-sublevel cover",

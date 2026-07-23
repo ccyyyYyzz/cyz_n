@@ -1,0 +1,80 @@
+{
+  "backend": {
+    "arithmetic": "arb outward-rounded balls",
+    "flint": "3.6.0",
+    "python_flint": "0.9.0"
+  },
+  "code_inventory": {
+    "arb_interval_jets.py": "c49aae864e92f0f8812b088ed824b920e6ec106b725632c7cf82be3bb7fce69c"
+  },
+  "failed_gates": [],
+  "fixture_semantic_sha256": "d9b8d8c41d0601b09e766fee257bc275e643539a1818520fbbf6c53d3ad19bb5",
+  "gates": {
+    "F_sigma1_contains_zero": true,
+    "F_sigma2_contains_zero": true,
+    "F_time_contains_expected": true,
+    "Ft_det_H_contains_expected": true,
+    "H11_contains_expected": true,
+    "H12_contains_expected": true,
+    "H22_contains_expected": true,
+    "boundary_contains_zero": true,
+    "det_Dg_contains_expected": true,
+    "det_factorization_residual_contains_zero": true,
+    "inward_flux_strictly_negative": true,
+    "spatial_hessian_diagonal_strictly_positive": true
+  },
+  "point_enclosures": {
+    "F_boundary": {
+      "lower": "0",
+      "upper": "0"
+    },
+    "F_sigma1": {
+      "lower": "0",
+      "upper": "0"
+    },
+    "F_sigma2": {
+      "lower": "0",
+      "upper": "0"
+    },
+    "F_time": {
+      "lower": "-0.500000000000000",
+      "upper": "-0.500000000000000"
+    },
+    "Ft_det_H": {
+      "lower": "-2.00000000000000",
+      "upper": "-2.00000000000000"
+    },
+    "H11": {
+      "lower": "2.00000000000000",
+      "upper": "2.00000000000000"
+    },
+    "H12": {
+      "lower": "0",
+      "upper": "0"
+    },
+    "H22": {
+      "lower": "2.00000000000000",
+      "upper": "2.00000000000000"
+    },
+    "det_Dg": {
+      "lower": "-2.00000000000000",
+      "upper": "-2.00000000000000"
+    },
+    "det_identity_residual": {
+      "lower": "0",
+      "upper": "0"
+    }
+  },
+  "precision_bits": 192,
+  "schema_version": "cyz-brief-0019-arb-jet-report-v1",
+  "scope": {
+    "candidate_float_arithmetic_authoritative": false,
+    "finite_K_interval_jet_fixture": true,
+    "outward_rounded_proof_arithmetic": true,
+    "physical_exhaustive_root_solver_complete": false,
+    "population_law_computed": false,
+    "three_plus_one_selected": false
+  },
+  "semantic_sha256": "c732aec7e27a5fe7927e8624e376587be8b2f1d6d0492a973f84734545e65bd4",
+  "status": "PASS"
+}

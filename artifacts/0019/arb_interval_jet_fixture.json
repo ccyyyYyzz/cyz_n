@@ -1,0 +1,253 @@
+{
+  "control_box": {
+    "sigma1": {
+      "hi": {
+        "exponent": 3,
+        "numerator": 1
+      },
+      "lo": {
+        "exponent": 3,
+        "numerator": -1
+      }
+    },
+    "sigma2": {
+      "hi": {
+        "exponent": 3,
+        "numerator": 1
+      },
+      "lo": {
+        "exponent": 3,
+        "numerator": -1
+      }
+    },
+    "time": {
+      "hi": {
+        "exponent": 4,
+        "numerator": 1
+      },
+      "lo": {
+        "exponent": 4,
+        "numerator": -1
+      }
+    }
+  },
+  "expected_point_values": {
+    "F_boundary": {
+      "exponent": 0,
+      "numerator": 0
+    },
+    "F_sigma1": {
+      "exponent": 0,
+      "numerator": 0
+    },
+    "F_sigma2": {
+      "exponent": 0,
+      "numerator": 0
+    },
+    "F_time": {
+      "exponent": 1,
+      "numerator": -1
+    },
+    "Ft_det_H": {
+      "exponent": 0,
+      "numerator": -2
+    },
+    "H_11": {
+      "exponent": 0,
+      "numerator": 2
+    },
+    "H_12": {
+      "exponent": 0,
+      "numerator": 0
+    },
+    "H_22": {
+      "exponent": 0,
+      "numerator": 2
+    },
+    "det_Dg": {
+      "exponent": 0,
+      "numerator": -2
+    }
+  },
+  "fixture_id": "finite-k1-regular-inward-root-v1",
+  "lattice_shift": [
+    {
+      "exponent": 0,
+      "numerator": 0
+    },
+    {
+      "exponent": 0,
+      "numerator": 0
+    },
+    {
+      "exponent": 0,
+      "numerator": 0
+    }
+  ],
+  "metric_diagonal": [
+    {
+      "exponent": 0,
+      "numerator": 1
+    },
+    {
+      "exponent": 0,
+      "numerator": 1
+    },
+    {
+      "exponent": 0,
+      "numerator": 1
+    }
+  ],
+  "radius": {
+    "exponent": 1,
+    "numerator": 1
+  },
+  "relative_centre": [
+    {
+      "exponent": 1,
+      "numerator": 1
+    },
+    {
+      "exponent": 0,
+      "numerator": 0
+    }
+  ],
+  "relative_velocity": [
+    {
+      "exponent": 0,
+      "numerator": -1
+    },
+    {
+      "exponent": 0,
+      "numerator": 0
+    }
+  ],
+  "root_box": {
+    "sigma1": {
+      "hi": {
+        "exponent": 0,
+        "numerator": 0
+      },
+      "lo": {
+        "exponent": 0,
+        "numerator": 0
+      }
+    },
+    "sigma2": {
+      "hi": {
+        "exponent": 0,
+        "numerator": 0
+      },
+      "lo": {
+        "exponent": 0,
+        "numerator": 0
+      }
+    },
+    "time": {
+      "hi": {
+        "exponent": 0,
+        "numerator": 0
+      },
+      "lo": {
+        "exponent": 0,
+        "numerator": 0
+      }
+    }
+  },
+  "schema_version": "cyz-brief-0019-arb-jet-fixture-v1",
+  "strings": [
+    [
+      [
+        {
+          "p": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "q": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "x": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "y": {
+            "exponent": 0,
+            "numerator": 0
+          }
+        },
+        {
+          "p": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "q": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "x": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "y": {
+            "exponent": 0,
+            "numerator": 8
+          }
+        }
+      ]
+    ],
+    [
+      [
+        {
+          "p": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "q": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "x": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "y": {
+            "exponent": 0,
+            "numerator": 0
+          }
+        },
+        {
+          "p": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "q": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "x": {
+            "exponent": 0,
+            "numerator": 0
+          },
+          "y": {
+            "exponent": 0,
+            "numerator": 8
+          }
+        }
+      ]
+    ]
+  ],
+  "target_dimension": 3,
+  "transverse_dimension": 2,
+  "wave_numbers": [
+    {
+      "exponent": 3,
+      "numerator": 1
+    }
+  ],
+  "winding_axis": 2,
+  "winding_orientations": [
+    1,
+    -1
+  ]
+}

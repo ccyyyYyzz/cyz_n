@@ -1683,7 +1683,7 @@ def build_report(
         ],
         "open_items": [
             "independent source-separated certificate_replayer.py",
-            "Arb-backed finite-K trigonometric d/F/g interval jets",
+            "source-bound nine-dimensional Arb interval jets and physical Krawczyk replay",
             "nine-dimensional production image enumeration and metric pruning",
             "singular-cluster, seam-equivalence and tie certificates",
             "first-entry globality and no-earlier-sublevel cover",

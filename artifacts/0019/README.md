@@ -18,6 +18,27 @@ The implemented foundation consists of:
 6. node, root, cover and whole-bundle semantic hashes that are checked only
    after the corresponding mathematical witness is replayed.
 
+The next committed control,
+[`arb_interval_jets.py`](arb_interval_jets.py), pins
+python-flint 0.9.0 / FLINT 3.6.0 and evaluates a genuine \(K=1\)
+trigonometric two-string fixture with outward-rounded Arb balls.  From exact
+dyadic coefficients it derives
+
+\[
+d,\ d_a,\ d_{ab},\ F_a,\ F_{ab},\ g,\ Dg
+\]
+
+on three-variable boxes.  Its exact regular inward root has
+
+\[
+H_{\sigma\sigma}=2I_2,\qquad F_t=-\frac12,\qquad
+\det Dg=F_t\det H_{\sigma\sigma}=-2.
+\]
+
+The control also verifies that an Arb interval evaluation on a nontrivial
+box encloses a higher-precision point evaluation.  It imports neither NumPy
+nor the platform libm for asserted proof arithmetic.
+
 ## Exact grammar
 
 A dyadic is serialized as
@@ -113,9 +134,15 @@ From the repository root:
 ```text
 python artifacts/0019/certified_solver_core.py --write
 python artifacts/0019/certified_solver_core.py --check
+python artifacts/0019/arb_interval_jets.py --write
+python artifacts/0019/arb_interval_jets.py --check
 python -m unittest discover -s artifacts/0019 -p "test_*.py" -v
-python -m py_compile artifacts/0019/certified_solver_core.py artifacts/0019/test_certified_solver_core.py
+python -m py_compile artifacts/0019/certified_solver_core.py artifacts/0019/arb_interval_jets.py artifacts/0019/test_certified_solver_core.py artifacts/0019/test_arb_interval_jets.py
 ```
+
+The Arb commands require python-flint 0.9.0 on `PYTHONPATH` or in the active
+environment.  Both the Windows and WSL controls replay the same fixture and
+report semantic hashes with the pinned wheels used by this project.
 
 `--write` deterministically regenerates
 `certified_solver_fixture.json` and `certified_solver_report.json`.
@@ -133,9 +160,9 @@ their intended semantic gates rather than at an incidental parser error.
 The next implementation layers remain:
 
 - a source-separated `certificate_replayer.py`;
-- pinned python-flint/Arb metadata and outward-rounded finite-\(K\)
-  trigonometric jets for \(d,F,g,Dg,H\);
 - the nine-dimensional production image cover and rigorous metric pruning;
+- Krawczyk inclusion using the physical three-equation Arb jet rather than
+  the exact one-dimensional affine foundation fixture;
 - singular-cluster and exact seam-equivalence certificates;
 - global spatial minimality, earlier-sublevel exclusion, root ordering and
   tie closure;
