@@ -23,7 +23,7 @@ program into papers.
 ## Canonical correction
 
 Response 0009 now correctly exposes an arbitrary-cardinality conditional
-transition: for 
+transition: for
 
 \[
 |L|=m,
