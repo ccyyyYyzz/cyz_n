@@ -1,0 +1,73 @@
+{
+  "audit": {
+    "constraint_absolute_tolerance": 5e-12,
+    "familywise_alpha": 1e-06,
+    "fingerprint_count": 12,
+    "sample_count": 512
+  },
+  "audit_cell_id": "brief-0018-low-K-measure-audit-v1",
+  "downstream_context": {
+    "initial_history": "armed",
+    "normal_dimension_hint": null,
+    "observation_window": [
+      0.0,
+      40.0
+    ],
+    "r_in": 0.5,
+    "r_out": 0.9,
+    "rank_tolerance": 1e-10,
+    "reaction_scale": 1.0,
+    "response_winner": null
+  },
+  "schema_version": "cyz-brief-0018-source-registry-v1",
+  "source_draw": {
+    "constraint_method": "ambient-delta-exact-zero-pi",
+    "coordinate_units": "physical_length",
+    "fourier_cutoff_K": 2,
+    "source_family": "quadratic-finite-K-single-delta-liouville-zero-pi",
+    "string_tension": 1.25,
+    "total_transverse_momentum": [
+      1.0,
+      -0.5,
+      0.25,
+      0.0,
+      0.125,
+      -0.25,
+      0.375,
+      -0.125
+    ],
+    "transverse_axis_order": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "transverse_energy": 12.0,
+    "transverse_periods": [
+      19.0,
+      21.0,
+      23.0,
+      25.0,
+      27.0,
+      29.0,
+      31.0,
+      33.0
+    ],
+    "winding_cycle": 8,
+    "winding_length": 20.0,
+    "worldsheet_momenta": [
+      0.0,
+      0.0
+    ]
+  },
+  "source_seed": "464977c2453700d13f93e34cfa9076b7a9636efd0595f4fcc2fba0677cc1cc74",
+  "validity": {
+    "graph_upper_bound_max": 2.12,
+    "string_length_ell_s": 0.1,
+    "uv_product_max": 0.2
+  }
+}

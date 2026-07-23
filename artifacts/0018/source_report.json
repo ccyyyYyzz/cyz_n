@@ -1,0 +1,193 @@
+{
+  "audit_cell_id": "brief-0018-low-K-measure-audit-v1",
+  "checks": {
+    "all_energy_constraints": true,
+    "all_level_matching_constraints": true,
+    "all_samples_retained": true,
+    "all_target_momentum_constraints": true,
+    "downstream_and_validity_mutations_leave_draws_unchanged": true,
+    "exact_flow_energy_conservation": true,
+    "exact_flow_level_matching_conservation": true,
+    "gamma_means_in_familywise_intervals": true,
+    "hierarchical_beta_means_in_familywise_intervals": true,
+    "no_validity_redraw": true,
+    "torus_characters_in_familywise_intervals": true
+  },
+  "constraint_audit": {
+    "absolute_tolerance": "4.9999999999999997e-12",
+    "maximum_energy_residual": "5.3290705182007514e-15",
+    "maximum_flow_energy_drift": "3.5527136788005009e-15",
+    "maximum_flow_worldsheet_momentum_drift": "7.2164496600635175e-16",
+    "maximum_target_momentum_residual": "8.8817841970012523e-16",
+    "maximum_worldsheet_momentum_residual": "1.9984014443252818e-15"
+  },
+  "implementation": {
+    "code_inventory_normalized_lf_sha256": {
+      "README.md": "97c8a26aa138b353996f3bf194f99acfb19d3496ca758950397165e715e6af72",
+      "microcanonical_source.py": "721cf2cbc5e1211b86c8ad9d38368f23412f30e8b8cc76a5e74d906f542b3e6c",
+      "source_registry.json": "217d677612cb1366be6817b67b760230fc536b3c9d6020f4566d11988766d43a",
+      "test_microcanonical_source.py": "8c70d849706ae6fdb03637885a20ac2db042fa22c422696ea6e0173fa271db24"
+    },
+    "coefficient_stream_reads_only": [
+      "schema_version",
+      "source_seed",
+      "source_draw",
+      "sample_index",
+      "named substream label"
+    ],
+    "familywise_alpha": "9.9999999999999995e-07",
+    "prng_algorithm": "sha256-counter-open53-box-muller-integer-gamma-v1",
+    "python_implementation": "CPython",
+    "python_version": "3.11.5",
+    "sample_count": 512,
+    "third_party_dependencies": []
+  },
+  "radial_audit": {
+    "exact_means": [
+      "0.060606060606060608",
+      "0.46969696969696972",
+      "0.46969696969696972"
+    ],
+    "exact_moment_examples": {
+      "E_x0_squared": "0.0045228403437358664",
+      "E_x1_squared": "0.22433288104929897",
+      "E_x1_x2": "0.21732247851650838"
+    },
+    "familywise_hoeffding_half_width": "0.12616804737906337",
+    "gamma_empirical_means": [
+      "0.063619449841704215",
+      "0.46993465431274084",
+      "0.46644589584555496"
+    ],
+    "hierarchical_beta_empirical_means": [
+      "0.060901709101817088",
+      "0.4677961441097544",
+      "0.47130214678842847"
+    ],
+    "hostile_shapes_rejected_by_contract": [
+      [
+        4,
+        32,
+        32
+      ],
+      [
+        4,
+        16.0,
+        16.0
+      ],
+      [
+        4,
+        31.5,
+        31.5
+      ]
+    ]
+  },
+  "registered_theorem": {
+    "E_star": "11.98453125",
+    "density": "Gamma(sum alpha)/prod Gamma(alpha) * x0^(alpha0-1) x1^(alpha1-1) x2^(alpha2-1)",
+    "density_normalizer": "1.9537043961852304e+25",
+    "dirichlet_shape": [
+      4,
+      31,
+      31
+    ],
+    "full_canonical_shell_log_normalizer": "133.83734291004654",
+    "linear_jacobian_log_normalizer": "109.15894633464836",
+    "normalization_scope": "full value uses dP1 dP2 prod(dx dy dPi_x dPi_y), normalized Haar Q_relative, and the declared delta arguments",
+    "real_chiral_dimension_d": 32,
+    "reduced_shell_log_normalizer": "24.678396575398182"
+  },
+  "registry_canonical_sha256": "808124afe25cb2143ea30b0e7a69511543ae804e5cb9ca30831a98b094071a43",
+  "relative_centre_audit": {
+    "familywise_real_imaginary_half_width": "0.25981699133690117",
+    "first_character_rows": [
+      {
+        "axis": 0,
+        "imaginary": "-0.0045876896161408101",
+        "magnitude": "0.019356904253257114",
+        "real": "0.018805394073395994"
+      },
+      {
+        "axis": 1,
+        "imaginary": "0.010493325112253741",
+        "magnitude": "0.026045233057940619",
+        "real": "-0.023837875180707443"
+      },
+      {
+        "axis": 2,
+        "imaginary": "-0.0066479622780351898",
+        "magnitude": "0.060950980363409506",
+        "real": "-0.060587346903545398"
+      },
+      {
+        "axis": 3,
+        "imaginary": "0.0033107521940249963",
+        "magnitude": "0.058484608432385211",
+        "real": "0.058390824137009592"
+      },
+      {
+        "axis": 4,
+        "imaginary": "0.037470567281165282",
+        "magnitude": "0.052537694900426431",
+        "real": "-0.036826158815140619"
+      },
+      {
+        "axis": 5,
+        "imaginary": "-0.0088981306379386348",
+        "magnitude": "0.012847760708688013",
+        "real": "0.0092675901062727883"
+      },
+      {
+        "axis": 6,
+        "imaginary": "0.026968750196271141",
+        "magnitude": "0.029379753520996574",
+        "real": "-0.011655746642992713"
+      },
+      {
+        "axis": 7,
+        "imaginary": "-0.017241736872905197",
+        "magnitude": "0.01810757369572575",
+        "real": "0.0055323353795337059"
+      }
+    ],
+    "gauge_representative": "Q2=0,Q1=Q_relative",
+    "prior": "normalized Haar on the physical transverse torus"
+  },
+  "schema_version": "cyz-brief-0018-source-report-v1",
+  "scope": {
+    "claim": "exact direct sampler for the registered zero-level-matched quadratic finite-K ambient delta-Liouville source",
+    "does_not_implement": [
+      "event schema",
+      "first-entry or closest-approach solver",
+      "encounter rank or singular values",
+      "source-validity conditioning",
+      "physical early-universe F1 preparation",
+      "continuum or quantum string ensemble",
+      "3+1 selection, cone, signature, or time direction"
+    ]
+  },
+  "source_draw_sha256": "8b1ae10644d43bbab43a3197fc7cdba85571ded98dc7f98b672a7aca149e1417",
+  "source_state_fingerprints": [
+    "e3d63ff15e81a85b224485f96812dafb2e0a0d55510fb6765d81b4e103722c06",
+    "4ec03c526c0ab6bee8ebb20871f7d01ed26c6bd9767c3ff62664674dc59024dc",
+    "4de05afa75e64839375c762897bac6f9364df65de60c5f77aa1a0a3c3b48a918",
+    "7477ac311d4e5bc356a7dd2eca7db2923e22e0d84267e532725621c5eb40ba0e",
+    "745d735b2c4b366f70bf9a7b55991a2b963dbff3958a8d95a9e59b4cae54a944",
+    "5597e057f830f0bdca283527375622b94ec5778f9d2ff26fdd3670481bc69956",
+    "2c94f3f26d33b0fc5f5f230100e0dc1a0e082497be9202b79d24769ecd979616",
+    "044ff74b0ffbc220e20c3182f9121be0bb78515e190259b9bc459fb2872a47af",
+    "e3ce90e7f8018a2e518b7fb476adc2e944527fab4662fae6316423a0a019b9b7",
+    "41b240e3fa4ab70e6515820da5900276c707e3505b8a2c7f2e2f2c739892adfd",
+    "1c82ebf9f02c68ab9f0d6a6bd1c8c71d2dd67bba67ff32952342f3f34f3b2ed5",
+    "40b8ee906bb906bbedec6b6727fb18d78e4fec0a663c34d78c200afc29d31bad"
+  ],
+  "status": "PASS",
+  "validity_ledger": {
+    "conditioned_or_redrawn": false,
+    "invalid_samples_retained": true,
+    "predicate": "registered time-uniform analytic graph upper bound and k_max*ell_s threshold",
+    "source_invalid_count": 281,
+    "total_count": 512,
+    "valid_count": 231
+  }
+}
