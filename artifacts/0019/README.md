@@ -1,9 +1,10 @@
 # Brief 0019: first verifiable certificate foundation
 
-This directory is the first implementation layer of Brief 0019.  It closes
-the exact certificate-container mechanics that the later physical solver must
-use; it does **not** claim that the finite-\(K\) hysteretic world-sheet event
-problem is solved.
+This directory contains the Brief 0019 certificate foundation and the first
+source-bound physical branch.  It closes the exact container mechanics and,
+for preregistered source index 2, an exact closed-string finite-window
+no-entry certificate.  It does **not** claim that the population
+finite-\(K\) hysteretic world-sheet event problem is solved.
 
 The implemented foundation and its independent replay layer consist of:
 
@@ -327,6 +328,130 @@ rectangle; it must **not** be called a physical closed-string certificate.
 A symbolic-\(\pi\) closed-string lift, followed by an exact seam quotient,
 is the next gate.
 
+## Symbolic-\(\pi\) closed-string lift
+
+That gate is now closed by
+[`symbolic_pi_lift.py`](symbolic_pi_lift.py).  The old source coefficients
+and Brief 0018 hashes are retained, but the geometric realization receives
+its own version and problem hash.  The exact physical parameters are
+
+\[
+L_*=16\pi,\qquad T_F=\frac1{2\pi},\qquad
+M=T_FL_*=8,\qquad k_n=\frac n8 .
+\]
+
+With \(u_i=\sigma_i/L_*\in\mathbb R/\mathbb Z\) and
+\(\xi^w=X^w/L_*\), the target periods and metric are
+
+\[
+\Lambda=\operatorname{diag}(8,\ldots,8,1),\qquad
+G=\operatorname{diag}(1,\ldots,1,(16\pi)^2).
+\]
+
+The registered solver chart is \((u_1,u_2,t)\), with physical domain metric
+
+\[
+H=\operatorname{diag}((16\pi)^2,(16\pi)^2,1).
+\]
+
+Krawczyk calculations use the coordinate Jacobian in this chart.  Physical
+singular values use \(G^{1/2}JH^{-1/2}\).  Integer Fourier harmonics make the
+transverse embedding exactly periodic.  Under \(u_1\mapsto u_1+1\) and
+\(u_2\mapsto u_2+1\), the separation winding component and image index shift
+by \(+1\) and \(+1\), respectively; at the corner the shift is \(+2\).
+These are exact lattice reindexings, not numerical endpoint comparisons.
+
+The canonical commitments are
+
+```text
+lift registry       c80acb64eeeb3133dff4422fc798f5b75c6feb52cf32502888cac452e2d210a1
+closed problem      3bb6599f211c26d98ecba2077051ad9d0339daf96d580a6399cc5a1ba7f030e0
+lift fixture        8ab0bf7deca71d4a1d11f7656a2ee45dbe0766e4ca8ce886592559b080d24f9e
+```
+
+[`symbolic_pi_lift_replayer.py`](symbolic_pi_lift_replayer.py) independently
+rebuilds this registry and problem from the source-separated Brief 0018
+replay.  Its only project import is `source_binding_replayer`; it imports
+neither the lift generator, any Arb jet implementation nor any solver.
+It separately implements strict symbolic \(q\pi^e\) atoms, exact algebra,
+metrics, seam actions, time-window transport and coefficient binding.
+
+[`symbolic_source_measure_bridge.py`](symbolic_source_measure_bridge.py)
+checks the source-measure consequence rather than assuming it.  In the old
+binary64 generator, the rounded products are exactly
+
+\[
+\widehat M=8,\qquad \widehat k_1=\frac18,\qquad \widehat E_*=1.
+\]
+
+They equal the new exact values.  Therefore the registered radial
+Dirichlet factor \((4,15,15)\), the linear chiral Jacobian factor, the
+transverse Haar factor and every named random stream are unchanged.  The
+coefficient and latent-variable transports are identities with Jacobian one,
+so the analytic Brief 0018 unconditioned source law has
+Radon--Nikodym derivative one.  All 512 registered source states and their
+coefficient payloads are also identical under exact \(q\pi^0\) re-encoding.
+This is a source-law statement only: the physical embedding and its event
+pushforward are deliberately not asserted to be unchanged.
+
+## Quotient-safe source-2 finite-window no-entry certificate
+
+[`symbolic_physical_arb_jets.py`](symbolic_physical_arb_jets.py) evaluates
+the canonical closed problem with outward-rounded Arb arithmetic.  The
+public evaluator is fail-closed on the full problem hash, including source
+commitment, coefficients, lattice, metric and seam registry.
+
+[`symbolic_no_entry_solver.py`](symbolic_no_entry_solver.py) uses only the
+eight transverse components.  If one transverse coordinate is farther than
+\(1/2\) from every \(8\mathbb Z\) image on a box, then the full
+nine-dimensional target distance is greater than \(1/2\), independently of
+the winding image.  Since the target metric is block diagonal and the
+transverse block is \(I_8\), this is a rigorous lower-bound projection.
+Every owned half-open box is evaluated on its closed hull, and equality with
+the outer radius remains unresolved rather than being excluded.
+
+The deterministic quotient cover closes as
+
+```text
+nodes              259
+split nodes        129
+excluded leaves    130
+maximum depth        9
+unresolved leaves    0
+outcome              right_censored_no_entry
+```
+
+The axis witness counts are
+`[14, 66, 12, 10, 4, 0, 0, 24]`.  The complete registered time window is
+therefore outside the outer tube for source index 2 on the exact closed
+world-sheet quotient.  This supersedes the cut-open v1 lemma as the
+authoritative physical fixture result; the v1 files remain as a documented
+serialization-error control.
+
+```text
+solver registry    23e404021dcae9b4c75dca810feb404afe6786aa14280f0ae88b0fa4f24fcec5
+certificate        d2cd11d1f8fd1b3669d988f590ee619e9a7f5ee6af43b3a0671830abc69f7fe1
+solver report      a29941afbecca913f9b7bee6812b2590f8db733b7993053b7bbe05b1cd5a1817
+replayer report    48a2a888501cb084af4c3fc2e3277482e59e19c62057253eddb3d399fbebbcd4
+```
+
+[`symbolic_no_entry_replayer.py`](symbolic_no_entry_replayer.py) is the
+independent semantic verifier.  Its only project import is the independent
+symbolic lift replayer; it imports neither the certificate solver, the
+production symbolic jet evaluator nor the lift generator.  It reconstructs
+the registered source and \(q\pi^e\) problem, implements its own
+python-flint transverse evaluator, and re-evaluates every node on the fresh
+closed Arb hull.  At 192-bit precision it exactly reproduces every stored
+dyadic endpoint, the complete tree, root and certificate hashes.  Twenty-two
+resealed hostile mutations are rejected, while exact outer-radius contact is
+correctly left unresolved.  The same report hash and exact endpoints replay
+on the pinned Windows and WSL backends.
+
+Node budgets reserve every not-yet-created right sibling.  Consequently all
+legal odd budgets end in a complete binary partition whose remaining boxes
+are typed `unresolved`; budget exhaustion cannot raise an internal error or
+be relabelled as no-entry.
+
 ## Exact grammar
 
 A dyadic is serialized as
@@ -436,8 +561,18 @@ python artifacts/0019/physical_no_entry_solver.py --write
 python artifacts/0019/physical_no_entry_solver.py --check
 python artifacts/0019/physical_no_entry_replayer.py --write
 python artifacts/0019/physical_no_entry_replayer.py --check
+python artifacts/0019/symbolic_pi_lift.py --write
+python artifacts/0019/symbolic_pi_lift.py --check
+python artifacts/0019/symbolic_pi_lift_replayer.py --write
+python artifacts/0019/symbolic_pi_lift_replayer.py --check
+python artifacts/0019/symbolic_source_measure_bridge.py --write
+python artifacts/0019/symbolic_source_measure_bridge.py --check
+python artifacts/0019/symbolic_no_entry_solver.py --write
+python artifacts/0019/symbolic_no_entry_solver.py --check
+python artifacts/0019/symbolic_no_entry_replayer.py --write
+python artifacts/0019/symbolic_no_entry_replayer.py --check
 python -m unittest discover -s artifacts/0019 -p "test_*.py" -v
-python -m py_compile artifacts/0019/certified_solver_core.py artifacts/0019/certificate_replayer.py artifacts/0019/arb_interval_jets.py artifacts/0019/arb_krawczyk_control.py artifacts/0019/source_state_bridge.py artifacts/0019/source_binding_replayer.py artifacts/0019/physical_arb_jets.py artifacts/0019/physical_no_entry_solver.py artifacts/0019/physical_no_entry_replayer.py artifacts/0019/test_certified_solver_core.py artifacts/0019/test_certificate_replayer.py artifacts/0019/test_arb_interval_jets.py artifacts/0019/test_arb_krawczyk_control.py artifacts/0019/test_source_state_bridge.py artifacts/0019/test_source_binding_replayer.py artifacts/0019/test_physical_arb_jets.py artifacts/0019/test_physical_no_entry_solver.py artifacts/0019/test_physical_no_entry_replayer.py
+python -m py_compile artifacts/0019/certified_solver_core.py artifacts/0019/certificate_replayer.py artifacts/0019/arb_interval_jets.py artifacts/0019/arb_krawczyk_control.py artifacts/0019/source_state_bridge.py artifacts/0019/source_binding_replayer.py artifacts/0019/physical_arb_jets.py artifacts/0019/physical_no_entry_solver.py artifacts/0019/physical_no_entry_replayer.py artifacts/0019/symbolic_pi_lift.py artifacts/0019/symbolic_pi_lift_replayer.py artifacts/0019/symbolic_source_measure_bridge.py artifacts/0019/symbolic_physical_arb_jets.py artifacts/0019/symbolic_no_entry_solver.py artifacts/0019/symbolic_no_entry_replayer.py artifacts/0019/test_certified_solver_core.py artifacts/0019/test_certificate_replayer.py artifacts/0019/test_arb_interval_jets.py artifacts/0019/test_arb_krawczyk_control.py artifacts/0019/test_source_state_bridge.py artifacts/0019/test_source_binding_replayer.py artifacts/0019/test_physical_arb_jets.py artifacts/0019/test_physical_no_entry_solver.py artifacts/0019/test_physical_no_entry_replayer.py artifacts/0019/test_symbolic_pi_lift.py artifacts/0019/test_symbolic_pi_lift_replayer.py artifacts/0019/test_symbolic_source_measure_bridge.py artifacts/0019/test_symbolic_physical_arb_jets.py artifacts/0019/test_symbolic_no_entry_solver.py artifacts/0019/test_symbolic_no_entry_replayer.py
 ```
 
 The Arb commands require python-flint 0.9.0 on `PYTHONPATH` or in the active
@@ -477,11 +612,9 @@ substitution for an integer.
 
 The next implementation layers remain:
 
-- a symbolic-\(\pi\) physical closed-string lift and exact seam quotient,
-  replacing the present cut-open binary64-derived rectangular domain;
 - exhaustive first-entry subdivision around source-bound physical equations
-  for states not closed by the coordinate-strip lemma, using the demonstrated
-  three-equation Arb Krawczyk primitive;
+  for population states not closed by the transverse coordinate-strip lemma,
+  using the demonstrated three-equation Arb Krawczyk primitive;
 - singular-cluster and seam-aware certificates;
 - global spatial minimality, earlier-sublevel exclusion, root ordering and
   tie closure;
@@ -489,13 +622,12 @@ The next implementation layers remain:
 - exact recurrence-based `no_entry_proved`;
 - execution on the unconditioned Brief 0018 population.
 
-Accordingly, the permitted statement for this layer is only:
+Accordingly, the strongest permitted physical statement for this layer is:
 
-> For preregistered valid source index 2, an exact-dyadic, outward-rounded
-> Arb cover proves no outer-radius contact anywhere in the registered
-> cut-open finite half-open window, with 90 excluded leaves and no unresolved
-> leaf; the typed outcome is `right_censored_no_entry`.
+> For preregistered valid source index 2, a symbolic-\(\pi\), quotient-safe,
+> outward-rounded Arb cover proves no outer-radius contact anywhere in the
+> registered finite half-open time window, with 130 excluded leaves and no
+> unresolved leaf; the typed outcome is `right_censored_no_entry`.
 
-This is not an all-time statement, a population law, an exact seam quotient,
-or a \(3+1\) selection result.  Because the registered phase has
-\(kL_w-2\pi\ne0\), it is also not yet a physical closed-string certificate.
+This is not an all-time statement, a population law, a first-entry law for
+near-threshold states, or a \(3+1\) selection result.

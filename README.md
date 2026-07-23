@@ -38,7 +38,9 @@ working material that are intentionally absent here.
 ## Verifiable implementation artifacts
 
 - [`artifacts/0019/`](artifacts/0019/) contains the Brief 0019 exact
-  certificate foundation, its externally committed problem registry, and a
-  source-separated independent certificate replayer.  This is proof-container
-  infrastructure only; it does not close the physical nine-dimensional
-  solver, source population, or \(3+1\) selection claim.
+  certificate foundation, source-separated replay, and the first
+  source-bound physical result.  For registered source index 2, an exact
+  symbolic-\(\pi\) closed-string lift and an outward-rounded Arb cover prove
+  finite-window `right_censored_no_entry` on the true world-sheet quotient.
+  The unconditioned source population, near-threshold first-entry branches
+  and \(3+1\) selection dynamics remain open.

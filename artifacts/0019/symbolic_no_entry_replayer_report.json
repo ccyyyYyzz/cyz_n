@@ -1,0 +1,171 @@
+{
+  "checks": {
+    "all_leaf_intervals_ignored_then_recomputed": true,
+    "boundary_contact_not_excluded": true,
+    "certificate_registry_problem_and_lift_hashes_recomputed": true,
+    "default_259_129_130_depth9_zero_unresolved_replayed": true,
+    "exact_integer_harmonic_worldsheet_seams_replayed": true,
+    "exact_midpoint_split_and_closure_replayed": true,
+    "finite_window_right_censored_scope_only": true,
+    "flat_preorder_binary_partition_replayed": true,
+    "fresh_transverse_arb_enclosure_on_every_node": true,
+    "independent_source_and_symbolic_lift_replayed": true,
+    "reserved_node_unresolved_budget_semantics_replayed": true,
+    "root_half_open_quotient_domain_replayed": true,
+    "strict_empty_8Z_image_ranges_replayed": true,
+    "strict_float_free_certificate_replayed": true,
+    "winding_coordinate_and_metric_unused": true
+  },
+  "commitments": {
+    "all_time_no_entry_claimed": false,
+    "arb_backend": {
+      "arithmetic": "arb outward-rounded balls",
+      "flint": "3.6.0",
+      "precision_bits": 192,
+      "python_flint": "0.9.0"
+    },
+    "certificate_semantic_sha256": "d2cd11d1f8fd1b3669d988f590ee619e9a7f5ee6af43b3a0671830abc69f7fe1",
+    "closed_string_problem_semantic_sha256": "3bb6599f211c26d98ecba2077051ad9d0339daf96d580a6399cc5a1ba7f030e0",
+    "domain_topology": "u1,u2 exact mod-one quotient fundamental domain; finite half-open physical-time window",
+    "exact_worldsheet_quotient_claimed": true,
+    "excluded_leaves": 130,
+    "lift_fixture_semantic_sha256": "8ab0bf7deca71d4a1d11f7656a2ee45dbe0766e4ca8ce886592559b080d24f9e",
+    "lift_registry_semantic_sha256": "c80acb64eeeb3133dff4422fc798f5b75c6feb52cf32502888cac452e2d210a1",
+    "maximum_depth": 9,
+    "minimum_strict_coordinate_margin": {
+      "exponent": 165,
+      "numerator": 90250051903469636652327044857715730434391023271
+    },
+    "node_count": 259,
+    "outcome": "right_censored_no_entry",
+    "proof_evaluation": "fresh closed Arb hull on every node; stored intervals unused",
+    "quotient_safety": "one strict transverse coordinate gap excludes every full target-lattice image independently of winding",
+    "root_node_semantic_sha256": "78d1589b4049483b2865e434ef3b3227a576daee654be042c9cd63419474c636",
+    "scope": "registered_finite_closed_string_window_only",
+    "solver_registry_semantic_sha256": "23e404021dcae9b4c75dca810feb404afe6786aa14280f0ae88b0fa4f24fcec5",
+    "source_bridge_fixture_semantic_sha256": "5af600527155e1c1dbd68b8e531aa1a640e4ee2edb8317f46334ac6b219dee60",
+    "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+    "source_registry_canonical_sha256": "35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb",
+    "source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c",
+    "split_nodes": 129,
+    "transverse_axis_counts": [
+      14,
+      66,
+      12,
+      10,
+      4,
+      0,
+      0,
+      24
+    ],
+    "unresolved_leaves": 0,
+    "winding_axis_used": false,
+    "winding_image_used": false,
+    "winding_metric_used": false,
+    "worldsheet_seam": "integer harmonics make axes 0..7 exactly periodic mod one"
+  },
+  "failed_gates": [],
+  "hostile_controls": {
+    "axis_mutation_rejected": true,
+    "boundary_equality_not_excluded": true,
+    "closure_mutation_rejected": true,
+    "coefficient_mutation_lift_gate_rejected": true,
+    "deleted_leaf_rejected": true,
+    "fabricated_interval_rejected": true,
+    "false_self_hash_rejected": true,
+    "false_unresolved_complete_rejected": true,
+    "gap_or_overlap_rejected": true,
+    "metric_mutation_lift_gate_rejected": true,
+    "outcome_mutation_rejected": true,
+    "overlap_rejected": true,
+    "period_mutation_rejected": true,
+    "problem_hash_mutation_rejected": true,
+    "radius_mutation_rejected": true,
+    "registry_mutation_rejected": true,
+    "reordered_leaf_rejected": true,
+    "reordered_nodes_rejected": true,
+    "scope_mutation_rejected": true,
+    "seam_mutation_lift_gate_rejected": true,
+    "source_commitment_lift_gate_rejected": true,
+    "split_mutation_rejected": true
+  },
+  "independent_boundary": {
+    "forbidden_dynamic_mechanisms": [
+      "__import__",
+      "eval",
+      "exec",
+      "importlib"
+    ],
+    "forbidden_project_imports": [
+      "physical_arb_jets",
+      "physical_no_entry_replayer",
+      "physical_no_entry_solver",
+      "symbolic_no_entry_solver",
+      "symbolic_physical_arb_jets",
+      "symbolic_pi_lift"
+    ],
+    "lift_replayer_normalized_lf_sha256": "51ade5cf90ddf2f5925470e3275ba4dfd016f3dc252fa6d4fc9c4e88aea8cf12",
+    "only_project_import": "symbolic_pi_lift_replayer",
+    "transverse_evaluator": "local python-flint Arb implementation from independently rebuilt q*pi^e source coefficients"
+  },
+  "normalized_lf_inventory": [
+    {
+      "normalized_lf_sha256": "2944edc5668ad778c9d2158ad99bbd6133603873b93167cc8b90bf5f216f5742",
+      "path": "artifacts/0018/source_registry.json"
+    },
+    {
+      "normalized_lf_sha256": "3eadcc79d1e44990906da9ab0fcd3785f7153cde081aa48482b1b2a708649555",
+      "path": "artifacts/0019/source_state_bridge_fixture.json"
+    },
+    {
+      "normalized_lf_sha256": "86e4f959a2f1b2db063172baf342d1854bac143711177e2344656756233803d4",
+      "path": "artifacts/0019/source_binding_replayer.py"
+    },
+    {
+      "normalized_lf_sha256": "5e7c0ada6a6605165a6334a7e7a5ddaf4eb4de235bf51c933fb08b30061c0d67",
+      "path": "artifacts/0019/symbolic_pi_lift_fixture.json"
+    },
+    {
+      "normalized_lf_sha256": "51ade5cf90ddf2f5925470e3275ba4dfd016f3dc252fa6d4fc9c4e88aea8cf12",
+      "path": "artifacts/0019/symbolic_pi_lift_replayer.py"
+    },
+    {
+      "normalized_lf_sha256": "fec6467c11e749533cbaa9a330026972fd426c2b4940d88a5c28041751f66b3a",
+      "path": "artifacts/0019/symbolic_no_entry_certificate.json"
+    },
+    {
+      "normalized_lf_sha256": "4e1c06f40f15cc8e65cc2a123cc21c1d1e23e37c152c80cf6d8328edff207ecf",
+      "path": "artifacts/0019/symbolic_no_entry_replayer.py"
+    },
+    {
+      "normalized_lf_sha256": "a8110e788d6d65572d9c11dd6ef8a7af872b83bf1279c8cb117e718b8a645ba0",
+      "path": "artifacts/0019/test_symbolic_no_entry_replayer.py"
+    }
+  ],
+  "report_semantic_sha256": "48a2a888501cb084af4c3fc2e3277482e59e19c62057253eddb3d399fbebbcd4",
+  "schema_version": "cyz-brief-0019-symbolic-transverse-no-entry-replayer-report-v1",
+  "scope": {
+    "claim": "independent quotient-safe replay of fixed-index-2 finite-window transverse no-entry",
+    "does_not_claim": [
+      "all-time no-entry",
+      "a winding-coordinate exclusion",
+      "the all-512 source population law",
+      "dimension dynamics",
+      "3+1 selection"
+    ],
+    "logic": "a strict gap from every 8Z image in any transverse coordinate implies full metric distance greater than r_out regardless of the winding coordinate"
+  },
+  "status": "passed",
+  "validation_protocol": {
+    "cross_platform_requirement": "the same pins, exact dyadic endpoints, tree topology, hostile matrix, and report hash must replay unchanged",
+    "windows": {
+      "check_command": "python artifacts/0019/symbolic_no_entry_replayer.py --check",
+      "check_semantics": "freshly replay certificate and hostile controls, rebuild report, then require type-strict equality and its semantic self-hash",
+      "environment": "PYTHONPATH includes vendor/python_flint and artifacts/0019",
+      "registered_test_count": 22,
+      "required_check_status": "PASS",
+      "required_test_result": "OK",
+      "targeted_test_command": "python -m unittest discover -s artifacts/0019 -p test_symbolic_no_entry_replayer.py -v"
+    }
+  }
+}

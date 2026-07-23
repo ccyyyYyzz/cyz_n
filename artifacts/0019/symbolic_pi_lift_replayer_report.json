@@ -1,0 +1,100 @@
+{
+  "checks": {
+    "M_k_L_exact_identities_replayed": true,
+    "canonical_problem_rebuilt_without_generator": true,
+    "canonical_registry_rebuilt_without_generator": true,
+    "exact_seam_image_actions_replayed": true,
+    "independent_source_binding_replayed": true,
+    "pinned_registry_and_problem_hashes_recomputed": true,
+    "population_and_dimension_claims_withheld": true,
+    "registered_dyadic_time_window_replayed": true,
+    "source_coefficient_identity_replayed": true,
+    "strict_float_free_lift_json_replayed": true,
+    "strict_q_pi_power_atoms_replayed": true,
+    "target_and_domain_metrics_replayed": true
+  },
+  "commitments": {
+    "closed_string_problem_semantic_sha256": "3bb6599f211c26d98ecba2077051ad9d0339daf96d580a6399cc5a1ba7f030e0",
+    "exact_geometry": {
+      "L_star": "16*pi",
+      "T_F_times_L_star": "8",
+      "domain_metric": "diag(L_star^2,L_star^2,1)",
+      "mode_frequency_rule": "k_n=n/8",
+      "seam_shifts": {
+        "corner": 2,
+        "u1_plus_1": 1,
+        "u2_plus_1": 1
+      },
+      "winding_metric": "L_star^2"
+    },
+    "legacy_cut_open_problem_semantic_sha256": "1560b7df34dcec7dfa46a744d6bbb26424b6a1bf2ce3d2b94b80d308363660ca",
+    "lift_fixture_semantic_sha256": "8ab0bf7deca71d4a1d11f7656a2ee45dbe0766e4ca8ce886592559b080d24f9e",
+    "lift_registry_semantic_sha256": "c80acb64eeeb3133dff4422fc798f5b75c6feb52cf32502888cac452e2d210a1",
+    "source_binary64_state_semantic_sha256": "a4aca7850b9c110ae778387a3c9ba05f68c02566dcf533f2dacd6a75164e8303",
+    "source_bridge_fixture_semantic_sha256": "5af600527155e1c1dbd68b8e531aa1a640e4ee2edb8317f46334ac6b219dee60",
+    "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+    "source_exact_state_semantic_sha256": "10fd59b2684e051c44e9a277325e5f051ed1a6049ca8c57a5a2b03728a6f188b",
+    "source_registry_canonical_sha256": "35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb",
+    "source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c"
+  },
+  "failed_gates": [],
+  "hostile_controls": {
+    "atom_extra_key_rejected": true,
+    "atom_noncanonical_zero_rejected": true,
+    "binary64_pi_length_substitution_rejected": true,
+    "domain_metric_mutation_rejected": true,
+    "duplicate_json_key_rejected": true,
+    "lattice_period_mutation_rejected": true,
+    "mass_mutation_rejected": true,
+    "ordinary_json_float_rejected": true,
+    "orientation_mutation_rejected": true,
+    "registry_parameter_mutation_rejected": true,
+    "seam_action_deletion_rejected": true,
+    "seam_shift_mutation_rejected": true,
+    "source_coefficient_mutation_rejected": true,
+    "source_commitment_mutation_rejected": true,
+    "spatial_phase_mutation_rejected": true,
+    "symbolic_time_endpoint_rejected": true,
+    "target_metric_mutation_rejected": true,
+    "temporal_frequency_mutation_rejected": true
+  },
+  "normalized_lf_inventory": [
+    {
+      "normalized_lf_sha256": "86e4f959a2f1b2db063172baf342d1854bac143711177e2344656756233803d4",
+      "path": "artifacts/0019/source_binding_replayer.py"
+    },
+    {
+      "normalized_lf_sha256": "51ade5cf90ddf2f5925470e3275ba4dfd016f3dc252fa6d4fc9c4e88aea8cf12",
+      "path": "artifacts/0019/symbolic_pi_lift_replayer.py"
+    },
+    {
+      "normalized_lf_sha256": "c7d72301a6666eff0a5dc149c7ef9ebda239a8d5581f3b0075e6497700bfed2d",
+      "path": "artifacts/0019/test_symbolic_pi_lift_replayer.py"
+    },
+    {
+      "normalized_lf_sha256": "2944edc5668ad778c9d2158ad99bbd6133603873b93167cc8b90bf5f216f5742",
+      "path": "artifacts/0018/source_registry.json"
+    },
+    {
+      "normalized_lf_sha256": "3eadcc79d1e44990906da9ab0fcd3785f7153cde081aa48482b1b2a708649555",
+      "path": "artifacts/0019/source_state_bridge_fixture.json"
+    },
+    {
+      "normalized_lf_sha256": "5e7c0ada6a6605165a6334a7e7a5ddaf4eb4de235bf51c933fb08b30061c0d67",
+      "path": "artifacts/0019/symbolic_pi_lift_fixture.json"
+    }
+  ],
+  "report_semantic_sha256": "581b0c23f6b975a49672a3cf8f20ef5263dc6399ac6a4bf06bc28469f2bd1c71",
+  "schema_version": "cyz-brief-0019-independent-symbolic-pi-lift-replayer-report-v1",
+  "scope": {
+    "claim": "independent source-bound replay of the fixed-index symbolic-pi closed-string lift",
+    "does_not_claim": [
+      "finite-window entry or no-entry",
+      "population pushforward or Jacobian",
+      "population law",
+      "dimension dynamics",
+      "3+1 selection"
+    ]
+  },
+  "status": "passed"
+}

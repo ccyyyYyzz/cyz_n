@@ -279,11 +279,11 @@
       "path": "artifacts/0019/test_source_binding_replayer.py"
     },
     {
-      "normalized_lf_sha256": "51eb20894340f0072207e3167da40d2502cc366e3369a2678619d88122a22e73",
+      "normalized_lf_sha256": "6431209780ee100db00567d53817b9d4ad285b2a08d13f25f6e3ffd0a6291ce9",
       "path": "artifacts/0019/README.md"
     }
   ],
-  "report_semantic_sha256": "9d4b44ac4fee9ddb49333c9a9b6a66fc9e6b433093b6694e5de95b8eeff2185b",
+  "report_semantic_sha256": "3bc529c39ccb439c4dbc0ec8666686c425b875152d44f8039266685b39ac39a1",
   "schema_version": "cyz-brief-0019-independent-source-binding-report-v1",
   "scope": {
     "claim": "independent source-state binding replay for the fixed Brief 0018 indices 0, 1, and 2",

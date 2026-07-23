@@ -1,0 +1,68 @@
+{
+  "backend": {
+    "endpoint_encoding": "exact reduced dyadics from Arb lower/upper endpoints",
+    "evaluator": "symbolic_physical_arb_jets.evaluate_symbolic_physical_jets",
+    "fail_closed_problem_hash": "3bb6599f211c26d98ecba2077051ad9d0339daf96d580a6399cc5a1ba7f030e0",
+    "flint_version": "3.6.0",
+    "precision_bits": 192,
+    "python_flint_version": "0.9.0"
+  },
+  "certificate_schema_version": "cyz-brief-0019-symbolic-transverse-no-entry-certificate-v1",
+  "certificate_semantic_sha256": "d2cd11d1f8fd1b3669d988f590ee619e9a7f5ee6af43b3a0671830abc69f7fe1",
+  "claims": {
+    "all_time_no_entry": false,
+    "complete_registered_window_partition": true,
+    "dimension_selection": false,
+    "every_leaf_recomputed_on_closure_with_arb": true,
+    "exact_symbolic_pi_closed_string_lift": true,
+    "exact_worldsheet_quotient": true,
+    "finite_window_right_censoring_only": true,
+    "fixed_source_index": 2,
+    "population_law": false,
+    "proof_target_axes": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7
+    ],
+    "radius": {
+      "exponent": 1,
+      "numerator": 1
+    },
+    "strict_transverse_empty_image_ranges": true,
+    "transverse_period": {
+      "exponent": 0,
+      "numerator": 8
+    },
+    "winding_image_used": false,
+    "winding_metric_used": false
+  },
+  "closed_string_problem_semantic_sha256": "3bb6599f211c26d98ecba2077051ad9d0339daf96d580a6399cc5a1ba7f030e0",
+  "outcome": "right_censored_no_entry",
+  "report_id": "index2-symbolic-pi-transverse-no-entry-cover-report-v1",
+  "report_semantic_sha256": "a29941afbecca913f9b7bee6812b2590f8db733b7993053b7bbe05b1cd5a1817",
+  "schema_version": "cyz-brief-0019-symbolic-transverse-no-entry-report-v1",
+  "solver_registry_semantic_sha256": "23e404021dcae9b4c75dca810feb404afe6786aa14280f0ae88b0fa4f24fcec5",
+  "symbolic_lift_registry_semantic_sha256": "c80acb64eeeb3133dff4422fc798f5b75c6feb52cf32502888cac452e2d210a1",
+  "tree_summary": {
+    "excluded_leaves": 130,
+    "maximum_depth": 9,
+    "node_count": 259,
+    "split_nodes": 129,
+    "transverse_axis_counts": [
+      14,
+      66,
+      12,
+      10,
+      4,
+      0,
+      0,
+      24
+    ],
+    "unresolved_leaves": 0
+  }
+}

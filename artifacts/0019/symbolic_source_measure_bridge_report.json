@@ -1,0 +1,493 @@
+{
+  "analytic_source_law": {
+    "analytic_radon_nikodym_derivative_new_over_old": {
+      "denominator": 1,
+      "numerator": 1
+    },
+    "coefficient_transport": {
+      "jacobian": {
+        "denominator": 1,
+        "numerator": 1
+      },
+      "map": "identity on the underlying real coefficient; binary64 is re-encoded exactly as q*pi^0"
+    },
+    "conditioning": "none; invalid source states remain in the law",
+    "does_not_imply": [
+      "the physical embedding map is unchanged",
+      "the event pushforward is unchanged",
+      "entry or no-entry probabilities",
+      "a population event law",
+      "3+1 selection"
+    ],
+    "latent_random_variable_transport": {
+      "jacobian": {
+        "denominator": 1,
+        "numerator": 1
+      },
+      "map": "identity on every named deterministic stream variate"
+    },
+    "law_family": "quadratic-finite-K-single-delta-liouville-zero-pi",
+    "linear_chiral_factor": {
+      "new_exact_value": {
+        "denominator": 1,
+        "numerator": 1393796574908163946345982392040522594123776
+      },
+      "new_over_old": {
+        "denominator": 1,
+        "numerator": 1
+      },
+      "old_exact_value": {
+        "denominator": 1,
+        "numerator": 1393796574908163946345982392040522594123776
+      },
+      "parameter_dependence": [
+        "M",
+        "k_1"
+      ],
+      "registered_formula": "M^4 * product_m (4/k_m^2)^16"
+    },
+    "radial_factor": {
+      "dirichlet_shape": [
+        4,
+        15,
+        15
+      ],
+      "old_equals_new": true,
+      "parameter_dependence": [
+        "K",
+        "E_star"
+      ],
+      "simplex_scale_E_star": {
+        "denominator": 1,
+        "numerator": 1
+      }
+    },
+    "relative_centre_factor": {
+      "law": "normalized Haar on the eight transverse circles",
+      "periods_unchanged": true
+    },
+    "statement": "the analytic Brief 0018 source measure is identical before and after the symbolic-pi lift",
+    "unchanged_generator_inputs": {
+      "E": {
+        "denominator": 1,
+        "numerator": 2
+      },
+      "E_star": {
+        "denominator": 1,
+        "numerator": 1
+      },
+      "K": 1,
+      "M": {
+        "denominator": 1,
+        "numerator": 8
+      },
+      "P_total": [
+        {
+          "denominator": 1,
+          "numerator": 4
+        },
+        {
+          "denominator": 1,
+          "numerator": 4
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 0
+        }
+      ],
+      "k_1": {
+        "denominator": 8,
+        "numerator": 1
+      },
+      "portable_math_version": "decimal90-ln-sqrt-float64-fixed-taylor-sincos-v2",
+      "prng_algorithm": "sha256-counter-open52mid-decimal90-box-muller-integer-gamma-v2",
+      "source_seed": "464977c2453700d13f93e34cfa9076b7a9636efd0595f4fcc2fba0677cc1cc74",
+      "transverse_periods": [
+        {
+          "denominator": 1,
+          "numerator": 8
+        },
+        {
+          "denominator": 1,
+          "numerator": 8
+        },
+        {
+          "denominator": 1,
+          "numerator": 8
+        },
+        {
+          "denominator": 1,
+          "numerator": 8
+        },
+        {
+          "denominator": 1,
+          "numerator": 8
+        },
+        {
+          "denominator": 1,
+          "numerator": 8
+        },
+        {
+          "denominator": 1,
+          "numerator": 8
+        },
+        {
+          "denominator": 1,
+          "numerator": 8
+        }
+      ],
+      "winding_orientations": [
+        1,
+        -1
+      ]
+    }
+  },
+  "binary64_source_cell": {
+    "E": {
+      "exact_dyadic": {
+        "denominator": 1,
+        "numerator": 2
+      },
+      "hex": "0x1.0000000000000p+1"
+    },
+    "E_star": {
+      "exact_dyadic": {
+        "denominator": 1,
+        "numerator": 1
+      },
+      "hex": "0x1.0000000000000p+0"
+    },
+    "L_hat": {
+      "exact_dyadic": {
+        "denominator": 17592186044416,
+        "numerator": 884279719003555
+      },
+      "hex": "0x1.921fb54442d18p+5"
+    },
+    "M_equals_rounded_T_F_hat_times_L_hat": {
+      "exact_dyadic": {
+        "denominator": 1,
+        "numerator": 8
+      },
+      "hex": "0x1.0000000000000p+3"
+    },
+    "P_squared_portable_sum": {
+      "exact_dyadic": {
+        "denominator": 1,
+        "numerator": 32
+      },
+      "hex": "0x1.0000000000000p+5"
+    },
+    "P_total": [
+      {
+        "exact_dyadic": {
+          "denominator": 1,
+          "numerator": 4
+        },
+        "hex": "0x1.0000000000000p+2"
+      },
+      {
+        "exact_dyadic": {
+          "denominator": 1,
+          "numerator": 4
+        },
+        "hex": "0x1.0000000000000p+2"
+      },
+      {
+        "exact_dyadic": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "hex": "0x0.0p+0"
+      },
+      {
+        "exact_dyadic": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "hex": "0x0.0p+0"
+      },
+      {
+        "exact_dyadic": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "hex": "0x0.0p+0"
+      },
+      {
+        "exact_dyadic": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "hex": "0x0.0p+0"
+      },
+      {
+        "exact_dyadic": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "hex": "0x0.0p+0"
+      },
+      {
+        "exact_dyadic": {
+          "denominator": 1,
+          "numerator": 0
+        },
+        "hex": "0x0.0p+0"
+      }
+    ],
+    "T_F_hat": {
+      "exact_dyadic": {
+        "denominator": 36028797018963968,
+        "numerator": 5734161139222659
+      },
+      "hex": "0x1.45f306dc9c883p-3"
+    },
+    "k_1_equals_rounded_2_pi_hat_over_L_hat": {
+      "exact_dyadic": {
+        "denominator": 8,
+        "numerator": 1
+      },
+      "hex": "0x1.0000000000000p-3"
+    },
+    "portable_pi": {
+      "exact_dyadic": {
+        "denominator": 281474976710656,
+        "numerator": 884279719003555
+      },
+      "hex": "0x1.921fb54442d18p+1"
+    },
+    "rounding_model": "IEEE-754 binary64 round-to-nearest ties-to-even"
+  },
+  "bridge_algorithm": "fixed-index-and-analytic-source-measure-identity-v1",
+  "checks": {
+    "K_E_P_transverse_periods_orientations_seed_unchanged": true,
+    "all_512_coefficient_payloads_identity_transported": true,
+    "all_512_source_states_replayed": true,
+    "analytic_source_measure_ratio_is_1": true,
+    "coefficient_identity_jacobian_is_1": true,
+    "index_2_all_problem_carried_leaves_directly_compared": true,
+    "index_2_complete_source_payload_exactly_round_trips": true,
+    "latent_identity_jacobian_is_1": true,
+    "linear_chiral_jacobian_factor_is_identical": true,
+    "new_exact_E_star_is_1": true,
+    "new_exact_T_F_times_L_star_is_8": true,
+    "new_exact_k_1_is_one_eighth": true,
+    "old_binary64_E_star_is_exactly_1": true,
+    "old_binary64_M_is_exactly_8": true,
+    "old_binary64_k_1_is_exactly_one_eighth": true,
+    "physical_event_pushforward_claim_withheld": true,
+    "radial_dirichlet_factor_is_identical": true,
+    "resealed_index_2_coefficient_mutation_rejected": true,
+    "source_code_and_registry_are_pinned": true,
+    "source_draw_hash_independently_recomputed": true
+  },
+  "empirical_512_sequence": {
+    "all_binary64_coefficients_exactly_round_trip_q_pi_zero": true,
+    "claim": "finite registered sequence identity under deterministic coefficient transport",
+    "coefficient_payload_hash_sequence_sha256": "f07aae270a53f190ea2cd6c1955e50d61cee89e238b71c07e6d1b771019f5ce3",
+    "first_source_state_sha256": "bafc85014205bbdbb8156e059606a73a0c899911745f189a4ac4e0c90742670b",
+    "index_2_source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c",
+    "invalid_count_annotation": 229,
+    "last_source_state_sha256": "216dec2021caadbc6cd8f6848c2af3b20b219fc3e1d50701bb64186132d6be0c",
+    "sample_count": 512,
+    "sequence_kind": "registered unconditioned source indices 0 through 511",
+    "source_draw_bytes_changed": false,
+    "source_state_hash_sequence_sha256": "41dedf012c3e013043d38d8955614bcdce72418ba69aa56f3ce479c8fca10769",
+    "source_states_redrawn": false,
+    "symbolic_coefficient_transport_sequence_sha256": "43a8aab3471e00d42889f93c876fde5a14d8458e0f586c0fc18355f921429852",
+    "valid_count_annotation": 283,
+    "validity_conditioned_or_redrawn": false
+  },
+  "exact_symbolic_source_cell": {
+    "E": {
+      "denominator": 1,
+      "numerator": 2
+    },
+    "E_star": {
+      "denominator": 1,
+      "numerator": 1
+    },
+    "K": 1,
+    "L_star": {
+      "denominator": 1,
+      "numerator": 16,
+      "pi_exponent": 1
+    },
+    "M_equals_T_F_times_L_star": {
+      "denominator": 1,
+      "numerator": 8,
+      "pi_exponent": 0
+    },
+    "P_total": [
+      {
+        "denominator": 1,
+        "numerator": 4
+      },
+      {
+        "denominator": 1,
+        "numerator": 4
+      },
+      {
+        "denominator": 1,
+        "numerator": 0
+      },
+      {
+        "denominator": 1,
+        "numerator": 0
+      },
+      {
+        "denominator": 1,
+        "numerator": 0
+      },
+      {
+        "denominator": 1,
+        "numerator": 0
+      },
+      {
+        "denominator": 1,
+        "numerator": 0
+      },
+      {
+        "denominator": 1,
+        "numerator": 0
+      }
+    ],
+    "T_F": {
+      "denominator": 2,
+      "numerator": 1,
+      "pi_exponent": -1
+    },
+    "arithmetic": "exact rational times symbolic pi power",
+    "k_1": {
+      "denominator": 8,
+      "numerator": 1,
+      "pi_exponent": 0
+    },
+    "orientations": [
+      1,
+      -1
+    ],
+    "source_seed": "464977c2453700d13f93e34cfa9076b7a9636efd0595f4fcc2fba0677cc1cc74",
+    "transverse_periods": [
+      {
+        "denominator": 1,
+        "numerator": 8,
+        "pi_exponent": 0
+      },
+      {
+        "denominator": 1,
+        "numerator": 8,
+        "pi_exponent": 0
+      },
+      {
+        "denominator": 1,
+        "numerator": 8,
+        "pi_exponent": 0
+      },
+      {
+        "denominator": 1,
+        "numerator": 8,
+        "pi_exponent": 0
+      },
+      {
+        "denominator": 1,
+        "numerator": 8,
+        "pi_exponent": 0
+      },
+      {
+        "denominator": 1,
+        "numerator": 8,
+        "pi_exponent": 0
+      },
+      {
+        "denominator": 1,
+        "numerator": 8,
+        "pi_exponent": 0
+      },
+      {
+        "denominator": 1,
+        "numerator": 8,
+        "pi_exponent": 0
+      }
+    ]
+  },
+  "failed_gates": [],
+  "fixed_index_2_binding": {
+    "Q2_is_zero_gauge_representative": true,
+    "all_complete_source_payload_leaves_exactly_round_trip": true,
+    "all_problem_carried_leaves_type_strict_equal": true,
+    "claim": "direct fixed-index comparison of every one of the 98 source-carried closed-string problem atoms; all 109 source payload floats also round-trip exactly",
+    "complete_source_payload_float_leaf_count": 109,
+    "complete_symbolic_source_payload_semantic_sha256": "51448fad0fc225952b1016ab73e06a0b3cbec2510d7ccd14a9e771eef7713db0",
+    "energy_share_leaves_remain_source_law_metadata_not_problem_inputs": 3,
+    "problem_carried_q_pi_zero_atom_leaf_count": 98,
+    "problem_transport_projection_semantic_sha256": "deb44e6f85e643a3c286b0394379853f62c2dfa310f4ef3af8306adde17464df",
+    "relative_centre_gauge_Q_relative_equals_Q1": true,
+    "resealed_problem_coefficient_mutation_rejected": true,
+    "sample_index": 2,
+    "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+    "source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c"
+  },
+  "hostile_controls": {
+    "E_star_mutation_rejected": true,
+    "duplicate_json_key_rejected": true,
+    "empirical_sequence_mutation_rejected": true,
+    "event_law_overclaim_rejected": true,
+    "fixed_index_projection_mutation_rejected": true,
+    "identity_jacobian_mutation_rejected": true,
+    "new_length_mutation_rejected": true,
+    "old_mass_mutation_rejected": true,
+    "ordinary_report_float_rejected": true,
+    "resealed_problem_coefficient_mutation_rejected": true,
+    "seed_mutation_rejected": true
+  },
+  "provenance": {
+    "closed_string_problem_semantic_sha256": "3bb6599f211c26d98ecba2077051ad9d0339daf96d580a6399cc5a1ba7f030e0",
+    "lift_registry_semantic_sha256": "c80acb64eeeb3133dff4422fc798f5b75c6feb52cf32502888cac452e2d210a1",
+    "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+    "source_module_normalized_lf_sha256": "12bb5ea71cebac869cbb519d46dd3c531e74b982203270e349a807b32853719e",
+    "source_registry_canonical_sha256": "35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb",
+    "source_registry_normalized_lf_sha256": "2944edc5668ad778c9d2158ad99bbd6133603873b93167cc8b90bf5f216f5742",
+    "symbolic_lift_fixture_semantic_sha256": "8ab0bf7deca71d4a1d11f7656a2ee45dbe0766e4ca8ce886592559b080d24f9e"
+  },
+  "report_semantic_sha256": "447c14b5e6dcece857148481342e8cf5033d0c78d4593263fe27d3452989cf9e",
+  "schema_version": "cyz-brief-0019-symbolic-source-measure-bridge-report-v1",
+  "scope": {
+    "claim_boundary": [
+      "registered 512-sequence source identity",
+      "analytic Brief 0018 unconditioned source-law identity"
+    ],
+    "does_not_claim": [
+      "source validity conditioning",
+      "unchanged physical embedding",
+      "unchanged event pushforward",
+      "finite-window entry or no-entry",
+      "physical first-entry mass",
+      "population event law",
+      "dimension dynamics",
+      "3+1 selection"
+    ]
+  },
+  "status": "passed"
+}

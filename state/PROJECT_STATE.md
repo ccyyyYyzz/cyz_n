@@ -344,12 +344,52 @@ root coverage; strict outer overshoot is required before re-arming. A formal
 physical solver envelope is non-authoritative until the independent Brief
 0019 replayer reconstructs and accepts its functions and proof bundle.
 
-The active physical gate is therefore now the exhaustive 9D interval solver,
-not the source definition or record schema. Physical first-entry masses, the
-joint law of \((T,j,b,\ell,a,\sigma_3)\), the unconditioned finite-\(K\)
-population pushforward and all dimension-selection dynamics remain open. In
-particular, Brief 0018 does not yet supply a visible \(3+1\) basin, cone,
-signature or time direction.
+Brief 0019 now closes the no-entry branch for the first preregistered valid
+source, but not the population solver. The first implementation exposed a
+real serialization error: the old circumference was the exact dyadic
+\(16\,\operatorname{binary64}(\pi)\), while the Arb backend used mathematical
+trigonometric functions. Its endpoint jumps are nonzero, so the resulting
+179-node certificate is retained only as a cut-open strip lemma.
+
+The corrected geometric realization has its own hash and uses
+\[
+L_*=16\pi,\qquad T_F=(2\pi)^{-1},\qquad M=8,\qquad
+u_i=\sigma_i/L_*\in\mathbb R/\mathbb Z.
+\]
+The normalized target has periods \((8,\ldots,8,1)\), metric
+\(\operatorname{diag}(1,\ldots,1,(16\pi)^2)\), and exact seam image-index
+actions. The domain metric for physical singular values is
+\(\operatorname{diag}((16\pi)^2,(16\pi)^2,1)\). An independent lift replayer
+reconstructs the source, symbolic scalar algebra, metrics and seam actions
+without importing the lift generator or any jet/solver implementation.
+
+This lift does not alter the Brief 0018 source law. In the old registered
+binary64 generator, \(M=8\), \(k_1=1/8\) and \(E_*=1\) are already exact;
+they equal the new symbolic values. The radial Dirichlet factor, chiral
+linear Jacobian, transverse Haar law and named random streams are therefore
+identical. The analytic Radon--Nikodym derivative is one, and all 512
+registered coefficient payloads transport by the identity. This is not an
+event-pushforward identity because the physical embedding has changed.
+
+For source index 2, a quotient-safe transverse Arb cover now has 259 nodes,
+129 splits, 130 strict exclusion leaves, maximum depth nine and no unresolved
+leaf. Every leaf proves that at least one transverse coordinate is farther
+than \(1/2\) from every \(8\mathbb Z\) image; block diagonality then excludes
+the full target tube without using the winding image. The exact finite-window
+outcome is `right_censored_no_entry`. A source-separated replayer reconstructs
+the symbolic coefficients, Arb equations, all 259 boxes and every endpoint
+without importing the solver or production jet evaluator; its Windows and
+WSL replays agree exactly. This is not an all-time result and not a population
+probability.
+
+The active physical gate is now the unconditioned 512-source pushforward.
+Source-invalid mass must short-circuit, no-entry certificates must be retained,
+and every near-threshold remainder must pass to image-complete first-entry,
+earliest-order, seam/singularity and hysteretic outer-exit certification.
+Physical event masses, the joint law of
+\((T,j,b,\ell,a,\sigma_3)\), regulator sensitivity and all dimension-selection
+dynamics remain open. In particular, the current result supplies no visible
+\(3+1\) basin, cone, signature or time direction.
 
 The wavefront-kernel construction remains an independent physical validation
 route, not the primary definition. Numerical gaps are meaningful only relative
