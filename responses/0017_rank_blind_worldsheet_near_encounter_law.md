@@ -137,10 +137,24 @@ numerical law of \((T,j,b,\ell)\) remain unknown.
 - preservation of all exceptional mass;
 - opposite-winding rank identity;
 - stratified Borel normal field;
-- first-entry/closest-approach decomposition;
-- fixed-point coefficient \(\sqrt{\pi/2}/48\);
-- affine incoming-volume coefficient \(1/105\);
-- general Palm power-transfer formula.
+- first-entry/closest-approach decomposition.
+
+### `exact analytic control / conditional proposition`
+
+These statements are not theorems of the preregistered finite-\(K\) physical
+world-sheet law:
+
+- the coefficient \(\sqrt{\pi/2}/48\) is an exact theorem of the standardized
+  iid Gaussian fixed-point matrix control;
+- the coefficient \(1/105\) is an exact theorem of the strictly delimited
+  affine, isotropic, all-regular-root incoming-volume-biased control with no
+  survival tilt; and
+- the general Palm power-transfer formula is conditional on the stated regular
+  variation, integrability and normalization hypotheses.
+
+They are analytic audits of possible event tilts.  None is transferred to the
+microcanonical hysteretic first-entry law without its constraint-density,
+Jacobian, Morse/inward, armed-history and no-earlier-entry calculation.
 
 ### `new measurable closure`
 
@@ -193,7 +207,7 @@ nonlinear Nambu--Goto evolution remain outside this graph-sector model.
 At \(t=0\),
 
 \[
-Y_i^A=Q_i^A+\sum_{n=1}^K(x_{in}^A\cos k_n\sigma+y_{in}^A\sin k_n\sigma),
+Y_i^A(t=0,\sigma_i)=\sum_{n=1}^K(x_{in}^A\cos k_n\sigma_i+y_{in}^A\sin k_n\sigma_i),
 \]
 
 \[
@@ -546,13 +560,14 @@ python3 -m py_compile artifacts/0017/probe_0017.py artifacts/0017/test_probe_001
 python3 artifacts/0017/probe_0017.py --help
 python3 artifacts/0017/probe_0017.py --output artifacts/0017/analytic_controls.json
 python3 artifacts/0017/probe_0017.py --check --output artifacts/0017/analytic_controls.json
-cd artifacts/0017 && python3 -m unittest -v test_probe_0017.py
+python3 -m unittest discover -s artifacts/0017 -p "test_probe_0017.py" -v
 ```
 
 All exited zero; 12 tests passed.  A fresh copy of both Python files and the
 JSON report was converted to CRLF, then `py_compile`, `--help`, semantic
-`--check`, and all 12 tests again exited zero.  JSON checking uses parsed
-canonical semantics, not raw line endings.
+`--check`, and all 12 tests again exited zero.  JSON checking uses a
+duplicate-key-rejecting parser and type-strict canonical semantics, not raw
+line endings.
 
 Environment:
 
@@ -565,10 +580,10 @@ Hashes:
 
 ```text
 probe_0017.py normalized-LF SHA-256
-f1e8fa3cc406535db7a452b586a3b75c2bcabc5f2ed339ca00ed153e61cf04e3
+9dbde7bdea25f8495960d132c5bf1ea8901be1fb5c581095b282866747ac5ecf
 
 test_probe_0017.py normalized-LF SHA-256
-8ba5c4b7b3aad5e22bab0d5e364d6772040e377fad6b80173c487f2dba2e2554
+8079cef00596e573ccbb22831f0f316a3710b98f91b98f87ac50c2aa6a02bebf
 
 analytic_controls.json file SHA-256
 9e5a083f02d774f3437d67e343426162b11b0bf0d5f12715ad60f1eab2a788d3
