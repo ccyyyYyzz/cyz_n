@@ -1,0 +1,105 @@
+{
+  "audit_id": "audit-k1-v1",
+  "claim_class": "controlled numerical verification of one finite-K source implementation",
+  "derived_exact": {
+    "M_hex": "0x1.0000000000000p+3",
+    "alpha": [
+      4,
+      15,
+      15
+    ],
+    "alpha_sum": 34,
+    "d": 16,
+    "e_star_hex": "0x1.0000000000000p+0",
+    "injectivity_radius_hex": "0x1.0000000000000p+2",
+    "k_1_hex": "0x1.0000000000000p-3",
+    "k_max_ell_s_hex": "0x1.0000000000000p-3"
+  },
+  "non_source_registry": {
+    "event": {
+      "initial_history": "armed",
+      "r_in_hex": "0x1.0000000000000p-2",
+      "r_out_hex": "0x1.0000000000000p-1",
+      "t_0_hex": "0x0.0p+0",
+      "t_1_hex": "0x1.921fb54442d18p+5"
+    },
+    "validity": {
+      "ell_s_hex": "0x1.0000000000000p+0",
+      "epsilon_graph_hex": "0x1.8000000000000p-1",
+      "kappa_uv_hex": "0x1.0000000000000p-2"
+    }
+  },
+  "profiles": {
+    "fast": {
+      "authoritative": false,
+      "description": "deterministic structural/unit profile; it does not execute or claim the 514 statistical acceptances"
+    },
+    "full": {
+      "authoritative": true,
+      "chunk_size": 8192,
+      "flow_prefix_samples": 4096,
+      "full_source_samples": 262144,
+      "golden_replay_samples": 1024,
+      "radial_samples_each": 1048576,
+      "shape_mutation_samples_each": 1048576
+    }
+  },
+  "schema_version": "cyz-0018-stat-audit-registry-v1",
+  "source_draw_registry": {
+    "E_perp_hex": "0x1.0000000000000p+1",
+    "K": 1,
+    "L_w_hex": "0x1.921fb54442d18p+5",
+    "P_total_hex": [
+      "0x1.0000000000000p+2",
+      "0x1.0000000000000p+2",
+      "0x0.0p+0",
+      "0x0.0p+0",
+      "0x0.0p+0",
+      "0x0.0p+0",
+      "0x0.0p+0",
+      "0x0.0p+0"
+    ],
+    "T_F_hex": "0x1.45f306dc9c883p-3",
+    "level_matching": [
+      0,
+      0
+    ],
+    "prng": {
+      "algorithm": "numpy.random.PCG64DXSM",
+      "master_seed_text": "brief0018-source-audit-v1",
+      "uniform_map": "u52-midpoint-open",
+      "version": "pcg64dxsm-u52mid-exp-boxmuller-v1"
+    },
+    "torus_circumference_hex": [
+      "0x1.0000000000000p+3",
+      "0x1.0000000000000p+3",
+      "0x1.0000000000000p+3",
+      "0x1.0000000000000p+3",
+      "0x1.0000000000000p+3",
+      "0x1.0000000000000p+3",
+      "0x1.0000000000000p+3",
+      "0x1.0000000000000p+3",
+      "0x1.921fb54442d18p+5"
+    ],
+    "winding_axis_zero_based": 8,
+    "winding_orientations": [
+      1,
+      -1
+    ]
+  },
+  "statistical_contract": {
+    "familywise_alpha": "1e-8",
+    "ledger_size": 514,
+    "moment_max_total_degree": 4,
+    "multiple_testing": "Bonferroni with exact-null-variance two-sided Bernstein bounds",
+    "seeds_hex": {
+      "beta_radial": "f9d684d2cbc683d187447f0001ba16f6",
+      "full_source": "beae04640776578fb2ce0e0ebe967c3a",
+      "gamma_radial": "d797e56bf1073b6a73b1f70d8ec385d7",
+      "golden_replay": "df0a38bd02cee7f09d0ca0c992427a5c",
+      "mut_shape_d": "ca55712204226510e369683fa218a2c2",
+      "mut_shape_d_minus_half": "513bfc79a3676a25986792ac0ba211b6",
+      "mut_shape_half_d": "2b718ae0ed2f97bba254c2485d39b96b"
+    }
+  }
+}
