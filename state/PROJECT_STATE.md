@@ -1,6 +1,6 @@
 # Project state
 
-Updated: 2026-07-22
+Updated: 2026-07-23
 
 ## Central objective
 
@@ -193,16 +193,22 @@ The active problem is to originate the smallest dimension-variable dynamics
 that also supplies an anonymous multi-probe response interface and a
 loss-of-plateau prediction.
 
-Response 0010 has now fixed the correct all-rank comparison problem and the
-arbitrary-\(m\) continuum recollapse lemma.  Its stronger global no-go is not
-yet adopted: a nonzero Duhamel derivative proves score variation but not winner
-reversal, and the response cells themselves vary with the generator.  The
-current exact boundary is local score underdetermination inside a label-stable
-response region.  Brief 0011 requires either explicit source-compatible
-counter-completions with a replayed non-three winner or an honest retreat to
-that local theorem.  The finite residual state, augmented-operator orientation
-and noncircular response cells must also be closed before the hybrid is called
-complete.
+Response 0011 supplies an exact exchangeable six-state cycle in which one
+fixed, rank-unconditioned law has a rank-three average-occupancy winner at one
+common local reverse rate and a rank-two winner at another.  The endpoint
+scores and winner crossing are adopted as a finite architecture-level negative
+control.  They are not yet a physical source-family no-go: the cycle has not
+been embedded into the source-authorized geometry grid, work/reservoir ledger
+or reaction propensities, and its anonymous Green/relation replay remains an
+architecture.  Average occupancy is also not strict basin residence.
+
+The active bottleneck is therefore no longer another repair of the cycle.  It
+is one target-neutral marked encounter/recollision process defined before the
+response ranks: an absolute encounter clock, normalized impact and orientation
+marks, compactification dependence, finite history or a controlled renewal
+limit, reverse channels with an energy ledger, and a fixed exchangeable initial
+law.  Brief 0012 asks for that object and for a replay of entrant strict
+residence, retention and leakage across all ten ranks under one physical law.
 
 The wavefront-kernel construction remains an independent physical validation
 route, not the primary definition. Numerical gaps are meaningful only relative
