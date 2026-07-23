@@ -1,0 +1,908 @@
+{
+  "affine_closest_controls": {
+    "checks": {
+      "affine_declared_point_is_stationary": true,
+      "affine_hessian_is_delta_squared": true,
+      "complete_affine_kac_rice_scale_is_delta": true,
+      "constraint_zero_density_is_delta_inverse": true,
+      "pair_volume_is_delta": true,
+      "smin_is_linear_in_delta": true
+    },
+    "event_semantics": "all regular interior affine closest roots counted by local stationary Kac-Rice intensity",
+    "expected_smin_over_delta_limit": "0.80000000000000004",
+    "model": "In R4: J=[e1,e2,0.75 e2+delta e3], separation=(1/4)e4, and every second derivative of Phi is zero.",
+    "rows": [
+      {
+        "affine_closest_hessian_determinant": "0.010000000000000002",
+        "constraint_density_times_delta": "1",
+        "constraint_zero_density_scale": "10",
+        "delta": "0.10000000000000001",
+        "derived_hessian_matrix": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0.75"
+          ],
+          [
+            "0",
+            "0.75",
+            "0.57250000000000001"
+          ]
+        ],
+        "effective_kac_rice_scale": "0.10000000000000002",
+        "effective_scale_over_delta": "1.0000000000000002",
+        "gradient_Jt_s": [
+          "0",
+          "0",
+          "0"
+        ],
+        "hessian_over_delta_squared": "1",
+        "pair_smallest_singular_value": "0.079907622091718297",
+        "pair_volume_abs_q_wedge_u": "0.10000000000000001",
+        "pair_volume_over_delta": "1",
+        "smin_over_delta": "0.79907622091718289"
+      },
+      {
+        "affine_closest_hessian_determinant": "0.0001",
+        "constraint_density_times_delta": "1",
+        "constraint_zero_density_scale": "100",
+        "delta": "0.01",
+        "derived_hessian_matrix": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0.75"
+          ],
+          [
+            "0",
+            "0.75",
+            "0.56259999999999999"
+          ]
+        ],
+        "effective_kac_rice_scale": "0.01",
+        "effective_scale_over_delta": "1",
+        "gradient_Jt_s": [
+          "0",
+          "0",
+          "0"
+        ],
+        "hessian_over_delta_squared": "1",
+        "pair_smallest_singular_value": "0.0079999078378176838",
+        "pair_volume_abs_q_wedge_u": "0.01",
+        "pair_volume_over_delta": "1",
+        "smin_over_delta": "0.79999078378176836"
+      },
+      {
+        "affine_closest_hessian_determinant": "9.9999999999999995e-07",
+        "constraint_density_times_delta": "1",
+        "constraint_zero_density_scale": "1000",
+        "delta": "0.001",
+        "derived_hessian_matrix": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0.75"
+          ],
+          [
+            "0",
+            "0.75",
+            "0.56250100000000003"
+          ]
+        ],
+        "effective_kac_rice_scale": "0.001",
+        "effective_scale_over_delta": "1",
+        "gradient_Jt_s": [
+          "0",
+          "0",
+          "0"
+        ],
+        "hessian_over_delta_squared": "1",
+        "pair_smallest_singular_value": "0.00079999990783997813",
+        "pair_volume_abs_q_wedge_u": "0.001",
+        "pair_volume_over_delta": "1",
+        "smin_over_delta": "0.7999999078399781"
+      },
+      {
+        "affine_closest_hessian_determinant": "1e-08",
+        "constraint_density_times_delta": "1",
+        "constraint_zero_density_scale": "10000",
+        "delta": "0.0001",
+        "derived_hessian_matrix": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0.75"
+          ],
+          [
+            "0",
+            "0.75",
+            "0.56250001000000005"
+          ]
+        ],
+        "effective_kac_rice_scale": "0.0001",
+        "effective_scale_over_delta": "1",
+        "gradient_Jt_s": [
+          "0",
+          "0",
+          "0"
+        ],
+        "hessian_over_delta_squared": "1",
+        "pair_smallest_singular_value": "7.9999999907840017e-05",
+        "pair_volume_abs_q_wedge_u": "0.0001",
+        "pair_volume_over_delta": "1",
+        "smin_over_delta": "0.79999999907840014"
+      },
+      {
+        "affine_closest_hessian_determinant": "1.0000000000000002e-10",
+        "constraint_density_times_delta": "0.99999999999999989",
+        "constraint_zero_density_scale": "99999.999999999985",
+        "delta": "1.0000000000000001e-05",
+        "derived_hessian_matrix": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0.75"
+          ],
+          [
+            "0",
+            "0.75",
+            "0.56250000010000001"
+          ]
+        ],
+        "effective_kac_rice_scale": "1.0000000000000001e-05",
+        "effective_scale_over_delta": "1",
+        "gradient_Jt_s": [
+          "0",
+          "0",
+          "0"
+        ],
+        "hessian_over_delta_squared": "1",
+        "pair_smallest_singular_value": "7.9999999999078408e-06",
+        "pair_volume_abs_q_wedge_u": "1.0000000000000001e-05",
+        "pair_volume_over_delta": "1",
+        "smin_over_delta": "0.79999999999078397"
+      }
+    ],
+    "warning": "The Hessian determinant alone scales as delta^2.  The constraint-zero density scales as delta^-1, so their product and the incoming volume scale as delta."
+  },
+  "artifact": "cyz-brief-0017-analytic-tail-controls-v1",
+  "boundary": {
+    "curvature_warning": "The conditional exponent-6 counterexample applies only under its listed local closest-event Kac-Rice assumptions; it is neither a first-entry theorem nor a physical-worldsheet prediction.",
+    "does_not_implement_or_prove": [
+      "a finite-K Nambu-Goto or world-sheet sampler",
+      "coverage or uniqueness of all physical event roots",
+      "a physical first-entry, closest-event, or Palm law",
+      "a no-earlier, hysteresis, tie, or episode-selection kernel",
+      "a cutoff-uniform tail theorem",
+      "a source-derived positive singular-value margin",
+      "response-visible rank three or a 3+1 signature"
+    ],
+    "proves": [
+      "The fixed-point standard iid 8x2 Wishart hard-edge constant sqrt(pi/2)/48 and singular-value exponent 7.",
+      "The corresponding smallest-Gram-eigenvalue exponent 7/2.",
+      "For the declared pure volume-biased surrogate, the constant 1/105 and singular-value exponent 8.",
+      "Local affine and curvature-lifted Kac-Rice scaling identities in the explicitly declared controls.",
+      "The opposite-winding Gram identity and the distinction between first-entry (b=P_N s, possibly ell!=0) and interior closest approach (b=s, ell=0)."
+    ]
+  },
+  "checks": {
+    "all_declared_controls_pass": true
+  },
+  "curvature_lifted_conditional_counterexample": {
+    "checks": {
+      "conditional_effective_scale_is_delta_inverse": true,
+      "curvature_declared_point_is_stationary": true,
+      "curvature_hessian_formula_holds": true,
+      "curvature_lifts_hessian_to_positive_limit": true,
+      "curved_constraint_zero_density_is_delta_inverse": true
+    },
+    "conditional_tail_implication": "Only if p_g(0)|det Hessian| is the effective closest-event weight, the principal corank-one density is smooth, the Morse indicator has positive limiting mass, and no survival factor cancels it: W_eff~S^-1 changes the fixed-point exponent 7 to 6.",
+    "impact_radius_r": "0.25",
+    "local_map": "Phi_delta(x1,x2,t) = r e4 + x1 e1 + x2 e2 + delta t e3 + (t^2/2) e4",
+    "not_a_first_entry_claim": true,
+    "not_a_global_closest_selection_claim": true,
+    "rows": [
+      {
+        "constraint_density_times_delta": "1",
+        "constraint_zero_density_scale": "10",
+        "delta": "0.10000000000000001",
+        "derived_hessian_matrix": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0.26000000000000001"
+          ]
+        ],
+        "effective_kac_rice_scale": "2.6000000000000001",
+        "effective_scale_times_delta": "0.26000000000000001",
+        "gradient_Jt_s": [
+          "0",
+          "0",
+          "0"
+        ],
+        "hessian_minus_limit_over_delta_squared": "1.0000000000000007",
+        "kinematic_small_singular_scale": "0.10000000000000001",
+        "morse_hessian_determinant": "0.26000000000000001"
+      },
+      {
+        "constraint_density_times_delta": "1",
+        "constraint_zero_density_scale": "100",
+        "delta": "0.01",
+        "derived_hessian_matrix": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0.25009999999999999"
+          ]
+        ],
+        "effective_kac_rice_scale": "25.009999999999994",
+        "effective_scale_times_delta": "0.25009999999999993",
+        "gradient_Jt_s": [
+          "0",
+          "0",
+          "0"
+        ],
+        "hessian_minus_limit_over_delta_squared": "0.99999999999933475",
+        "kinematic_small_singular_scale": "0.01",
+        "morse_hessian_determinant": "0.25009999999999993"
+      },
+      {
+        "constraint_density_times_delta": "1",
+        "constraint_zero_density_scale": "1000",
+        "delta": "0.001",
+        "derived_hessian_matrix": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0.25000099999999997"
+          ]
+        ],
+        "effective_kac_rice_scale": "250.00099999999992",
+        "effective_scale_times_delta": "0.25000099999999992",
+        "gradient_Jt_s": [
+          "0",
+          "0",
+          "0"
+        ],
+        "hessian_minus_limit_over_delta_squared": "0.99999999991773336",
+        "kinematic_small_singular_scale": "0.001",
+        "morse_hessian_determinant": "0.25000099999999992"
+      },
+      {
+        "constraint_density_times_delta": "1",
+        "constraint_zero_density_scale": "10000",
+        "delta": "0.0001",
+        "derived_hessian_matrix": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0.25000000999999999"
+          ]
+        ],
+        "effective_kac_rice_scale": "2500.0001000000007",
+        "effective_scale_times_delta": "0.25000001000000005",
+        "gradient_Jt_s": [
+          "0",
+          "0",
+          "0"
+        ],
+        "hessian_minus_limit_over_delta_squared": "1.0000000050247593",
+        "kinematic_small_singular_scale": "0.0001",
+        "morse_hessian_determinant": "0.25000001000000005"
+      },
+      {
+        "constraint_density_times_delta": "0.99999999999999989",
+        "constraint_zero_density_scale": "99999.999999999985",
+        "delta": "1.0000000000000001e-05",
+        "derived_hessian_matrix": [
+          [
+            "1",
+            "0",
+            "0"
+          ],
+          [
+            "0",
+            "1",
+            "0"
+          ],
+          [
+            "0",
+            "0",
+            "0.25000000010000001"
+          ]
+        ],
+        "effective_kac_rice_scale": "25000.000009999996",
+        "effective_scale_times_delta": "0.25000000010000001",
+        "gradient_Jt_s": [
+          "0",
+          "0",
+          "0"
+        ],
+        "hessian_minus_limit_over_delta_squared": "1.0000000827403708",
+        "kinematic_small_singular_scale": "1.0000000000000001e-05",
+        "morse_hessian_determinant": "0.25000000010000001"
+      }
+    ]
+  },
+  "declarations": {
+    "event_reference_measure_requirement": "A complete event weight must include p_g(0), the root Jacobian, Morse/inward indicators, and any no-earlier survival/selection factor exactly once.",
+    "fixed_point_control": "B entries iid N(0,1), fixed material pair and fixed time, before event conditioning",
+    "pair_jet_shape": "8x2",
+    "tail_limit": "epsilon tends to zero at fixed covariance and fixed cutoff",
+    "transverse_dimension": 8,
+    "volume_palm_surrogate": "dP_wedge proportional to sqrt(det(B^T B)) dP"
+  },
+  "event_bundle_projection_controls": {
+    "checks": {
+      "closest_is_propagated_from_same_affine_entry_episode": true,
+      "closest_uses_b_equals_s_and_zero_ell": true,
+      "declared_event_jacobian_has_rank3": true,
+      "first_entry_has_unique_spatial_Morse_minimum": true,
+      "first_entry_is_fully_regular_in_declared_affine_control": true,
+      "first_entry_is_on_declared_boundary": true,
+      "first_entry_is_spatially_stationary_and_inward": true,
+      "first_entry_reconstructs_s_as_b_plus_ell": true,
+      "first_entry_uses_projected_b_and_nonzero_ell": true,
+      "normal_projector_basis_spans_im_J": true
+    },
+    "closest_approach": {
+      "b_equals_s": true,
+      "b_is_normal": true,
+      "ell_is_zero": true,
+      "impact_b": [
+        "0",
+        "0",
+        "0",
+        "3"
+      ],
+      "is_same_affine_episode_as_first_entry": true,
+      "longitudinal_phase_ell": [
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "separation_s": [
+        "0",
+        "0",
+        "0",
+        "3"
+      ],
+      "time_after_entry": "2"
+    },
+    "event_jacobian_columns": [
+      [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "1",
+        "0"
+      ]
+    ],
+    "event_jacobian_rank": 3,
+    "first_entry": {
+      "b_equals_s": false,
+      "b_is_normal": true,
+      "boundary_equation_F_equals_r_squared_over_2": true,
+      "ell_is_nonzero": true,
+      "entry_radius": "3.6055512754639891",
+      "entry_radius_squared": "13",
+      "impact_b_equals_P_N_s": [
+        "0",
+        "0",
+        "0",
+        "3"
+      ],
+      "inward_crossing_is_regular": true,
+      "inward_flux_minus_s_dot_u": "2",
+      "longitudinal_phase_ell": [
+        "0",
+        "0",
+        "-2",
+        "0"
+      ],
+      "reconstruction_holds": true,
+      "s_is_stationary_in_material_coordinates": true,
+      "separation_s": [
+        "0",
+        "0",
+        "-2",
+        "3"
+      ],
+      "spatial_F_hessian": [
+        [
+          "1",
+          "0"
+        ],
+        [
+          "0",
+          "1"
+        ]
+      ],
+      "spatial_hessian_is_positive_definite": true,
+      "unique_spatial_minimizer": true
+    },
+    "jacobian_column_roles": [
+      "first material tangent",
+      "negative second material tangent",
+      "relative time velocity"
+    ],
+    "local_affine_map": "Phi(x1,x2,t)=s+x1 e1+x2 e2+t e3 at the declared entry root",
+    "normal_projector_diag": [
+      "0",
+      "0",
+      "0",
+      "1"
+    ]
+  },
+  "opposite_winding_rank_identity": {
+    "checks": {
+      "collinear_control_has_pair_rank1_and_encounter_rank2": true,
+      "exact_straight_p1_p2_zero_control_has_rank2": true,
+      "excited_q_zero_control_has_rank2": true,
+      "generic_control_has_pair_rank2_and_encounter_rank3": true,
+      "near_degenerate_sequence_is_exact_rank3": true,
+      "near_degenerate_smin_is_linear_in_delta": true,
+      "opposite_winding_identity_holds": true
+    },
+    "controls": [
+      {
+        "absolute_residual": "1.1102230246251565e-16",
+        "det_JtJ": "0.87320750000000014",
+        "encounter_rank": 3,
+        "identity_holds": true,
+        "identity_right_hand_side": "0.87320750000000003",
+        "name": "generic_excited_opposite_winding_rank3",
+        "p1": [
+          "0.20000000000000001",
+          "-0.10000000000000001",
+          "0.29999999999999999",
+          "0.050000000000000003",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "p1_wedge_q_wedge_u_squared": "0.10830750000000003",
+        "p2": [
+          "0.49999999999999994",
+          "0.30000000000000004",
+          "-0.69999999999999996",
+          "0.050000000000000003",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "pair_rank": 2,
+        "q_equals_p1_plus_p2": [
+          "0.69999999999999996",
+          "0.20000000000000001",
+          "-0.40000000000000002",
+          "0.10000000000000001",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "q_wedge_u_squared": "0.76490000000000002",
+        "relative_velocity_u": [
+          "-0.10000000000000001",
+          "0.90000000000000002",
+          "0.5",
+          "-0.20000000000000001",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "absolute_residual": "0",
+        "det_JtJ": "0",
+        "encounter_rank": 2,
+        "identity_holds": true,
+        "identity_right_hand_side": "0",
+        "name": "collinear_pair_rank2",
+        "p1": [
+          "0.20000000000000001",
+          "-0.10000000000000001",
+          "0.29999999999999999",
+          "0.050000000000000003",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "p1_wedge_q_wedge_u_squared": "0",
+        "p2": [
+          "0.49999999999999994",
+          "0.30000000000000004",
+          "-0.69999999999999996",
+          "0.050000000000000003",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "pair_rank": 1,
+        "q_equals_p1_plus_p2": [
+          "0.69999999999999996",
+          "0.20000000000000001",
+          "-0.40000000000000002",
+          "0.10000000000000001",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "q_wedge_u_squared": "0",
+        "relative_velocity_u": [
+          "1.3999999999999999",
+          "0.40000000000000002",
+          "-0.80000000000000004",
+          "0.20000000000000001",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "absolute_residual": "0",
+        "det_JtJ": "0",
+        "encounter_rank": 2,
+        "identity_holds": true,
+        "identity_right_hand_side": "0",
+        "name": "exact_straight_p1_p2_zero_rank2",
+        "p1": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "p1_wedge_q_wedge_u_squared": "0",
+        "p2": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "pair_rank": 1,
+        "q_equals_p1_plus_p2": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "q_wedge_u_squared": "0",
+        "relative_velocity_u": [
+          "0",
+          "1",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      },
+      {
+        "absolute_residual": "0",
+        "det_JtJ": "0",
+        "encounter_rank": 2,
+        "identity_holds": true,
+        "identity_right_hand_side": "0",
+        "name": "excited_but_q_zero_rank2",
+        "p1": [
+          "0",
+          "0.25",
+          "-0.10000000000000001",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "p1_wedge_q_wedge_u_squared": "0",
+        "p2": [
+          "0",
+          "-0.25",
+          "0.10000000000000001",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "pair_rank": 1,
+        "q_equals_p1_plus_p2": [
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ],
+        "q_wedge_u_squared": "0",
+        "relative_velocity_u": [
+          "0.29999999999999999",
+          "0",
+          "0.40000000000000002",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0"
+        ]
+      }
+    ],
+    "identity": "det(J^T J) = |q wedge u|^2 + |p1 wedge q wedge u|^2 for J~[e1+p1,-q,u]",
+    "near_degenerate_exact_rank3_sequence": {
+      "expected_smin_over_delta_limit": "0.80000000000000004",
+      "q": [
+        "1",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0",
+        "0"
+      ],
+      "rows": [
+        {
+          "delta": "0.10000000000000001",
+          "exact_encounter_rank_from_positive_minor": 3,
+          "numerical_encounter_rank": 3,
+          "pair_smallest_singular_value": "0.079907622091718297",
+          "positive_Gram_determinant_delta_squared": "0.010000000000000002",
+          "smin_over_delta": "0.79907622091718289"
+        },
+        {
+          "delta": "0.01",
+          "exact_encounter_rank_from_positive_minor": 3,
+          "numerical_encounter_rank": 3,
+          "pair_smallest_singular_value": "0.0079999078378176838",
+          "positive_Gram_determinant_delta_squared": "0.0001",
+          "smin_over_delta": "0.79999078378176836"
+        },
+        {
+          "delta": "0.001",
+          "exact_encounter_rank_from_positive_minor": 3,
+          "numerical_encounter_rank": 3,
+          "pair_smallest_singular_value": "0.00079999990783997813",
+          "positive_Gram_determinant_delta_squared": "9.9999999999999995e-07",
+          "smin_over_delta": "0.7999999078399781"
+        },
+        {
+          "delta": "0.0001",
+          "exact_encounter_rank_from_positive_minor": 3,
+          "numerical_encounter_rank": 3,
+          "pair_smallest_singular_value": "7.9999999907840017e-05",
+          "positive_Gram_determinant_delta_squared": "1e-08",
+          "smin_over_delta": "0.79999999907840014"
+        },
+        {
+          "delta": "1.0000000000000001e-05",
+          "exact_encounter_rank_from_positive_minor": 3,
+          "numerical_encounter_rank": 3,
+          "pair_smallest_singular_value": "7.9999999999078408e-06",
+          "positive_Gram_determinant_delta_squared": "1.0000000000000002e-10",
+          "smin_over_delta": "0.79999999999078397"
+        }
+      ],
+      "u": "0.75 q + delta e2"
+    }
+  },
+  "status": "PASS",
+  "unique_curved_rank2_control": {
+    "F_gradient_at_event": [
+      "0",
+      "0",
+      "0"
+    ],
+    "F_hessian_diag_at_event": [
+      "1",
+      "1",
+      "0.25"
+    ],
+    "checks": {
+      "curvature_not_linear_rank_lifts_the_minimum": true,
+      "unique_curved_control_has_rank2": true,
+      "unique_curved_rank2_control_is_morse": true
+    },
+    "event_point": [
+      "0",
+      "0",
+      "0"
+    ],
+    "global_uniqueness_reason": "F=0.5[x1^2+x2^2+(r+t^2/2)^2] is strictly larger away from (0,0,0) when r>0.",
+    "hessian_is_positive_definite": true,
+    "jacobian_columns": [
+      [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "1",
+        "0",
+        "0"
+      ],
+      [
+        "0",
+        "0",
+        "0",
+        "0"
+      ]
+    ],
+    "kinematic_rank": 2,
+    "map": "Phi(x1,x2,t)=r e4+x1 e1+x2 e2+(t^2/2)e4, r=1/4",
+    "unique_strict_minimum": true
+  },
+  "wishart_tail_controls": {
+    "checks": {
+      "expected_standard_pair_volume_is_7": true,
+      "fixed_point_constant_converges": true,
+      "fixed_point_gram_exponent_converges_to_7_over_2": true,
+      "fixed_point_leading_density_gives_declared_constant": true,
+      "fixed_point_singular_exponent_converges_to_7": true,
+      "ordered_wishart_normalization_constant_is_1_over_2880": true,
+      "volume_leading_density_gives_declared_constant": true,
+      "volume_palm_constant_converges": true,
+      "volume_palm_singular_exponent_converges_to_8": true
+    },
+    "epsilon_grid": [
+      "0.5",
+      "0.25",
+      "0.125",
+      "0.0625"
+    ],
+    "expected_standard_pair_volume": "7",
+    "fixed_point_constant_decimal": "0.026110711194072919",
+    "fixed_point_constant_exact": "sqrt(pi/2)/48",
+    "fixed_point_constant_from_density_leading_term": "0.026110711194072923",
+    "fixed_point_gram_eigenvalue_exponent": "7/2",
+    "fixed_point_singular_exponent": "7",
+    "rows": [
+      {
+        "epsilon": "0.5",
+        "fixed_point_cdf": "0.00018002051751939499",
+        "fixed_point_ratio_cdf_over_epsilon7": "0.023042626242482558",
+        "gram_threshold_x": "0.25",
+        "volume_palm_cdf": "3.2830986831080098e-05",
+        "volume_palm_ratio_cdf_over_epsilon8": "0.008404732628756505"
+      },
+      {
+        "epsilon": "0.25",
+        "fixed_point_cdf": "1.5446392257784407e-06",
+        "fixed_point_local_gram_exponent": "3.4323738102133352",
+        "fixed_point_local_singular_exponent": "6.8647476204266704",
+        "fixed_point_ratio_cdf_over_epsilon7": "0.025307369075153973",
+        "gram_threshold_x": "0.0625",
+        "volume_palm_cdf": "1.4085071883467532e-07",
+        "volume_palm_local_singular_exponent": "7.8647473781884498",
+        "volume_palm_ratio_cdf_over_epsilon8": "0.009230792709549282"
+      },
+      {
+        "epsilon": "0.125",
+        "fixed_point_cdf": "1.235366631866053e-08",
+        "fixed_point_local_gram_exponent": "3.4830934177753461",
+        "fixed_point_local_singular_exponent": "6.9661868355506922",
+        "fixed_point_ratio_cdf_over_epsilon7": "0.025907516027511568",
+        "gram_threshold_x": "0.015625",
+        "volume_palm_cdf": "5.6324569285498661e-10",
+        "volume_palm_local_singular_exponent": "7.966186835018326",
+        "volume_palm_ratio_cdf_over_epsilon8": "0.0094496946500977671"
+      },
+      {
+        "epsilon": "0.0625",
+        "fixed_point_cdf": "9.7080184076329363e-11",
+        "fixed_point_local_gram_exponent": "3.4957733543729601",
+        "fixed_point_local_singular_exponent": "6.9915467087459202",
+        "fixed_point_ratio_cdf_over_epsilon7": "0.026059763481093411",
+        "gram_threshold_x": "0.00390625",
+        "volume_palm_cdf": "2.2131080009829443e-12",
+        "volume_palm_local_singular_exponent": "7.99154670874485",
+        "volume_palm_ratio_cdf_over_epsilon8": "0.0095052264867376817"
+      }
+    ],
+    "volume_palm_constant_decimal": "0.0095238095238095247",
+    "volume_palm_constant_exact": "1/105",
+    "volume_palm_constant_from_density_leading_term": "0.0095238095238095229",
+    "volume_palm_singular_exponent": "8"
+  }
+}
