@@ -1,0 +1,604 @@
+{
+  "alphabets": {
+    "cemetery_reasons": [
+      "velocity",
+      "coupling_dilution",
+      "geometry",
+      "unresolved_amplitude"
+    ],
+    "channel_kinds": [
+      "annihilate",
+      "miss",
+      "proposed_reverse_create",
+      "reverse_idle",
+      "source_invalid",
+      "killed_absorb"
+    ],
+    "histories": [
+      "none",
+      "central",
+      "shell"
+    ],
+    "source_cases": [
+      "valid",
+      "velocity",
+      "coupling_dilution",
+      "geometry",
+      "unresolved_amplitude"
+    ],
+    "state_classes": [
+      "P",
+      "A",
+      "K",
+      "KC"
+    ]
+  },
+  "channel_rule": {
+    "accepted_non_null": [
+      "annihilate",
+      "proposed_reverse_create"
+    ],
+    "epistemic_exit": "source_invalid",
+    "invalid_present": [
+      "source_invalid"
+    ],
+    "killed": [
+      "killed_absorb"
+    ],
+    "null_history_channels": [
+      "miss",
+      "reverse_idle"
+    ],
+    "valid_present": [
+      "annihilate",
+      "miss"
+    ],
+    "valid_products": [
+      "proposed_reverse_create",
+      "reverse_idle"
+    ]
+  },
+  "classification": "GKM-scheduled, proposed sparse impact closure",
+  "constructor_program": [
+    {
+      "id": "frames",
+      "inputs": [
+        "direction_set",
+        "frame_arity"
+      ],
+      "op": "enumerate_ordered_distinct_frames",
+      "params": {}
+    },
+    {
+      "id": "candidate_marks",
+      "inputs": [
+        "frames",
+        "metric_radii",
+        "self_dual_radius"
+      ],
+      "op": "construct_frame_local_marks",
+      "params": {}
+    },
+    {
+      "id": "source_cases",
+      "inputs": [
+        "frames",
+        "candidate_marks",
+        "metric_radii",
+        "relative_speed",
+        "speed_min",
+        "speed_max",
+        "coupling",
+        "coupling_max",
+        "dilute_flag",
+        "amplitude_status"
+      ],
+      "op": "evaluate_source_validity",
+      "params": {}
+    },
+    {
+      "id": "states",
+      "inputs": [
+        "frames",
+        "candidate_marks",
+        "source_cases",
+        "histories",
+        "cemetery_reasons"
+      ],
+      "op": "construct_physical_and_killed_states",
+      "params": {}
+    },
+    {
+      "id": "schedules",
+      "inputs": [
+        "states",
+        "frames",
+        "metric_radii",
+        "separation_fraction",
+        "relative_speed"
+      ],
+      "op": "construct_deterministic_schedules",
+      "params": {}
+    },
+    {
+      "id": "events",
+      "inputs": [
+        "states",
+        "candidate_marks",
+        "source_cases",
+        "proposed_reverse_ratio"
+      ],
+      "op": "construct_complete_event_rows",
+      "params": {}
+    },
+    {
+      "id": "initial_law",
+      "inputs": [
+        "states"
+      ],
+      "op": "construct_exchangeable_initial_law",
+      "params": {}
+    },
+    {
+      "id": "s9_actions",
+      "inputs": [
+        "states",
+        "candidate_marks",
+        "schedules",
+        "events",
+        "adjacent_generators"
+      ],
+      "op": "construct_adjacent_s9_actions",
+      "params": {}
+    }
+  ],
+  "ctmc_export": "forbidden",
+  "destination_rule": {
+    "annihilate": "matching_products_state",
+    "killed_absorb": "identity",
+    "miss": "present_state_with_history_equal_mark_class",
+    "proposed_reverse_create": "matching_preannihilation_present_state",
+    "reverse_idle": "identity",
+    "source_invalid": "projection_preserving_killed_lift"
+  },
+  "direction_set": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "forbidden_capabilities": [
+    "environment_read",
+    "file_read",
+    "network_read",
+    "free_form_rule",
+    "unregistered_global",
+    "post_classifier_override",
+    "response_rank_input",
+    "visible_count_input",
+    "active_mask_input",
+    "instance_label_branch",
+    "count_if",
+    "count_alias",
+    "special_cardinality_lookup"
+  ],
+  "frame_prior": {
+    "arity_input": "frame_arity",
+    "enumeration": "ordered_distinct_roles",
+    "maximum_arity": 4,
+    "minimum_arity": 2,
+    "role_catalog": [
+      "winding_axis",
+      "velocity_axis",
+      "interaction_role_2",
+      "interaction_role_3"
+    ],
+    "status": "proposed_microscopic_closure_parameter",
+    "velocity_role_index": 1
+  },
+  "history_rule": {
+    "annihilate": "products_state_retains_preannihilation_history_and_mark",
+    "killed_absorb": "preserve_history",
+    "miss": "replace_history_by_mark_class",
+    "reverse": "restore_preannihilation_history",
+    "source_invalid": "preserve_history"
+  },
+  "initial_law": {
+    "exchangeability": "simultaneous_direction_permutation",
+    "excluded_status": [
+      "killed",
+      "catalog_killed"
+    ],
+    "kind": "uniform_positive_on_all_physical_event_epoch_states",
+    "rank_unconditioned": true
+  },
+  "input_schema": {
+    "allowed_fields": {
+      "amplitude_status": "enum[valid,unresolved]",
+      "coupling": "nonnegative_fraction",
+      "coupling_max": "nonnegative_fraction",
+      "dilute_flag": "bool",
+      "frame_arity": "integer[2,4]",
+      "metric_radii": "tuple[9,fraction]",
+      "proposed_reverse_ratio": "fraction[0,1]",
+      "relative_speed": "positive_fraction",
+      "self_dual_radius": "positive_fraction",
+      "separation_fraction": "positive_fraction",
+      "source_registry_id": "enum[gkm_sparse_v1]",
+      "speed_max": "positive_fraction",
+      "speed_min": "positive_fraction"
+    },
+    "forbidden_fields": [
+      "rank",
+      "target_rank",
+      "visible_count",
+      "active_mask",
+      "response_cell",
+      "pole_band",
+      "dimension_label",
+      "large_direction_count",
+      "instance_label_branch"
+    ]
+  },
+  "ledger_rule": {
+    "annihilate": {
+      "delta_global_charge_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "delta_reservoir_energy": "2/1",
+      "delta_system_energy": "-2/1",
+      "delta_work_energy": "0/1"
+    },
+    "killed_absorb": "zero_ledger_projection_preserving",
+    "null": {
+      "delta_global_charge_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "delta_reservoir_energy": "0/1",
+      "delta_system_energy": "0/1",
+      "delta_work_energy": "0/1"
+    },
+    "proposed_reverse_create": {
+      "delta_global_charge_vector": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "delta_reservoir_energy": "-2/1",
+      "delta_system_energy": "2/1",
+      "delta_work_energy": "0/1"
+    },
+    "source_invalid": "zero_ledger_projection_preserving_epistemic_exit"
+  },
+  "mark_rule": {
+    "cemetery_mark_prefix": "CEM",
+    "impact_axis_predicate": "radius_strictly_gt_self_dual",
+    "impact_coordinate_fraction": "1/2",
+    "include_central": true,
+    "normal_axes": "ordered_direction_set_difference_frame_axes",
+    "probability": "uniform_over_frame_local_marks",
+    "signed_basis_marks": true,
+    "time_reversal": "signed_axis_flip_central_fixed"
+  },
+  "must_consume": [
+    "process_type",
+    "ctmc_export",
+    "direction_set",
+    "frame_prior.enumeration",
+    "frame_prior.arity_input",
+    "frame_prior.minimum_arity",
+    "frame_prior.maximum_arity",
+    "frame_prior.role_catalog",
+    "frame_prior.velocity_role_index",
+    "alphabets.histories",
+    "alphabets.cemetery_reasons",
+    "input_schema.allowed_fields",
+    "input_schema.forbidden_fields",
+    "validity.precedence",
+    "validity.speed_interval.lower",
+    "validity.speed_interval.upper",
+    "validity.coupling_semantics",
+    "validity.dilution_semantics",
+    "validity.geometry_semantics",
+    "validity.amplitude_valid_value",
+    "validity.unsupported_mark_probability_case",
+    "mark_rule.normal_axes",
+    "mark_rule.impact_axis_predicate",
+    "mark_rule.include_central",
+    "mark_rule.signed_basis_marks",
+    "mark_rule.impact_coordinate_fraction",
+    "mark_rule.probability",
+    "mark_rule.time_reversal",
+    "mark_rule.cemetery_mark_prefix",
+    "probability_registry.gkm_sparse_v1.central_b2",
+    "probability_registry.gkm_sparse_v1.central_ann_probability",
+    "probability_registry.gkm_sparse_v1.shell_b2",
+    "probability_registry.gkm_sparse_v1.shell_ann_probability",
+    "probability_registry.gkm_sparse_v1.unsupported_b2",
+    "state_rule.present_per_frame_history",
+    "state_rule.products_per_valid_frame_history_mark",
+    "state_rule.projection_preserving_killed_per_invalid_present_state",
+    "state_rule.catalog_killed_per_reason",
+    "state_rule.present_physical",
+    "state_rule.products_physical",
+    "state_rule.global_charge_basis",
+    "state_rule.global_charge_default",
+    "schedule_rule.clock_semantics",
+    "schedule_rule.physical_time_unit",
+    "schedule_rule.hold_time",
+    "schedule_rule.age_kind",
+    "schedule_rule.phase_count",
+    "schedule_rule.initial_countdown_phase",
+    "schedule_rule.event_at_phase",
+    "schedule_rule.phase_step",
+    "schedule_rule.killed_schedule",
+    "schedule_rule.not_a_ctmc",
+    "channel_rule.valid_present",
+    "channel_rule.valid_products",
+    "channel_rule.invalid_present",
+    "channel_rule.killed",
+    "channel_rule.accepted_non_null",
+    "channel_rule.null_history_channels",
+    "channel_rule.epistemic_exit",
+    "probability_composition.annihilate",
+    "probability_composition.miss",
+    "probability_composition.proposed_reverse_create",
+    "probability_composition.reverse_idle",
+    "probability_composition.source_invalid",
+    "probability_composition.killed_absorb",
+    "destination_rule.annihilate",
+    "destination_rule.miss",
+    "destination_rule.proposed_reverse_create",
+    "destination_rule.reverse_idle",
+    "destination_rule.source_invalid",
+    "destination_rule.killed_absorb",
+    "history_rule.miss",
+    "history_rule.annihilate",
+    "history_rule.reverse",
+    "history_rule.source_invalid",
+    "history_rule.killed_absorb",
+    "reverse_rule.forward_channel",
+    "reverse_rule.reverse_channel",
+    "reverse_rule.ratio_input",
+    "reverse_rule.claim",
+    "reverse_rule.requires_reference_measure_for_detailed_balance",
+    "reverse_rule.null_reverse_exemptions",
+    "ledger_rule.annihilate",
+    "ledger_rule.proposed_reverse_create",
+    "ledger_rule.null",
+    "ledger_rule.source_invalid",
+    "ledger_rule.killed_absorb",
+    "initial_law.kind",
+    "initial_law.excluded_status",
+    "initial_law.rank_unconditioned",
+    "initial_law.exchangeability",
+    "s9.action",
+    "s9.adjacent_generators",
+    "s9.metric_and_kernel_transform_together",
+    "s9.ledger_vector_action",
+    "constructor_program",
+    "operation_schemas",
+    "forbidden_capabilities"
+  ],
+  "operation_schemas": {
+    "construct_adjacent_s9_actions": {
+      "input_count": 5,
+      "params": {}
+    },
+    "construct_complete_event_rows": {
+      "input_count": 4,
+      "params": {}
+    },
+    "construct_deterministic_schedules": {
+      "input_count": 5,
+      "params": {}
+    },
+    "construct_exchangeable_initial_law": {
+      "input_count": 1,
+      "params": {}
+    },
+    "construct_frame_local_marks": {
+      "input_count": 3,
+      "params": {}
+    },
+    "construct_physical_and_killed_states": {
+      "input_count": 5,
+      "params": {}
+    },
+    "enumerate_ordered_distinct_frames": {
+      "input_count": 2,
+      "params": {}
+    },
+    "evaluate_source_validity": {
+      "input_count": 10,
+      "params": {}
+    }
+  },
+  "probability_composition": {
+    "annihilate": "mark_probability_times_ann_probability",
+    "killed_absorb": "one",
+    "miss": "mark_probability_times_one_minus_ann_probability",
+    "proposed_reverse_create": "ann_probability_times_proposed_reverse_ratio",
+    "reverse_idle": "one_minus_proposed_reverse_create",
+    "source_invalid": "one"
+  },
+  "probability_registry": {
+    "gkm_sparse_v1": {
+      "central_ann_probability": "1/4",
+      "central_b2": "0/1",
+      "claim": "rational_point_inside_rigorous_exp_minus_quarter_interval",
+      "shell_ann_probability": "7530708670842043698585571/38678485356127771951104000",
+      "shell_b2": "1/4",
+      "shell_outward_interval": [
+        "951797901453647189682343/4888530788066148954931200",
+        "342647244523312988285643481/1759871083703813623775232000"
+      ],
+      "unsupported_b2": "unresolved"
+    }
+  },
+  "process_type": "scheduled_markov_renewal",
+  "reverse_rule": {
+    "claim": "proposed_reverse_ratio_not_detailed_balance",
+    "forward_channel": "annihilate",
+    "null_reverse_exemptions": [
+      "null_history",
+      "null_idle",
+      "epistemic_domain_exit",
+      "absorbing_killed"
+    ],
+    "ratio_input": "proposed_reverse_ratio",
+    "requires_reference_measure_for_detailed_balance": true,
+    "reverse_channel": "proposed_reverse_create"
+  },
+  "s9": {
+    "action": "adjacent_direction_transpositions",
+    "adjacent_generators": [
+      {
+        "id": "s0",
+        "swap": [
+          0,
+          1
+        ]
+      },
+      {
+        "id": "s1",
+        "swap": [
+          1,
+          2
+        ]
+      },
+      {
+        "id": "s2",
+        "swap": [
+          2,
+          3
+        ]
+      },
+      {
+        "id": "s3",
+        "swap": [
+          3,
+          4
+        ]
+      },
+      {
+        "id": "s4",
+        "swap": [
+          4,
+          5
+        ]
+      },
+      {
+        "id": "s5",
+        "swap": [
+          5,
+          6
+        ]
+      },
+      {
+        "id": "s6",
+        "swap": [
+          6,
+          7
+        ]
+      },
+      {
+        "id": "s7",
+        "swap": [
+          7,
+          8
+        ]
+      }
+    ],
+    "ledger_vector_action": "permute_nine_charge_coordinates",
+    "metric_and_kernel_transform_together": true
+  },
+  "schedule_rule": {
+    "age_kind": "finite_countdown",
+    "clock_semantics": "deterministic_scheduled",
+    "event_at_phase": 4,
+    "hold_time": "metric_radius_at_velocity_role_times_separation_fraction_div_relative_speed",
+    "initial_countdown_phase": 0,
+    "killed_schedule": "absorbing_exempt",
+    "not_a_ctmc": true,
+    "phase_count": 4,
+    "phase_step": "scheduled_hold_time_div_phase_count",
+    "physical_time_unit": "2*pi*sqrt(alpha_prime)/c"
+  },
+  "schema_version": "cyz-0015-constructor-v1",
+  "state_rule": {
+    "catalog_killed_per_reason": true,
+    "global_charge_basis": "Z^9",
+    "global_charge_default": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0
+    ],
+    "present_per_frame_history": true,
+    "present_physical": {
+      "pair_present": true,
+      "reservoir_energy": "0/1",
+      "system_energy": "2/1",
+      "work_energy": "0/1"
+    },
+    "products_per_valid_frame_history_mark": true,
+    "products_physical": {
+      "pair_present": false,
+      "reservoir_energy": "2/1",
+      "system_energy": "0/1",
+      "work_energy": "0/1"
+    },
+    "projection_preserving_killed_per_invalid_present_state": true
+  },
+  "validity": {
+    "amplitude_valid_value": "valid",
+    "coupling_semantics": "coupling_le_coupling_max",
+    "dilution_semantics": "dilute_flag_must_be_true",
+    "geometry_semantics": "all_frame_radii_strictly_gt_self_dual",
+    "precedence": [
+      "unresolved_amplitude",
+      "velocity",
+      "coupling_dilution",
+      "geometry",
+      "valid"
+    ],
+    "speed_interval": {
+      "lower": "closed",
+      "upper": "closed"
+    },
+    "unsupported_mark_probability_case": "unresolved_amplitude"
+  }
+}
