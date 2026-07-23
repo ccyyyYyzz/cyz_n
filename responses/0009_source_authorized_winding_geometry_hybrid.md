@@ -262,7 +262,7 @@ Set \(\alpha'=1\) in the dynamical equations and write
 \[
 h_i=\dot\lambda_i,
 \qquad
-u=\dot\varphi.
+\nu=\dot\varphi.
 \tag{8}
 \]
 
@@ -276,7 +276,7 @@ The source equations are
 \[
 \dot h_i
 =
-\nu h_i+rac{e^\varphi}{8\pi^2}P_i,
+\nu h_i+\frac{e^\varphi}{8\pi^2}P_i,
 \tag{10}
 \]
 
@@ -306,8 +306,7 @@ E
 \tag{13}
 \]
 
-The source cosmology chooses the branch \(
-u<0\).  That branch supplies a time
+The source cosmology chooses the branch \(\nu<0\).  That branch supplies a time
 coordinate and a time orientation convention to this subproblem.  It is not a
 derivation that the fundamental world has one time direction.
 
@@ -426,8 +425,7 @@ hazard only on \(\mathcal M_{\rm iso}\).
 
 Let \(H_i(\lambda,w,k,\varphi)\) be any smooth \(S_9\)-equivariant anisotropic
 extension of the supplied hazards.  There are infinitely many smooth,
-\(S_9\)-equivariant functions \(F_i
-ot\equiv0\) satisfying
+\(S_9\)-equivariant functions \(F_i\not\equiv0\) satisfying
 
 \[
 F_i|_{\mathcal M_{\rm iso}}=0.
@@ -500,8 +498,7 @@ hazard is
 \tag{27}
 \]
 
-The absolute recollision scale \(
-u_{i,ab}\) is retained.  Multiplying both a
+The absolute recollision scale \(\nu_{i,ab}\) is retained.  Multiplying both a
 collision and a relaxation hazard by the same constant therefore changes the
 attraction time, as it must.
 
@@ -565,8 +562,7 @@ X=
 where
 
 * \(\lambda,h\in\mathbb R^9\);
-* \(arphi,
-u\in\mathbb R\);
+* \(\varphi,\nu\in\mathbb R\);
 * the four occupation vectors lie in \(\mathbb N^9\);
 * \(E_0\ge0\);
 * \(\mathfrak b\) contains the current pair-impact and recollision data;
@@ -578,13 +574,11 @@ There is no rank, projector or preferred subset in \(X\).
 Define the source-valid domain \(\mathcal D_{\rm src}\) by:
 
 1. the constraint (13);
-2. \(
-u<0\);
+2. \(\nu<0\);
 3. \(0<E\le E_{\max}\);
 4. finite occupation and Fourier cutoffs;
 5. weak coupling and the heavy/dilute inequalities needed for (20);
-6. bounded \(\lambda,h,arphi,
-u\) on the declared experiment interval;
+6. bounded \(\lambda,h,\varphi,\nu\) on the declared experiment interval;
 7. nonnegative reservoir energy.
 
 At the first exit from this domain, the process enters an absorbing cemetery
@@ -1229,8 +1223,7 @@ No named coordinate subset is preferred.
 
 A four-direction predecessor tube
 \(\mathcal U_{L,j_*}^{(4)}(I)\), with \(|L|=3\), has the three directions in
-\(L\) satisfying the clear inequalities and one extra direction \(j_*
-otin L\)
+\(L\) satisfying the clear inequalities and one extra direction \(j_*\notin L\)
 that is initially response-resolved but still satisfies
 
 \[
@@ -1429,7 +1422,7 @@ retuned to preserve three.
 ## 9.1 Resolvent and first-passage data use the same generator
 
 Let \(\mathscr L_{\mathcal T}\) be the generator killed on exit from the plateau
-tube.  For initial law \(ho_0\), the exact survival probability is
+tube.  For initial law \(\rho_0\), the exact survival probability is
 
 \[
 \Pr_{\rho_0}(\tau_{\rm exit}>T)
@@ -1610,8 +1603,7 @@ harmonics at sufficiently high bandwidth and verifies (95) there.
 ## 10.2 Time
 
 The source cosmology already contains one Lorentzian time and chooses the
-\(
-u<0\) branch.  The probe Green function may be evaluated with retarded or
+\(\nu<0\) branch.  The probe Green function may be evaluated with retarded or
 advanced boundary conditions.
 
 Using a retarded resolvent in an experiment supplies directed support.  It does
@@ -1759,7 +1751,7 @@ Insert a rule that changes a source or pressure term when an external counter
 reaches three.
 
 **Required result:** reject by static generator audit.  The declared generator
-may depend on \(\lambda,h,w,k,arphi\), impact marks and source parameters, not an
+may depend on \(\lambda,h,w,k,\varphi\), impact marks and source parameters, not an
 operational-rank target.
 
 ## 12.3 Direct rank reset disguised as a mark
@@ -1922,10 +1914,10 @@ The remaining hard gate is
 \[
 \boxed{
 \begin{gathered}
-\text{derive from a duality-complete microscopic action, rather than declare,}\
+\text{derive from a duality-complete microscopic action, rather than declare,}\\
 \text{the anisotropic pair-impact/recollision kernel and the initial fluctuation
-measure,}\
-\text{prove dominance of one primitive stringlike rank-active charge orbit,}\
+measure,}\\
+\text{prove dominance of one primitive stringlike rank-active charge orbit,}\\
 \text{derive a universal all-field carrier, and select a physical retarded or
 entropy-current time component.}
 \end{gathered}
