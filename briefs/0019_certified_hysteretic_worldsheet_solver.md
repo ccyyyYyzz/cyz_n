@@ -88,6 +88,29 @@ even when every ordinary JSON hash and cross-reference is recomputed.
 Rank, normal dimension, response rank, requested winner and reaction data are
 forbidden solver inputs.
 
+The first physical integration fixtures are selected before inspecting any
+event outcome.  Under the canonical Brief 0018 source registry
+
+`35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb`
+
+and source-draw identity
+
+`4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4`,
+
+use the least source index with each required validity status:
+
+- index \(0\), state hash
+  `bafc85014205bbdbb8156e059606a73a0c899911745f189a4ac4e0c90742670b`,
+  is the first `source_invalid` control and must execute no event solver;
+- index \(2\), state hash
+  `1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c`,
+  is the first `valid` source and is the physical source-to-solver wiring
+  control.
+
+This rule does not select on encounter, rank or solver success.  Index \(2\)
+is not a population estimate; Brief 0020 must still push forward the complete
+pre-registered source ledger, retaining invalid and unresolved mass.
+
 ## 2. Rigorous backend boundary
 
 Pin one python-flint/Arb version and record FLINT/Arb runtime metadata.
