@@ -1,0 +1,85 @@
+{
+  "checks": {
+    "L_star_equals_16_pi": true,
+    "M_equals_8": true,
+    "T_F_equals_inverse_2_pi": true,
+    "arb_backend_and_variable_order_registered": true,
+    "brief_0018_hashes_unchanged": true,
+    "exact_seam_image_actions_replayed": true,
+    "k_1_equals_one_eighth": true,
+    "legacy_problem_hash_is_provenance_only": true,
+    "new_problem_hash_is_distinct": true,
+    "normalized_metric_winding_entry_is_L_star_squared": true,
+    "normalized_periods_are_8x8_then_1": true,
+    "physical_domain_metric_and_singular_value_formula_registered": true,
+    "population_measure_claim_withheld": true,
+    "registered_time_window_is_unchanged_dyadic": true,
+    "source_coefficients_identity_transport": true,
+    "source_index_2_replayed": true,
+    "strict_q_pi_power_atoms": true
+  },
+  "commitments": {
+    "closed_string_problem_semantic_sha256": "3bb6599f211c26d98ecba2077051ad9d0339daf96d580a6399cc5a1ba7f030e0",
+    "legacy_cut_open_problem_semantic_sha256": "1560b7df34dcec7dfa46a744d6bbb26424b6a1bf2ce3d2b94b80d308363660ca",
+    "lift_registry_semantic_sha256": "c80acb64eeeb3133dff4422fc798f5b75c6feb52cf32502888cac452e2d210a1",
+    "seam_actions": {
+      "a1": 1,
+      "a2": 1,
+      "corner": 2
+    },
+    "source_bridge_fixture_semantic_sha256": "5af600527155e1c1dbd68b8e531aa1a640e4ee2edb8317f46334ac6b219dee60",
+    "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+    "source_registry_canonical_sha256": "35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb",
+    "source_sample_index": 2,
+    "source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c"
+  },
+  "failed_gates": [],
+  "fixture_semantic_sha256": "8ab0bf7deca71d4a1d11f7656a2ee45dbe0766e4ca8ce886592559b080d24f9e",
+  "hostile_controls": {
+    "atom_boolean_rejected": true,
+    "atom_exponent_bound_rejected": true,
+    "atom_extra_key_rejected": true,
+    "atom_missing_key_rejected": true,
+    "atom_noncanonical_zero_rejected": true,
+    "atom_nonreduced_rational_rejected": true,
+    "binary64_pi_length_substitution_rejected": true,
+    "domain_metric_mutation_rejected": true,
+    "duplicate_json_key_rejected": true,
+    "legacy_hash_reuse_rejected": true,
+    "metric_mutation_rejected": true,
+    "ordinary_json_float_rejected": true,
+    "orientation_mutation_rejected": true,
+    "seam_action_deletion_rejected": true,
+    "seam_shift_mutation_rejected": true,
+    "source_coefficient_mutation_rejected": true,
+    "spatial_phase_mutation_rejected": true,
+    "symbolic_time_endpoint_substitution_rejected": true
+  },
+  "normalized_lf_inventory": [
+    {
+      "normalized_lf_sha256": "524587b804063022fca84e3bad6fd1581aff1b240c85c0bde7885e9d3dd15d35",
+      "path": "artifacts/0019/symbolic_pi_lift.py"
+    },
+    {
+      "normalized_lf_sha256": "bda0beb5c7c1a70a0de4072b0b0ea45314d8998f99cc64b94508cb6d05a568eb",
+      "path": "artifacts/0019/test_symbolic_pi_lift.py"
+    },
+    {
+      "normalized_lf_sha256": "5e7c0ada6a6605165a6334a7e7a5ddaf4eb4de235bf51c933fb08b30061c0d67",
+      "path": "artifacts/0019/symbolic_pi_lift_fixture.json"
+    }
+  ],
+  "report_semantic_sha256": "f0f05cf11ae9731aeaa6b8cca963bfb0b8fcc671e11b7570a1fb5716c7c9193a",
+  "schema_version": "cyz-brief-0019-symbolic-pi-lift-report-v1",
+  "scope": {
+    "claim": "fixed-index exact symbolic-pi closed-string lift and seam algebra",
+    "does_not_claim": [
+      "population pushforward or Jacobian",
+      "entry or no-entry",
+      "population law",
+      "dimension dynamics",
+      "3+1 selection"
+    ]
+  },
+  "status": "passed"
+}

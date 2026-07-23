@@ -1,0 +1,1231 @@
+{
+  "closed_string_problem": {
+    "arb_backend_ingress": {
+      "flint_version": "3.6.0",
+      "implementation": "python-flint Arb",
+      "precision_bits": 192,
+      "python_flint_version": "0.9.0",
+      "required_outputs": [
+        "d",
+        "d_a",
+        "d_ab",
+        "F_a",
+        "F_ab",
+        "g_r",
+        "Dg_r"
+      ],
+      "scalar_ingress": "canonical q*pi^e; rational exact and Arb pi outward-rounded",
+      "target_component_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "variable_order": [
+        "u1",
+        "u2",
+        "t"
+      ]
+    },
+    "dimensions": {
+      "target": 9,
+      "target_axis_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "transverse": 8,
+      "transverse_axis_order": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "winding_axis": 8
+    },
+    "equation_family_version": "f1-normalized-closed-string-k1-v1",
+    "exact_parameters": {
+      "K": 1,
+      "L_star": {
+        "denominator": 1,
+        "numerator": 16,
+        "pi_exponent": 1
+      },
+      "M": {
+        "denominator": 1,
+        "numerator": 8,
+        "pi_exponent": 0
+      },
+      "T_F": {
+        "denominator": 2,
+        "numerator": 1,
+        "pi_exponent": -1
+      },
+      "ell_s": {
+        "denominator": 1,
+        "numerator": 1,
+        "pi_exponent": 0
+      }
+    },
+    "hysteresis": {
+      "distance_convention": "F_n=(1/2)*s_n^T*G*s_n",
+      "r_in": {
+        "denominator": 4,
+        "numerator": 1,
+        "pi_exponent": 0
+      },
+      "r_out": {
+        "denominator": 2,
+        "numerator": 1,
+        "pi_exponent": 0
+      }
+    },
+    "kinematics": {
+      "centre_term_multiplicity": 1,
+      "centres_Q1_Q2": {
+        "Q1": [
+          {
+            "denominator": 1125899906842624,
+            "numerator": 2360612889257509,
+            "pi_exponent": 0
+          },
+          {
+            "denominator": 1125899906842624,
+            "numerator": 2364225835617613,
+            "pi_exponent": 0
+          },
+          {
+            "denominator": 1125899906842624,
+            "numerator": 6413067532898909,
+            "pi_exponent": 0
+          },
+          {
+            "denominator": 1125899906842624,
+            "numerator": 6119595460309949,
+            "pi_exponent": 0
+          },
+          {
+            "denominator": 1125899906842624,
+            "numerator": 7156468037079985,
+            "pi_exponent": 0
+          },
+          {
+            "denominator": 1125899906842624,
+            "numerator": 8002089417482893,
+            "pi_exponent": 0
+          },
+          {
+            "denominator": 1125899906842624,
+            "numerator": 8074662260949095,
+            "pi_exponent": 0
+          },
+          {
+            "denominator": 1125899906842624,
+            "numerator": 1755616706581473,
+            "pi_exponent": 0
+          }
+        ],
+        "Q2": [
+          {
+            "denominator": 1,
+            "numerator": 0,
+            "pi_exponent": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0,
+            "pi_exponent": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0,
+            "pi_exponent": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0,
+            "pi_exponent": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0,
+            "pi_exponent": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0,
+            "pi_exponent": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0,
+            "pi_exponent": 0
+          },
+          {
+            "denominator": 1,
+            "numerator": 0,
+            "pi_exponent": 0
+          }
+        ]
+      },
+      "initial_time": {
+        "denominator": 1,
+        "numerator": 0,
+        "pi_exponent": 0
+      },
+      "mode_ode": [
+        "dot(x)=p",
+        "dot(y)=q",
+        "dot(p)=-(n/8)^2*x",
+        "dot(q)=-(n/8)^2*y"
+      ],
+      "separation": "d_perp=(Q1-Q2)+(V1-V2)*t+(Y1-Y2); d_w=o1*u1-o2*u2",
+      "strings": [
+        {
+          "centre_reference": "Q1",
+          "modes": [
+            {
+              "initial_p": [
+                {
+                  "denominator": 72057594037927936,
+                  "numerator": -1688164932962969,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 288230376151711744,
+                  "numerator": -7238047802325291,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 144115188075855872,
+                  "numerator": -3670567262653831,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 36028797018963968,
+                  "numerator": -4090460865409483,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 72057594037927936,
+                  "numerator": 6367462657916457,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 72057594037927936,
+                  "numerator": -1363382174950789,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 72057594037927936,
+                  "numerator": -2630543933118331,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 72057594037927936,
+                  "numerator": -1165535186743551,
+                  "pi_exponent": 0
+                }
+              ],
+              "initial_q": [
+                {
+                  "denominator": 4503599627370496,
+                  "numerator": 731946412337127,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 36028797018963968,
+                  "numerator": 3233560050053853,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 9007199254740992,
+                  "numerator": -434378818654613,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 9007199254740992,
+                  "numerator": 1272048990331811,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 144115188075855872,
+                  "numerator": -318059693337399,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 36028797018963968,
+                  "numerator": 7631029197476251,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 18014398509481984,
+                  "numerator": -1713383208282733,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 144115188075855872,
+                  "numerator": -1721800129993141,
+                  "pi_exponent": 0
+                }
+              ],
+              "initial_x": [
+                {
+                  "denominator": 4503599627370496,
+                  "numerator": -2576654606013627,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 18014398509481984,
+                  "numerator": 6204847557706923,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 4503599627370496,
+                  "numerator": 3694794752149143,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 9007199254740992,
+                  "numerator": 683064575939517,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 2251799813685248,
+                  "numerator": 1721267440408963,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 4503599627370496,
+                  "numerator": 2491471799340991,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 18014398509481984,
+                  "numerator": -2738791991772047,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 4503599627370496,
+                  "numerator": -4177003482294767,
+                  "pi_exponent": 0
+                }
+              ],
+              "initial_y": [
+                {
+                  "denominator": 9007199254740992,
+                  "numerator": -8911881217356033,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 36028797018963968,
+                  "numerator": 5948248748530019,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 18014398509481984,
+                  "numerator": -5993060754566677,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 4503599627370496,
+                  "numerator": 1797960855239409,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 9007199254740992,
+                  "numerator": 2936019448240469,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 281474976710656,
+                  "numerator": -446337856871041,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 72057594037927936,
+                  "numerator": -7693293493584253,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 18014398509481984,
+                  "numerator": -5806579221859369,
+                  "pi_exponent": 0
+                }
+              ],
+              "mode_number": 1,
+              "spatial_phase_coefficient": {
+                "denominator": 1,
+                "numerator": 2,
+                "pi_exponent": 1
+              },
+              "temporal_angular_frequency": {
+                "denominator": 8,
+                "numerator": 1,
+                "pi_exponent": 0
+              },
+              "wave_number": {
+                "denominator": 8,
+                "numerator": 1,
+                "pi_exponent": 0
+              }
+            }
+          ],
+          "orientation": 1,
+          "string_id": 1,
+          "transverse_velocity": [
+            {
+              "denominator": 18014398509481984,
+              "numerator": 2906347212085799,
+              "pi_exponent": 0
+            },
+            {
+              "denominator": 9007199254740992,
+              "numerator": 2373234979615625,
+              "pi_exponent": 0
+            },
+            {
+              "denominator": 144115188075855872,
+              "numerator": -8616117176447079,
+              "pi_exponent": 0
+            },
+            {
+              "denominator": 72057594037927936,
+              "numerator": -5657277629160439,
+              "pi_exponent": 0
+            },
+            {
+              "denominator": 2305843009213693952,
+              "numerator": -7422068656230279,
+              "pi_exponent": 0
+            },
+            {
+              "denominator": 72057594037927936,
+              "numerator": 788957700158159,
+              "pi_exponent": 0
+            },
+            {
+              "denominator": 288230376151711744,
+              "numerator": 8956520581507307,
+              "pi_exponent": 0
+            },
+            {
+              "denominator": 36028797018963968,
+              "numerator": 2458543516551069,
+              "pi_exponent": 0
+            }
+          ]
+        },
+        {
+          "centre_reference": "Q2",
+          "modes": [
+            {
+              "initial_p": [
+                {
+                  "denominator": 72057594037927936,
+                  "numerator": 3105291403251775,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 288230376151711744,
+                  "numerator": -4699364644457543,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 72057594037927936,
+                  "numerator": -3428681388910177,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 72057594037927936,
+                  "numerator": -712224669009871,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 72057594037927936,
+                  "numerator": -5451990696613405,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 18014398509481984,
+                  "numerator": -1771596540380027,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 144115188075855872,
+                  "numerator": -3985433761628269,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 1152921504606846976,
+                  "numerator": 912689037872783,
+                  "pi_exponent": 0
+                }
+              ],
+              "initial_q": [
+                {
+                  "denominator": 18014398509481984,
+                  "numerator": -1711415843396835,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 18014398509481984,
+                  "numerator": -2775525428481293,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 144115188075855872,
+                  "numerator": 5445444162738409,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 72057594037927936,
+                  "numerator": -5942902339808185,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 576460752303423488,
+                  "numerator": -7210062858264229,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 18014398509481984,
+                  "numerator": 1791484969407581,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 72057594037927936,
+                  "numerator": -5025447491188819,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 288230376151711744,
+                  "numerator": 3252621255288489,
+                  "pi_exponent": 0
+                }
+              ],
+              "initial_x": [
+                {
+                  "denominator": 4503599627370496,
+                  "numerator": -2432929761477679,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 4503599627370496,
+                  "numerator": -1104714419896091,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 4503599627370496,
+                  "numerator": -4061391198954373,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 9007199254740992,
+                  "numerator": 5306173369031509,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 72057594037927936,
+                  "numerator": -6795167416162821,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 4503599627370496,
+                  "numerator": 4166553164386655,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 9007199254740992,
+                  "numerator": 7980308185242189,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 9007199254740992,
+                  "numerator": 4080818981887467,
+                  "pi_exponent": 0
+                }
+              ],
+              "initial_y": [
+                {
+                  "denominator": 9007199254740992,
+                  "numerator": 6113992352040709,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 9007199254740992,
+                  "numerator": -3389902848232041,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 9007199254740992,
+                  "numerator": -5963599879600613,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 9007199254740992,
+                  "numerator": 1354218551391055,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 9007199254740992,
+                  "numerator": 7235985896123313,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 4503599627370496,
+                  "numerator": -979464250895757,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 4503599627370496,
+                  "numerator": -2761940966869027,
+                  "pi_exponent": 0
+                },
+                {
+                  "denominator": 288230376151711744,
+                  "numerator": -3845894058811179,
+                  "pi_exponent": 0
+                }
+              ],
+              "mode_number": 1,
+              "spatial_phase_coefficient": {
+                "denominator": 1,
+                "numerator": 2,
+                "pi_exponent": 1
+              },
+              "temporal_angular_frequency": {
+                "denominator": 8,
+                "numerator": 1,
+                "pi_exponent": 0
+              },
+              "wave_number": {
+                "denominator": 8,
+                "numerator": 1,
+                "pi_exponent": 0
+              }
+            }
+          ],
+          "orientation": -1,
+          "string_id": 2,
+          "transverse_velocity": [
+            {
+              "denominator": 18014398509481984,
+              "numerator": 6100852042655193,
+              "pi_exponent": 0
+            },
+            {
+              "denominator": 9007199254740992,
+              "numerator": 2130364647754871,
+              "pi_exponent": 0
+            },
+            {
+              "denominator": 144115188075855872,
+              "numerator": 8616117176447079,
+              "pi_exponent": 0
+            },
+            {
+              "denominator": 72057594037927936,
+              "numerator": 5657277629160439,
+              "pi_exponent": 0
+            },
+            {
+              "denominator": 2305843009213693952,
+              "numerator": 7422068656230279,
+              "pi_exponent": 0
+            },
+            {
+              "denominator": 72057594037927936,
+              "numerator": -788957700158159,
+              "pi_exponent": 0
+            },
+            {
+              "denominator": 288230376151711744,
+              "numerator": -8956520581507307,
+              "pi_exponent": 0
+            },
+            {
+              "denominator": 36028797018963968,
+              "numerator": -2458543516551069,
+              "pi_exponent": 0
+            }
+          ]
+        }
+      ],
+      "transverse_embedding": "X_i^perp=Q_i+V_i*t+sum_n(x_in(t)*cos(2*pi*n*u_i)+y_in(t)*sin(2*pi*n*u_i))"
+    },
+    "lift_registry_semantic_sha256": "c80acb64eeeb3133dff4422fc798f5b75c6feb52cf32502888cac452e2d210a1",
+    "observation": {
+      "continuation_convention": "right-censor at excluded t1; carry active/armed history to a subsequent adjacent window without boundary re-arming",
+      "initial_history": "armed",
+      "t0": {
+        "denominator": 1,
+        "numerator": 0,
+        "pi_exponent": 0
+      },
+      "t1": {
+        "denominator": 17592186044416,
+        "numerator": 884279719003555,
+        "pi_exponent": 0
+      },
+      "time_is_quotient": false,
+      "window_closure": "lower_closed_upper_open",
+      "window_transport": "unchanged exact dyadic endpoints from the registered source bridge"
+    },
+    "problem_id": "index2-symbolic-pi-closed-string-v1",
+    "schema_version": "cyz-brief-0019-symbolic-pi-closed-string-problem-v1",
+    "scope": {
+      "claim": "exact source-bound normalized closed-string problem and seam algebra",
+      "does_not_claim": [
+        "entry or no-entry over the registered window",
+        "population pushforward or Jacobian",
+        "population law",
+        "dimension dynamics",
+        "3+1 selection"
+      ]
+    },
+    "solver_geometry": {
+      "coordinate_jacobian_chart": [
+        "u1",
+        "u2",
+        "t"
+      ],
+      "domain_metric_diagonal": [
+        {
+          "denominator": 1,
+          "numerator": 256,
+          "pi_exponent": 2
+        },
+        {
+          "denominator": 1,
+          "numerator": 256,
+          "pi_exponent": 2
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        }
+      ],
+      "krawczyk_rule": "use the coordinate Jacobian in the registered (u1,u2,t) chart",
+      "physical_singular_value_formula": "G^(1/2)*J*H^(-1/2)",
+      "rank_rule": "certify exact rank by minors or interval exclusion; rank is invariant under this invertible chart change"
+    },
+    "source_commitment": {
+      "coefficient_transport": "exact_dyadic_to_canonical_q*pi^0_identity",
+      "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+      "source_registry_canonical_sha256": "35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb",
+      "source_sample_index": 2,
+      "source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c"
+    },
+    "target_torus": {
+      "image_separation": "s_n=d-Lambda*n for n in Z^9",
+      "lattice_convention": "Lambda=diag(8,...,8,1) in normalized coordinates",
+      "lattice_matrix_diagonal": [
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        }
+      ],
+      "metric_convention": "G=diag(1,...,1,(16*pi)^2)",
+      "metric_diagonal": [
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 256,
+          "pi_exponent": 2
+        }
+      ],
+      "periods": [
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        }
+      ]
+    },
+    "variable_registry": {
+      "domains": {
+        "t": {
+          "closure": "lower_closed_upper_open",
+          "lower": {
+            "denominator": 1,
+            "numerator": 0,
+            "pi_exponent": 0
+          },
+          "quotient": "none",
+          "upper": {
+            "denominator": 17592186044416,
+            "numerator": 884279719003555,
+            "pi_exponent": 0
+          }
+        },
+        "u1": {
+          "closure": "lower_closed_upper_open",
+          "lower": {
+            "denominator": 1,
+            "numerator": 0,
+            "pi_exponent": 0
+          },
+          "quotient": "R/Z",
+          "upper": {
+            "denominator": 1,
+            "numerator": 1,
+            "pi_exponent": 0
+          }
+        },
+        "u2": {
+          "closure": "lower_closed_upper_open",
+          "lower": {
+            "denominator": 1,
+            "numerator": 0,
+            "pi_exponent": 0
+          },
+          "quotient": "R/Z",
+          "upper": {
+            "denominator": 1,
+            "numerator": 1,
+            "pi_exponent": 0
+          }
+        }
+      },
+      "variable_order": [
+        "u1",
+        "u2",
+        "t"
+      ]
+    },
+    "worldsheet": {
+      "coordinate_units": "u_i=sigma_i/L_star",
+      "orientations": [
+        1,
+        -1
+      ],
+      "seam_claim": "exact target-lattice reindexing, not endpoint floating-point comparison",
+      "seam_image_actions": {
+        "corner_plus_1_plus_1": {
+          "exact_rule": "a12=a1+a2",
+          "n8_reindex_shift": 2,
+          "parameter_shift": [
+            1,
+            1,
+            0
+          ],
+          "separation_winding_shift": 2
+        },
+        "u1_plus_1": {
+          "exact_rule": "a1=o1",
+          "n8_reindex_shift": 1,
+          "parameter_shift": [
+            1,
+            0,
+            0
+          ],
+          "separation_winding_shift": 1
+        },
+        "u2_plus_1": {
+          "exact_rule": "a2=-o2",
+          "n8_reindex_shift": 1,
+          "parameter_shift": [
+            0,
+            1,
+            0
+          ],
+          "separation_winding_shift": 1
+        }
+      },
+      "transverse_seam_identity": "integer n gives exp(i*2*pi*n*(u+1))=exp(i*2*pi*n*u)",
+      "upper_to_lower_reindex_rule": "n_lower=n_upper-a_i*e_w",
+      "winding_embedding": "xi_i^w=o_i*u_i",
+      "winding_separation": "d_w=o1*u1-o2*u2"
+    }
+  },
+  "closed_string_problem_semantic_sha256": "3bb6599f211c26d98ecba2077051ad9d0339daf96d580a6399cc5a1ba7f030e0",
+  "lift_registry": {
+    "arb_backend_registry": {
+      "flint_version": "3.6.0",
+      "implementation": "python-flint Arb",
+      "precision_bits": 192,
+      "python_flint_version": "0.9.0",
+      "symbolic_ingress": "construct rational exactly; evaluate pi with Arb outward rounding; never substitute binary64(pi)"
+    },
+    "coordinate_chart": {
+      "normalized_winding_coordinate": "xi_i^w=o_i*u_i",
+      "normalized_worldsheet_quotients": {
+        "t": "not_a_quotient",
+        "u1": "R/Z",
+        "u2": "R/Z"
+      },
+      "sigma_relation": "sigma_i=L_star*u_i",
+      "target_metric_diagonal": [
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 256,
+          "pi_exponent": 2
+        }
+      ],
+      "target_periods": [
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        {
+          "denominator": 1,
+          "numerator": 1,
+          "pi_exponent": 0
+        }
+      ],
+      "transverse_mode_phase": "2*pi*n*u_i",
+      "variable_order": [
+        "u1",
+        "u2",
+        "t"
+      ]
+    },
+    "exact_identities": {
+      "T_F_times_L_star": {
+        "lhs": {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        "rhs_M": {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        }
+      },
+      "k_1_times_L_star": {
+        "lhs": {
+          "denominator": 1,
+          "numerator": 2,
+          "pi_exponent": 1
+        },
+        "rhs_2pi": {
+          "denominator": 1,
+          "numerator": 2,
+          "pi_exponent": 1
+        }
+      },
+      "winding_metric": {
+        "lhs_L_star_squared": {
+          "denominator": 1,
+          "numerator": 256,
+          "pi_exponent": 2
+        },
+        "rhs_G_ww": {
+          "denominator": 1,
+          "numerator": 256,
+          "pi_exponent": 2
+        }
+      }
+    },
+    "exact_parameters": {
+      "K": 1,
+      "L_star": {
+        "denominator": 1,
+        "numerator": 16,
+        "pi_exponent": 1
+      },
+      "M": {
+        "denominator": 1,
+        "numerator": 8,
+        "pi_exponent": 0
+      },
+      "T_F": {
+        "denominator": 2,
+        "numerator": 1,
+        "pi_exponent": -1
+      },
+      "ell_s": {
+        "denominator": 1,
+        "numerator": 1,
+        "pi_exponent": 0
+      },
+      "k_1": {
+        "denominator": 8,
+        "numerator": 1,
+        "pi_exponent": 0
+      }
+    },
+    "registry_id": "index2-symbolic-pi-closed-string-lift-v1",
+    "scalar_grammar": {
+      "atom_keys": [
+        "numerator",
+        "denominator",
+        "pi_exponent"
+      ],
+      "booleans_as_integers_forbidden": true,
+      "canonical_rational": "gcd(abs(numerator),denominator)=1; denominator>0",
+      "canonical_zero": {
+        "denominator": 1,
+        "numerator": 0,
+        "pi_exponent": 0
+      },
+      "duplicate_object_keys_forbidden": true,
+      "ordinary_json_floats_forbidden": true,
+      "pi_exponent_max": 16,
+      "pi_exponent_min": -16,
+      "schema_version": "cyz-canonical-rational-times-pi-power-v1",
+      "semantics": "(numerator/denominator)*pi^pi_exponent"
+    },
+    "schema_version": "cyz-brief-0019-symbolic-pi-lift-registry-v1",
+    "scope": {
+      "claim": "exact fixed-index source-preserving closed-string coordinate lift",
+      "does_not_claim": [
+        "worldsheet entry or no-entry",
+        "population law",
+        "dimension dynamics",
+        "3+1 selection"
+      ]
+    },
+    "source_transport": {
+      "coefficient_map": "identity_after_exact_dyadic_to_q*pi^0_reencoding",
+      "does_not_claim": [
+        "population_pushforward",
+        "measure_preserving_jacobian",
+        "entry_probability"
+      ],
+      "invariants": {
+        "M": {
+          "denominator": 1,
+          "numerator": 8,
+          "pi_exponent": 0
+        },
+        "k_1": {
+          "denominator": 8,
+          "numerator": 1,
+          "pi_exponent": 0
+        }
+      },
+      "measure_scope": "fixed_index_deterministic_identity_only",
+      "source_coefficients_changed": false,
+      "source_draw_bytes_changed": false
+    },
+    "upstream_provenance": {
+      "complete_exact_dyadic_projection_semantic_sha256": "10fd59b2684e051c44e9a277325e5f051ed1a6049ca8c57a5a2b03728a6f188b",
+      "complete_serialized_state_semantic_sha256": "a4aca7850b9c110ae778387a3c9ba05f68c02566dcf533f2dacd6a75164e8303",
+      "legacy_cut_open_physical_problem_semantic_sha256": "1560b7df34dcec7dfa46a744d6bbb26424b6a1bf2ce3d2b94b80d308363660ca",
+      "legacy_problem_role": "provenance_only_not_a_closed_string_problem_identifier",
+      "source_bridge_fixture_semantic_sha256": "5af600527155e1c1dbd68b8e531aa1a640e4ee2edb8317f46334ac6b219dee60",
+      "source_draw_sha256": "4bc0d8eadef9ad8aea8752f25e105127311b83edebc99ebe1b1b7561999e1bd4",
+      "source_registry_canonical_sha256": "35d31a64e45d9a3ea9cc346e19d8bc5d8d40d1f9eac68eb07385fb291aed8cdb",
+      "source_sample_index": 2,
+      "source_sample_schema": "cyz-brief-0018-source-sample-v2",
+      "source_state_sha256": "1c671b6bf8e737d238c21de8b0f694a57b8bfab7006ebb1401136176567f118c"
+    }
+  },
+  "lift_registry_semantic_sha256": "c80acb64eeeb3133dff4422fc798f5b75c6feb52cf32502888cac452e2d210a1",
+  "schema_version": "cyz-brief-0019-symbolic-pi-lift-fixture-v1"
+}
