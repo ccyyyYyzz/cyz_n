@@ -648,5 +648,10 @@
       "root-2-1"
     ]
   },
-  "schema_version": "cyz-brief-0019-certified-solver-foundation-v1"
+  "problem_commitment": {
+    "problem_id": "brief-0019-foundation-affine-cover",
+    "registry_canonical_sha256": "ac2e14bef595c1e152f32bddfcdea7b5ba295fd0c80e62e19e843cc34a01ce66",
+    "registry_schema": "cyz-brief-0019-foundation-problem-registry-v1"
+  },
+  "schema_version": "cyz-brief-0019-certified-solver-foundation-v2"
 }

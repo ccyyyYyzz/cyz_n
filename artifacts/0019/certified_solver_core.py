@@ -29,19 +29,31 @@ from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
 
-BUNDLE_SCHEMA = "cyz-brief-0019-certified-solver-foundation-v1"
-REPORT_SCHEMA = "cyz-brief-0019-certified-solver-foundation-report-v1"
+BUNDLE_SCHEMA = "cyz-brief-0019-certified-solver-foundation-v2"
+REPORT_SCHEMA = "cyz-brief-0019-certified-solver-foundation-report-v2"
 FUNCTION_REGISTRY_SCHEMA = "cyz-brief-0019-exact-affine-registry-v1"
+PROBLEM_REGISTRY_SCHEMA = (
+    "cyz-brief-0019-foundation-problem-registry-v1"
+)
+PROBLEM_ID = "brief-0019-foundation-affine-cover"
+PROBLEM_REGISTRY_CANONICAL_SHA256 = (
+    "ac2e14bef595c1e152f32bddfcdea7b5ba295fd0c80e62e19e843cc34a01ce66"
+)
 
 ARTIFACT_DIR = Path(__file__).resolve().parent
 REPOSITORY_ROOT = ARTIFACT_DIR.parent.parent
 FIXTURE_PATH = ARTIFACT_DIR / "certified_solver_fixture.json"
 REPORT_PATH = ARTIFACT_DIR / "certified_solver_report.json"
+PROBLEM_REGISTRY_PATH = ARTIFACT_DIR / "foundation_problem_registry.json"
 
 FOUNDATION_INVENTORY = (
     "artifacts/0019/certified_solver_core.py",
     "artifacts/0019/test_certified_solver_core.py",
+    "artifacts/0019/certificate_replayer.py",
+    "artifacts/0019/test_certificate_replayer.py",
+    "artifacts/0019/foundation_problem_registry.json",
     "artifacts/0019/README.md",
+    "README.md",
 )
 
 HEX_SHA256 = re.compile(r"[0-9a-f]{64}")
@@ -216,6 +228,46 @@ def normalized_lf_sha256(path: Path) -> str:
     text = path.read_text(encoding="utf-8")
     normalized = text.replace("\r\n", "\n").replace("\r", "\n")
     return hashlib.sha256(normalized.encode("utf-8")).hexdigest()
+
+
+def load_committed_problem_registry(
+    path: Path = PROBLEM_REGISTRY_PATH,
+) -> dict[str, Any]:
+    """Load the external problem only if it matches the code-fixed commitment."""
+
+    registry = strict_json_load(path)
+    digest = canonical_sha256(registry)
+    if digest != PROBLEM_REGISTRY_CANONICAL_SHA256:
+        fail(
+            "problem_commitment",
+            "external problem registry does not match the code-fixed SHA-256",
+        )
+    root = _require_exact_keys(
+        registry,
+        {
+            "schema_version",
+            "problem_id",
+            "arithmetic",
+            "function_registry",
+            "image_problem",
+            "parameter_domain",
+        },
+        "$.problem_registry",
+        "problem_commitment",
+    )
+    if root["schema_version"] != PROBLEM_REGISTRY_SCHEMA:
+        fail("problem_commitment", "unknown problem registry schema")
+    if root["problem_id"] != PROBLEM_ID:
+        fail("problem_commitment", "unexpected committed problem ID")
+    return root
+
+
+def problem_commitment_json() -> dict[str, str]:
+    return {
+        "problem_id": PROBLEM_ID,
+        "registry_schema": PROBLEM_REGISTRY_SCHEMA,
+        "registry_canonical_sha256": PROBLEM_REGISTRY_CANONICAL_SHA256,
+    }
 
 
 @total_ordering
@@ -811,7 +863,10 @@ def _enumerate_expected_images(
     return [tuple(vector) for vector in itertools.product(*coordinate_ranges)]
 
 
-def validate_image_enumeration(value: Any) -> list[str]:
+def validate_image_enumeration(
+    value: Any,
+    expected_problem: Mapping[str, Any] | None = None,
+) -> list[str]:
     image_data = _require_exact_keys(
         value,
         {
@@ -827,6 +882,16 @@ def validate_image_enumeration(value: Any) -> list[str]:
         "$.image_enumeration",
         "image_enumeration",
     )
+    if expected_problem is None:
+        expected_problem = load_committed_problem_registry()["image_problem"]
+    source_payload = {
+        key: image_data[key] for key in image_data if key != "manifest"
+    }
+    if not type_strict_equal(source_payload, expected_problem):
+        fail(
+            "image_enumeration",
+            "bundle image inputs differ from the externally committed problem",
+        )
     dimension = _require_int(
         image_data["dimension"],
         "$.image_enumeration.dimension",
@@ -1057,6 +1122,7 @@ def validate_initial_cover(
     value: Any,
     manifest_ids: Sequence[str],
     functions: Mapping[str, AffineFunction],
+    committed_parameter_domain: Any,
 ) -> dict[str, Any]:
     cover = _require_exact_keys(
         value,
@@ -1073,6 +1139,13 @@ def validate_initial_cover(
     parameter_domain = DyadicBox.from_json(
         cover["parameter_domain"], "$.initial_cover.parameter_domain"
     )
+    if not type_strict_equal(
+        cover["parameter_domain"], committed_parameter_domain
+    ):
+        fail(
+            "problem_commitment",
+            "bundle parameter domain differs from the external registry",
+        )
     root_ids_raw = _require_list(
         cover["root_ids"], "$.initial_cover.root_ids", "cover_topology"
     )
@@ -1318,6 +1391,7 @@ def replay_bundle(bundle: Any) -> dict[str, Any]:
         bundle,
         {
             "schema_version",
+            "problem_commitment",
             "arithmetic",
             "function_registry",
             "image_enumeration",
@@ -1327,22 +1401,52 @@ def replay_bundle(bundle: Any) -> dict[str, Any]:
     )
     if root["schema_version"] != BUNDLE_SCHEMA:
         fail("schema", "unknown foundation bundle schema")
+    committed = load_committed_problem_registry()
+    commitment = _require_exact_keys(
+        root["problem_commitment"],
+        {
+            "problem_id",
+            "registry_schema",
+            "registry_canonical_sha256",
+        },
+        "$.problem_commitment",
+        "problem_commitment",
+    )
+    if not type_strict_equal(commitment, problem_commitment_json()):
+        fail(
+            "problem_commitment",
+            "bundle does not name the code-fixed external problem commitment",
+        )
     arithmetic = _require_exact_keys(
         root["arithmetic"],
         {"scalar", "interval", "partition_policy"},
         "$.arithmetic",
     )
-    expected_arithmetic = {
-        "scalar": "canonical_numerator_over_power_of_two",
-        "interval": "exact_endpoints_with_closure_flags",
-        "partition_policy": "split_point_belongs_to_right_child",
-    }
+    expected_arithmetic = committed["arithmetic"]
     if not type_strict_equal(arithmetic, expected_arithmetic):
-        fail("schema", "arithmetic conventions differ from the frozen grammar")
+        fail(
+            "problem_commitment",
+            "arithmetic conventions differ from the committed problem",
+        )
+    if not type_strict_equal(
+        root["function_registry"], committed["function_registry"]
+    ):
+        fail(
+            "problem_commitment",
+            "bundle affine functions differ from the external registry",
+        )
     functions = _parse_function_registry(root["function_registry"])
-    manifest_ids = validate_image_enumeration(root["image_enumeration"])
+    manifest_ids = validate_image_enumeration(
+        root["image_enumeration"], committed["image_problem"]
+    )
     summary = validate_initial_cover(
-        root["initial_cover"], manifest_ids, functions
+        root["initial_cover"],
+        manifest_ids,
+        functions,
+        committed["parameter_domain"],
+    )
+    summary["problem_registry_canonical_sha256"] = (
+        PROBLEM_REGISTRY_CANONICAL_SHA256
     )
     summary["bundle_semantic_sha256"] = canonical_sha256(bundle)
     return summary
@@ -1405,38 +1509,45 @@ def _split(
 def build_foundation_fixture() -> dict[str, Any]:
     """Build the deterministic exact fixture used by generator and replay."""
 
-    unique_function = AffineFunction(
-        "affine_unique_root", TWO, Dyadic.of(-1)
-    )
-    guard_function = AffineFunction(
-        "affine_positive_guard", ONE, ONE
-    )
-    function_registry = {
-        "schema_version": FUNCTION_REGISTRY_SCHEMA,
-        "functions": [
-            {
-                "function_id": unique_function.function_id,
-                "kind": "affine_1d",
-                "slope": unique_function.slope.to_json(),
-                "intercept": unique_function.intercept.to_json(),
-            },
-            {
-                "function_id": guard_function.function_id,
-                "kind": "affine_1d",
-                "slope": guard_function.slope.to_json(),
-                "intercept": guard_function.intercept.to_json(),
-            },
-        ],
-    }
+    committed = load_committed_problem_registry()
+    function_registry = copy.deepcopy(committed["function_registry"])
+    functions = _parse_function_registry(function_registry)
+    unique_function = functions["affine_unique_root"]
+    guard_function = functions["affine_positive_guard"]
 
-    periods = [Dyadic.of(2), Dyadic.of(3, 1)]
-    metric = [Dyadic.of(1, 2), Dyadic.of(4)]
-    inverse = [Dyadic.of(4), Dyadic.of(1, 2)]
-    square_roots = [Dyadic.of(2), Dyadic.of(1, 1)]
-    r_out = Dyadic.of(1, 1)
+    image_problem = copy.deepcopy(committed["image_problem"])
+    dimension = _require_int(
+        image_problem["dimension"],
+        "$.problem_registry.image_problem.dimension",
+        "problem_commitment",
+    )
+    periods = _parse_dyadic_list(
+        image_problem["periods"],
+        "$.problem_registry.image_problem.periods",
+        dimension,
+        "problem_commitment",
+    )
+    inverse = _parse_dyadic_list(
+        image_problem["metric_inverse_diagonal"],
+        "$.problem_registry.image_problem.metric_inverse_diagonal",
+        dimension,
+        "problem_commitment",
+    )
+    square_roots = _parse_dyadic_list(
+        image_problem["sqrt_metric_inverse_diagonal"],
+        "$.problem_registry.image_problem.sqrt_metric_inverse_diagonal",
+        dimension,
+        "problem_commitment",
+    )
+    r_out = Dyadic.from_json(
+        image_problem["r_out"], "$.problem_registry.image_problem.r_out"
+    )
     separation_bounds = [
-        DyadicInterval.closed(Dyadic.of(1, 1), Dyadic.of(7, 1)),
-        DyadicInterval.closed(Dyadic.of(-1, 2), Dyadic.of(5, 2)),
+        DyadicInterval.from_json(
+            raw,
+            f"$.problem_registry.image_problem.separation_bounds[{index}]",
+        )
+        for index, raw in enumerate(image_problem["separation_bounds"])
     ]
     vectors = _enumerate_expected_images(
         periods, inverse, square_roots, r_out, separation_bounds
@@ -1445,24 +1556,12 @@ def build_foundation_fixture() -> dict[str, Any]:
         {"image_id": image_id(vector), "lattice_vector": list(vector)}
         for vector in vectors
     ]
-    image_enumeration = {
-        "dimension": 2,
-        "periods": [value.to_json() for value in periods],
-        "metric_diagonal": [value.to_json() for value in metric],
-        "metric_inverse_diagonal": [value.to_json() for value in inverse],
-        "sqrt_metric_inverse_diagonal": [
-            value.to_json() for value in square_roots
-        ],
-        "r_out": r_out.to_json(),
-        "separation_bounds": [
-            value.to_json() for value in separation_bounds
-        ],
-        "manifest": manifest,
-    }
+    image_enumeration = copy.deepcopy(image_problem)
+    image_enumeration["manifest"] = manifest
 
-    domain = DyadicBox(
-        ("u",),
-        (DyadicInterval(ZERO, ONE, True, False),),
+    domain = DyadicBox.from_json(
+        committed["parameter_domain"],
+        "$.problem_registry.parameter_domain",
     )
     quarter = Dyadic.of(1, 2)
     three_quarters = Dyadic.of(3, 2)
@@ -1550,11 +1649,8 @@ def build_foundation_fixture() -> dict[str, Any]:
 
     bundle = {
         "schema_version": BUNDLE_SCHEMA,
-        "arithmetic": {
-            "scalar": "canonical_numerator_over_power_of_two",
-            "interval": "exact_endpoints_with_closure_flags",
-            "partition_policy": "split_point_belongs_to_right_child",
-        },
+        "problem_commitment": problem_commitment_json(),
+        "arithmetic": copy.deepcopy(committed["arithmetic"]),
         "function_registry": function_registry,
         "image_enumeration": image_enumeration,
         "initial_cover": {
@@ -1583,15 +1679,16 @@ def build_hostile_mutations(
     controls: list[tuple[str, str, dict[str, Any]]] = []
 
     deleted_leaf = copy.deepcopy(fixture)
+    removed_root = deleted_leaf["initial_cover"]["root_ids"].pop()
     deleted_leaf["initial_cover"]["nodes"] = [
         node
         for node in deleted_leaf["initial_cover"]["nodes"]
-        if node["node_id"] != "leaf-0-0-unique"
+        if node["node_id"] != removed_root
     ]
-    deleted_leaf["initial_cover"]["cover_hash"] = _cover_hash(
-        deleted_leaf["initial_cover"]
+    deleted_leaf = refresh_declared_hashes(deleted_leaf)
+    controls.append(
+        ("deleted_leaf", "cover_image_binding", deleted_leaf)
     )
-    controls.append(("deleted_leaf", "cover_topology", deleted_leaf))
 
     wrong_split = copy.deepcopy(fixture)
     _find_node(wrong_split, "root-0-0")["split_point"] = _dyadic(1, 3)
@@ -1606,6 +1703,32 @@ def build_hostile_mutations(
     fake_inclusion = refresh_declared_hashes(fake_inclusion)
     controls.append(
         ("fake_krawczyk_inclusion", "unique_root_witness", fake_inclusion)
+    )
+
+    replaced_system = copy.deepcopy(fixture)
+    replacement_entry = replaced_system["function_registry"]["functions"][0]
+    replacement_entry["slope"] = _dyadic(4)
+    replacement_entry["intercept"] = _dyadic(-3, 1)
+    replacement = AffineFunction(
+        "affine_unique_root", Dyadic.of(4), Dyadic.of(-3, 1)
+    )
+    excluded_node = _find_node(
+        replaced_system, "leaf-0-0-excluded"
+    )
+    unique_node = _find_node(replaced_system, "leaf-0-0-unique")
+    excluded_node["witness"] = build_excluded_range_witness(
+        replacement, DyadicBox.from_json(excluded_node["box"])
+    )
+    unique_node["witness"] = build_unique_root_witness(
+        replacement, DyadicBox.from_json(unique_node["box"])
+    )
+    replaced_system = refresh_declared_hashes(replaced_system)
+    controls.append(
+        (
+            "replaced_affine_root_system",
+            "problem_commitment",
+            replaced_system,
+        )
     )
 
     missing_image = copy.deepcopy(fixture)
@@ -1668,13 +1791,17 @@ def build_report(
     return {
         "schema_version": REPORT_SCHEMA,
         "brief": "0019",
-        "implementation_scope": "first_verifiable_certificate_foundation",
+        "implementation_scope": (
+            "source_separated_independent_foundation_replayer"
+        ),
         "fixture_semantic_sha256": canonical_sha256(fixture),
         "replay_summary": replay,
         "hostile_controls": run_hostile_controls(fixture),
         "normalized_lf_code_inventory": inventory,
         "proved": [
             "canonical exact dyadic scalar grammar",
+            "code-fixed external problem-registry commitment",
+            "source-separated independent strict-JSON certificate replay",
             "endpoint-aware gap-free split-forest replay",
             "complete exact rectangular-lattice image fixture",
             "recomputed affine range exclusion",
@@ -1682,7 +1809,6 @@ def build_report(
             "explicit preservation of deterministic-budget unresolved leaves",
         ],
         "open_items": [
-            "independent source-separated certificate_replayer.py",
             "source-bound nine-dimensional Arb interval jets and physical Krawczyk replay",
             "nine-dimensional production image enumeration and metric pruning",
             "singular-cluster, seam-equivalence and tie certificates",

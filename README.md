@@ -34,3 +34,11 @@ private chat transcript.
 
 The complete local project may contain simulations, manuscripts and private
 working material that are intentionally absent here.
+
+## Verifiable implementation artifacts
+
+- [`artifacts/0019/`](artifacts/0019/) contains the Brief 0019 exact
+  certificate foundation, its externally committed problem registry, and a
+  source-separated independent certificate replayer.  This is proof-container
+  infrastructure only; it does not close the physical nine-dimensional
+  solver, source population, or \(3+1\) selection claim.

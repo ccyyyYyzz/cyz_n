@@ -338,14 +338,14 @@ class WitnessReplayTests(unittest.TestCase):
         mutation["function_registry"]["functions"].append(
             copy.deepcopy(mutation["function_registry"]["functions"][0])
         )
-        self.assert_gate(mutation, "function_registry")
+        self.assert_gate(mutation, "problem_commitment")
 
 
 class StoredArtifactTests(unittest.TestCase):
     def test_hostile_suite_hits_each_intended_gate(self) -> None:
         fixture = core.build_foundation_fixture()
         outcomes = core.run_hostile_controls(fixture)
-        self.assertEqual(len(outcomes), 5)
+        self.assertEqual(len(outcomes), 6)
         self.assertTrue(
             all(item["result"] == "rejected_as_intended" for item in outcomes)
         )

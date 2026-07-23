@@ -5,7 +5,7 @@ the exact certificate-container mechanics that the later physical solver must
 use; it does **not** claim that the finite-\(K\) hysteretic world-sheet event
 problem is solved.
 
-The implemented foundation consists of:
+The implemented foundation and its independent replay layer consist of:
 
 1. canonical dyadics \(n/2^e\), with reduced serialization and no JSON
    floating tokens;
@@ -16,7 +16,31 @@ The implemented foundation consists of:
    metric fixture;
 5. typed `excluded_range`, `unique_root`, and `unresolved` leaves; and
 6. node, root, cover and whole-bundle semantic hashes that are checked only
-   after the corresponding mathematical witness is replayed.
+   after the corresponding mathematical witness is replayed; and
+7. a source-separated
+   [`certificate_replayer.py`](certificate_replayer.py) that imports none of
+   the generator, Arb-jet, or Arb-Krawczyk implementations and independently
+   implements strict JSON, dyadics, image enumeration, exact partitions,
+   affine ranges, Krawczyk witnesses, and hash replay.
+
+## External problem commitment
+
+The mathematical inputs of the foundation control are stored separately in
+[`foundation_problem_registry.json`](foundation_problem_registry.json).  Both
+the generator-side verifier and the independent replayer require its
+canonical SHA-256 to be exactly
+
+```text
+ac2e14bef595c1e152f32bddfcdea7b5ba295fd0c80e62e19e843cc34a01ce66
+```
+
+That digest is fixed in each implementation's source.  The bundle's affine
+function system and parameter domain must exactly equal the committed
+registry, while the complete ordered image manifest is reconstructed from
+the registry's image inputs.  Consequently, replacing the affine equation
+and root location while also regenerating every node, root, cover, and bundle
+hash is rejected at `problem_commitment`; an attacker cannot create a new
+self-consistent problem merely by rewriting fields inside the bundle.
 
 The next committed control,
 [`arb_interval_jets.py`](arb_interval_jets.py), pins
@@ -158,12 +182,13 @@ From the repository root:
 ```text
 python artifacts/0019/certified_solver_core.py --write
 python artifacts/0019/certified_solver_core.py --check
+python artifacts/0019/certificate_replayer.py --check
 python artifacts/0019/arb_interval_jets.py --write
 python artifacts/0019/arb_interval_jets.py --check
 python artifacts/0019/arb_krawczyk_control.py --write
 python artifacts/0019/arb_krawczyk_control.py --check
 python -m unittest discover -s artifacts/0019 -p "test_*.py" -v
-python -m py_compile artifacts/0019/certified_solver_core.py artifacts/0019/arb_interval_jets.py artifacts/0019/arb_krawczyk_control.py artifacts/0019/test_certified_solver_core.py artifacts/0019/test_arb_interval_jets.py artifacts/0019/test_arb_krawczyk_control.py
+python -m py_compile artifacts/0019/certified_solver_core.py artifacts/0019/certificate_replayer.py artifacts/0019/arb_interval_jets.py artifacts/0019/arb_krawczyk_control.py artifacts/0019/test_certified_solver_core.py artifacts/0019/test_certificate_replayer.py artifacts/0019/test_arb_interval_jets.py artifacts/0019/test_arb_krawczyk_control.py
 ```
 
 The Arb commands require python-flint 0.9.0 on `PYTHONPATH` or in the active
@@ -177,15 +202,17 @@ build, semantic replay, hostile-control replay, and normalized-LF inventory
 checking.
 
 The hostile controls delete a leaf, alter a split, fabricate a stored
-Krawczyk image, omit an enumerated image, and duplicate a node ID.  They
-refresh all ordinary hashes that can still be computed, then must fail at
-their intended semantic gates rather than at an incidental parser error.
+Krawczyk image, replace the affine root system and root location, omit an
+enumerated image, and duplicate a node ID.  They refresh all ordinary hashes
+that can still be computed, then must fail at their intended semantic gates
+rather than at an incidental parser error.  The independent suite additionally
+rejects duplicate JSON keys, non-finite and floating JSON tokens, and Boolean
+substitution for an integer.
 
 ## Deliberately open
 
 The next implementation layers remain:
 
-- a source-separated `certificate_replayer.py`;
 - the nine-dimensional production image cover and rigorous metric pruning;
 - source-state binding and exhaustive subdivision around the demonstrated
   physical three-equation Arb Krawczyk primitive;

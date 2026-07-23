@@ -1,0 +1,130 @@
+{
+  "arithmetic": {
+    "interval": "exact_endpoints_with_closure_flags",
+    "partition_policy": "split_point_belongs_to_right_child",
+    "scalar": "canonical_numerator_over_power_of_two"
+  },
+  "function_registry": {
+    "functions": [
+      {
+        "function_id": "affine_unique_root",
+        "intercept": {
+          "exponent": 0,
+          "numerator": -1
+        },
+        "kind": "affine_1d",
+        "slope": {
+          "exponent": 0,
+          "numerator": 2
+        }
+      },
+      {
+        "function_id": "affine_positive_guard",
+        "intercept": {
+          "exponent": 0,
+          "numerator": 1
+        },
+        "kind": "affine_1d",
+        "slope": {
+          "exponent": 0,
+          "numerator": 1
+        }
+      }
+    ],
+    "schema_version": "cyz-brief-0019-exact-affine-registry-v1"
+  },
+  "image_problem": {
+    "dimension": 2,
+    "metric_diagonal": [
+      {
+        "exponent": 2,
+        "numerator": 1
+      },
+      {
+        "exponent": 0,
+        "numerator": 4
+      }
+    ],
+    "metric_inverse_diagonal": [
+      {
+        "exponent": 0,
+        "numerator": 4
+      },
+      {
+        "exponent": 2,
+        "numerator": 1
+      }
+    ],
+    "periods": [
+      {
+        "exponent": 0,
+        "numerator": 2
+      },
+      {
+        "exponent": 1,
+        "numerator": 3
+      }
+    ],
+    "r_out": {
+      "exponent": 1,
+      "numerator": 1
+    },
+    "separation_bounds": [
+      {
+        "lower": {
+          "exponent": 1,
+          "numerator": 1
+        },
+        "lower_closed": true,
+        "upper": {
+          "exponent": 1,
+          "numerator": 7
+        },
+        "upper_closed": true
+      },
+      {
+        "lower": {
+          "exponent": 2,
+          "numerator": -1
+        },
+        "lower_closed": true,
+        "upper": {
+          "exponent": 2,
+          "numerator": 5
+        },
+        "upper_closed": true
+      }
+    ],
+    "sqrt_metric_inverse_diagonal": [
+      {
+        "exponent": 0,
+        "numerator": 2
+      },
+      {
+        "exponent": 1,
+        "numerator": 1
+      }
+    ]
+  },
+  "parameter_domain": {
+    "axes": [
+      "u"
+    ],
+    "intervals": [
+      {
+        "lower": {
+          "exponent": 0,
+          "numerator": 0
+        },
+        "lower_closed": true,
+        "upper": {
+          "exponent": 0,
+          "numerator": 1
+        },
+        "upper_closed": false
+      }
+    ]
+  },
+  "problem_id": "brief-0019-foundation-affine-cover",
+  "schema_version": "cyz-brief-0019-foundation-problem-registry-v1"
+}

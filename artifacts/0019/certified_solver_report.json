@@ -1,12 +1,12 @@
 {
   "brief": "0019",
-  "fixture_semantic_sha256": "612dd00e52f1449aa672f8695c4f2cbd895c56afea98ac309da5c2c3d5e35a33",
+  "fixture_semantic_sha256": "2b15374709b932a19966f98e8e5d156065ca6fa40eb825fa421349a496c92c1b",
   "forbidden_claim": "The physical finite-K hysteretic world-sheet solver or the 3+1 selection law is complete.",
   "hostile_controls": [
     {
       "control": "deleted_leaf",
-      "expected_gate": "cover_topology",
-      "observed_gate": "cover_topology",
+      "expected_gate": "cover_image_binding",
+      "observed_gate": "cover_image_binding",
       "result": "rejected_as_intended"
     },
     {
@@ -22,6 +22,12 @@
       "result": "rejected_as_intended"
     },
     {
+      "control": "replaced_affine_root_system",
+      "expected_gate": "problem_commitment",
+      "observed_gate": "problem_commitment",
+      "result": "rejected_as_intended"
+    },
+    {
       "control": "missing_image",
       "expected_gate": "image_enumeration",
       "observed_gate": "image_enumeration",
@@ -34,23 +40,38 @@
       "result": "rejected_as_intended"
     }
   ],
-  "implementation_scope": "first_verifiable_certificate_foundation",
+  "implementation_scope": "source_separated_independent_foundation_replayer",
   "normalized_lf_code_inventory": [
     {
-      "normalized_lf_sha256": "a8984336441c556136419d5b96cb3da2e0ef64d9082384027777d7bb3f5d0461",
+      "normalized_lf_sha256": "63464283039859b7c59e6ab0b96a2f27bb982192149e351a8f4bb78505bed743",
       "path": "artifacts/0019/certified_solver_core.py"
     },
     {
-      "normalized_lf_sha256": "247970a74f1440591eed31e8d591c067b2a807dceef5fad3590a57df89b53734",
+      "normalized_lf_sha256": "4765b8067cbd8e088d970fcc4596790ef12c87ce35b56745c7954e3a096a4512",
       "path": "artifacts/0019/test_certified_solver_core.py"
     },
     {
-      "normalized_lf_sha256": "b243059e09bddb181e1be3dd6b493806119e0f040a294eb96775961d2570ca7d",
+      "normalized_lf_sha256": "bf974466f0bce501bd3d9c518ddded64a0fce9e582575af290a02fb4cebad734",
+      "path": "artifacts/0019/certificate_replayer.py"
+    },
+    {
+      "normalized_lf_sha256": "752fc0c574236cf33404aca85a3f6247b4e3795fa0eda9d9b453bb7011bd0016",
+      "path": "artifacts/0019/test_certificate_replayer.py"
+    },
+    {
+      "normalized_lf_sha256": "cef61a98ec582735dc1018f1b7790892a7b232e438ccbd0dc00ea757750f3ef6",
+      "path": "artifacts/0019/foundation_problem_registry.json"
+    },
+    {
+      "normalized_lf_sha256": "861cb491f63698485435005492e9388db99a8c62a2ba9fce6c35f489b11eb861",
       "path": "artifacts/0019/README.md"
+    },
+    {
+      "normalized_lf_sha256": "7bce984f52775f81cdbd19b9c38a9360c5249814ffe52897dbbc71fe8b44625a",
+      "path": "README.md"
     }
   ],
   "open_items": [
-    "independent source-separated certificate_replayer.py",
     "source-bound nine-dimensional Arb interval jets and physical Krawczyk replay",
     "nine-dimensional production image enumeration and metric pruning",
     "singular-cluster, seam-equivalence and tie certificates",
@@ -63,6 +84,8 @@
   "permitted_claim": "The exact foundation fixture replays a gap-free image-indexed cover with proof-checked excluded and unique leaves while retaining its unresolved leaf.",
   "proved": [
     "canonical exact dyadic scalar grammar",
+    "code-fixed external problem-registry commitment",
+    "source-separated independent strict-JSON certificate replay",
     "endpoint-aware gap-free split-forest replay",
     "complete exact rectangular-lattice image fixture",
     "recomputed affine range exclusion",
@@ -70,11 +93,12 @@
     "explicit preservation of deterministic-budget unresolved leaves"
   ],
   "replay_summary": {
-    "bundle_semantic_sha256": "612dd00e52f1449aa672f8695c4f2cbd895c56afea98ac309da5c2c3d5e35a33",
+    "bundle_semantic_sha256": "2b15374709b932a19966f98e8e5d156065ca6fa40eb825fa421349a496c92c1b",
     "coverage": "gap_free_exact_partition",
     "image_count": 6,
     "leaf_count": 8,
     "node_count": 10,
+    "problem_registry_canonical_sha256": "ac2e14bef595c1e152f32bddfcdea7b5ba295fd0c80e62e19e843cc34a01ce66",
     "resolution": "unresolved_present",
     "root_count": 6,
     "status_counts": {
@@ -83,5 +107,5 @@
       "unresolved": 1
     }
   },
-  "schema_version": "cyz-brief-0019-certified-solver-foundation-report-v1"
+  "schema_version": "cyz-brief-0019-certified-solver-foundation-report-v2"
 }
