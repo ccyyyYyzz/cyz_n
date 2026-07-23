@@ -1,92 +1,70 @@
-# Brief 0018 exact microcanonical source control
+# Brief 0018 source and event-contract controls
 
-This directory is an independent standard-library reference implementation of
-the zero-level-matched source theorem in Brief 0018.  It samples the single
-ambient delta--Liouville measure of two finite-mode quadratic transverse
-strings.  It does not implement the event schema or an encounter solver.
+This directory contains two independent reference implementations for
+Brief 0018:
+
+1. a standard-library sampler for the zero-level-matched finite-\(K\)
+   quadratic source; and
+2. a rank-blind, total event-record contract for the later certified
+   encounter solver.
+
+Together they close the source measure and downstream record type within the
+declared audit model.  They do **not** solve world-sheet roots, estimate
+physical event masses, or select \(3+1\).
 
 Run from the repository root:
 
 ```text
 python artifacts/0018/microcanonical_source.py
 python artifacts/0018/microcanonical_source.py --check
+python artifacts/0018/event_contract.py
+python artifacts/0018/event_contract.py --check
 python -m unittest discover -s artifacts/0018 -p "test_*.py" -v
 ```
 
-The frozen audit cell is `source_registry.json`.  The winding label and the
-ordered complement of transverse target axes are both serialized.  Its
-source-draw identity is deliberately smaller than the total audit registry.
-Event thresholds, rank tolerances, normal-dimension hints, reaction settings
-and source-validity thresholds cannot affect the source coefficient stream.
+Both reports use strict parsed-JSON replay.  Duplicate keys, non-finite
+numbers and type changes such as `true -> 1` are rejected, and LF/CRLF
+checkout conversion does not change semantic comparison.
 
-## Registered theorem
+## Exact source control
 
-Let
+The frozen source registry samples the single ambient delta--Liouville
+measure, not an arbitrary mixture and not a source conditioned on encounter
+rank or validity.  With
 
 \[
 M=T_FL_w,\qquad d=16K,\qquad
-E_*=E_\perp-\frac{\|P_{\rm tot}\|^2}{4M}.
+E_*=E_\perp-\frac{\|P_{\rm tot}\|^2}{4M},
 \]
 
-For each string and chirality define
+and
 
 \[
-z_{in}^{L,R}=\sqrt{2M}\,k_nc_{in}^{L,R}.
+z_{in}^{L,R}=\sqrt{2M}\,k_nc_{in}^{L,R},
 \]
 
-After eliminating the fixed total momentum, the energy and two global
-world-sheet momenta are
-
-\[
-H_\perp-\frac{\|P_{\rm tot}\|^2}{4M}
-=\|w\|^2+\sum_i(\|z_i^L\|^2+\|z_i^R\|^2),
-\]
-
-\[
-\mathcal P_{\sigma,i}
-=\|z_i^R\|^2-\|z_i^L\|^2.
-\]
-
-At \(\mathcal P_{\sigma,1}=\mathcal P_{\sigma,2}=0\), the energy shares obey
+the constrained energy shares obey
 
 \[
 \left(\frac{s_0}{E_*},\frac{s_1}{E_*},\frac{s_2}{E_*}\right)
-\sim\operatorname{Dirichlet}(4,16K-1,16K-1).
+\sim\operatorname{Dirichlet}(4,16K-1,16K-1)
 \]
 
-The implementation draws this distribution with independent integer-shape
-Gamma variables, draws all five sphere directions independently, reconstructs
-the real Fourier coefficients, and draws the relative centre from normalized
-Haar measure on the transverse torus.  The global translation representative
-is fixed as \(Q_2=0,\ Q_1=Q_{\rm rel}\).
+at \(\mathcal P_{\sigma,1}=\mathcal P_{\sigma,2}=0\).
 
-## Validity and retained mass
+The principal implementation uses independent integer-shape Gamma variables,
+five independent sphere directions, and normalized Haar
+\(Q_{\rm rel}\in T_\perp^8\).  The translation gauge is
+\(Q_2=0,\ Q_1=Q_{\rm rel}\).  An algorithmically independent hierarchical
+Beta control uses integer order statistics rather than the Gamma primitive.
 
-The audit cell uses a registered analytic, time-uniform upper bound on both
-\(\|Y_i'\|\) and \(\|\dot Y_i\|\), together with \(k_{\max}\ell_s\).  This is
-a conservative software-and-measure audit predicate.  Every failing sample is
-stored as `source_invalid`; no valid replacement is drawn.  Named per-sample
-PRNG substreams ensure that changing the validity predicate cannot move later
-samples in the stream.
+The source-draw identity excludes event thresholds, rank tolerance, reaction
+data and source-validity thresholds.  Every failed validity predicate is
+retained as `source_invalid`; no replacement is drawn.  Polynomial
+constraints of every serialized sample are also re-evaluated exactly by
+interpreting each IEEE-754 binary64 value as its dyadic rational.
 
-The report stores aggregates and source-state fingerprints, not a conditioned
-population.  Its JSON replay is type-strict, rejects duplicate keys and
-non-finite numbers, and compares semantic content independently of LF/CRLF
-checkout conversion.
-
-## Scope boundary
-
-This package closes only the finite-\(K\), quadratic, graph-sector source
-sampler for the frozen zero-\(\pi_i\) audit cell.  It does not establish:
-
-- a unique cosmological or quantum F1 preparation;
-- source validity of the quadratic graph approximation;
-- exhaustive first-entry root coverage;
-- physical regular or exceptional event masses;
-- an encounter-rank or singular-value distribution;
-- a continuum limit, \(3+1\) selection, cone, signature or time direction.
-
-Nonzero world-sheet momentum has the different radial density
+The nonzero-world-sheet-momentum density is recorded only as a later scope:
 
 \[
 p(s_0,s_1,s_2)\propto
@@ -95,6 +73,70 @@ s_0^3\prod_i
 \delta(s_0+s_1+s_2-E_*),
 \]
 
-with \(s_i\ge|\pi_i|\) and strict regular-shell condition
-\(E_*>|\pi_1|+|\pi_2|\).  It is recorded as a later source family and is not
-implemented here.
+with \(s_i\ge|\pi_i|\) and
+\(E_*>|\pi_1|+|\pi_2|\).  It is not sampled here.
+
+## Total event-record contract
+
+`event_record.schema.json` is a Draft 2020-12 shape contract.
+`event_contract.py` supplies the cross-field semantics that ordinary JSON
+Schema cannot express:
+
+- deterministic primary precedence and exactly one mass row;
+- finite-window censoring versus complete-time-domain no entry;
+- strict outer overshoot before re-arming;
+- outcome-conditional solver-certificate references;
+- finite unordered and implicit positive-dimensional clusters;
+- unresolved rank carrying no fabricated normal dimension, projector, frame,
+  \(b\), or \(\ell\);
+- certified-rank-two seven-dimensional normal-fiber controls; and
+- episode merger/split/secondary-contact flags consistent with lineage.
+
+The primary outcomes, in precedence order, are:
+
+```text
+source_invalid
+left_censored_active_episode
+torus_branch_ambiguous
+ambiguous_tie
+numerically_unresolved
+no_entry_proved
+right_censored_no_entry
+right_censored_active_episode
+tie_cluster
+degenerate_spatial_minimum
+grazing_entry
+regular_first_entry
+```
+
+`ambiguous_tie` means root coverage is complete and only exact
+equality/order of the earliest isolated candidates remains undecided.  A
+possible missing or order-relevant unresolved root is
+`numerically_unresolved`.  Complete ties retain the full unordered cluster;
+no lexicographic scalar representative is physically authoritative.
+
+The hysteresis contract uses
+
+\[
+T_{\rm out}
+=\inf\{t>T_{\rm in}:\rho(t)>r_{\rm out}\}.
+\]
+
+An outer tangent touch does not re-arm.  Further inner contacts while active
+remain marks of the same episode; a new episode becomes eligible only after
+certified strict overshoot.
+
+## Scope boundary
+
+The controls do not establish:
+
+- a unique cosmological or quantum F1 preparation;
+- validity of the quadratic graph approximation as a continuum model;
+- exhaustive first-entry, image or singular-root coverage;
+- recurrence or a global all-time no-entry bound;
+- a physical regular/exceptional event-mass ledger;
+- an event-conditioned rank or singular-value law;
+- a continuum limit, visible \(3+1\), cone, signature or time direction.
+
+The next gate is a replayable interval-arithmetic solver with gap-free box and
+image coverage, followed by the unconditioned finite-\(K\) population law.

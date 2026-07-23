@@ -1,0 +1,1592 @@
+{
+  "$defs": {
+    "box": {
+      "additionalProperties": false,
+      "properties": {
+        "sigma1": {
+          "$ref": "#/$defs/interval"
+        },
+        "sigma2": {
+          "$ref": "#/$defs/interval"
+        },
+        "time": {
+          "$ref": "#/$defs/interval"
+        }
+      },
+      "required": [
+        "sigma1",
+        "sigma2",
+        "time"
+      ],
+      "type": "object"
+    },
+    "closestCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "certificate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "none",
+            "episode_complete",
+            "window_only",
+            "unresolved"
+          ]
+        }
+      },
+      "required": [
+        "certificate_id",
+        "status"
+      ],
+      "type": "object"
+    },
+    "cluster": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "representation": {
+                "const": "singleton"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "cardinality": {
+                "const": 1
+              },
+              "implicit_set": {
+                "type": "null"
+              },
+              "members": {
+                "items": {
+                  "$ref": "#/$defs/representative"
+                },
+                "maxItems": 1,
+                "minItems": 1,
+                "type": "array"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "representation": {
+                "const": "finite"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "cardinality": {
+                "minimum": 2,
+                "type": "integer"
+              },
+              "implicit_set": {
+                "type": "null"
+              },
+              "members": {
+                "items": {
+                  "$ref": "#/$defs/representative"
+                },
+                "minItems": 2,
+                "type": "array"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "representation": {
+                "const": "implicit"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "cardinality": {
+                "enum": [
+                  "continuum",
+                  "unknown"
+                ]
+              },
+              "implicit_set": {
+                "$ref": "#/$defs/implicitSet"
+              },
+              "members": {
+                "maxItems": 0,
+                "type": "array"
+              }
+            }
+          }
+        }
+      ],
+      "properties": {
+        "cardinality": {
+          "oneOf": [
+            {
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "enum": [
+                "continuum",
+                "unknown"
+              ]
+            }
+          ]
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "implicit_set": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/implicitSet"
+            }
+          ]
+        },
+        "members": {
+          "items": {
+            "$ref": "#/$defs/representative"
+          },
+          "type": "array"
+        },
+        "representation": {
+          "enum": [
+            "singleton",
+            "finite",
+            "implicit"
+          ]
+        },
+        "unordered": {
+          "const": true
+        }
+      },
+      "required": [
+        "representation",
+        "complete",
+        "unordered",
+        "cardinality",
+        "members",
+        "implicit_set"
+      ],
+      "type": "object"
+    },
+    "completeCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "certificate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "complete": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "certificate_id",
+        "complete"
+      ],
+      "type": "object"
+    },
+    "episode": {
+      "additionalProperties": false,
+      "properties": {
+        "T_in": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/interval"
+            }
+          ]
+        },
+        "T_out": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/interval"
+            }
+          ]
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "component_events": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "component_id": {
+                "minLength": 1,
+                "type": "string"
+              },
+              "time": {
+                "$ref": "#/$defs/interval"
+              },
+              "transition": {
+                "enum": [
+                  "birth",
+                  "merge",
+                  "split",
+                  "disappear"
+                ]
+              }
+            },
+            "required": [
+              "component_id",
+              "transition",
+              "time"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "episode_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "left_censored": {
+          "type": "boolean"
+        },
+        "right_censored": {
+          "type": "boolean"
+        },
+        "role": {
+          "enum": [
+            "preexisting",
+            "primary",
+            "subsequent"
+          ]
+        },
+        "secondary_inner_contacts": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "episode_id",
+        "role",
+        "left_censored",
+        "right_censored",
+        "complete",
+        "T_in",
+        "T_out",
+        "secondary_inner_contacts",
+        "component_events"
+      ],
+      "type": "object"
+    },
+    "globalCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "certificate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "complete": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "certificate_id",
+        "complete"
+      ],
+      "type": "object"
+    },
+    "implicitSet": {
+      "additionalProperties": false,
+      "properties": {
+        "defining_equations": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "dimension_status": {
+          "enum": [
+            "positive",
+            "unknown"
+          ]
+        },
+        "domain_boxes": {
+          "items": {
+            "$ref": "#/$defs/box"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "jet_field_certificate_ref": {
+          "oneOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "normal_field_certificate_ref": {
+          "oneOf": [
+            {
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "set_certificate_ref": {
+          "minLength": 1,
+          "type": "string"
+        }
+      },
+      "required": [
+        "defining_equations",
+        "domain_boxes",
+        "dimension_status",
+        "set_certificate_ref",
+        "jet_field_certificate_ref",
+        "normal_field_certificate_ref"
+      ],
+      "type": "object"
+    },
+    "interval": {
+      "additionalProperties": false,
+      "properties": {
+        "hi": {
+          "type": "number"
+        },
+        "lo": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "lo",
+        "hi"
+      ],
+      "type": "object"
+    },
+    "jetNormal": {
+      "additionalProperties": false,
+      "properties": {
+        "G": {
+          "$ref": "#/$defs/matrix9x9"
+        },
+        "H": {
+          "$ref": "#/$defs/matrix3x3"
+        },
+        "J": {
+          "$ref": "#/$defs/matrix9x3"
+        },
+        "P_N": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/matrix9x9"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "b": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/vector9"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "coordinate_basis": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "ell": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/vector9"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "normal_dimension": {
+          "oneOf": [
+            {
+              "maximum": 9,
+              "minimum": 6,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "normal_frame": {
+          "oneOf": [
+            {
+              "items": {
+                "items": {
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              "maxItems": 9,
+              "minItems": 9,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "rank": {
+          "$ref": "#/$defs/rank"
+        },
+        "s": {
+          "$ref": "#/$defs/vector9"
+        },
+        "singular_value_intervals": {
+          "items": {
+            "$ref": "#/$defs/interval"
+          },
+          "maxItems": 3,
+          "minItems": 3,
+          "type": "array"
+        }
+      },
+      "required": [
+        "coordinate_basis",
+        "G",
+        "H",
+        "J",
+        "singular_value_intervals",
+        "rank",
+        "normal_dimension",
+        "P_N",
+        "normal_frame",
+        "s",
+        "b",
+        "ell"
+      ],
+      "type": "object"
+    },
+    "matrix2x2Intervals": {
+      "items": {
+        "items": {
+          "$ref": "#/$defs/interval"
+        },
+        "maxItems": 2,
+        "minItems": 2,
+        "type": "array"
+      },
+      "maxItems": 2,
+      "minItems": 2,
+      "type": "array"
+    },
+    "matrix3x3": {
+      "items": {
+        "$ref": "#/$defs/vector3"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "type": "array"
+    },
+    "matrix9x3": {
+      "items": {
+        "$ref": "#/$defs/vector3"
+      },
+      "maxItems": 9,
+      "minItems": 9,
+      "type": "array"
+    },
+    "matrix9x9": {
+      "items": {
+        "$ref": "#/$defs/vector9"
+      },
+      "maxItems": 9,
+      "minItems": 9,
+      "type": "array"
+    },
+    "noEntryCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "certificate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "mode": {
+          "enum": [
+            "finite_window",
+            "exact_common_period",
+            "global_lower_bound"
+          ]
+        },
+        "period": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/interval"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "certificate_id",
+        "mode",
+        "complete",
+        "period"
+      ],
+      "type": "object"
+    },
+    "outerExitCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "boundary_time": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/interval"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "certificate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "observed": {
+          "type": "boolean"
+        },
+        "rearmed": {
+          "type": "boolean"
+        },
+        "strict_overshoot": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "certificate_id",
+        "observed",
+        "strict_overshoot",
+        "boundary_time",
+        "rearmed"
+      ],
+      "type": "object"
+    },
+    "rank": {
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "certified"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "exact_rank": {
+                "maximum": 3,
+                "minimum": 0,
+                "type": "integer"
+              },
+              "possible_ranks": {
+                "maxItems": 1,
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "status": {
+                "const": "unresolved"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "exact_rank": {
+                "type": "null"
+              },
+              "possible_ranks": {
+                "minItems": 2
+              }
+            }
+          }
+        }
+      ],
+      "properties": {
+        "exact_rank": {
+          "oneOf": [
+            {
+              "maximum": 3,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "possible_ranks": {
+          "items": {
+            "maximum": 3,
+            "minimum": 0,
+            "type": "integer"
+          },
+          "maxItems": 4,
+          "minItems": 1,
+          "type": "array",
+          "uniqueItems": true
+        },
+        "proof_kind": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "certified",
+            "unresolved"
+          ]
+        }
+      },
+      "required": [
+        "status",
+        "exact_rank",
+        "possible_ranks",
+        "proof_kind"
+      ],
+      "type": "object"
+    },
+    "representative": {
+      "additionalProperties": false,
+      "properties": {
+        "F": {
+          "$ref": "#/$defs/interval"
+        },
+        "H_sigma_sigma": {
+          "$ref": "#/$defs/matrix2x2Intervals"
+        },
+        "box": {
+          "$ref": "#/$defs/box"
+        },
+        "dF_dt": {
+          "$ref": "#/$defs/interval"
+        },
+        "grad_sigma": {
+          "items": {
+            "$ref": "#/$defs/interval"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "type": "array"
+        },
+        "jet_normal": {
+          "$ref": "#/$defs/jetNormal"
+        },
+        "log_unique": {
+          "type": "boolean"
+        },
+        "representative_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "s": {
+          "$ref": "#/$defs/vector9"
+        },
+        "torus_image": {
+          "items": {
+            "type": "integer"
+          },
+          "maxItems": 9,
+          "minItems": 9,
+          "type": "array"
+        }
+      },
+      "required": [
+        "representative_id",
+        "box",
+        "torus_image",
+        "log_unique",
+        "s",
+        "F",
+        "grad_sigma",
+        "dF_dt",
+        "H_sigma_sigma",
+        "jet_normal"
+      ],
+      "type": "object"
+    },
+    "rootCoverageCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "certificate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "coverage_tree_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "deterministic_budget_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "leaf_counts": {
+          "additionalProperties": false,
+          "properties": {
+            "excluded": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "singular_cluster": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "unique_root": {
+              "minimum": 0,
+              "type": "integer"
+            },
+            "unresolved": {
+              "minimum": 0,
+              "type": "integer"
+            }
+          },
+          "required": [
+            "excluded",
+            "unique_root",
+            "singular_cluster",
+            "unresolved"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "certificate_id",
+        "complete",
+        "coverage_tree_hash",
+        "deterministic_budget_hash",
+        "leaf_counts"
+      ],
+      "type": "object"
+    },
+    "sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "sourceValidityCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "certificate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "predicate_version": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "reason_codes": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "valid",
+            "invalid"
+          ]
+        }
+      },
+      "required": [
+        "certificate_id",
+        "status",
+        "predicate_version",
+        "reason_codes"
+      ],
+      "type": "object"
+    },
+    "tieCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_ids": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "certificate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "none",
+            "complete_cluster",
+            "ordering_ambiguous"
+          ]
+        }
+      },
+      "required": [
+        "certificate_id",
+        "status",
+        "candidate_ids"
+      ],
+      "type": "object"
+    },
+    "torusCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "certificate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "image_manifest_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "unique": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "certificate_id",
+        "unique",
+        "image_manifest_hash"
+      ],
+      "type": "object"
+    },
+    "unresolvedCertificate": {
+      "additionalProperties": false,
+      "properties": {
+        "certificate_id": {
+          "minLength": 1,
+          "type": "string"
+        },
+        "reason_codes": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "minItems": 1,
+          "type": "array"
+        },
+        "unresolved_leaf_count": {
+          "minimum": 0,
+          "type": "integer"
+        }
+      },
+      "required": [
+        "certificate_id",
+        "reason_codes",
+        "unresolved_leaf_count"
+      ],
+      "type": "object"
+    },
+    "vector3": {
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 3,
+      "minItems": 3,
+      "type": "array"
+    },
+    "vector9": {
+      "items": {
+        "type": "number"
+      },
+      "maxItems": 9,
+      "minItems": 9,
+      "type": "array"
+    }
+  },
+  "$id": "https://github.com/ccyyyYyzz/cyz_n/raw/main/artifacts/0018/event_record.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "primary_outcome": {
+            "const": "source_invalid"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "entry_cluster": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "primary_outcome": {
+            "const": "torus_branch_ambiguous"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "certificates": {
+            "properties": {
+              "torus_log": {
+                "$ref": "#/$defs/torusCertificate"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "primary_outcome": {
+            "const": "ambiguous_tie"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "certificates": {
+            "properties": {
+              "root_coverage": {
+                "$ref": "#/$defs/rootCoverageCertificate"
+              },
+              "tie": {
+                "$ref": "#/$defs/tieCertificate"
+              }
+            }
+          },
+          "entry_cluster": {
+            "$ref": "#/$defs/cluster"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "primary_outcome": {
+            "const": "numerically_unresolved"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "certificates": {
+            "properties": {
+              "unresolved": {
+                "$ref": "#/$defs/unresolvedCertificate"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "primary_outcome": {
+            "enum": [
+              "no_entry_proved",
+              "right_censored_no_entry"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "certificates": {
+            "properties": {
+              "no_entry": {
+                "$ref": "#/$defs/noEntryCertificate"
+              },
+              "root_coverage": {
+                "$ref": "#/$defs/rootCoverageCertificate"
+              }
+            }
+          },
+          "entry_cluster": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "primary_outcome": {
+            "enum": [
+              "right_censored_active_episode",
+              "tie_cluster",
+              "degenerate_spatial_minimum",
+              "grazing_entry",
+              "regular_first_entry"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "certificates": {
+            "properties": {
+              "closest": {
+                "$ref": "#/$defs/closestCertificate"
+              },
+              "global_minimum": {
+                "$ref": "#/$defs/globalCertificate"
+              },
+              "no_earlier_entry": {
+                "$ref": "#/$defs/globalCertificate"
+              },
+              "outer_exit": {
+                "$ref": "#/$defs/outerExitCertificate"
+              },
+              "root_coverage": {
+                "$ref": "#/$defs/rootCoverageCertificate"
+              }
+            }
+          },
+          "entry_cluster": {
+            "$ref": "#/$defs/cluster"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "primary_outcome": {
+            "const": "tie_cluster"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "certificates": {
+            "properties": {
+              "tie": {
+                "$ref": "#/$defs/tieCertificate"
+              }
+            }
+          },
+          "entry_cluster": {
+            "properties": {
+              "representation": {
+                "enum": [
+                  "finite",
+                  "implicit"
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "primary_outcome": {
+            "enum": [
+              "degenerate_spatial_minimum",
+              "grazing_entry",
+              "regular_first_entry"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "entry_cluster": {
+            "properties": {
+              "representation": {
+                "const": "singleton"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "properties": {
+    "certificates": {
+      "additionalProperties": false,
+      "properties": {
+        "closest": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/closestCertificate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "global_minimum": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/globalCertificate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "no_earlier_entry": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/globalCertificate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "no_entry": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/noEntryCertificate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "outer_exit": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/outerExitCertificate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "root_coverage": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/rootCoverageCertificate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "source_validity": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/sourceValidityCertificate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tie": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/tieCertificate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "torus_log": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/torusCertificate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "unresolved": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/unresolvedCertificate"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "source_validity",
+        "root_coverage",
+        "global_minimum",
+        "no_earlier_entry",
+        "torus_log",
+        "tie",
+        "outer_exit",
+        "no_entry",
+        "unresolved",
+        "closest"
+      ],
+      "type": "object"
+    },
+    "entry_cluster": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/cluster"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "episodes": {
+      "items": {
+        "$ref": "#/$defs/episode"
+      },
+      "type": "array"
+    },
+    "flags": {
+      "additionalProperties": false,
+      "properties": {
+        "ambiguous_tie": {
+          "type": "boolean"
+        },
+        "closest_episode_identified": {
+          "type": "boolean"
+        },
+        "closest_tied": {
+          "type": "boolean"
+        },
+        "closest_window_only": {
+          "type": "boolean"
+        },
+        "entry_cluster_complete": {
+          "type": "boolean"
+        },
+        "entry_direction_inconsistent": {
+          "type": "boolean"
+        },
+        "entry_earliest_certified": {
+          "type": "boolean"
+        },
+        "entry_geometry_regular": {
+          "type": "boolean"
+        },
+        "entry_has_grazing": {
+          "type": "boolean"
+        },
+        "entry_has_spatial_degeneracy": {
+          "type": "boolean"
+        },
+        "entry_observed": {
+          "type": "boolean"
+        },
+        "entry_positive_dimensional": {
+          "type": "boolean"
+        },
+        "entry_tied": {
+          "type": "boolean"
+        },
+        "episode_complete": {
+          "type": "boolean"
+        },
+        "episode_has_component_merger": {
+          "type": "boolean"
+        },
+        "episode_has_component_split": {
+          "type": "boolean"
+        },
+        "episode_has_secondary_inner_contact": {
+          "type": "boolean"
+        },
+        "episode_topology_unresolved": {
+          "type": "boolean"
+        },
+        "global_minimum_certified": {
+          "type": "boolean"
+        },
+        "history_valid": {
+          "type": "boolean"
+        },
+        "initial_armed": {
+          "type": "boolean"
+        },
+        "left_censored": {
+          "type": "boolean"
+        },
+        "no_earlier_entry_certified": {
+          "type": "boolean"
+        },
+        "no_entry_complete_time_domain_certified": {
+          "type": "boolean"
+        },
+        "no_entry_window_certified": {
+          "type": "boolean"
+        },
+        "normal_marks_complete": {
+          "type": "boolean"
+        },
+        "outer_exit_certified": {
+          "type": "boolean"
+        },
+        "outer_exit_observed": {
+          "type": "boolean"
+        },
+        "outer_grazing_observed": {
+          "type": "boolean"
+        },
+        "rank_marks_complete": {
+          "type": "boolean"
+        },
+        "rearmed": {
+          "type": "boolean"
+        },
+        "right_censored": {
+          "type": "boolean"
+        },
+        "root_coverage_complete": {
+          "type": "boolean"
+        },
+        "solver_complete": {
+          "type": "boolean"
+        },
+        "source_valid": {
+          "type": "boolean"
+        },
+        "torus_branch_ambiguous": {
+          "type": "boolean"
+        },
+        "torus_log_unique": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "source_valid",
+        "history_valid",
+        "initial_armed",
+        "left_censored",
+        "right_censored",
+        "solver_complete",
+        "root_coverage_complete",
+        "global_minimum_certified",
+        "no_earlier_entry_certified",
+        "torus_log_unique",
+        "torus_branch_ambiguous",
+        "ambiguous_tie",
+        "entry_observed",
+        "entry_earliest_certified",
+        "entry_cluster_complete",
+        "entry_tied",
+        "entry_positive_dimensional",
+        "entry_geometry_regular",
+        "entry_has_grazing",
+        "entry_has_spatial_degeneracy",
+        "entry_direction_inconsistent",
+        "outer_exit_observed",
+        "outer_exit_certified",
+        "outer_grazing_observed",
+        "episode_complete",
+        "rearmed",
+        "closest_episode_identified",
+        "closest_window_only",
+        "closest_tied",
+        "episode_has_secondary_inner_contact",
+        "episode_has_component_merger",
+        "episode_has_component_split",
+        "episode_topology_unresolved",
+        "rank_marks_complete",
+        "normal_marks_complete",
+        "no_entry_window_certified",
+        "no_entry_complete_time_domain_certified"
+      ],
+      "type": "object"
+    },
+    "observation": {
+      "additionalProperties": false,
+      "properties": {
+        "complete_time_domain": {
+          "type": "boolean"
+        },
+        "continuation_state": {
+          "enum": [
+            "armed",
+            "active",
+            "terminal",
+            "invalid",
+            "unresolved"
+          ]
+        },
+        "t0": {
+          "type": "number"
+        },
+        "t1": {
+          "type": "number"
+        },
+        "window_semantics": {
+          "const": "[t0,t1)"
+        }
+      },
+      "required": [
+        "t0",
+        "t1",
+        "window_semantics",
+        "complete_time_domain",
+        "continuation_state"
+      ],
+      "type": "object"
+    },
+    "precedence_trace": {
+      "items": {
+        "enum": [
+          "source_invalid",
+          "left_censored_active_episode",
+          "torus_branch_ambiguous",
+          "ambiguous_tie",
+          "numerically_unresolved",
+          "no_entry_proved",
+          "right_censored_no_entry",
+          "right_censored_active_episode",
+          "tie_cluster",
+          "degenerate_spatial_minimum",
+          "grazing_entry",
+          "regular_first_entry"
+        ]
+      },
+      "minItems": 1,
+      "type": "array"
+    },
+    "primary_outcome": {
+      "enum": [
+        "source_invalid",
+        "left_censored_active_episode",
+        "torus_branch_ambiguous",
+        "ambiguous_tie",
+        "numerically_unresolved",
+        "no_entry_proved",
+        "right_censored_no_entry",
+        "right_censored_active_episode",
+        "tie_cluster",
+        "degenerate_spatial_minimum",
+        "grazing_entry",
+        "regular_first_entry"
+      ]
+    },
+    "registry_hash": {
+      "$ref": "#/$defs/sha256"
+    },
+    "sample_id": {
+      "minLength": 1,
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "cyz-brief-0018-event-record-v1"
+    },
+    "scope": {
+      "additionalProperties": false,
+      "properties": {
+        "physical_outcome_mass_estimated": {
+          "const": false
+        },
+        "physical_root_solver_run": {
+          "const": false
+        },
+        "rank_used_for_event_selection": {
+          "const": false
+        }
+      },
+      "required": [
+        "physical_root_solver_run",
+        "physical_outcome_mass_estimated",
+        "rank_used_for_event_selection"
+      ],
+      "type": "object"
+    },
+    "source": {
+      "additionalProperties": false,
+      "properties": {
+        "classification_registry_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "history_valid": {
+          "type": "boolean"
+        },
+        "initial_state": {
+          "enum": [
+            "armed",
+            "active",
+            "unknown"
+          ]
+        },
+        "invalid_reasons": {
+          "items": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "sampling_registry_hash": {
+          "$ref": "#/$defs/sha256"
+        },
+        "source_valid": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "sampling_registry_hash",
+        "classification_registry_hash",
+        "source_valid",
+        "history_valid",
+        "invalid_reasons",
+        "initial_state"
+      ],
+      "type": "object"
+    }
+  },
+  "required": [
+    "schema_version",
+    "registry_hash",
+    "sample_id",
+    "source",
+    "observation",
+    "primary_outcome",
+    "flags",
+    "entry_cluster",
+    "episodes",
+    "certificates",
+    "precedence_trace",
+    "scope"
+  ],
+  "title": "Brief 0018 total rank-blind event record",
+  "type": "object"
+}

@@ -1,0 +1,69 @@
+{
+  "checks": {
+    "active_inner_contact_is_secondary": true,
+    "all_primary_tags_have_valid_hostile_schema_fixtures": true,
+    "ambiguous_tie_precedes_generic_unresolved": true,
+    "each_fixture_has_exactly_one_primary_value": true,
+    "finite_window_and_complete_time_no_entry_are_distinct": true,
+    "implicit_positive_dimensional_cluster_is_not_scalarized": true,
+    "no_physical_solver_or_mass_claim": true,
+    "outer_touch_does_not_rearm": true,
+    "rank_two_fixture_has_seven_dimensional_normal": true,
+    "source_invalid_fixture_has_no_root_certificate": true
+  },
+  "event_schema_canonical_sha256": "33207071ee5ae2933f8bd5d2032d01313586b17e3edd4fd8e38f97f50928d2b2",
+  "event_schema_normalized_lf_sha256": "f4ccba32949690dcd9b00287741423925ef860ef166a4431df05b88ac813f89d",
+  "event_schema_version": "cyz-brief-0018-event-record-v1",
+  "fixture_canonical_sha256": {
+    "ambiguous_tie": "4e730a071f40f24992599c0b64e92876320dd1b3ed1b1d52dd169f680d4421b8",
+    "degenerate_spatial_minimum": "b5df79786497a52914ab8dca85725ea4b702c550d8a1b50c42558dc2f1b98720",
+    "grazing_entry": "e632ed2139723a13078bcfb22d9ec319c87fe6d4625d7ff248e745179c1bd81a",
+    "left_censored_active_episode": "9d4c94a4fe1c0466a54633176457d88166867495fceb71263691b965b0d9d7aa",
+    "no_entry_proved": "3c38d44b2d7764361b1ed33f0127f79acdb81e70b1a287b33ee4cc939f0412af",
+    "numerically_unresolved": "ed98bb692bef89b4c11b20b98c8a3c08ef70d8a2ff32846be6f3b9dfa432fd3d",
+    "regular_first_entry": "7842a60ae830153e953cb4e0b65106df93e59d314a37e46cad0d268d62a0bba5",
+    "right_censored_active_episode": "1b0a3b51c7baeebaedd019c2e006fb6be6fd5757758ad1df177e2b7723e1602a",
+    "right_censored_no_entry": "5a2acc9de562c1eb25841fa7cef4df02b74fa9ddca5ac2af243b033100753196",
+    "source_invalid": "3a8db9cc2091e1353ea9b937355e4ea1d93970b1314201c51657fb6ef08905df",
+    "tie_cluster": "e627cce1034eedb8dd2d1d1b0b4c60fdf997edcdb87ae7afb6720b0843337b65",
+    "torus_branch_ambiguous": "f5cc53c9a39ad628ac990f78db25c59c80ad2cc8090d70ec2bfb382bf47e0836"
+  },
+  "hysteresis_control": {
+    "final_state": "active",
+    "initial_state": "armed",
+    "outer_grazes": 1,
+    "secondary_inner_contacts": 1,
+    "transitions": [
+      {
+        "index": 2,
+        "transition": "inner_entry"
+      },
+      {
+        "index": 7,
+        "transition": "strict_outer_exit_rearm"
+      },
+      {
+        "index": 8,
+        "transition": "inner_entry"
+      }
+    ]
+  },
+  "implicit_cluster_fixture_canonical_sha256": "ee7bb0d126945398131fd43ab2d457eb11bb481bafcc2fc0300f689de1f422d0",
+  "primary_precedence": [
+    "source_invalid",
+    "left_censored_active_episode",
+    "torus_branch_ambiguous",
+    "ambiguous_tie",
+    "numerically_unresolved",
+    "no_entry_proved",
+    "right_censored_no_entry",
+    "right_censored_active_episode",
+    "tie_cluster",
+    "degenerate_spatial_minimum",
+    "grazing_entry",
+    "regular_first_entry"
+  ],
+  "schema_version": "cyz-brief-0018-event-schema-controls-v1",
+  "scope": "synthetic event-contract controls only; no physical root solver, source sampler, event population, or outcome mass",
+  "status": "PASS"
+}
