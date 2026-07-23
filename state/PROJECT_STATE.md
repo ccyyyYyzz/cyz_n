@@ -216,12 +216,22 @@ exact GKM 2009 algorithm, which schedules recollisions at
 \(t_r\simeq r/\bar v\) and redraws the impact parameter at those times.
 Accordingly no rank-three strict-residence margin is certified or excluded.
 
-The active bottleneck is now one actually instantiated, target-neutral event
-law on the full anisotropic nine-direction state space.  It must be delivered
-as finite tables plus a deterministic reproducer, with a pre-classifier
-non-encoding witness and either a faithful scheduled-GKM source limit or an
-explicit first-hit/return derivation.  Symbolic encounter-kernel interfaces are
-no longer counted as executable progress.
+Response 0013 supplies a deterministic non-Poisson clock, exact rational
+sparse-mark registry, frame-level `S9` action, proposed exchangeable initial
+law and deterministic canonical serialization.  These are adopted only as a
+scheduled finite scaffold.  The event rows were generated from the mark
+templates of one frame and do not close on the 21,168 serialized states; 6,048
+products states lack a reverse row.  Its verifier checks frame maps and
+hard-coded ledger identities, while energy, destination, cemetery, age,
+full-process `S9` and disguised hidden-three mutations remain undetected.
+
+The active bottleneck is therefore narrower and executable: construct a
+frame-local source-state row for every positive scheduled atom, with explicit
+destination and reverse IDs, then validate the reloaded object using a
+separate hostile verifier.  Full-process `S9`, source-validity cemetery routes,
+same-law three/four kernels and semantic non-encoding remain false until that
+object survives the prescribed mutations.  A state/mark registry or a
+prepared `count_if` adversary is not counted as a completed kernel.
 
 The wavefront-kernel construction remains an independent physical validation
 route, not the primary definition. Numerical gaps are meaningful only relative
