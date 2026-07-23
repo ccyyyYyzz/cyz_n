@@ -1,0 +1,153 @@
+{
+  "K_enclosures": {
+    "sigma1": {
+      "lower": "[-2.38428900445342e-6 +/- 1.52e-21]",
+      "upper": "[2.38428900445342e-6 +/- 1.52e-21]"
+    },
+    "sigma2": {
+      "lower": "[-2.38428900445342e-6 +/- 1.52e-21]",
+      "upper": "[2.38428900445342e-6 +/- 1.52e-21]"
+    },
+    "time": {
+      "lower": "[-0.0175782264850568 +/- 2.64e-18]",
+      "upper": "[0.0175782264850568 +/- 2.64e-18]"
+    }
+  },
+  "backend": {
+    "arithmetic": "arb outward-rounded balls",
+    "flint": "3.6.0",
+    "python_flint": "0.9.0"
+  },
+  "code_inventory": {
+    "arb_interval_jets.py": "c49aae864e92f0f8812b088ed824b920e6ec106b725632c7cf82be3bb7fce69c",
+    "arb_krawczyk_control.py": "abfcfbb78e5dbb3cf93a7161eddd1b4f73f13e4440dfbca827aca9b8ccf8692f"
+  },
+  "failed_gates": [],
+  "fixture_semantic_sha256": "d9b8d8c41d0601b09e766fee257bc275e643539a1818520fbbf6c53d3ad19bb5",
+  "gates": {
+    "point_g_is_exact_zero": true,
+    "preconditioner_is_exact_inverse_at_root": true,
+    "three_axis_strict_inclusion": true,
+    "wide_box_rejected_as_noninclusion": true
+  },
+  "krawczyk_box": {
+    "sigma1": {
+      "hi": {
+        "exponent": 5,
+        "numerator": 1
+      },
+      "lo": {
+        "exponent": 5,
+        "numerator": -1
+      }
+    },
+    "sigma2": {
+      "hi": {
+        "exponent": 5,
+        "numerator": 1
+      },
+      "lo": {
+        "exponent": 5,
+        "numerator": -1
+      }
+    },
+    "time": {
+      "hi": {
+        "exponent": 5,
+        "numerator": 1
+      },
+      "lo": {
+        "exponent": 5,
+        "numerator": -1
+      }
+    }
+  },
+  "precision_bits": 192,
+  "preconditioner": [
+    [
+      {
+        "exponent": 1,
+        "numerator": 1
+      },
+      {
+        "exponent": 0,
+        "numerator": 0
+      },
+      {
+        "exponent": 0,
+        "numerator": 0
+      }
+    ],
+    [
+      {
+        "exponent": 0,
+        "numerator": 0
+      },
+      {
+        "exponent": 1,
+        "numerator": 1
+      },
+      {
+        "exponent": 0,
+        "numerator": 0
+      }
+    ],
+    [
+      {
+        "exponent": 0,
+        "numerator": 0
+      },
+      {
+        "exponent": 0,
+        "numerator": 0
+      },
+      {
+        "exponent": 0,
+        "numerator": -2
+      }
+    ]
+  ],
+  "schema_version": "cyz-brief-0019-arb-krawczyk-report-v1",
+  "scope": {
+    "finite_K_trigonometric_fixture": true,
+    "global_no_earlier_entry_proved": false,
+    "physical_solver_complete": false,
+    "source_population_bound": false,
+    "three_plus_one_selected": false,
+    "three_variable_arb_krawczyk_inclusion": true
+  },
+  "semantic_sha256": "eff9bf80a238cb2fc0f15f56fc21bdada75489e67205091e890e061ad4013d78",
+  "status": "PASS",
+  "strict_margins": {
+    "sigma1": {
+      "lower": {
+        "lower": "[0.0312476157109955 +/- 4.66e-17]",
+        "upper": "[0.0312476157109955 +/- 4.66e-17]"
+      },
+      "upper": {
+        "lower": "[0.0312476157109955 +/- 4.66e-17]",
+        "upper": "[0.0312476157109955 +/- 4.66e-17]"
+      }
+    },
+    "sigma2": {
+      "lower": {
+        "lower": "[0.0312476157109955 +/- 4.66e-17]",
+        "upper": "[0.0312476157109955 +/- 4.66e-17]"
+      },
+      "upper": {
+        "lower": "[0.0312476157109955 +/- 4.66e-17]",
+        "upper": "[0.0312476157109955 +/- 4.66e-17]"
+      }
+    },
+    "time": {
+      "lower": {
+        "lower": "[0.0136717735149432 +/- 2.64e-18]",
+        "upper": "[0.0136717735149432 +/- 2.64e-18]"
+      },
+      "upper": {
+        "lower": "[0.0136717735149432 +/- 2.64e-18]",
+        "upper": "[0.0136717735149432 +/- 2.64e-18]"
+      }
+    }
+  }
+}

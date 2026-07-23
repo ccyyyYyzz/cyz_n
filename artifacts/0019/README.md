@@ -39,6 +39,30 @@ The control also verifies that an Arb interval evaluation on a nontrivial
 box encloses a higher-precision point evaluation.  It imports neither NumPy
 nor the platform libm for asserted proof arithmetic.
 
+[`arb_krawczyk_control.py`](arb_krawczyk_control.py) then uses that physical
+three-equation jet.  On the exact box
+
+\[
+(\sigma_1,\sigma_2,t)\in[-1/32,1/32]^3
+\]
+
+and the exact point preconditioner
+
+\[
+C=\operatorname{diag}(1/2,1/2,-2),
+\]
+
+it recomputes
+
+\[
+K(B)=x_0-Cg(x_0)+(I-CDg(B))(B-x_0)
+\subset\operatorname{int}B
+\]
+
+with a positive Arb margin on all three axes.  The deliberately wider
+\([-1/16,1/16]^3\) box fails inclusion, a zero preconditioner fails, and an
+outward root can be isolated only as a root—not mislabelled as inward entry.
+
 ## Exact grammar
 
 A dyadic is serialized as
@@ -136,8 +160,10 @@ python artifacts/0019/certified_solver_core.py --write
 python artifacts/0019/certified_solver_core.py --check
 python artifacts/0019/arb_interval_jets.py --write
 python artifacts/0019/arb_interval_jets.py --check
+python artifacts/0019/arb_krawczyk_control.py --write
+python artifacts/0019/arb_krawczyk_control.py --check
 python -m unittest discover -s artifacts/0019 -p "test_*.py" -v
-python -m py_compile artifacts/0019/certified_solver_core.py artifacts/0019/arb_interval_jets.py artifacts/0019/test_certified_solver_core.py artifacts/0019/test_arb_interval_jets.py
+python -m py_compile artifacts/0019/certified_solver_core.py artifacts/0019/arb_interval_jets.py artifacts/0019/arb_krawczyk_control.py artifacts/0019/test_certified_solver_core.py artifacts/0019/test_arb_interval_jets.py artifacts/0019/test_arb_krawczyk_control.py
 ```
 
 The Arb commands require python-flint 0.9.0 on `PYTHONPATH` or in the active
@@ -161,8 +187,8 @@ The next implementation layers remain:
 
 - a source-separated `certificate_replayer.py`;
 - the nine-dimensional production image cover and rigorous metric pruning;
-- Krawczyk inclusion using the physical three-equation Arb jet rather than
-  the exact one-dimensional affine foundation fixture;
+- source-state binding and exhaustive subdivision around the demonstrated
+  physical three-equation Arb Krawczyk primitive;
 - singular-cluster and exact seam-equivalence certificates;
 - global spatial minimality, earlier-sublevel exclusion, root ordering and
   tie closure;
